@@ -1,116 +1,76 @@
 #!/bin/bash
+# This script runs the main computation in a robust, parallel, and restartable manner.
 
-# Define MAX_JOBS at the beginning of the script
+# --- Configuration ---
 MAX_JOBS=4  # Adjust this value as needed
+FUNC_SCRIPT="func_algo2"
 
-# Get the absolute path of the current directory
+# --- Setup ---
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+mkdir -p "${SCRIPT_DIR}/Each_Process/log"
+LOCKFILE="${SCRIPT_DIR}/prep/list_j.lock"
 
-# Define source and target directories
-SOURCE_DIR="${SCRIPT_DIR}/Each_Process/Intlab_Group/Intlab_V12"
-TARGET_BASE_DIR="${SCRIPT_DIR}/Each_Process/Intlab_Group"
-
-# Initialize list_idle_process with integers from 1 to MAX_JOBS
 list_idle_process=()
 for ((i=1; i<=MAX_JOBS; i++)); do
     list_idle_process+=($i)
 done
 
-# Define the function script name
-FUNC_SCRIPT="func_algo2"
+# --- Main Execution ---
+echo "Launching ${MAX_JOBS} parallel worker processes..."
 
-# Ensure the log directory exists
-mkdir -p "${SCRIPT_DIR}/Each_Process/log"
-
-# Define the lock file
-LOCKFILE="${SCRIPT_DIR}/prep/list_j.lock"
-
-# Launch processes in parallel
 for n in "${list_idle_process[@]}"; do
     (
-        # Change to the Each_Process directory
         cd "${SCRIPT_DIR}/Each_Process" || exit 1
-
-        # Set DISPLAY variable to prevent graphics usage
         export DISPLAY=
 
-        # Execute my_intlab_mode_config(n) in MATLAB without graphics
-        # Capture the output and error messages
-        matlab_output=$(matlab -nodisplay -nosplash -nodesktop -r "try; my_intlab_mode_config(${n}); catch ME; disp(getReport(ME, 'extended')); exit(1); end; exit(0);" 2>&1)
-        matlab_exit_code=$?
-
-        # Append the output to the log file
-        echo "$matlab_output" >> "log/process_no${n}.log"
-
-        if [ $matlab_exit_code -ne 0 ]; then
-            echo "Error: my_intlab_mode_config(${n}) failed in process ${n}." >> "log/process_no${n}.log"
-            echo "MATLAB Error Output:" >> "log/process_no${n}.log"
-            echo "$matlab_output" >> "log/process_no${n}.log"
+        matlab -nodisplay -nosplash -nodesktop -r "try; my_intlab_mode_config(${n}); catch ME; disp(getReport(ME, 'extended')); exit(1); end; exit(0);" > "log/process_no${n}.log" 2>&1
+        if [ $? -ne 0 ]; then
+            echo "FATAL: Initial setup (my_intlab_mode_config) failed for worker ${n}. Check log/process_no${n}.log"
             exit 1
         fi
 
-        # Start processing j values from list_j.csv
         while true; do
-            # Acquire lock
-            (
+            j=""
+            line_number=""
+            # --- FIX: Use { ... } group instead of (...) subshell to preserve variable scope ---
+            {
                 flock -x 200
-
-                # Read list_j.csv line by line to find an unprocessed j
-                j_line=$(awk -F',' '$2 != 1 && $2 != 2 {print NR","$1; exit}' "${SCRIPT_DIR}/prep/list_j.csv")
-                if [ -z "$j_line" ]; then
-                    # No more j to process; exit loop
-                    exit 1
+                j_line=$(awk -F',' 'NF==2 && $2==0 {print NR","$1; exit}' "${SCRIPT_DIR}/prep/list_j.csv")
+                
+                if [ -n "$j_line" ]; then
+                    line_number=$(echo "$j_line" | cut -d',' -f1)
+                    j=$(echo "$j_line" | cut -d',' -f2)
+                    sed -i.bak "${line_number}s/.*/${j},2/" "${SCRIPT_DIR}/prep/list_j.csv"
                 fi
+            } 200>"$LOCKFILE"
+            
+            if [ -z "$j_line" ]; then
+                echo "Worker ${n}: No more jobs to process. Exiting."
+                break
+            fi
 
-                # Extract line number and j value
-                line_number=$(echo "$j_line" | cut -d',' -f1)
-                j=$(echo "$j_line" | cut -d',' -f2)
+            echo "Worker ${n}: Starting job j=${j}..."
 
-                # Mark j as being processed (status 2)
-                sed "${line_number}s/$/,2/" "${SCRIPT_DIR}/prep/list_j.csv" > "${SCRIPT_DIR}/list_j.csv.tmp"
-                mv "${SCRIPT_DIR}/list_j.csv.tmp" "${SCRIPT_DIR}/prep/list_j.csv"
-
-            ) 200>"$LOCKFILE"
-
-            # Execute func_main_bounds(j) in MATLAB without graphics
-            # Capture the output and error messages
-            # matlab_output=$(matlab -nodisplay -nosplash -nodesktop -r "try; my_intlab_mode_config(${n}); ${FUNC_SCRIPT}(${j}); catch ME; disp(getReport(ME, 'extended')); exit(1); end; exit(0);" 2>&1)
-            # Execute run_matlab.sh with the correct path and redirect its output to the log file
-            "${SCRIPT_DIR}/prep/run_matlab.sh" $n >> "log/process_no${n}.log" 2>&1 &
-            matlab_pid=$! # Get the process ID of the last background job
-
-            # Wait for the specific MATLAB process to finish and get its exit code
-            wait $matlab_pid
+            "${SCRIPT_DIR}/prep/run_matlab.sh" "$n" "$FUNC_SCRIPT" "$j" >> "log/process_no${n}.log" 2>&1 &
+            wait $!
             matlab_exit_code=$?
 
-            # Acquire lock again to update the status
-            (
+            # --- FIX: Use { ... } group instead of (...) subshell ---
+            {
                 flock -x 200
-
                 if [ $matlab_exit_code -eq 0 ]; then
-                    # On success, mark j as processed (status 1)
-                    sed "${line_number}s/,2/,1/" "${SCRIPT_DIR}/prep/list_j.csv" > "${SCRIPT_DIR}/list_j.csv.tmp"
-                    mv "${SCRIPT_DIR}/list_j.csv.tmp" "${SCRIPT_DIR}/prep/list_j.csv"
+                    sed -i.bak "${line_number}s/.*/${j},1/" "${SCRIPT_DIR}/prep/list_j.csv"
+                    echo "Worker ${n}: Finished job j=${j} successfully."
                 else
-                    # On error, log the error and reset the status
-                    echo "Error: ${FUNC_SCRIPT}(${j}) failed in process ${n}." >> "log/process_no${n}.log"
-                    echo "MATLAB Error Output:" >> "log/process_no${n}.log"
-                    echo "$matlab_output" >> "log/process_no${n}.log"
-                    # Reset the status to unprocessed
-                    sed "${line_number}s/,2$//" "${SCRIPT_DIR}/prep/list_j.csv" > "${SCRIPT_DIR}/list_j.csv.tmp"
-                    mv "${SCRIPT_DIR}/list_j.csv.tmp" "${SCRIPT_DIR}/prep/list_j.csv"
-                    # Exit the process
-                    exit 1
+                    echo "Worker ${n}: ERROR on job j=${j}. Resetting status to 0." >> "log/process_no${n}.log"
+                    sed -i.bak "${line_number}s/.*/${j},0/" "${SCRIPT_DIR}/prep/list_j.csv"
                 fi
-
-            ) 200>"$LOCKFILE"
-
+            } 200>"$LOCKFILE"
         done
-
-        # Exit the process when all j values are processed
         exit 0
     ) &
 done
 
-# Wait for all background processes to finish
+echo "All worker processes launched. Waiting for completion... (You can safely close this terminal)"
 wait
+echo "All processes have completed."
