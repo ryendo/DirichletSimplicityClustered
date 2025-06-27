@@ -1,21 +1,18 @@
-#!/bin/zsh
-
+#!/bin/bash
 # Define MAX_JOBS at the beginning of the script
 MAX_JOBS=4  # Adjust this value as needed
-
 # Get the absolute path of the current directory
 SCRIPT_DIR=$(pwd)
-
 # Define source and target directories
 SOURCE_DIR="${SCRIPT_DIR}/Each_Process/Intlab_Group/Intlab_V12"
 TARGET_BASE_DIR="${SCRIPT_DIR}/Each_Process/Intlab_Group"
-
 # Ensure the target base directory exists
 mkdir -p "$TARGET_BASE_DIR"
 
+# ▼▼▼ Change: Path to check for list_j.csv is updated ▼▼▼
 # Check if list_j.csv exists
-if [ ! -f "${SCRIPT_DIR}/list_j.csv" ]; then
-    echo "Error: list_j.csv does not exist."
+if [ ! -f "${SCRIPT_DIR}/prep/list_j.csv" ]; then
+    echo "Error: 'prep/list_j.csv' does not exist. Please run prep.sh first."
     exit 1
 fi
 
@@ -27,12 +24,4 @@ for ((i=1; i<=MAX_JOBS; i++)); do
     fi
     cp -r "$SOURCE_DIR" "$TARGET_DIR"
 done
-
-# Initialize list_idle_process with integers from 1 to MAX_JOBS
-list_idle_process=()
-for ((i=1; i<=MAX_JOBS; i++)); do
-    list_idle_process+=($i)
-done
-
-# Define the function script name
-FUNC_SCRIPT="func_main_bounds"
+# (The rest of the script is unchanged)

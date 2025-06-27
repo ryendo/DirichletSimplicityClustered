@@ -4,7 +4,7 @@
 CONFIG_SCRIPT="my_intlab_mode_config"
 
 # Function script to call with j values
-FUNC_SCRIPT="func_main_bounds"
+FUNC_SCRIPT="func_algo3"
 
 # Maximum number of concurrent jobs
 MAX_JOBS=80
@@ -17,9 +17,9 @@ run_matlab() {
 }
 
 # Create arrays of j values in chunks of 10 and execute jobs
-for ((i=1; i<=1220; i+=2)); do
+for ((i=1; i<=19; i+=1)); do
     j_list=()
-    for ((j=i; j<i+2 && j<=2657; j++)); do
+    for ((j=i; j<i+1 && j<=19; j++)); do
         j_list+=($j)
     done
     

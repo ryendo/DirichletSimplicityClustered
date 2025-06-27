@@ -4,7 +4,7 @@
 % guaranteed upper and lower bounds for the 2nd and 3rd Dirichlet eigenvalues.
 % This corresponds to the procedure for the Omega_down^(1) region in the paper.
 
-function func_main_bounds(j_list)
+function func_algo2(j_list)
     
     % Set the output format for numerical display.
     % 'format long infsup' is suitable for interval arithmetic,

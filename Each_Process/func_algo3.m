@@ -5,7 +5,7 @@
 % Instead of perturbation theory, it leverages the domain monotonicity property of
 % Dirichlet eigenvalues (Lemma from Fig. 8, Eq. 35 in the paper).
 
-function func_main_bounds_monotonicity(j_list)
+function func_algo3(j_list)
     
     % Define the output file name for storing results for the Omega_down^(2) region.
     file_name_result = ['results/bounds_omega2_' num2str(min(j_list)) '_' num2str(max(j_list)) '.csv'];
