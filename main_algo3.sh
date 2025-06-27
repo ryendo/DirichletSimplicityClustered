@@ -13,7 +13,8 @@ MAX_JOBS=80
 run_matlab() {
     local j_list=("$@")
     j_list_str=$(IFS=,; echo "${j_list[*]}")
-    nohup matlab -nodisplay -nosplash -r "run('$CONFIG_SCRIPT'); $FUNC_SCRIPT([$j_list_str]); exit;" &
+    # Change: Add a "cd('Each_Process');" command inside MATLAB to run from the correct directory
+    nohup matlab -nodisplay -nosplash -r "cd('Each_Process'); run('$CONFIG_SCRIPT'); $FUNC_SCRIPT([$j_list_str]); exit;" &
 }
 
 # Create arrays of j values in chunks of 10 and execute jobs
