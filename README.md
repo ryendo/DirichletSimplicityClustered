@@ -33,6 +33,7 @@ The repository is organized as follows:
 ├── main_algo1.m          # Main MATLAB script for Algorithm 1
 ├── main_algo2.sh         # Main execution script for Algorithm 2
 ├── main_algo3.sh         # Execution script for Algorithm 3
+├── my_intlab_config_alone.m # Standalone INTLAB configuration
 ├── prep.sh               # Master script to run all preparation steps
 └── README.md             # This file
 ```
@@ -43,7 +44,7 @@ The repository is organized as follows:
 
 1.  **MATLAB:** A working installation of MATLAB is required.
 2.  **INTLAB Library:** The INTLAB toolbox for interval arithmetic is essential for the guaranteed computations.
-3.  **Unix-like Environment:** A shell like `bash` or `zsh` and standard command-line tools (`grep`, `awk`, `sed`, etc.) are needed to run the execution scripts.
+3.  **Unix-like Environment:** A shell like `bash` or `zsh` and standard command-line tools are needed to run the parallel execution scripts.
 
 ### Initial Configuration
 
@@ -57,13 +58,11 @@ The repository is organized as follows:
 2.  **Configure MATLAB Command-Line Access:**
     The shell scripts need to be able to call `matlab` from the command line. You must add the MATLAB binary directory to your shell's `PATH` environment variable.
 
-      * First, find the path to your MATLAB executable using `which matlab` or `mdfind -name matlab | grep '/bin/matlab$'`. The path will be similar to `/Applications/MATLAB_R2024a.app/bin`.
-      * Add this directory to your shell's configuration file.
-          * For **bash**, add the following line to `~/.bash_profile`:
-            ```bash
-            export PATH="/path/to/your/matlab/bin:$PATH"
-            ```
-          * For **zsh**, add the same line to `~/.zshrc` or `~/.zprofile`.
+      * First, find the path to your MATLAB executable (e.g., using `which matlab`). The path will be similar to `/Applications/MATLAB_R2024a.app/bin`.
+      * Add this directory to your shell's configuration file (`~/.bash_profile` for bash, `~/.zshrc` or `~/.zprofile` for zsh).
+        ```bash
+        export PATH="/path/to/your/matlab/bin:$PATH"
+        ```
 
 3.  **Place the INTLAB Library:**
     Download and place the INTLAB library folder (named `Intlab_V12`) into the following directory:
@@ -71,73 +70,75 @@ The repository is organized as follows:
 
 ## Execution Workflow
 
-### 1\. Preparation
-
-First, run the master preparation script from the project root directory.
-
-```bash
-./prep.sh
-```
-
-This command will:
-
-  * Execute `prep/make_indices_algo2.m` to generate the task list `prep/list_j.csv`.
-  * Execute `prep/prepare_parallel.sh` to create isolated INTLAB environments for each parallel worker.
-
-### 2\. Main Computations
-
 The proof is executed by running the different main scripts, each corresponding to a specific algorithm and region from the paper.
 
-  * **Algorithm 1 (`main_algo1.m`):** Run from within MATLAB to analyze the nearly equilateral region $\\Omega\_{up}$.
+### Algorithm 1 (Difference Quotient Analysis)
+
+This algorithm is run as a standard MATLAB script and does not use the parallel execution framework.
+
+1.  **Initialize INTLAB:** First, run the standalone configuration script from the MATLAB command window.
+    ```matlab
+    >> my_intlab_config_alone
+    ```
+2.  **Run the Algorithm:** After the setup is complete, run the main script.
     ```matlab
     >> main_algo1
     ```
-  * **Algorithm 2 (`main_algo2.sh`):** Run from the shell to analyze the $\\Omega\_{down}^{(1)}$ region.
+
+### Algorithms 2 & 3 (Parallel Eigenvalue Bounds)
+
+These algorithms are run from the shell and utilize a parallel framework.
+
+1.  **Preparation:** First, run the master preparation script from the project root directory. This only needs to be done once before running the parallel jobs.
+
     ```bash
-    bash ./main_algo2.sh
-    ```
-  * **Algorithm 3 (`main_algo3.sh`):** Run from the shell to analyze the $\\Omega\_{down}^{(2)}$ region.
-    ```bash
-    bash ./main_algo3.sh
+    ./prep.sh
     ```
 
-### 3\. Monitoring the Process
+    This command will:
 
-For the parallel scripts (`main_algo2.sh`, `main_algo3.sh`), you can monitor the status:
+      * Execute `prep/make_indices_algo2.m` to generate the task list `prep/list_j.csv`.
+      * Execute `prep/prepare_parallel.sh` to create isolated INTLAB environments for each parallel worker.
 
-  * **Check for running processes:** `ps aux | grep -i matlab`
-  * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
-  * **Check for results:** Final results are written to CSV files in the `results/` directory.
+2.  **Main Computations:**
+
+      * To analyze the $\\Omega\_{down}^{(1)}$ region (Algorithm 2):
+        ```bash
+        bash ./main_algo2.sh
+        ```
+      * To analyze the $\\Omega\_{down}^{(2)}$ region (Algorithm 3):
+        ```bash
+        bash ./main_algo3.sh
+        ```
+
+3.  **Monitoring the Process:**
+    For the parallel scripts, you can monitor the status:
+
+      * **Check for running processes:** `ps aux | grep -i matlab`
+      * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
+      * **Check for results:** Final results are written to CSV files in the `results/` directory.
 
 ## Code and Script Roles
 
 ### Root Directory
 
   * `main_algo1.m`: Implements **Algorithm 1** from the paper. This script analyzes the nearly equilateral region $\\Omega\_{up}$ by rigorously computing the difference quotients of $\\lambda\_2$ and $\\lambda\_3$. It solves the generalized matrix eigenvalue problem $M\_{t}\\sigma=\\mu N\_{t}\\sigma$ using interval arithmetic to obtain guaranteed bounds on the difference quotients.
-  * `main_algo2.sh`: The main parallel execution engine for **Algorithm 2**. It analyzes the $\\Omega\_{down}^{(1)}$ region by partitioning it into small rectangles $R\_{ij}$ and applying perturbation estimates. It uses a robust worker pool model to distribute the computation of the eigenvalue bounds, which are governed by the relation:
-    $$
-    $$$$m\_{x}((x\_{i+1},y\_{j}),(x\_{i},y\_{j}))\\underline{\\lambda}*{k}^{(x*{i+1},y\_{j})}\\le\\lambda\_{k}^{p}\\le M\_{x}((x\_{i},y\_{j+1}),(x\_{i+1},y\_{j+1}))\\overline{\\lambda}*{k}^{(x*{i},y\_{j+1})}
-    $$
-    $$$$
-    $$
-  * `main_algo3.sh`: A parallel runner for **Algorithm 3**. It analyzes the $\\Omega\_{down}^{(2)}$ region, where triangles are more degenerate. This algorithm leverages the domain monotonicity property of Dirichlet eigenvalues to establish bounds, using the relation:
-    $$
-    $$$$\\lambda\_{k}^{(r\_{i+1},h\_{j+1})}\\le\\lambda\_{k}^{(r,h)}\\le\\lambda\_{k}^{(r\_{i},h\_{j})}
-    $$
-    $$$$
-    $$
+  * `main_algo2.sh`: The main parallel execution engine for **Algorithm 2**. It analyzes the $\\Omega\_{down}^{(1)}$ region by partitioning it into small rectangles $R\_{ij}$ and applying perturbation estimates. It uses a robust worker pool model to distribute the computation of the eigenvalue bounds.
+  * `main_algo3.sh`: A parallel runner for **Algorithm 3**. It analyzes the $\\Omega\_{down}^{(2)}$ region, where triangles are more degenerate. This algorithm leverages the domain monotonicity property of Dirichlet eigenvalues to establish bounds.
+  * `my_intlab_config_alone.m`: A setup script to initialize the INTLAB guaranteed computation environment for a single, non-parallel MATLAB session. It must be run in MATLAB before executing `main_algo1.m`.
+
 ### Preparation Scripts (`prep/`)
 
-  * `make_indices_algo2.m`: Generates the master task list `prep/list_j.csv` for `main_algo2.sh`, containing the `j` indices (1-1220) for the computation over the $\\Omega\_{down}^{(1)}$ region.
+  * `make_indices_algo2.m`: Generates the master task list `prep/list_j.csv` for `main_algo2.sh`, containing the `j` indices (1-1220).
   * `prepare_parallel.sh`: Sets up the execution environment by creating isolated copies of the INTLAB library for each parallel worker.
   * `run_matlab.sh`: A helper script called by `main_algo2.sh` to execute a single MATLAB computation task.
 
 ### Core MATLAB Code (`Each_Process/`)
 
-  * `func_algo2.m`: Implements the core logic for **Algorithm 2**. It takes a list of `j` indices, iterates through the `i` index, and computes rigorous eigenvalue bounds for each subdomain `R_ij`.
+  * `func_algo2.m`: Implements the core logic for **Algorithm 2**. It computes rigorous eigenvalue bounds for each subdomain `R_ij`.
   * `func_algo3.m`: Implements the core logic for **Algorithm 3**, using domain monotonicity.
-  * `my_intlab_mode_config.m`: A crucial function that initializes the INTLAB guaranteed computation environment for each specific worker process.
-  * **`functions/` directory:** Contains various helper functions for the main algorithms.
-      * `calc_eigen_bounds_any_order.m`: A core function that calculates high-precision eigenvalue bounds, utilizing the Lehmann-Goerisch method as described in Lemma 4.3 to achieve the required accuracy.
-      * `Lagrange_...` functions: Related to the Lagrange Finite Element Method (FEM) spaces used for approximation.
-      * `get_mesh_...` functions: Responsible for generating the specific triangulations ($\\mathcal{T}^{h}$) of the domains needed for FEM computation.
+  * `my_intlab_mode_config.m`: Configures the INTLAB environment for each specific parallel worker process.
+  * **`functions/` directory:** Contains various helper functions.
+      * `calc_eigen_bounds_any_order.m`: A core function that calculates high-precision eigenvalue bounds, utilizing the Lehmann-Goerisch method.
+      * `Lagrange_...` functions: Related to the Lagrange Finite Element Method (FEM).
+      * `get_mesh_...` functions: Responsible for generating the computational triangulations ($\\mathcal{T}^{h}$) of the domains.
