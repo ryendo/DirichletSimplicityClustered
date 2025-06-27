@@ -1,0 +1,54 @@
+function func_data = init_func3(mesh,N)
+    
+    func_data = init_(mesh,N);
+
+end
+
+
+function func_data = init_(mesh,N)
+    tic
+    [nodes_n,~] = size(mesh.nodes);
+    [edges_n,~] = size(mesh.edges);
+    [elements_n,~] = size(mesh.elements);
+
+    tri_by_edge = zeros(elements_n,3);
+    edge_value_index = sort(mesh.edges,2)*[edges_n;1];
+    for k=1:elements_n  %create the table of element-mesh.edges relation.
+        for l = 1:3  %the l-th edge.
+            node_ind =[ mod(l,3)+1, mod(l+1,3)+1];
+            value = sort(mesh.elements(k, node_ind) )*[edges_n;1];
+            [r,ind] = ismember( value, edge_value_index);
+            tri_by_edge(k,l) = ind; %The direction of an edge is not counted, which is needed for other mesh.elements, e.g., Fujino-Morley FEM
+        end
+    end
+    toc
+
+    tic
+    Txx=intval(zeros(nodes_n,nodes_n));
+    Txy=intval(zeros(nodes_n,nodes_n));
+    Tyy=intval(zeros(nodes_n,nodes_n));
+    T=intval(zeros(nodes_n,nodes_n));
+    
+    for idx=1:elements_n
+        element_edges = mesh.nodes( mesh.elements(idx,[3,1,2]), : ) - mesh.nodes( mesh.elements(idx,[2,3,1]), :); %3 by 2
+        S =  abs(element_edges(1,:)/2*[element_edges(2,2); -element_edges(2,1)]);
+        global_idx = mesh.elements(idx,1:3);
+        edge_index = tri_by_edge(idx,:);
+        
+        e_e_xx = element_edges(:,2)*element_edges(:,2)';
+        e_e_xy = element_edges(:,1)*element_edges(:,2)';
+        e_e_yy = element_edges(:,1)*element_edges(:,1)';
+        
+        Txx(global_idx, global_idx)=Txx(global_idx, global_idx)+e_e_xx/(4*S);
+        Txy(global_idx, global_idx)=Txy(global_idx, global_idx)+e_e_xy/(4*S);
+        Tyy(global_idx, global_idx)=Tyy(global_idx, global_idx)+e_e_yy/(4*S);
+        T(global_idx, global_idx)  =T(global_idx, global_idx)+(ones(3,3)+eye(3,3))*S/intval(12);
+
+        % display progress
+        % fprintf(' basic matrices %4.2f percent prepared\n',round(idx/elements_n*100,4))
+    end
+    toc
+    % global Txx; global Txy; global Tyy; global T; global Txxcr; global Txycr; global Tyycr; global Tcr;
+
+    func_data = struct('Txx',Txx,'Txy',Txy,'Tyy',Tyy,'T',T);
+end
