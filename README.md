@@ -1,21 +1,21 @@
 # Computer-Assisted Proof for Dirichlet Eigenvalue Simplicity
 
-[cite\_start]This project provides the source code and computational framework for the computer-assisted proof presented in the paper "Rigorous estimation for the difference quotients of multiple eigenvalues" (arXiv:2305.14063v5)[cite: 1]. [cite\_start]The primary goal is to rigorously validate the simplicity of the second Dirichlet eigenvalue for nearly equilateral triangles, offering a partial solution to Henrot's Conjecture 6.47[cite: 4, 15].
+This project provides the source code and computational framework for the computer-assisted proof presented in the paper "Rigorous estimation for the difference quotients of multiple eigenvalues". The primary goal is to rigorously validate the simplicity of the second Dirichlet eigenvalue for nearly equilateral triangles, offering a partial solution to Henrot's Conjecture 6.47.
 
 ## Background
 
-[cite\_start]Determining the eigenvalue multiplicity of the Laplace operator is a challenging problem, especially when eigenvalues are nearly degenerate, as is the case for the second and third Dirichlet eigenvalues on equilateral triangles where $\\lambda\_{2}=\\lambda\_{3}$[cite: 10]. Standard numerical methods struggle to separate these tightly clustered eigenvalues with mathematical rigor.
+Determining the eigenvalue multiplicity of the Laplace operator is a challenging problem, especially when eigenvalues are nearly degenerate, as is the case for the second and third Dirichlet eigenvalues on equilateral triangles where $\\lambda\_{2}=\\lambda\_{3}$. Standard numerical methods struggle to separate these tightly clustered eigenvalues with mathematical rigor.
 
-This work introduces a novel method to overcome this limitation. [cite\_start]Instead of relying on traditional shape derivatives, which are difficult to analyze over a neighborhood with a given radius[cite: 37], this project analyzes the **difference quotient of eigenvalues**, defined as:
+This work introduces a novel method to overcome this limitation. Instead of relying on traditional shape derivatives, which are difficult to analyze over a neighborhood with a given radius, this project analyzes the **difference quotient of eigenvalues**, defined as:
 
-[cite\_start]$$D_{t}\lambda_{i}:=\frac{\lambda_{i}(\Omega_{t})-\lambda(\Omega_{0})}{t}$$ [cite: 1]
+$$D_{t}\lambda_{i}:=\frac{\lambda_{i}(\Omega_{t})-\lambda(\Omega_{0})}{t}$$
 
 By applying guaranteed computation techniques based on the Finite Element Method (FEM) and interval arithmetic, we can obtain rigorous bounds on this quotient.
 
 The overall strategy is a two-pronged attack, dividing the parameter space of triangles $\\Omega$ into distinct regions:
 
-  * [cite\_start]**For nearly equilateral triangles ($\\Omega\_{up}$):** The difference quotient method is used to prove that $D\\lambda\_{2}(p\_{0},p)\<D\\lambda\_{3}(p\_0, p)$ for any perturbation $p$ from the equilateral vertex $p\_0$[cite: 152]. [cite\_start]Since $\\lambda\_{2}^{p\_{0}}=\\lambda\_{3}^{p\_{0}}$[cite: 153], this rigorously implies $\\lambda\_{2}^{p}\<\\lambda\_{3}^{p}$.
-  * [cite\_start]**For other triangles ($\\Omega\_{down}^{(1)}, \\Omega\_{down}^{(2)}$):** High-precision upper and lower bounds are computed directly to show a definitive gap, $\\overline{\\lambda}*{2}^{p}\<\\underline{\\lambda}*{3}^{p}$[cite: 153].
+  * For nearly equilateral triangles ($\\Omega\_{up}$), the difference quotient method is used to prove that $D\\lambda\_{2}(p\_{0},p)\<D\\lambda\_{3}(p\_0, p)$ for any perturbation $p$ from the equilateral vertex $p\_0$. Since $\\lambda\_{2}^{p\_{0}}=\\lambda\_{3}^{p\_{0}}$, this rigorously implies $\\lambda\_{2}^{p}\<\\lambda\_{3}^{p}$.
+  * For other triangles ($\\Omega\_{down}^{(1)}, \\Omega\_{down}^{(2)}$), high-precision upper and lower bounds are computed directly to show a definitive gap, $\\overline{\\lambda}*{2}^{p}\<\\underline{\\lambda}*{3}^{p}$.
 
 ## Project Structure
 
@@ -113,28 +113,31 @@ For the parallel scripts (`main_algo2.sh`, `main_algo3.sh`), you can monitor the
 
 ### Root Directory
 
-  * [cite\_start]`main_algo1.m`: Implements **Algorithm 1** from the paper[cite: 192]. This script analyzes the nearly equilateral region $\\Omega\_{up}$ by rigorously computing the difference quotients of $\\lambda\_2$ and $\\lambda\_3$. [cite\_start]It solves the generalized matrix eigenvalue problem $M\_{t}\\sigma=\\mu N\_{t}\\sigma$ [cite: 91] using interval arithmetic to obtain guaranteed bounds on the difference quotients.
-  * [cite\_start]`main_algo2.sh`: The main parallel execution engine for **Algorithm 2**[cite: 208]. It analyzes the $\\Omega\_{down}^{(1)}$ region by partitioning it into small rectangles $R\_{ij}$ and applying perturbation estimates. It uses a robust worker pool model to distribute the computation of the eigenvalue bounds, which are governed by the relation:
+  * `main_algo1.m`: Implements **Algorithm 1** from the paper. This script analyzes the nearly equilateral region $\\Omega\_{up}$ by rigorously computing the difference quotients of $\\lambda\_2$ and $\\lambda\_3$. It solves the generalized matrix eigenvalue problem $M\_{t}\\sigma=\\mu N\_{t}\\sigma$ using interval arithmetic to obtain guaranteed bounds on the difference quotients.
+  * `main_algo2.sh`: The main parallel execution engine for **Algorithm 2**. It analyzes the $\\Omega\_{down}^{(1)}$ region by partitioning it into small rectangles $R\_{ij}$ and applying perturbation estimates. It uses a robust worker pool model to distribute the computation of the eigenvalue bounds, which are governed by the relation:
     $$
     $$$$m\_{x}((x\_{i+1},y\_{j}),(x\_{i},y\_{j}))\\underline{\\lambda}*{k}^{(x*{i+1},y\_{j})}\\le\\lambda\_{k}^{p}\\le M\_{x}((x\_{i},y\_{j+1}),(x\_{i+1},y\_{j+1}))\\overline{\\lambda}*{k}^{(x*{i},y\_{j+1})}
-    [cite\_start]$$ [cite: 207]
-  * [cite\_start]`main_algo3.sh`: A parallel runner for **Algorithm 3**[cite: 221]. It analyzes the $\\Omega\_{down}^{(2)}$ region, where triangles are more degenerate. This algorithm leverages the domain monotonicity property of Dirichlet eigenvalues to establish bounds, using the relation:
+    $$
+    $$$$
+    $$
+  * `main_algo3.sh`: A parallel runner for **Algorithm 3**. It analyzes the $\\Omega\_{down}^{(2)}$ region, where triangles are more degenerate. This algorithm leverages the domain monotonicity property of Dirichlet eigenvalues to establish bounds, using the relation:
     $$
     $$$$\\lambda\_{k}^{(r\_{i+1},h\_{j+1})}\\le\\lambda\_{k}^{(r,h)}\\le\\lambda\_{k}^{(r\_{i},h\_{j})}
-    [cite\_start]$$ [cite: 220]
-
+    $$
+    $$$$
+    $$
 ### Preparation Scripts (`prep/`)
 
-  * [cite\_start]`make_indices_algo2.m`: Generates the master task list `prep/list_j.csv` for `main_algo2.sh`, containing the `j` indices (1-1220) for the computation over the $\\Omega\_{down}^{(1)}$ region[cite: 206].
+  * `make_indices_algo2.m`: Generates the master task list `prep/list_j.csv` for `main_algo2.sh`, containing the `j` indices (1-1220) for the computation over the $\\Omega\_{down}^{(1)}$ region.
   * `prepare_parallel.sh`: Sets up the execution environment by creating isolated copies of the INTLAB library for each parallel worker.
   * `run_matlab.sh`: A helper script called by `main_algo2.sh` to execute a single MATLAB computation task.
 
 ### Core MATLAB Code (`Each_Process/`)
 
-  * [cite\_start]`func_algo2.m`: Implements the core logic for **Algorithm 2**[cite: 208]. It takes a list of `j` indices, iterates through the `i` index, and computes rigorous eigenvalue bounds for each subdomain `R_ij`.
-  * [cite\_start]`func_algo3.m`: Implements the core logic for **Algorithm 3**[cite: 221], using domain monotonicity.
+  * `func_algo2.m`: Implements the core logic for **Algorithm 2**. It takes a list of `j` indices, iterates through the `i` index, and computes rigorous eigenvalue bounds for each subdomain `R_ij`.
+  * `func_algo3.m`: Implements the core logic for **Algorithm 3**, using domain monotonicity.
   * `my_intlab_mode_config.m`: A crucial function that initializes the INTLAB guaranteed computation environment for each specific worker process.
   * **`functions/` directory:** Contains various helper functions for the main algorithms.
-      * [cite\_start]`calc_eigen_bounds_any_order.m`: A core function that calculates high-precision eigenvalue bounds, utilizing the Lehmann-Goerisch method as described in Lemma 4.3 [cite: 166] to achieve the required accuracy.
+      * `calc_eigen_bounds_any_order.m`: A core function that calculates high-precision eigenvalue bounds, utilizing the Lehmann-Goerisch method as described in Lemma 4.3 to achieve the required accuracy.
       * `Lagrange_...` functions: Related to the Lagrange Finite Element Method (FEM) spaces used for approximation.
-      * `get_mesh_...` functions: Responsible for generating the specific triangulations (`\mathcal{T}^{h}`) of the domains needed for FEM computation.
+      * `get_mesh_...` functions: Responsible for generating the specific triangulations ($\\mathcal{T}^{h}$) of the domains needed for FEM computation.
