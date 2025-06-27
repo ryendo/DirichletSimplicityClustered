@@ -1,9 +1,3 @@
-Of course. I will create a new version of the `README.md` file, incorporating your corrections and adding more technical detail and mathematical formulas from the paper to provide a deeper, more accurate description of the project.
-
-Here is the revised `README.md`.
-
------
-
 # Computer-Assisted Proof for Dirichlet Eigenvalue Simplicity
 
 [cite\_start]This project provides the source code and computational framework for the computer-assisted proof presented in the paper "Rigorous estimation for the difference quotients of multiple eigenvalues" (arXiv:2305.14063v5)[cite: 1]. [cite\_start]The primary goal is to rigorously validate the simplicity of the second Dirichlet eigenvalue for nearly equilateral triangles, offering a partial solution to Henrot's Conjecture 6.47[cite: 4, 15].
