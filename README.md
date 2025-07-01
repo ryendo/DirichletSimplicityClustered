@@ -23,7 +23,7 @@ The overall strategy is a two-pronged attack, dividing the parameter space of tr
 
 The repository is organized as follows:
 
-
+```
 
 .
 ├── Each\_Process/                      \# Core MATLAB functions, logs, and temporary results for parallel jobs
@@ -43,7 +43,7 @@ The repository is organized as follows:
 ├── prep.sh                            \# Master script to run all preparation steps
 └── README.md                          \# This file
 
-
+```
 
 ## Setup and Prerequisites
 
