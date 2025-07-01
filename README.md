@@ -23,7 +23,7 @@ The overall strategy is a two-pronged attack, dividing the parameter space of tr
 
 The repository is organized as follows:
 
-```
+
 
 .
 ├── Each\_Process/                      \# Core MATLAB functions, logs, and temporary results for parallel jobs
@@ -56,19 +56,19 @@ The repository is organized as follows:
 ### Initial Configuration
 
 1.  **Clone the Repository:**
-    ```bash
+    bash
     git clone [https://github.com/ryendo/DirichletSimplicityClustered](https://github.com/ryendo/DirichletSimplicityClustered)
     cd DirichletSimplicityClustered
-    ```
+    
 
 2.  **Configure MATLAB Command-Line Access:**
     The shell scripts need to be able to call `matlab` from the command line. You must add the MATLAB binary directory to your shell's `PATH` environment variable.
 
     * First, find the path to your MATLAB executable (e.g., using `which matlab`). The path will be similar to `/Applications/MATLAB_R2024a.app/bin`.
     * Add this directory to your shell's configuration file (`~/.bash_profile` for bash, `~/.zshrc` or `~/.zprofile` for zsh).
-        ```bash
+        bash
         export PATH="/path/to/your/matlab/bin:$PATH"
-        ```
+        
 
 3.  **Place the INTLAB Library:**
     Download and place the INTLAB library folder (named `Intlab_V12`) into the following directory:
@@ -83,13 +83,13 @@ The proof is executed by running the different main scripts, each corresponding 
 This algorithm is run as a standard MATLAB script and does not use the parallel execution framework.
 
 1.  **Initialize INTLAB:** First, run the standalone configuration script from the MATLAB command window.
-    ```matlab
+    matlab
     >> my_intlab_config_alone
-    ```
+    
 2.  **Run the Algorithm:** After the setup is complete, run the main script.
-    ```matlab
+    matlab
     >> main_algo1
-    ```
+    
 
 ### Algorithms 2 & 3 (Parallel Eigenvalue Bounds)
 
@@ -98,19 +98,19 @@ These algorithms are run from the shell and utilize a parallel framework.
 1.  **Configuration (One-time setup):**
 
     * **Set Job Count:** Before running, you must configure the number of parallel jobs. Open `main_algo2.sh`, `main_algo3.sh`, and `prep/prepare_parallel.sh` and set the `MAX_JOBS` variable at the top of each file to your desired number of cores. For example:
-        ```bash
+        bash
         MAX_JOBS=60
-        ```
+        
     * **Set Permissions:** Grant execute permission to the MATLAB runner script. This only needs to be done once.
-        ```bash
+        bash
         chmod +x prep/run_matlab.sh
-        ```
+        
 
 2.  **Preparation:** Run the master preparation script from the project root directory. This script uses the `MAX_JOBS` setting from `prep/prepare_parallel.sh`.
 
-    ```bash
+    bash
     ./prep.sh
-    ```
+    
 
     This command will:
 
@@ -120,13 +120,13 @@ These algorithms are run from the shell and utilize a parallel framework.
 3.  **Main Computations:**
 
     * To analyze the $\Omega_{down}^{(1)}$ region (Algorithm 2):
-        ```bash
+        bash
         bash ./main_algo2.sh
-        ```
+        
     * To analyze the $\Omega_{down}^{(2)}$ region (Algorithm 3):
-        ```bash
+        bash
         bash ./main_algo3.sh
-        ```
+        
 
 4.  **Monitoring the Process:**
     For the parallel scripts, you can monitor the status:
