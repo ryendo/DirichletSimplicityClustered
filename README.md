@@ -51,7 +51,7 @@ The repository is organized as follows:
 1.  **Clone the Repository:**
 
     ```bash
-    git clone <your-repository-url>
+    git clone git clone https://github.com/ryendo/DirichletSimplicityClustered
     cd DirichletSimplicityClustered
     ```
 
