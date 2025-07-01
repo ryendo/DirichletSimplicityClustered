@@ -66,7 +66,7 @@ Nn  = Lagrange_inner_product_L1L2L3_all(Lagrange_order);
 
 
 M_ip_RT_RT_basis_ijT_all = cell(RT_nbasis);
-M_ip_divRT_divRT_basis = zeros(RT_nbasis, RT_nbasis);
+M_ip_divRT_divRT_basis = I_intval(zeros(RT_nbasis, RT_nbasis));
 for i = 1:RT_nbasis
     for j = i:RT_nbasis
         ei = RT_create_coord_basis(basis_abc, basis_ijk, i, RT_order);
@@ -82,7 +82,7 @@ end
 
 
 [basis, Lnbasis] = Lagrange_basis(Lagrange_order);
-M_ip_X_divRT_basis = zeros(Lnbasis, RT_nbasis);
+M_ip_X_divRT_basis = I_intval(zeros(Lnbasis, RT_nbasis));
 for i = 1:Lnbasis
     for j = 1:RT_nbasis
         ei = Lagrange_create_coord_basis(basis, i, Lagrange_order);
@@ -92,7 +92,7 @@ for i = 1:Lnbasis
 end
 
 
-M_ip_X_X_basis = zeros(Lnbasis, Lnbasis);
+M_ip_X_X_basis = I_intval(zeros(Lnbasis, Lnbasis));
 for i = 1:Lnbasis
     for j = i:Lnbasis
         ei = Lagrange_create_coord_basis(basis, i, Lagrange_order);
@@ -178,7 +178,7 @@ end
 function M = RT_inner_product_L1L2L3_all(RT_order)
 ijk = create_ijk(RT_order);
 len = size(ijk, 1);
-M = zeros(len, len);
+M = I_intval(zeros(len, len));
 for p = 1:len
     for q = p:len
         pi = ijk(p, 1);
@@ -381,7 +381,7 @@ nbasis = (RT_order+1) * (RT_order+3);
 end
 
 function y = RT_integral_L1L2L3_ijk(i, j, k)
-y = factorial(i) * factorial(j) * factorial(k) / factorial(i+j+k+2);
+y = factorial(i) * factorial(j) * factorial(k) / I_intval(factorial(i+j+k+2));
 end
 
 function [basis, nbasis] = Lagrange_basis(Lagrange_order)
@@ -440,7 +440,7 @@ end
 function M_ip = Lagrange_inner_product_L1L2L3_all(Lagrange_order)
 ijk = create_ijk(Lagrange_order);
 len = size(ijk, 1);
-M_ip = zeros(len, len);
+M_ip = I_intval(zeros(len, len));
 for p = 1:len
     for q = p:len
         pi = ijk(p, 1);
@@ -456,7 +456,7 @@ M_ip = M_ip + triu(M_ip, 1)';
 end
 
 function y = Lagrange_integral_L1L2L3_ijk(i, j, k)
-y = factorial(i) * factorial(j) * factorial(k) / factorial(i+j+k+2);
+y = factorial(i) * factorial(j) * factorial(k) / I_intval(factorial(i+j+k+2));
 end
 
 function idx = map_ijk_to_idx(i, j, k, n)

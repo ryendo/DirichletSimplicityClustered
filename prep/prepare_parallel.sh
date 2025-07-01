@@ -1,6 +1,6 @@
 #!/bin/bash
 # Define MAX_JOBS at the beginning of the script
-MAX_JOBS=4  # Adjust this value as needed
+MAX_JOBS=60  # Adjust this value as needed
 # Get the absolute path of the current directory
 SCRIPT_DIR=$(pwd)
 # Define source and target directories

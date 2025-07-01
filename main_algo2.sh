@@ -2,7 +2,7 @@
 # This script runs the main computation in a robust, parallel, and restartable manner.
 
 # --- Configuration ---
-MAX_JOBS=4  # Adjust this value as needed
+MAX_JOBS=60  # Adjust this value as needed
 FUNC_SCRIPT="func_algo2"
 
 # --- Setup ---
