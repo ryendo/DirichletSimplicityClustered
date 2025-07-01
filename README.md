@@ -141,6 +141,59 @@ These algorithms are run from the shell and utilize a parallel framework.
     * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
     * **Check for results:** Final results are written to CSV files in the `results/` directory.
 
+### Verifying the Results
+
+The successful completion of the scripts provides the rigorous proof outlined in the paper. Below are examples of the expected output.
+
+#### Algorithm 1: Difference Quotient Results
+
+When `main_algo1.m` runs successfully, it will print a confirmation to the MATLAB console. It also generates a CSV file in the `results/` directory containing the rigorous interval bounds for each angular sector.
+
+**Console Output Example:**
+
+A successful run will conclude with the following message, confirming that for all tested perturbation directions, the growth rate of $\\lambda\_2$ is strictly less than that of $\\lambda\_3$.
+
+```
+--- Starting rigorous estimation of growth rates ---
+... (computation for each angular sector) ...
+
+--- All angular sector calculations are complete ---
+>>> PROOF SUCCESSFUL <<<
+It was rigorously shown that for all perturbation directions, the upper bound of the growth rate for λ2 is less than the lower bound of the growth rate for λ3.
+Conclusion: Based on the theorem in the paper, it is proven that λ2 < λ3 for all non-equilateral triangles in the Ω_up region.
+```
+
+If the proof fails for any sector, it will instead print a `PROOF FAILED` message and stop.
+
+**CSV Output Example (`results/quotients_... .csv`):**
+
+The output file stores the bounds for each angular sector `idx`. The columns are: `idx`, `inf(μ_1)`, `sup(μ_1)`, `inf(μ_2)`, `sup(μ_2)`. The critical condition `sup(μ_1) < inf(μ_2)` holds for every row.
+
+```csv
+1,51.890289,51.890313,73.541893,73.541913
+2,51.890357,51.890382,73.541824,73.541845
+3,51.890495,51.890520,73.541686,73.541707
+...
+1000,51.890289,51.890313,73.541893,73.541913
+```
+
+-----
+
+#### Algorithms 2 & 3: Parallel Eigenvalue Bounds
+
+The parallel scripts `main_algo2.sh` and `main_algo3.sh` do not produce a single summary message in the main terminal upon completion. Instead, they generate individual result files for each computational task (`j` index) inside the `results/` directory.
+
+The progress and status of each worker can be monitored through the log files in `Each_Process/log/`.
+
+**File-Based Results:**
+
+The scripts will create separate CSV files for each task `j`. The file names indicate which algorithm and task they correspond to.
+
+  * **Algorithm 2:** The results are stored in files like `results/algo2_j_1.csv`, `results/algo2_j_2.csv`, etc., up to the last `j` index (1220).
+  * **Algorithm 3:** The results are stored in files like `results/algo3_j_1.csv`, `results/algo3_j_2.csv`, etc.
+
+Each file contains the rigorous lower and upper bounds for $\\lambda\_2$ and $\\lambda\_3$ for the specific sub-region `R_ij` that the task `j` was responsible for. A successful proof for that region is confirmed if the upper bound for $\\lambda\_2$ is less than the lower bound for $\\lambda\_3$. The collection of all these files constitutes the proof for the $\\Omega\_{down}$ regions.
+
 ---
 
 ## Code and Script Roles
