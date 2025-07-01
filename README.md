@@ -1,10 +1,13 @@
+Of course. Here is the updated `README.md` file incorporating the instructions about setting `MAX_JOBS` and making `run_matlab.sh` executable.
+
+```markdown
 # Computer-Assisted Proof for Dirichlet Eigenvalue Simplicity
 
 This project provides the source code and computational framework for the computer-assisted proof presented in the paper "Rigorous estimation for the difference quotients of multiple eigenvalues". The primary goal is to rigorously validate the simplicity of the second Dirichlet eigenvalue for nearly equilateral triangles, offering a partial solution to a conjecture posed by R. Laugesen and B. Siudeja (discussed as Conjecture 6.47 in A. Henrot's "Shape Optimization and Spectral Theory").
 
 ## Background
 
-Determining the eigenvalue multiplicity of the Laplace operator is a challenging problem, especially when eigenvalues are nearly degenerate, as is the case for the second and third Dirichlet eigenvalues on equilateral triangles where $\\lambda\_{2}=\\lambda\_{3}$. Standard numerical methods struggle to separate these tightly clustered eigenvalues with mathematical rigor.
+Determining the eigenvalue multiplicity of the Laplace operator is a challenging problem, especially when eigenvalues are nearly degenerate, as is the case for the second and third Dirichlet eigenvalues on equilateral triangles where $\lambda_{2}=\lambda_{3}$. Standard numerical methods struggle to separate these tightly clustered eigenvalues with mathematical rigor.
 
 This work introduces a novel method to overcome this limitation. Instead of relying on traditional shape derivatives, which are difficult to analyze over a neighborhood with a given radius, this project analyzes the **difference quotient of eigenvalues**, defined as:
 
@@ -12,31 +15,36 @@ $$D_{t}\lambda_{i}:=\frac{\lambda_{i}(\Omega_{t})-\lambda(\Omega_{0})}{t}$$
 
 By applying guaranteed computation techniques based on the Finite Element Method (FEM) and interval arithmetic, we can obtain rigorous bounds on this quotient.
 
-The overall strategy is a two-pronged attack, dividing the parameter space of triangles $\\Omega$ into distinct regions:
+The overall strategy is a two-pronged attack, dividing the parameter space of triangles $\Omega$ into distinct regions:
 
-  * For nearly equilateral triangles ($\\Omega\_{up}$), the difference quotient method is used to prove that $D\\lambda\_{2}(p\_{0},p)\<D\\lambda\_{3}(p\_0, p)$ for any perturbation $p$ from the equilateral vertex $p\_0$. Since $\\lambda\_{2}^{p\_{0}}=\\lambda\_{3}^{p\_{0}}$, this rigorously implies $\\lambda\_{2}^{p}\<\\lambda\_{3}^{p}$.
-  * For other triangles ($\\Omega\_{down}^{(1)}, \\Omega\_{down}^{(2)}$), high-precision upper and lower bounds are computed directly to show a definitive gap, $\\overline{\\lambda}*{2}^{p}\<\\underline{\\lambda}*{3}^{p}$.
+* For nearly equilateral triangles ($\Omega_{up}$), the difference quotient method is used to prove that $D\lambda_{2}(p_{0},p)<D\lambda_{3}(p_0, p)$ for any perturbation $p$ from the equilateral vertex $p_0$. Since $\lambda_{2}^{p_{0}}=\lambda_{3}^{p_{0}}$, this rigorously implies $\lambda_{2}^{p}<\lambda_{3}^{p}$.
+* For other triangles ($\Omega_{down}^{(1)}, \Omega_{down}^{(2)}$), high-precision upper and lower bounds are computed directly to show a definitive gap, $\overline{\lambda}*{2}^{p}<\underline{\lambda}*{3}^{p}$.
 
 ## Project Structure
 
 The repository is organized as follows:
 
 ```
+
 .
-├── Each_Process/         # Core MATLAB functions, libraries, logs, and temporary results
-│   ├── functions/        # Helper MATLAB functions for computation
-│   ├── HighOrderFEM_CGYOU_2016/ # FEM library
-│   ├── Intlab_Group/     # INTLAB library for guaranteed computation
-│   └── log/              # Log files from parallel execution
-├── prep/                 # Scripts for preparing the computation
-├── results/              # Final stored results from computations
-├── main_algo1.m          # Main MATLAB script for Algorithm 1
-├── main_algo2.sh         # Main execution script for Algorithm 2
-├── main_algo3.sh         # Execution script for Algorithm 3
-├── my_intlab_config_alone.m # Standalone INTLAB configuration
-├── prep.sh               # Master script to run all preparation steps
-└── README.md             # This file
-```
+├── Each\_Process/                      \# Core MATLAB functions, logs, and temporary results for parallel jobs
+│   ├── FEM\_Functions/                 \# Helper MATLAB functions for FEM computation
+│   ├── Intlab\_Group/                  \# INTLAB library for guaranteed computation
+│   ├── log/                           \# Log files from parallel execution
+│   └── ...
+├── HighOrderFEM\_CGYOU\_2016/           \# FEM library
+├── HighOrderFEM\_CGYOU\_2016\_Dirichlet/ \# FEM library for Dirichlet problems
+├── prep/                              \# Scripts for preparing the computation
+├── results/                           \# Final stored results from computations
+├── verified\_eig\_estimation/           \# Scripts for eigenvalue verification
+├── main\_algo1.m                       \# Main MATLAB script for Algorithm 1
+├── main\_algo2.sh                      \# Main execution script for Algorithm 2
+├── main\_algo3.sh                      \# Execution script for Algorithm 3
+├── my\_intlab\_config\_alone.m           \# Standalone INTLAB configuration
+├── prep.sh                            \# Master script to run all preparation steps
+└── README.md                          \# This file
+
+
 
 ## Setup and Prerequisites
 
@@ -49,17 +57,16 @@ The repository is organized as follows:
 ### Initial Configuration
 
 1.  **Clone the Repository:**
-
     ```bash
-    git clone git clone https://github.com/ryendo/DirichletSimplicityClustered
+    git clone [https://github.com/ryendo/DirichletSimplicityClustered](https://github.com/ryendo/DirichletSimplicityClustered)
     cd DirichletSimplicityClustered
     ```
 
 2.  **Configure MATLAB Command-Line Access:**
     The shell scripts need to be able to call `matlab` from the command line. You must add the MATLAB binary directory to your shell's `PATH` environment variable.
 
-      * First, find the path to your MATLAB executable (e.g., using `which matlab`). The path will be similar to `/Applications/MATLAB_R2024a.app/bin`.
-      * Add this directory to your shell's configuration file (`~/.bash_profile` for bash, `~/.zshrc` or `~/.zprofile` for zsh).
+    * First, find the path to your MATLAB executable (e.g., using `which matlab`). The path will be similar to `/Applications/MATLAB_R2024a.app/bin`.
+    * Add this directory to your shell's configuration file (`~/.bash_profile` for bash, `~/.zshrc` or `~/.zprofile` for zsh).
         ```bash
         export PATH="/path/to/your/matlab/bin:$PATH"
         ```
@@ -89,7 +96,18 @@ This algorithm is run as a standard MATLAB script and does not use the parallel 
 
 These algorithms are run from the shell and utilize a parallel framework.
 
-1.  **Preparation:** First, run the master preparation script from the project root directory. This only needs to be done once before running the parallel jobs.
+1.  **Configuration (One-time setup):**
+
+    * **Set Job Count:** Before running, you must configure the number of parallel jobs. Open `main_algo2.sh`, `main_algo3.sh`, and `prep/prepare_parallel.sh` and set the `MAX_JOBS` variable at the top of each file to your desired number of cores. For example:
+        ```bash
+        MAX_JOBS=60
+        ```
+    * **Set Permissions:** Grant execute permission to the MATLAB runner script. This only needs to be done once.
+        ```bash
+        chmod +x prep/run_matlab.sh
+        ```
+
+2.  **Preparation:** Run the master preparation script from the project root directory. This script uses the `MAX_JOBS` setting from `prep/prepare_parallel.sh`.
 
     ```bash
     ./prep.sh
@@ -97,48 +115,47 @@ These algorithms are run from the shell and utilize a parallel framework.
 
     This command will:
 
-      * Execute `prep/make_indices_algo2.m` to generate the task list `prep/list_j.csv`.
-      * Execute `prep/prepare_parallel.sh` to create isolated INTLAB environments for each parallel worker.
+    * Execute `prep/make_indices_algo2.m` to generate the task list `prep/list_j.csv`.
+    * Execute `prep/prepare_parallel.sh` to create isolated INTLAB environments for each parallel worker.
 
-2.  **Main Computations:**
+3.  **Main Computations:**
 
-      * To analyze the $\\Omega\_{down}^{(1)}$ region (Algorithm 2):
+    * To analyze the $\Omega_{down}^{(1)}$ region (Algorithm 2):
         ```bash
         bash ./main_algo2.sh
         ```
-      * To analyze the $\\Omega\_{down}^{(2)}$ region (Algorithm 3):
+    * To analyze the $\Omega_{down}^{(2)}$ region (Algorithm 3):
         ```bash
         bash ./main_algo3.sh
         ```
 
-3.  **Monitoring the Process:**
+4.  **Monitoring the Process:**
     For the parallel scripts, you can monitor the status:
 
-      * **Check for running processes:** `ps aux | grep -i matlab`
-      * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
-      * **Check for results:** Final results are written to CSV files in the `results/` directory.
+    * **Check for running processes:** `ps aux | grep -i matlab`
+    * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
+    * **Check for results:** Final results are written to CSV files in the `results/` directory.
 
 ## Code and Script Roles
 
 ### Root Directory
 
-  * `main_algo1.m`: Implements **Algorithm 1** from the paper. This script analyzes the nearly equilateral region $\\Omega\_{up}$ by rigorously computing the difference quotients of $\\lambda\_2$ and $\\lambda\_3$. It solves the generalized matrix eigenvalue problem $M\_{t}\\sigma=\\mu N\_{t}\\sigma$ using interval arithmetic to obtain guaranteed bounds on the difference quotients.
-  * `main_algo2.sh`: The main parallel execution engine for **Algorithm 2**. It analyzes the $\\Omega\_{down}^{(1)}$ region by partitioning it into small rectangles $R\_{ij}$ and applying perturbation estimates. It uses a robust worker pool model to distribute the computation of the eigenvalue bounds.
-  * `main_algo3.sh`: A parallel runner for **Algorithm 3**. It analyzes the $\\Omega\_{down}^{(2)}$ region, where triangles are more degenerate. This algorithm leverages the domain monotonicity property of Dirichlet eigenvalues to establish bounds.
-  * `my_intlab_config_alone.m`: A setup script to initialize the INTLAB guaranteed computation environment for a single, non-parallel MATLAB session. It must be run in MATLAB before executing `main_algo1.m`.
+* `main_algo1.m`: Implements **Algorithm 1** from the paper. This script analyzes the nearly equilateral region $\Omega_{up}$ by rigorously computing the difference quotients of $\lambda_2$ and $\lambda_3$. It solves the generalized matrix eigenvalue problem $M_{t}\sigma=\mu N_{t}\sigma$ using interval arithmetic to obtain guaranteed bounds on the difference quotients.
+* `main_algo2.sh`: The main parallel execution engine for **Algorithm 2**. It analyzes the $\Omega_{down}^{(1)}$ region by partitioning it into small rectangles $R_{ij}$ and applying perturbation estimates. It uses a robust worker pool model to distribute the computation of the eigenvalue bounds.
+* `main_algo3.sh`: A parallel runner for **Algorithm 3**. It analyzes the $\Omega_{down}^{(2)}$ region, where triangles are more degenerate. This algorithm leverages the domain monotonicity property of Dirichlet eigenvalues to establish bounds.
+* `my_intlab_config_alone.m`: A setup script to initialize the INTLAB guaranteed computation environment for a single, non-parallel MATLAB session. It must be run in MATLAB before executing `main_algo1.m`.
+* `HighOrderFEM_CGYOU_2016/`, `HighOrderFEM_CGYOU_2016_Dirichlet/`: Finite Element Method (FEM) libraries used for the numerical computations.
 
 ### Preparation Scripts (`prep/`)
 
-  * `make_indices_algo2.m`: Generates the master task list `prep/list_j.csv` for `main_algo2.sh`, containing the `j` indices (1-1220).
-  * `prepare_parallel.sh`: Sets up the execution environment by creating isolated copies of the INTLAB library for each parallel worker.
-  * `run_matlab.sh`: A helper script called by `main_algo2.sh` to execute a single MATLAB computation task.
+* `make_indices_algo2.m`: Generates the master task list `prep/list_j.csv` for `main_algo2.sh`, containing the `j` indices (1-1220).
+* `prepare_parallel.sh`: Sets up the execution environment by creating isolated copies of the INTLAB library for each parallel worker.
+* `run_matlab.sh`: A helper script called by `main_algo2.sh` and `main_algo3.sh` to execute a single MATLAB computation task.
 
 ### Core MATLAB Code (`Each_Process/`)
 
-  * `func_algo2.m`: Implements the core logic for **Algorithm 2**. It computes rigorous eigenvalue bounds for each subdomain `R_ij`.
-  * `func_algo3.m`: Implements the core logic for **Algorithm 3**, using domain monotonicity.
-  * `my_intlab_mode_config.m`: Configures the INTLAB environment for each specific parallel worker process.
-  * **`functions/` directory:** Contains various helper functions.
-      * `calc_eigen_bounds_any_order.m`: A core function that calculates high-precision eigenvalue bounds, utilizing the Lehmann-Goerisch method.
-      * `Lagrange_...` functions: Related to the Lagrange Finite Element Method (FEM).
-      * `get_mesh_...` functions: Responsible for generating the computational triangulations ($\\mathcal{T}^{h}$) of the domains.
+* `func_algo2.m`: Implements the core logic for **Algorithm 2**. It computes rigorous eigenvalue bounds for each subdomain `R_ij`.
+* `func_algo3.m`: Implements the core logic for **Algorithm 3**, using domain monotonicity.
+* `my_intlab_mode_config.m`: Configures the INTLAB environment for each specific parallel worker process.
+* **`FEM_Functions/` directory:** Contains various helper functions for finite element calculations, including the Lehmann-Goerisch method (`calc_eigen_bounds_any_order.m`) and Lagrange element functions (`Lagrange_...`).
+* **`mesh/` directory:** Contains helper functions responsible for generating the computational triangulations ($\mathcal{T}^{h}$) of the domains (`get_mesh_...`).
