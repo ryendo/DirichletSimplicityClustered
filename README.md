@@ -1,6 +1,5 @@
 Of course. Here is the updated `README.md` file incorporating the instructions about setting `MAX_JOBS` and making `run_matlab.sh` executable.
 
-```markdown
 # Computer-Assisted Proof for Dirichlet Eigenvalue Simplicity
 
 This project provides the source code and computational framework for the computer-assisted proof presented in the paper "Rigorous estimation for the difference quotients of multiple eigenvalues". The primary goal is to rigorously validate the simplicity of the second Dirichlet eigenvalue for nearly equilateral triangles, offering a partial solution to a conjecture posed by R. Laugesen and B. Siudeja (discussed as Conjecture 6.47 in A. Henrot's "Shape Optimization and Spectral Theory").
