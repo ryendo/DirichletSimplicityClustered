@@ -114,6 +114,7 @@ These algorithms are run from the shell and utilize a parallel framework.
 3.  **Monitoring the Process:**
     For the parallel scripts, you can monitor the status:
 
+```bash
 <<<<<<< HEAD
       * **Check for running processes:** `ps aux | grep -i matlab`
       * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
@@ -122,6 +123,7 @@ These algorithms are run from the shell and utilize a parallel framework.
     * **Check for running processes:** `ps aux | grep -i matlab`
     * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
     * **Check for results:** Final results are written to CSV files in the `results/` directory.
+```
 
 ### Verifying the Results
 
