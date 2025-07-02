@@ -1,0 +1,298 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+Please press Enter>> 
+VVVVVVVVVVVVVVVV Installation of INTLAB VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+ 
+This is the first call of INTLAB, and the best way to switch the 
+rounding mode will be detected. It is a very rigorous check and takes
+a short moment. This is done only once with the very first call of INTLAB.
+ 
+To find the best routine, various routines are checked. 
+Unfortunately, in very rare cases it might happen that a hard error
+occurs. This should never happen, but it happens in some Matlab versions
+and/or operating systems, and it is beyond my control. 
+ 
+In such a rare case of a hard error, please restart INTLAB.
+The circumstances will be stored, and this switching routine will not
+be called again. Sorry for possible inconveniences. 
+ 
+Press Enter to continue.>> 
+ 
+===> rounding checked and no errors detected
+ 
+**** INTLAB: Generation of I/O data
+**** INTLAB: I/O data successfully generated
+ 
+**** Data for rigorous INTLAB standard functions have to be generated, 
+**** takes a minute or so.                                             
+**** The data will be generated _once_ during installation and stored. 
+ 
+Press Enter for unique generation of data. >> 
+Finished about 0 %
+Check special function values 
+ 
+Finished about 2 %
+Error estimates to be computed:  Log 
+Finished about 3 %
+Finished about 4 %
+Finished about 5 %
+Finished about 6 %
+Finished about 7 %
+Finished about 8 %
+Finished about 9 %
+Finished about 10 %
+Finished about 11 %
+Finished about 12 %
+Finished about 13 %
+Finished about 14 %
+Finished about 15 %
+Finished about 16 %
+Finished about 17 %
+Finished about 18 %
+ 
+Error estimates to be computed:  Atan 
+Finished about 28 %
+Finished about 29 %
+Finished about 31 %
+Finished about 32 %
+Finished about 34 %
+Finished about 35 %
+Finished about 37 %
+Finished about 38 %
+Finished about 40 %
+Finished about 41 %
+Finished about 43 %
+Finished about 44 %
+Finished about 46 %
+Finished about 47 %
+Finished about 49 %
+Finished about 50 %
+Finished about 52 %
+Finished about 53 %
+Finished about 55 %
+Finished about 56 %
+Finished about 58 %
+Finished about 59 %
+Finished about 61 %
+Finished about 62 %
+Finished about 64 %
+Finished about 65 %
+Finished about 67 %
+Finished about 68 %
+Finished about 70 %
+Finished about 71 %
+Finished about 73 %
+Finished about 74 %
+ 
+Error estimates to be computed:  ExpSinCosTanSinhTanh 
+Finished about 76 %
+Finished about 77 %
+Finished about 79 %
+Finished about 80 %
+Finished about 82 %
+Finished about 83 %
+Finished about 85 %
+Finished about 86 %
+Finished about 88 %
+Finished about 89 %
+Finished about 91 %
+Finished about 92 %
+Finished about 94 %
+Finished about 95 %
+Finished about 97 %
+Finished about 98 %
+ 
+===> Data written to /home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12_no42/Matlab_23.2.0.2459199 (R2023b) Update 5_Intlab_Version_12_glnxa6423_2_0_2459199.mat
+ 
+Error estimates in stdfctsdata successfully completed
+ 
+ 
++*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+
++*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+
+:: 
+::  Some references to papers using INTLAB are collected on the     
+::    INTLAB homepage   http://www.ti3.tuhh.de/                     
+::  If you have additional references to add, please send me        
+::  a mail ( rump [at] tuhh.de )                                    
+::                                                                  
+::  In any publication or other material using INTLAB please cite   
+::     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,   
+::       editor, Developments in Reliable Computing, pages 77-104.  
+::       Kluwer Academic Publishers, Dordrecht, 1999.               
+    @incollection{Ru99a,                                            
+       author = {Rump, {S.M.}},                                     
+       title = {{INTLAB - INTerval LABoratory}},                    
+       editor = {Tibor Csendes},                                    
+       booktitle = {{Developments~in~Reliable Computing}},          
+       publisher = {Kluwer Academic Publishers},                    
+       address = {Dordrecht},                                       
+       pages = {77--104},                                           
+       year = {1999}                                                
+    }                                                               
+::                                                                  
+ 
+ 
+To see this reference, please use intvalinit('Reference').
+ 
+Please press Enter to start INTLAB.>> 
+ 
+ 
+ 
+**************************************************************
+*** Welcome to INTLAB - INTerval LABoratory Version 12     
+***   The Matlab/Octave toolbox for Reliable Computing     
+***   Siegfried M. Rump, Institute for Reliable Computing  
+***   Hamburg University of Technology, Germany            
+ 
+ 
+INTLAB uses several control variables; to check the default values call "intlabsetting"
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem
+Terminated
+Worker 42: ERROR on job j=37. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=38. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=37. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=37. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=37. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=37. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=37. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=37. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=37. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=37. Resetting status to 0.
+Terminated
+Worker 42: ERROR on job j=37. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=3. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=3. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=3. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
+Worker 42: ERROR on job j=3. Resetting status to 0.
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
