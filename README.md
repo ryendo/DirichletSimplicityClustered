@@ -114,11 +114,9 @@ These algorithms are run from the shell and utilize a parallel framework.
 3.  **Monitoring the Process:**
     For the parallel scripts, you can monitor the status:
 
-<<<<<<< HEAD
       * **Check for running processes:** `ps aux | grep -i matlab`
       * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
       * **Check for results:** Final results are written to CSV files in the `results/` directory.
-=======
     * **Check for running processes:** `ps aux | grep -i matlab`
     * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
     * **Check for results:** Final results are written to CSV files in the `results/` directory.
@@ -177,7 +175,6 @@ The scripts will create separate CSV files for each task `j`. The file names ind
 Each file contains the rigorous lower and upper bounds for $\\lambda\_2$ and $\\lambda\_3$ for the specific sub-region `R_ij` that the task `j` was responsible for. A successful proof for that region is confirmed if the upper bound for $\\lambda\_2$ is less than the lower bound for $\\lambda\_3$. The collection of all these files constitutes the proof for the $\\Omega\_{down}$ regions.
 
 ---
->>>>>>> 2fbf8959c9284373879ef71660eefbb7647fb684
 
 ## Code and Script Roles
 
