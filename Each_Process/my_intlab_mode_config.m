@@ -1,22 +1,33 @@
 function my_intlab_mode_config(n)
 
-    %The path of INTLAB toolbox and initialization.
-    addpath("Intlab_Group/Intlab_V12_no"+num2str(n))
+    % --- Automatically determine absolute paths ---
+    % Get the full path to this script file ('my_intlab_mode_config.m')
+    this_script_path = mfilename('fullpath');
     
-    %The path of the library of verified eigenvalue estimation for matrix.
-    addpath('../verified_eig_estimation')
-    addpath('../HighOrderFEM_CGYOU_2016_Dirichlet')
-    addpath('mat_quotients')
+    % Get the directory containing this script ('.../Each_Process')
+    each_process_dir = fileparts(this_script_path);
     
-    %The path of the codes for switch between verified computing and approximate computing.
-    addpath('mode_swith_interface')
+    % Get the main project directory ('.../DirichletSimplicityClustered')
+    project_root_dir = fileparts(each_process_dir);
     
-    %The path of the library of FEMs on triangular domains
-    addpath('FEM_Functions')
+    
+    % --- Add the specific INTLAB path for this process ---
+    % Dynamically build the path to the correct Intlab_V12_no<n> folder
+    intlab_folder_for_this_process = "Intlab_V12_no" + n;
+    addpath(fullfile(each_process_dir, "Intlab_Group", intlab_folder_for_this_process));
+    
+    
+    % --- Add paths to other libraries using absolute paths ---
+    addpath(fullfile(project_root_dir, 'verified_eig_estimation'));
+    addpath(fullfile(project_root_dir, 'HighOrderFEM_CGYOU_2016_Dirichlet'));
+    addpath(fullfile(each_process_dir, 'mat_quotients'));
+    addpath(fullfile(each_process_dir, 'mode_swith_interface'));
+    addpath(fullfile(each_process_dir, 'FEM_Functions'));
+    
+    % Now that the path is correct, startintlab should work
     startintlab;
     
     global INTERVAL_MODE;
-    
     INTERVAL_MODE=1;
 
 end

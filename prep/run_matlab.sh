@@ -15,8 +15,16 @@ n=$1
 func_script=$2
 j=$3
 
-# Construct the MATLAB command using the provided arguments
-matlab_command="try; my_intlab_mode_config(${n}); ${func_script}(${j}); catch ME; disp(getReport(ME, 'extended')); exit(1); end; exit(0);"
+# 1. Get the absolute path of the main project directory (one level up from 'prep')
+PROJECT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." &>/dev/null && pwd)
 
-# Execute the command, do not just echo it
+# 2. Add the path to 'Each_Process' to the MATLAB command
+addpath_command="addpath('${PROJECT_DIR}/Each_Process');"
+# --- FIX ENDS HERE ---
+
+
+# Construct the MATLAB command using the provided arguments, now with the addpath command
+matlab_command="try; ${addpath_command} my_intlab_mode_config(${n}); ${func_script}(${j}); catch ME; disp(getReport(ME, 'extended')); exit(1); end; exit(0);"
+
+# Execute the command
 matlab -nodisplay -nosplash -nodesktop -r "${matlab_command}"

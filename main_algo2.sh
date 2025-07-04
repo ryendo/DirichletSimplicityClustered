@@ -2,7 +2,7 @@
 # This script runs the main computation in a robust, parallel, and restartable manner.
 
 # --- Configuration ---
-MAX_JOBS=60  # Adjust this value as needed
+MAX_JOBS=2  # Adjust this value as needed
 FUNC_SCRIPT="func_algo2"
 
 # --- Setup ---
@@ -23,7 +23,7 @@ for n in "${list_idle_process[@]}"; do
         cd "${SCRIPT_DIR}/Each_Process" || exit 1
         export DISPLAY=
 
-        matlab -nodisplay -nosplash -nodesktop -r "try; my_intlab_mode_config(${n}); catch ME; disp(getReport(ME, 'extended')); exit(1); end; exit(0);" > "log/process_no${n}.log" 2>&1
+        matlab -nodisplay -nosplash -nodesktop -r "try; addpath('${SCRIPT_DIR}/Each_Process'); my_intlab_mode_config(${n}); catch ME; disp(getReport(ME, 'extended')); exit(1); end; exit(0);" > "log/process_no${n}.log" 2>&1
         if [ $? -ne 0 ]; then
             echo "FATAL: Initial setup (my_intlab_mode_config) failed for worker ${n}. Check log/process_no${n}.log"
             exit 1

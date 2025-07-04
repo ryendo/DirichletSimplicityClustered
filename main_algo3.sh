@@ -7,7 +7,7 @@ CONFIG_SCRIPT="my_intlab_mode_config"
 FUNC_SCRIPT="func_algo3"
 
 # Maximum number of concurrent jobs
-MAX_JOBS=60
+MAX_JOBS=2
 
 # Function to run MATLAB with given j values
 run_matlab() {
