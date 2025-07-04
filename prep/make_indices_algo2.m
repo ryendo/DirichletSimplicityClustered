@@ -14,6 +14,6 @@ initial_status = zeros(size(job_ids, 1), 1);
 output_matrix = [job_ids, initial_status];
 
 % Write the two-column matrix to the CSV file in the 'prep' directory
-csvwrite('list_j.csv', output_matrix);
+csvwrite('algo2_list_j.csv', output_matrix);
 
 fprintf('Task list generated successfully.\n');

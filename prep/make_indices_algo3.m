@@ -1,3 +1,19 @@
-% MATLABコード：1〜1220の番号を1行に並べたリストをCSVファイルに保存
-numbers = 1:1220; % 1から1220までの数値を生成
-csvwrite('list_j.csv', numbers'); % 'list_j.csv'というファイル名で保存
+% This script generates a two-column task list for parallel processing.
+% Column 1: Job ID (j)
+% Column 2: Status (0 = unprocessed, 1 = completed, 2 = in progress)
+
+fprintf('Generating task list: list_j.csv with initial status 0...\n');
+
+% Define the range of job IDs
+job_ids = (1:81)';  % Create as a column vector
+
+% Create a column for the initial status, all set to 0 (unprocessed)
+initial_status = zeros(size(job_ids, 1), 1);
+
+% Combine them into a two-column matrix
+output_matrix = [job_ids, initial_status];
+
+% Write the two-column matrix to the CSV file in the 'prep' directory
+csvwrite('algo3_list_j.csv', output_matrix);
+
+fprintf('Task list generated successfully.\n');

@@ -1,0 +1,126 @@
+WARNING: package sun.awt.X11 not in java.desktop
+WARNING: package sun.awt.X11 not in java.desktop
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2024 The MathWorks, Inc.
+                  R2024b (24.2.0.2712019) 64-bit (maca64)
+                              August 22, 2024
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+WARNING: package sun.awt.X11 not in java.desktop
+WARNING: package sun.awt.X11 not in java.desktop
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2024 The MathWorks, Inc.
+                  R2024b (24.2.0.2712019) 64-bit (maca64)
+                              August 22, 2024
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+intval blams_ = 
+  1.0e+004 *
+[    0.8322,    1.9466] 
+[    0.9059,    2.3910] 
+new_data =
+   1.0e+04 *
+    0.0001    0.0006    0.8323    1.9465    0.9059    2.3909
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem
+intval blams_ = 
+  1.0e+004 *
+[    0.0405,    3.1317] 
+[    0.0407,    4.9970] 
+new_data =
+   1.0e+04 *
+    0.0001    0.0008    0.0406    3.1316    0.0408    4.9970
+intval blams_ = 
+  1.0e+004 *
+[    0.0405,    3.1251] 
+[    0.0407,    4.9812] 
+new_data =
+   1.0e+04 *
+    0.0002    0.0008    0.0406    3.1250    0.0408    4.9812
+intval blams_ = 
+  1.0e+004 *
+[    0.0405,    3.1049] 
+[    0.0407,    4.9315] 
+new_data =
+   1.0e+04 *
+    0.0003    0.0008    0.0406    3.1049    0.0408    4.9315
+intval blams_ = 
+  1.0e+004 *
+[    0.0405,    3.0722] 
+[    0.0407,    4.8450] 
+new_data =
+   1.0e+04 *
+    0.0004    0.0008    0.0406    3.0722    0.0408    4.8450
+intval blams_ = 
+  1.0e+004 *
+[    0.0405,    3.0282] 
+[    0.0407,    4.7203] 
+new_data =
+   1.0e+04 *
+    0.0005    0.0008    0.0406    3.0281    0.0408    4.7203
+intval blams_ = 
+  1.0e+004 *
+[    0.0405,    2.9746] 
+[    0.0407,    4.5608] 
+new_data =
+   1.0e+04 *
+    0.0006    0.0008    0.0406    2.9746    0.0408    4.5608
+intval blams_ = 
+  1.0e+004 *
+[    0.0405,    2.9147] 
+[    0.0407,    4.3762] 
+new_data =
+   1.0e+04 *
+    0.0007    0.0008    0.0405    2.9147    0.0407    4.3761
+intval blams_ = 
+  1.0e+004 *
+[    0.0405,    2.8549] 
+[    0.0407,    4.1861] 
+new_data =
+   1.0e+04 *
+    0.0008    0.0008    0.0405    2.8549    0.0407    4.1861
+intval blams_ = 
+  1.0e+004 *
+[    0.0405,    2.8110] 
+[    0.0407,    4.0313] 
+new_data =
+   1.0e+04 *
+    0.0009    0.0008    0.0405    2.8110    0.0407    4.0313
+/Users/ryoki/Documents/GitHub/DirichletSimplicityClustered/prep/run_matlab.sh: line 30: 84066 Terminated: 15          matlab -nodisplay -nosplash -nodesktop -r "${matlab_command}"

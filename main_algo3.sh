@@ -1,39 +1,76 @@
 #!/bin/bash
+# This script runs the main computation in a robust, parallel, and restartable manner.
 
-# MATLAB script to configure intlab
-CONFIG_SCRIPT="my_intlab_mode_config"
-
-# Function script to call with j values
+# --- Configuration ---
+MAX_JOBS=2  # Adjust this value as needed
 FUNC_SCRIPT="func_algo3"
 
-# Maximum number of concurrent jobs
-MAX_JOBS=2
+# --- Setup ---
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+mkdir -p "${SCRIPT_DIR}/Each_Process/log"
+LOCKFILE="${SCRIPT_DIR}/prep/algo3_list_j.lock"
 
-# Function to run MATLAB with given j values
-run_matlab() {
-    local j_list=("$@")
-    j_list_str=$(IFS=,; echo "${j_list[*]}")
-    # Change: Add a "cd('Each_Process');" command inside MATLAB to run from the correct directory
-    nohup matlab -nodisplay -nosplash -r "cd('Each_Process'); run('$CONFIG_SCRIPT'); $FUNC_SCRIPT([$j_list_str]); exit;" &
-}
-
-# Create arrays of j values in chunks of 10 and execute jobs
-for ((i=1; i<=19; i+=1)); do
-    j_list=()
-    for ((j=i; j<i+1 && j<=19; j++)); do
-        j_list+=($j)
-    done
-    
-    # Run MATLAB function with the current chunk of j values
-    run_matlab "${j_list[@]}"
-    
-    # Wait if the number of concurrent jobs reaches the limit and check for finished jobs
-    while [ $(jobs -rp | wc -l) -ge $MAX_JOBS ]; do
-        sleep 1
-        # Remove finished jobs
-        jobs -rp | xargs -n 1 -r kill -0 2>/dev/null || wait
-    done
+list_idle_process=()
+for ((i=1; i<=MAX_JOBS; i++)); do
+    list_idle_process+=($i)
 done
 
-# Wait for all background jobs to finish
+# --- Main Execution ---
+echo "Launching ${MAX_JOBS} parallel worker processes..."
+
+for n in "${list_idle_process[@]}"; do
+    (
+        cd "${SCRIPT_DIR}/Each_Process" || exit 1
+        export DISPLAY=
+
+        matlab -nodisplay -nosplash -nodesktop -r "try; addpath('${SCRIPT_DIR}/Each_Process'); my_intlab_mode_config(${n}); catch ME; disp(getReport(ME, 'extended')); exit(1); end; exit(0);" > "log/process_no${n}.log" 2>&1
+        if [ $? -ne 0 ]; then
+            echo "FATAL: Initial setup (my_intlab_mode_config) failed for worker ${n}. Check log/process_no${n}.log"
+            exit 1
+        fi
+
+        while true; do
+            j=""
+            line_number=""
+            # --- FIX: Use { ... } group instead of (...) subshell to preserve variable scope ---
+            {
+                flock -x 200
+                j_line=$(awk -F',' 'NF==2 && $2==0 {print NR","$1; exit}' "${SCRIPT_DIR}/prep/algo3_list_j.csv")
+                
+                if [ -n "$j_line" ]; then
+                    line_number=$(echo "$j_line" | cut -d',' -f1)
+                    j=$(echo "$j_line" | cut -d',' -f2)
+                    sed -i.bak "${line_number}s/.*/${j},2/" "${SCRIPT_DIR}/prep/algo3_list_j.csv"
+                fi
+            } 200>"$LOCKFILE"
+            
+            if [ -z "$j_line" ]; then
+                echo "Worker ${n}: No more jobs to process. Exiting."
+                break
+            fi
+
+            echo "Worker ${n}: Starting job j=${j}..."
+
+            "${SCRIPT_DIR}/prep/run_matlab.sh" "$n" "$FUNC_SCRIPT" "$j" >> "log/process_no${n}.log" 2>&1 &
+            wait $!
+            matlab_exit_code=$?
+
+            # --- FIX: Use { ... } group instead of (...) subshell ---
+            {
+                flock -x 200
+                if [ $matlab_exit_code -eq 0 ]; then
+                    sed -i.bak "${line_number}s/.*/${j},1/" "${SCRIPT_DIR}/prep/algo3_list_j.csv"
+                    echo "Worker ${n}: Finished job j=${j} successfully."
+                else
+                    echo "Worker ${n}: ERROR on job j=${j}. Resetting status to 0." >> "log/process_no${n}.log"
+                    sed -i.bak "${line_number}s/.*/${j},0/" "${SCRIPT_DIR}/prep/algo3_list_j.csv"
+                fi
+            } 200>"$LOCKFILE"
+        done
+        exit 0
+    ) &
+done
+
+echo "All worker processes launched. Waiting for completion... (You can safely close this terminal)"
 wait
+echo "All processes have completed."

@@ -10,8 +10,13 @@ TARGET_BASE_DIR="${SCRIPT_DIR}/Each_Process/Intlab_Group"
 mkdir -p "$TARGET_BASE_DIR"
 
 # Check if list_j.csv exists
-if [ ! -f "${SCRIPT_DIR}/prep/list_j.csv" ]; then
-    echo "Error: 'prep/list_j.csv' does not exist. Please run prep.sh first."
+if [ ! -f "${SCRIPT_DIR}/prep/algo2_list_j.csv" ]; then
+    echo "Error: 'prep/algo2_list_j.csv' does not exist. Please run prep.sh first."
+    exit 1
+fi
+
+if [ ! -f "${SCRIPT_DIR}/prep/algo3_list_j.csv" ]; then
+    echo "Error: 'prep/algo3_list_j.csv' does not exist. Please run prep.sh first."
     exit 1
 fi
 

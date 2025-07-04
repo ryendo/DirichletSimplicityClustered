@@ -8,7 +8,7 @@ FUNC_SCRIPT="func_algo2"
 # --- Setup ---
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 mkdir -p "${SCRIPT_DIR}/Each_Process/log"
-LOCKFILE="${SCRIPT_DIR}/prep/list_j.lock"
+LOCKFILE="${SCRIPT_DIR}/prep/algo2_list_j.lock"
 
 list_idle_process=()
 for ((i=1; i<=MAX_JOBS; i++)); do
@@ -35,12 +35,12 @@ for n in "${list_idle_process[@]}"; do
             # --- FIX: Use { ... } group instead of (...) subshell to preserve variable scope ---
             {
                 flock -x 200
-                j_line=$(awk -F',' 'NF==2 && $2==0 {print NR","$1; exit}' "${SCRIPT_DIR}/prep/list_j.csv")
+                j_line=$(awk -F',' 'NF==2 && $2==0 {print NR","$1; exit}' "${SCRIPT_DIR}/prep/algo2_list_j.csv")
                 
                 if [ -n "$j_line" ]; then
                     line_number=$(echo "$j_line" | cut -d',' -f1)
                     j=$(echo "$j_line" | cut -d',' -f2)
-                    sed -i.bak "${line_number}s/.*/${j},2/" "${SCRIPT_DIR}/prep/list_j.csv"
+                    sed -i.bak "${line_number}s/.*/${j},2/" "${SCRIPT_DIR}/prep/algo2_list_j.csv"
                 fi
             } 200>"$LOCKFILE"
             
@@ -59,11 +59,11 @@ for n in "${list_idle_process[@]}"; do
             {
                 flock -x 200
                 if [ $matlab_exit_code -eq 0 ]; then
-                    sed -i.bak "${line_number}s/.*/${j},1/" "${SCRIPT_DIR}/prep/list_j.csv"
+                    sed -i.bak "${line_number}s/.*/${j},1/" "${SCRIPT_DIR}/prep/algo2_list_j.csv"
                     echo "Worker ${n}: Finished job j=${j} successfully."
                 else
                     echo "Worker ${n}: ERROR on job j=${j}. Resetting status to 0." >> "log/process_no${n}.log"
-                    sed -i.bak "${line_number}s/.*/${j},0/" "${SCRIPT_DIR}/prep/list_j.csv"
+                    sed -i.bak "${line_number}s/.*/${j},0/" "${SCRIPT_DIR}/prep/algo2_list_j.csv"
                 fi
             } 200>"$LOCKFILE"
         done
