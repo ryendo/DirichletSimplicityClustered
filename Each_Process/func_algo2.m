@@ -88,7 +88,7 @@ function func_algo2(j_list)
                     new_data = [i, j, inf(blams_(1)), sup(blams_(1)), inf(blams_(2)), sup(blams_(2))]
                     
                     % Append the newly computed bounds to the CSV file for persistent storage.
-                    % writematrix(new_data, file_name_result, 'WriteMode', 'append');
+                    writematrix(new_data, file_name_result, 'WriteMode', 'append');
                 else
                     break;
                 end

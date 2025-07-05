@@ -68,7 +68,7 @@ function func_algo3(j_list)
                     % Store the new results: grid indices and guaranteed bounds.
                     new_data = [i, j, inf(blams_(1)), sup(blams_(1)), inf(blams_(2)), sup(blams_(2))]
                     % Append the newly computed bounds to the CSV file.
-                    % writematrix(new_data, file_name_result, 'WriteMode', 'append');
+                    writematrix(new_data, file_name_result, 'WriteMode', 'append');
                 else
                     break;
                 end
