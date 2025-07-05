@@ -33,7 +33,7 @@ function func_algo3(j_list)
                 % to define the triangle vertices.
                 x = sqrt(r^2-h^2); y = h;
                 x_ = sqrt(r_^2-h_^2); y_ = h_;
-        
+
                 % --- Define triangles at the corners of the (r,h) grid cell ---
                 % According to domain monotonicity, the smallest triangle (at r_{i+1}, h_{j+1})
                 % gives the highest eigenvalues, which serve as the lower bound for the cell.
@@ -51,7 +51,7 @@ function func_algo3(j_list)
                     % fem_ord = 1: 1st-degree (linear) finite elements are sufficient here as
                     % eigenvalues are well-separated.
                     
-                    N_rho = 600;
+                    N_rho = 400;
                     fem_ord = 1;
 
                     % Calculate eigenvalue bounds using the basic projection method (Lemma 4.2).
@@ -68,7 +68,7 @@ function func_algo3(j_list)
                     % Store the new results: grid indices and guaranteed bounds.
                     new_data = [i, j, inf(blams_(1)), sup(blams_(1)), inf(blams_(2)), sup(blams_(2))]
                     % Append the newly computed bounds to the CSV file.
-                    writematrix(new_data, file_name_result, 'WriteMode', 'append');
+                    % writematrix(new_data, file_name_result, 'WriteMode', 'append');
                 else
                     break;
                 end
@@ -86,15 +86,10 @@ function ri_val = ri(i)
     ri_val = (i-1) / intval('20') + intval('0.5');
 end
 
-% --- Function to define the h-coordinate of a grid point (j). ---
-% h = y. The grid points are defined for the domain monotonicity approach,
-% corresponding to the partitioning of Omega_down^(2) in the paper.
 function hj_val = hj(j)
     if j >= 1 && j <= 41
         hj_val = tan(I_pi/60)/2 + (tan(I_pi/40) - tan(I_pi/60)) * (j-1) / 80;
-    elseif j >= 42 && j <= 81
-        hj_val = tan(I_pi/40)/2 + (tan(I_pi/18) - tan(I_pi/40)) * (j-41) / 80;
     else
-        error('j must be between 1 and 81.');
+        hj_val = tan(I_pi/40)/2 + (tan(I_pi/14) - tan(I_pi/40)) * (j-41) / 80;
     end
 end

@@ -101,7 +101,8 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
     
         % --- Step 1: Compute upper and lower bounds. ---
         % Generate a mesh suitable for the CG method.
-        mesh_rho=get_mesh_for_cg_y_reduced(tri_intval,N_rho);
+        N_v = 10;
+        mesh_rho=get_mesh_for_cg_y_reduced(tri_intval,N_rho,N_v);
         vert_rho = mesh_rho.nodes;
         edge_rho = mesh_rho.edges;
         tri_rho  = mesh_rho.elements;

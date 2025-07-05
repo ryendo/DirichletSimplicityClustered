@@ -88,7 +88,7 @@ function func_algo2(j_list)
                     new_data = [i, j, inf(blams_(1)), sup(blams_(1)), inf(blams_(2)), sup(blams_(2))]
                     
                     % Append the newly computed bounds to the CSV file for persistent storage.
-                    writematrix(new_data, file_name_result, 'WriteMode', 'append');
+                    % writematrix(new_data, file_name_result, 'WriteMode', 'append');
                 else
                     break;
                 end
@@ -112,8 +112,6 @@ function x = xij(i, j)
         x = I_intval('0.5') + I_intval('1E-4') * (i - 1);
     elseif (j >= 272 && j <= 1020)
         x = I_intval('0.5') + I_intval('1E-3') * (i - 1);
-    elseif (j >= 1021 && j <= 1220)
-        x = I_intval('0.5') + I_intval('1E-4') * (i - 1);
     else
         error('Invalid value of j');
     end
@@ -133,8 +131,6 @@ function y = yij(i, j)
         y = sqrt3_over_2 - I_intval('1E-5')  - I_intval('1E-6') * 90 - I_intval('1E-5') * 90 - I_intval('1E-4') * (j - 181);
     elseif (j >= 272 && j <= 1020)
         y = sqrt3_over_2 - I_intval('1E-5')  - I_intval('1E-6') * 90 - I_intval('1E-5') * 90 - I_intval('1E-4') * 90 - I_intval('1E-3') * (j - 271);
-    elseif (j >= 1021 && j <= 1220)
-        y = sqrt3_over_2 - I_intval('1E-5')  - I_intval('1E-6') * 90 - I_intval('1E-5') * 90 - I_intval('1E-4') * 90  - I_intval('1E-3') * (1020 - 271) - I_intval('1E-4') * (j - 1020);
     else
         error('Invalid value of j');
     end
@@ -146,9 +142,9 @@ end
 % The value is chosen based on the region (defined by 'j').
 function val=N_rho(i,j)
     if j<600
-        val=64;
+        val=32;
     else
-        val=80;
+        val=50;
     end
 end
 
@@ -159,9 +155,9 @@ end
 % to avoid difficulties in choosing the shift 'rho'.
 % Otherwise, it returns 1 (true).
 function val=isLG(x,y)
-    if (x-0.8893)^2+(y-0.4571)^2<(0.1)^2
-        val=0;
-    else
+    if 0.3<y
         val=1;
+    else
+        val=0;
     end
 end
