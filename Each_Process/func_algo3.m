@@ -8,7 +8,7 @@
 function func_algo3(j_list)
     
     % Define the output file name for storing results for the Omega_down^(2) region.
-    file_name_result = ['DirichletSimplicityClustered/results/step3_bounds_' num2str(min(j_list)) '_' num2str(max(j_list)) '.csv'];
+    file_name_result = ['../results/step3_bounds_' num2str(min(j_list)) '_' num2str(max(j_list)) '.csv'];
     
     % Check if a results file already exists and read its content to avoid re-computation.
     if isfile(file_name_result)
@@ -68,7 +68,7 @@ function func_algo3(j_list)
                     % Store the new results: grid indices and guaranteed bounds.
                     new_data = [i, j, inf(blams_(1)), sup(blams_(1)), inf(blams_(2)), sup(blams_(2))]
                     % Append the newly computed bounds to the CSV file.
-                    % writematrix(new_data, file_name_result, 'WriteMode', 'append');
+                    writematrix(new_data, file_name_result, 'WriteMode', 'append');
                 else
                     break;
                 end
