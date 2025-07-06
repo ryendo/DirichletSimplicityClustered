@@ -12,7 +12,8 @@ function func_algo2(j_list)
     
     % Define the output file name for storing results.
     % The name is based on the range of the 'j' index being processed.
-    file_name_result = ['DirichletSimplicityClustered/results/step2_bounds_' num2str(min(j_list)) '_' num2str(max(j_list)) '.csv'];
+    pwd
+    file_name_result = ['../results/step2_bounds_' num2str(min(j_list)) '_' num2str(max(j_list)) '.csv']
     
     % Check if a results file already exists and read its content.
     % This prevents re-computation for subdomains that have already been processed.
