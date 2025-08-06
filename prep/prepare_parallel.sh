@@ -1,6 +1,6 @@
 #!/bin/bash
 # Define MAX_JOBS at the beginning of the script
-MAX_JOBS=2  # Adjust this value as needed
+MAX_JOBS=40  # Adjust this value as needed
 # Get the absolute path of the current directory
 SCRIPT_DIR=$(pwd)
 # Define source and target directories
@@ -12,11 +12,6 @@ mkdir -p "$TARGET_BASE_DIR"
 # Check if list_j.csv exists
 if [ ! -f "${SCRIPT_DIR}/prep/algo2_list_j.csv" ]; then
     echo "Error: 'prep/algo2_list_j.csv' does not exist. Please run prep.sh first."
-    exit 1
-fi
-
-if [ ! -f "${SCRIPT_DIR}/prep/algo3_list_j.csv" ]; then
-    echo "Error: 'prep/algo3_list_j.csv' does not exist. Please run prep.sh first."
     exit 1
 fi
 

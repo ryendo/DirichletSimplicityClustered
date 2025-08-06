@@ -108,9 +108,9 @@ M_ip_edge3 = Lagrange_inner_product_edge_L1L2L3_all(Lagrange_order, 3);
 M_ip_basis_grad = cell(nbasis, nbasis);
 M_ip_basis_ij   = zeros(nbasis, nbasis);
 M_ip_basis_edge = cell(3,1);
-Mb1 = intval(zeros(nbasis, nbasis));
-Mb2 = intval(zeros(nbasis, nbasis));
-Mb3 = intval(zeros(nbasis, nbasis));
+Mb1 = I_intval(zeros(nbasis, nbasis));
+Mb2 = I_intval(zeros(nbasis, nbasis));
+Mb3 = I_intval(zeros(nbasis, nbasis));
 for i = 1:nbasis
     for j = i:nbasis
         eg = Lagrange_create_coord_basis_grad(basis, i, Lagrange_order);
@@ -160,14 +160,14 @@ X2 = vert(tri(:,2),:);
 X3 = vert(tri(:,3),:);
 
 % B(:,:,k) and its det & inverse
-B    = intval(zeros(2,2,nt));
+B    = I_intval(zeros(2,2,nt));
 B(1,1,:) = X2(:,1) - X1(:,1);
 B(2,1,:) = X2(:,2) - X1(:,2);
 B(1,2,:) = X3(:,1) - X1(:,1);
 B(2,2,:) = X3(:,2) - X1(:,2);
 
 detB = squeeze(B(1,1,:).*B(2,2,:) - B(1,2,:).*B(2,1,:));
-Binv = intval(zeros(2,2,nt));
+Binv = I_intval(zeros(2,2,nt));
 Binv(1,1,:) =  B(2,2,:);
 Binv(1,2,:) = -B(1,2,:);
 Binv(2,1,:) = -B(2,1,:);
@@ -177,14 +177,14 @@ for k = 1:nt
 end
 
 % Precompute K(:,:,k) = kron(Binv(:,:,k)', Binv(:,:,k)')
-K = intval(zeros(4,4,nt));
+K = I_intval(zeros(4,4,nt));
 for k = 1:nt
     K(:,:,k) = kron(Binv(:,:,k)', Binv(:,:,k)');
 end
 
 % Compute M_base_all (4×nb^2×nt)
 p = size(S_vec,2);
-M_tmp = intval(zeros(4,p,nt));
+M_tmp = I_intval(zeros(4,p,nt));
 for m = 1:4
     Km = reshape(K(:,m,:),4,1,nt);
     Sm = reshape(S_vec(m,:),1,p,1);

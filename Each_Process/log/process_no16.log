@@ -110,7 +110,7 @@ Finished about 95 %
 Finished about 97 %
 Finished about 98 %
  
-===> Data written to /home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12_no2/Matlab_23.2.0.2459199 (R2023b) Update 5_Intlab_Version_12_glnxa6423_2_0_2459199.mat
+===> Data written to /home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12_no16/Matlab_23.2.0.2459199 (R2023b) Update 5_Intlab_Version_12_glnxa6423_2_0_2459199.mat
  
 Error estimates in stdfctsdata successfully completed
  
@@ -204,11 +204,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2444,    7.9264] 
-[    8.2063,    8.9442] 
+[    6.6304,    7.2467] 
+[    7.5400,    8.2073] 
 new_data =
    1.0e+03 *
-    0.0010    0.0120    7.2445    7.9263    8.2064    8.9441
+    0.0010    0.0130    6.6305    7.2467    7.5401    8.2072
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -217,11 +217,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2415,    7.9238] 
-[    8.2094,    8.9422] 
+[    6.6273,    7.2445] 
+[    7.5440,    8.2064] 
 new_data =
    1.0e+03 *
-    0.0020    0.0120    7.2415    7.9238    8.2095    8.9422
+    0.0020    0.0130    6.6273    7.2445    7.5440    8.2064
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -230,11 +230,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2402,    7.9212] 
-[    8.2180,    8.9443] 
+[    6.6253,    7.2416] 
+[    7.5532,    8.2095] 
 new_data =
    1.0e+03 *
-    0.0030    0.0120    7.2402    7.9211    8.2180    8.9442
+    0.0030    0.0130    6.6253    7.2415    7.5533    8.2095
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -243,11 +243,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2416,    7.9208] 
-[    8.2310,    8.9519] 
+[    6.6255,    7.2403] 
+[    7.5664,    8.2181] 
 new_data =
    1.0e+03 *
-    0.0040    0.0120    7.2417    7.9208    8.2310    8.9519
+    0.0040    0.0130    6.6256    7.2402    7.5664    8.2180
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -256,11 +256,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2452,    7.9238] 
-[    8.2441,    8.9646] 
+[    6.6279,    7.2417] 
+[    7.5798,    8.2311] 
 new_data =
    1.0e+03 *
-    0.0050    0.0120    7.2452    7.9237    8.2441    8.9645
+    0.0050    0.0130    6.6279    7.2417    7.5798    8.2310
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -269,11 +269,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2512,    7.9287] 
-[    8.2562,    8.9770] 
+[    6.6328,    7.2453] 
+[    7.5920,    8.2442] 
 new_data =
    1.0e+03 *
-    0.0060    0.0120    7.2512    7.9287    8.2562    8.9770
+    0.0060    0.0130    6.6328    7.2452    7.5920    8.2441
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -282,11 +282,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2708,    7.9362] 
-[    8.2849,    8.9887] 
+[    6.6507,    7.2513] 
+[    7.6191,    8.2563] 
 new_data =
    1.0e+03 *
-    0.0070    0.0120    7.2709    7.9361    8.2850    8.9887
+    0.0070    0.0130    6.6507    7.2512    7.6191    8.2562
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -295,11 +295,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.3219,    7.9580] 
-[    8.3560,    9.0188] 
+[    6.6988,    7.2709] 
+[    7.6848,    8.2850] 
 new_data =
    1.0e+03 *
-    0.0080    0.0120    7.3219    7.9580    8.3561    9.0187
+    0.0080    0.0130    6.6988    7.2709    7.6849    8.2850
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -308,11 +308,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.4878,    8.0126] 
-[    8.5728,    9.0949] 
+[    6.8545,    7.3220] 
+[    7.8783,    8.3561] 
 new_data =
    1.0e+03 *
-    0.0090    0.0120    7.4878    8.0126    8.5729    9.0949
+    0.0090    0.0130    6.8546    7.3219    7.8784    8.3561
 Unable to communicate with required MathWorks services (error 5001).
 
 Troubleshoot this issue by visiting: 
@@ -350,10 +350,10 @@ deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
-  51_.____
+  5__.____
   7__.____
 new_data =
-    1.0000   61.0000  503.5854  518.7998  679.4862  699.3084
+    1.0000   59.0000  535.1149  551.9951  718.1873  739.6444
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -361,21 +361,10 @@ deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
-  51_.____
-  69_.____
-new_data =
-    2.0000   61.0000  503.3334  518.9529  681.0884  698.3875
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  51_.____
+  5__.____
   7__.____
 new_data =
-    3.0000   61.0000  502.8377  518.6790  684.5677  700.0499
+    2.0000   59.0000  534.8180  552.1254  719.8996  738.9395
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -383,10 +372,10 @@ deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
-  51_.____
+  5__.____
   7__.____
 new_data =
-    4.0000   61.0000  502.4598  518.1603  688.5806  703.4902
+    3.0000   59.0000  534.2747  551.8043  723.2771  740.6876
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -394,21 +383,10 @@ deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
-  51_.____
-  70_.____
-new_data =
-    5.0000   61.0000  502.6900  517.7699  692.0049  707.3603
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  51_.____
+  5__.____
   7__.____
 new_data =
-    6.0000   61.0000  504.1164  518.0134  694.5342  710.6314
+    4.0000   59.0000  533.8699  551.2346  726.9741  743.9667
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -416,10 +394,21 @@ deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
-  51_.____
+  5__.____
+  74_.____
+new_data =
+    5.0000   59.0000  534.1248  550.8130  730.0812  747.4445
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem
+intval blams_ = 
+  5__.____
   7__.____
 new_data =
-    7.0000   61.0000  507.4190  519.5010  696.7699  713.0606
+    6.0000   59.0000  535.6736  551.0774  732.4081  750.3731
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -427,10 +416,10 @@ deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
-  52_.____
+  5__.____
   7__.____
 new_data =
-    8.0000   61.0000  513.3557  522.9450  699.7351  715.2548
+    7.0000   59.0000  539.2629  552.6872  734.5477  752.5964
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -438,10 +427,21 @@ deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
-  53_.____
-  71_.____
+  55_.____
+  7__.____
 new_data =
-    9.0000   61.0000  522.7498  529.1473  705.7608  718.2439
+    8.0000   59.0000  545.7416  556.4257  737.5356  754.6636
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem
+intval blams_ = 
+  56_.____
+  75_.____
+new_data =
+    9.0000   59.0000  556.0479  563.1919  743.9985  757.6155
 
                             < M A T L A B (R) >
                   Copyright 1984-2023 The MathWorks, Inc.
@@ -466,12 +466,22 @@ For product information, visit www.mathworks.com.
 *****  requires a special license. Please contact me  rump (at) tuhh.de  
  
  
+Unable to communicate with required MathWorks services (error 5001).
+
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
+
+
 
                             < M A T L A B (R) >
                   Copyright 1984-2023 The MathWorks, Inc.
              R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
                              November 28, 2023
 
+[Warning: Unable to load Toolbox Path Cache
+/home/rendo/.matlab/R2023b/toolbox_cache-23.2.0-3204837078-glnxa64.xml. The
+cache file is not in the correct format. It will be regenerated upon quitting
+MATLAB.] 
  
 To get started, type doc.
 For product information, visit www.mathworks.com.

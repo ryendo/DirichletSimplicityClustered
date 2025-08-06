@@ -110,7 +110,7 @@ Finished about 95 %
 Finished about 97 %
 Finished about 98 %
  
-===> Data written to /home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12_no2/Matlab_23.2.0.2459199 (R2023b) Update 5_Intlab_Version_12_glnxa6423_2_0_2459199.mat
+===> Data written to /home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12_no35/Matlab_23.2.0.2459199 (R2023b) Update 5_Intlab_Version_12_glnxa6423_2_0_2459199.mat
  
 Error estimates in stdfctsdata successfully completed
  
@@ -174,10 +174,6 @@ INTLAB uses several control variables; to check the default values call "intlabs
              R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
                              November 28, 2023
 
-[Warning: Unable to load Toolbox Path Cache
-/home/rendo/.matlab/R2023b/toolbox_cache-23.2.0-3204837078-glnxa64.xml. The
-cache file is not in the correct format. It will be regenerated upon quitting
-MATLAB.] 
  
 To get started, type doc.
 For product information, visit www.mathworks.com.
@@ -204,11 +200,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2444,    7.9264] 
-[    8.2063,    8.9442] 
+[    3.2124,    3.4577] 
+[    3.7909,    4.0599] 
 new_data =
    1.0e+03 *
-    0.0010    0.0120    7.2445    7.9263    8.2064    8.9441
+    0.0010    0.0220    3.2125    3.4577    3.7909    4.0599
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -217,11 +213,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2415,    7.9238] 
-[    8.2094,    8.9422] 
+[    3.2094,    3.4572] 
+[    3.7963,    4.0627] 
 new_data =
    1.0e+03 *
-    0.0020    0.0120    7.2415    7.9238    8.2095    8.9422
+    0.0020    0.0220    3.2094    3.4571    3.7963    4.0626
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -230,11 +226,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2402,    7.9212] 
-[    8.2180,    8.9443] 
+[    3.2059,    3.4540] 
+[    3.8046,    4.0682] 
 new_data =
    1.0e+03 *
-    0.0030    0.0120    7.2402    7.9211    8.2180    8.9442
+    0.0030    0.0220    3.2060    3.4539    3.8047    4.0682
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -243,11 +239,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2416,    7.9208] 
-[    8.2310,    8.9519] 
+[    3.2032,    3.4505] 
+[    3.8133,    4.0770] 
 new_data =
    1.0e+03 *
-    0.0040    0.0120    7.2417    7.9208    8.2310    8.9519
+    0.0040    0.0220    3.2033    3.4504    3.8133    4.0769
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -256,11 +252,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2452,    7.9238] 
-[    8.2441,    8.9646] 
+[    3.2029,    3.4478] 
+[    3.8208,    4.0863] 
 new_data =
    1.0e+03 *
-    0.0050    0.0120    7.2452    7.9237    8.2441    8.9645
+    0.0050    0.0220    3.2029    3.4477    3.8208    4.0862
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -269,11 +265,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2512,    7.9287] 
-[    8.2562,    8.9770] 
+[    3.2054,    3.4474] 
+[    3.8249,    4.0947] 
 new_data =
    1.0e+03 *
-    0.0060    0.0120    7.2512    7.9287    8.2562    8.9770
+    0.0060    0.0220    3.2055    3.4473    3.8249    4.0947
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -282,11 +278,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.2708,    7.9362] 
-[    8.2849,    8.9887] 
+[    3.2177,    3.4498] 
+[    3.8341,    4.0996] 
 new_data =
    1.0e+03 *
-    0.0070    0.0120    7.2709    7.9361    8.2850    8.9887
+    0.0070    0.0220    3.2177    3.4498    3.8341    4.0996
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -295,11 +291,11 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.3219,    7.9580] 
-[    8.3560,    9.0188] 
+[    3.2517,    3.4623] 
+[    3.8607,    4.1102] 
 new_data =
    1.0e+03 *
-    0.0080    0.0120    7.3219    7.9580    8.3561    9.0187
+    0.0080    0.0220    3.2518    3.4622    3.8608    4.1102
 deal the mesh...
 create matrix...
 begin to solve eigenvalue problem
@@ -308,185 +304,188 @@ create matrix...
 begin to solve eigenvalue problem
 intval blams_ = 
   1.0e+003 *
-[    7.4878,    8.0126] 
-[    8.5728,    9.0949] 
+[    3.3438,    3.4975] 
+[    3.9371,    4.1393] 
 new_data =
    1.0e+03 *
-    0.0090    0.0120    7.4878    8.0126    8.5729    9.0949
+    0.0090    0.0220    3.3438    3.4974    3.9371    4.1392
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
 Unable to communicate with required MathWorks services (error 5001).
 
 Troubleshoot this issue by visiting: 
 https://www.mathworks.com/support/lme/5001
 
 
+Unable to communicate with required MathWorks services (error 5001).
 
-                            < M A T L A B (R) >
-                  Copyright 1984-2023 The MathWorks, Inc.
-             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
-                             November 28, 2023
+Troubleshoot this issue by visiting: 
+https://www.mathworks.com/support/lme/5001
 
- 
-To get started, type doc.
-For product information, visit www.mathworks.com.
- 
- 
- 
-=========================================================================
-*****  Please provide proper reference to                                
-*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
-*****       editor, Developments in Reliable Computing, pages 77-104.    
-*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
-*****       http://www.ti3.tuhh.de/intlab .                              
-*****                                                                    
-*****  Commercial use or use in conjunction with a commercial program    
-*****  which requires INTLAB or part of INTLAB to function properly      
-*****  requires a special license. Please contact me  rump (at) tuhh.de  
- 
- 
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  51_.____
-  7__.____
-new_data =
-    1.0000   61.0000  503.5854  518.7998  679.4862  699.3084
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  51_.____
-  69_.____
-new_data =
-    2.0000   61.0000  503.3334  518.9529  681.0884  698.3875
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  51_.____
-  7__.____
-new_data =
-    3.0000   61.0000  502.8377  518.6790  684.5677  700.0499
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  51_.____
-  7__.____
-new_data =
-    4.0000   61.0000  502.4598  518.1603  688.5806  703.4902
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  51_.____
-  70_.____
-new_data =
-    5.0000   61.0000  502.6900  517.7699  692.0049  707.3603
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  51_.____
-  7__.____
-new_data =
-    6.0000   61.0000  504.1164  518.0134  694.5342  710.6314
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  51_.____
-  7__.____
-new_data =
-    7.0000   61.0000  507.4190  519.5010  696.7699  713.0606
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  52_.____
-  7__.____
-new_data =
-    8.0000   61.0000  513.3557  522.9450  699.7351  715.2548
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-deal the mesh...
-create matrix...
-begin to solve eigenvalue problem
-intval blams_ = 
-  53_.____
-  71_.____
-new_data =
-    9.0000   61.0000  522.7498  529.1473  705.7608  718.2439
 
-                            < M A T L A B (R) >
-                  Copyright 1984-2023 The MathWorks, Inc.
-             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
-                             November 28, 2023
-
- 
-To get started, type doc.
-For product information, visit www.mathworks.com.
- 
- 
- 
-=========================================================================
-*****  Please provide proper reference to                                
-*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
-*****       editor, Developments in Reliable Computing, pages 77-104.    
-*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
-*****       http://www.ti3.tuhh.de/intlab .                              
-*****                                                                    
-*****  Commercial use or use in conjunction with a commercial program    
-*****  which requires INTLAB or part of INTLAB to function properly      
-*****  requires a special license. Please contact me  rump (at) tuhh.de  
- 
- 
-
-                            < M A T L A B (R) >
-                  Copyright 1984-2023 The MathWorks, Inc.
-             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
-                             November 28, 2023
-
- 
-To get started, type doc.
-For product information, visit www.mathworks.com.
- 
- 
- 
-=========================================================================
-*****  Please provide proper reference to                                
-*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
-*****       editor, Developments in Reliable Computing, pages 77-104.    
-*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
-*****       http://www.ti3.tuhh.de/intlab .                              
-*****                                                                    
-*****  Commercial use or use in conjunction with a commercial program    
-*****  which requires INTLAB or part of INTLAB to function properly      
-*****  requires a special license. Please contact me  rump (at) tuhh.de  
- 
- 
