@@ -143,7 +143,7 @@ If the proof fails for any sector, it will instead print a `PROOF FAILED` messag
 
 **CSV Output Example (`results/quotients_... .csv`):**
 
-The output file stores the bounds for each angular sector `idx`. The columns are: `idx`, `inf(μ_1)`, `sup(μ_1)`, `inf(μ_2)`, `sup(μ_2)`. The critical condition `sup(μ_1) < inf(μ_2)` holds for every row.
+The output file stores the bounds for each angular sector `idx`. The columns are: `idx`, `inf(μ_2)`, `sup(μ_2)`, `inf(μ_3)`, `sup(μ_3)`. The critical condition `sup(μ_2) < inf(μ_3)` holds for every row.
 
 ```csv
 1,51.890289,51.890313,73.541893,73.541913
