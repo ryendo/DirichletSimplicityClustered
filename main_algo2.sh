@@ -1,5 +1,4 @@
 #!/bin/bash
-# This script runs the main computation in a robust, parallel, and restartable manner.
 
 # --- Configuration ---
 MAX_JOBS=40  # Adjust this value as needed
