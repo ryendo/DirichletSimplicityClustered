@@ -55,18 +55,12 @@ function func_algo3(j_list)
                     % The Lehmann-Goerisch method is disabled (second argument is 0).
                     % 'llams_': Lower eigenvalue bounds for the cell, computed on the smallest triangle.
                     % 'ulams_': Upper eigenvalue bounds for the cell, computed on the largest triangle.
-                    if upper_right(6)<0.09
-                        N_rho = 400;
-                        fem_ord = 1;
-                        llams_ = calc_eigen_bounds_any_order(upper_right, 0, N_rho, fem_ord, 0);
-                        ulams_ = calc_eigen_bounds_any_order(lower_left, 0, N_rho, fem_ord, 0);
+                    if upper_right(6) < 0.2
+                        N_rho = 400; fem_ord = 1; N_LG = 0; isLG = 0;
+                    elseif upper_right(6) < 0.7
+                        N_rho = 64; fem_ord = 0; N_LG = 0; isLG = 0;
                     else
-                        N_rho = 32;
-                        fem_ord = 3;
-                        N_LG = 8;
-                        isLG = 1;
-                        llams_ = calc_eigen_bounds_any_order(upper_right, N_LG, N_rho, fem_ord, isLG);
-                        ulams_ = calc_eigen_bounds_any_order(lower_left, N_LG, N_rho, fem_ord, isLG);
+                        N_rho = 32; fem_ord = 4; N_LG = 8; isLG = 1;
                     end
                     
                     % Compute the interval hull to get the final guaranteed bounds for the entire cell.
