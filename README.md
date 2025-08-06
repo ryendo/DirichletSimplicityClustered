@@ -84,7 +84,7 @@ This algorithm is run as a standard MATLAB script and does not use the parallel 
     >> main_algo1
     ```
 
-### Algorithms 2 & 3 (Parallel Eigenvalue Bounds)
+### Algorithms 2 (Parallel Eigenvalue Bounds)
 
 These algorithms are run from the shell and utilize a parallel framework.
 
