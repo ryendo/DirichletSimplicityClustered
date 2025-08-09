@@ -15,7 +15,7 @@ By applying guaranteed computation techniques based on the Finite Element Method
 The overall strategy is a two-pronged attack, dividing the parameter space of triangles $\\Omega$ into distinct regions:
 
   * For nearly equilateral triangles ($\\Omega\_{up}$), the difference quotient method is used to prove that $D\\lambda\_{2}(p\_{0},p)\<D\\lambda\_{3}(p\_0, p)$ for any perturbation $p$ from the equilateral vertex $p\_0$. Since $\\lambda\_{2}^{p\_{0}}=\\lambda\_{3}^{p\_{0}}$, this rigorously implies $\\lambda\_{2}^{p}\<\\lambda\_{3}^{p}$.
-  * For other triangles ($\\Omega\_{down}^{(1)}, \\Omega\_{down}^{(2)}$), high-precision upper and lower bounds are computed directly to show a definitive gap, $\\overline{\\lambda}*{2}^{p}\<\\underline{\\lambda}*{3}^{p}$.
+  * For other triangles ($\\Omega\_{down}$), high-precision upper and lower bounds are computed directly to show a definitive gap, $\\overline{\\lambda}*{2}^{p}\<\\underline{\\lambda}*{3}^{p}$.
 
 ## Project Structure
 
@@ -32,7 +32,6 @@ The repository is organized as follows:
 ├── results/              # Final stored results from computations
 ├── main_algo1.m          # Main MATLAB script for Algorithm 1
 ├── main_algo2.sh         # Main execution script for Algorithm 2
-├── main_algo3.sh         # Execution script for Algorithm 3
 ├── my_intlab_config_alone.m # Standalone INTLAB configuration
 ├── prep.sh               # Master script to run all preparation steps
 └── README.md             # This file
@@ -102,14 +101,11 @@ These algorithms are run from the shell and utilize a parallel framework.
 
 2.  **Main Computations:**
 
-      * To analyze the $\\Omega\_{down}^{(1)}$ region (Algorithm 2):
+      * To analyze the $\\Omega\_{down}$ region (Algorithm 2):
         ```bash
         bash ./main_algo2.sh
         ```
-      * To analyze the $\\Omega\_{down}^{(2)}$ region (Algorithm 3):
-        ```bash
-        bash ./main_algo3.sh
-        ```
+      
 
 3.  **Monitoring the Process:**
     For the parallel scripts, you can monitor the status:
@@ -159,9 +155,9 @@ The output file stores the bounds for each angular sector `idx`. The columns are
 
 -----
 
-#### Algorithms 2 & 3: Parallel Eigenvalue Bounds
+#### Algorithms 2: Parallel Eigenvalue Bounds
 
-The parallel scripts `main_algo2.sh` and `main_algo3.sh` do not produce a single summary message in the main terminal upon completion. Instead, they generate individual result files for each computational task (`j` index) inside the `results/` directory.
+The parallel script `main_algo2.sh` does not produce a single summary message in the main terminal upon completion. Instead, they generate individual result files for each computational task (`j` index) inside the `results/` directory.
 
 The progress and status of each worker can be monitored through the log files in `Each_Process/log/`.
 
@@ -169,8 +165,7 @@ The progress and status of each worker can be monitored through the log files in
 
 The scripts will create separate CSV files for each task `j`. The file names indicate which algorithm and task they correspond to.
 
-  * **Algorithm 2:** The results are stored in files like `results/algo2_j_1.csv`, `results/algo2_j_2.csv`, etc., up to the last `j` index (1220).
-  * **Algorithm 3:** The results are stored in files like `results/algo3_j_1.csv`, `results/algo3_j_2.csv`, etc.
+  * **Algorithm 2:** The results are stored in files like `results/algo2_j_1.csv`, `results/algo2_j_2.csv`, etc.
 
 Each file contains the rigorous lower and upper bounds for $\\lambda\_2$ and $\\lambda\_3$ for the specific sub-region `R_ij` that the task `j` was responsible for. A successful proof for that region is confirmed if the upper bound for $\\lambda\_2$ is less than the lower bound for $\\lambda\_3$. The collection of all these files constitutes the proof for the $\\Omega\_{down}$ regions.
 
@@ -181,8 +176,7 @@ Each file contains the rigorous lower and upper bounds for $\\lambda\_2$ and $\\
 ### Root Directory
 
   * `main_algo1.m`: Implements **Algorithm 1** from the paper. This script analyzes the nearly equilateral region $\\Omega\_{up}$ by rigorously computing the difference quotients of $\\lambda\_2$ and $\\lambda\_3$. It solves the generalized matrix eigenvalue problem $M\_{t}\\sigma=\\mu N\_{t}\\sigma$ using interval arithmetic to obtain guaranteed bounds on the difference quotients.
-  * `main_algo2.sh`: The main parallel execution engine for **Algorithm 2**. It analyzes the $\\Omega\_{down}^{(1)}$ region by partitioning it into small rectangles $R\_{ij}$ and applying perturbation estimates. It uses a robust worker pool model to distribute the computation of the eigenvalue bounds.
-  * `main_algo3.sh`: A parallel runner for **Algorithm 3**. It analyzes the $\\Omega\_{down}^{(2)}$ region, where triangles are more degenerate. This algorithm leverages the domain monotonicity property of Dirichlet eigenvalues to establish bounds.
+  * `main_algo2.sh`: The main parallel execution engine for **Algorithm 2**. It analyzes the $\\Omega\_{down}$ region by partitioning it into small rectangles $R\_{ij}$ and applying perturbation estimates. It uses a robust worker pool model to distribute the computation of the eigenvalue bounds.
   * `my_intlab_config_alone.m`: A setup script to initialize the INTLAB guaranteed computation environment for a single, non-parallel MATLAB session. It must be run in MATLAB before executing `main_algo1.m`.
 
 ### Preparation Scripts (`prep/`)
@@ -194,7 +188,6 @@ Each file contains the rigorous lower and upper bounds for $\\lambda\_2$ and $\\
 ### Core MATLAB Code (`Each_Process/`)
 
   * `func_algo2.m`: Implements the core logic for **Algorithm 2**. It computes rigorous eigenvalue bounds for each subdomain `R_ij`.
-  * `func_algo3.m`: Implements the core logic for **Algorithm 3**, using domain monotonicity.
   * `my_intlab_mode_config.m`: Configures the INTLAB environment for each specific parallel worker process.
   * **`functions/` directory:** Contains various helper functions.
       * `calc_eigen_bounds_any_order.m`: A core function that calculates high-precision eigenvalue bounds, utilizing the Lehmann-Goerisch method.

@@ -1,10 +1,8 @@
-WARNING: package sun.awt.X11 not in java.desktop
-WARNING: package sun.awt.X11 not in java.desktop
 
                             < M A T L A B (R) >
-                  Copyright 1984-2024 The MathWorks, Inc.
-                  R2024b (24.2.0.2712019) 64-bit (maca64)
-                              August 22, 2024
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
 
  
 To get started, type doc.
@@ -24,13 +22,23 @@ For product information, visit www.mathworks.com.
 *****  requires a special license. Please contact me  rump (at) tuhh.de  
  
  
-WARNING: package sun.awt.X11 not in java.desktop
-WARNING: package sun.awt.X11 not in java.desktop
+deactivated saving of .mat file
+[Warning: Initializing MATLAB Graphics failed.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:dispatcher:recursiveLoading
+Trying to load file "/usr/local/MATLAB/R2023b/bin/glnxa64/libmwhgbuiltins.so"
+while it is being loaded.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hgrc', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m', 151)" style="font-weight:bold">hgrc</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m',151,0)">line 151</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.initialize', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m', 15)" style="font-weight:bold">matlab.graphics.internal.initialize</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m',15,0)">line 15</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('cleardata', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/utility/@char/private/cleardata.m', 34)" style="font-weight:bold">cleardata</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/utility/@char/private/cleardata.m',34,0)">line 34</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('char/clear', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/utility/@char/clear.m', 82)" style="font-weight:bold">char/clear</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/utility/@char/clear.m',82,0)">line 82</a>)] 
+
 
                             < M A T L A B (R) >
-                  Copyright 1984-2024 The MathWorks, Inc.
-                  R2024b (24.2.0.2712019) 64-bit (maca64)
-                              August 22, 2024
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
 
  
 To get started, type doc.
@@ -50,155 +58,4951 @@ For product information, visit www.mathworks.com.
 *****  requires a special license. Please contact me  rump (at) tuhh.de  
  
  
+deactivated saving of .mat file
+Value of r,h
+[Warning: Initializing MATLAB Graphics failed.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:dispatcher:recursiveLoading
+Trying to load file "/usr/local/MATLAB/R2023b/bin/glnxa64/libmwhgbuiltins.so"
+while it is being loaded.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hgrc', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m', 151)" style="font-weight:bold">hgrc</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m',151,0)">line 151</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.initialize', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m', 15)" style="font-weight:bold">matlab.graphics.internal.initialize</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m',15,0)">line 15</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/disp_', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m', 145)" style="font-weight:bold">intval/disp_</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m',145,0)">line 145</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/display', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m', 65)" style="font-weight:bold">intval/display</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m',65,0)">line 65</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('func_algo2', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m', 39)" style="font-weight:bold">func_algo2</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m',39,0)">line 39</a>)] 
+
+intval ans = 
+    0.5006    0.0262
+Value of r_,h_
+intval ans = 
+    0.5269    0.0266
+Value of x,y
+intval ans = 
+    0.5000    0.0262
+Value of x_,y_
+intval ans = 
+    0.5262    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.017951 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 3.280901 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7758,    1.8519] 
+[    1.9534,    2.0387] 
 new_data =
-    1.0000    2.0000  122.8226  122.8232  122.8234  122.8241
+   1.0e+04 *
+    0.0001    0.0001    1.7759    1.8518    1.9534    2.0387
+Verification Successful
+Elapsed time is 3.627469 seconds.
+Value of r,h
+intval ans = 
+    0.5269    0.0262
+Value of r_,h_
+intval ans = 
+    0.5532    0.0266
+Value of x,y
+intval ans = 
+    0.5263    0.0262
+Value of x_,y_
+intval ans = 
+    0.5526    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.128489 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.103167 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7765,    1.8514] 
+[    1.9539,    2.0376] 
 new_data =
-    2.0000    2.0000  122.8226  122.8232  122.8234  122.8241
+   1.0e+04 *
+    0.0002    0.0001    1.7765    1.8513    1.9540    2.0376
+Verification Successful
+Elapsed time is 9.176219 seconds.
+Value of r,h
+intval ans = 
+    0.5532    0.0262
+Value of r_,h_
+intval ans = 
+    0.5795    0.0266
+Value of x,y
+intval ans = 
+    0.5526    0.0262
+Value of x_,y_
+intval ans = 
+    0.5789    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.367792 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.696166 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7766,    1.8520] 
+[    1.9534,    2.0382] 
 new_data =
-    3.0000    2.0000  122.8225  122.8232  122.8234  122.8242
+   1.0e+04 *
+    0.0003    0.0001    1.7766    1.8520    1.9535    2.0381
+Verification Successful
+Elapsed time is 8.762500 seconds.
+Value of r,h
+intval ans = 
+    0.5795    0.0262
+Value of r_,h_
+intval ans = 
+    0.6058    0.0266
+Value of x,y
+intval ans = 
+    0.5789    0.0262
+Value of x_,y_
+intval ans = 
+    0.6052    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.180504 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.943532 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7770,    1.8522] 
+[    1.9532,    2.0377] 
 new_data =
-    4.0000    2.0000  122.8225  122.8232  122.8234  122.8242
+   1.0e+04 *
+    0.0004    0.0001    1.7771    1.8521    1.9532    2.0376
+Verification Successful
+Elapsed time is 8.978708 seconds.
+Value of r,h
+intval ans = 
+    0.6058    0.0262
+Value of r_,h_
+intval ans = 
+    0.6320    0.0266
+Value of x,y
+intval ans = 
+    0.6052    0.0262
+Value of x_,y_
+intval ans = 
+    0.6315    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.857009 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.901376 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7781,    1.8527] 
+[    1.9536,    2.0374] 
 new_data =
-    5.0000    2.0000  122.8225  122.8232  122.8234  122.8242
+   1.0e+04 *
+    0.0005    0.0001    1.7782    1.8526    1.9537    2.0373
+Verification Successful
+Elapsed time is 8.992762 seconds.
+Value of r,h
+intval ans = 
+    0.6320    0.0262
+Value of r_,h_
+intval ans = 
+    0.6583    0.0266
+Value of x,y
+intval ans = 
+    0.6315    0.0262
+Value of x_,y_
+intval ans = 
+    0.6578    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.883211 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.054371 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7784,    1.8538] 
+[    1.9526,    2.0379] 
 new_data =
-    6.0000    2.0000  122.8225  122.8232  122.8235  122.8242
+   1.0e+04 *
+    0.0006    0.0001    1.7784    1.8538    1.9527    2.0379
+Verification Successful
+Elapsed time is 9.080306 seconds.
+Value of r,h
+intval ans = 
+    0.6583    0.0262
+Value of r_,h_
+intval ans = 
+    0.6846    0.0266
+Value of x,y
+intval ans = 
+    0.6578    0.0262
+Value of x_,y_
+intval ans = 
+    0.6841    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.089914 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.345246 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7801,    1.8541] 
+[    1.9536,    2.0368] 
 new_data =
-    7.0000    2.0000  122.8225  122.8232  122.8235  122.8242
+   1.0e+04 *
+    0.0007    0.0001    1.7802    1.8541    1.9536    2.0368
+Verification Successful
+Elapsed time is 9.367295 seconds.
+Value of r,h
+intval ans = 
+    0.6846    0.0262
+Value of r_,h_
+intval ans = 
+    0.7109    0.0266
+Value of x,y
+intval ans = 
+    0.6841    0.0262
+Value of x_,y_
+intval ans = 
+    0.7104    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.339696 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.351580 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7806,    1.8560] 
+[    1.9525,    2.0378] 
 new_data =
-    8.0000    2.0000  122.8225  122.8232  122.8235  122.8242
+   1.0e+04 *
+    0.0008    0.0001    1.7807    1.8559    1.9525    2.0378
+Verification Successful
+Elapsed time is 9.372925 seconds.
+Value of r,h
+intval ans = 
+    0.7109    0.0262
+Value of r_,h_
+intval ans = 
+    0.7372    0.0266
+Value of x,y
+intval ans = 
+    0.7104    0.0262
+Value of x_,y_
+intval ans = 
+    0.7367    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.380186 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.321944 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7823,    1.8566] 
+[    1.9529,    2.0367] 
 new_data =
-    9.0000    2.0000  122.8224  122.8231  122.8235  122.8242
+   1.0e+04 *
+    0.0009    0.0001    1.7823    1.8565    1.9529    2.0366
+Verification Successful
+Elapsed time is 9.346473 seconds.
+Value of r,h
+intval ans = 
+    0.7372    0.0262
+Value of r_,h_
+intval ans = 
+    0.7634    0.0266
+Value of x,y
+intval ans = 
+    0.7367    0.0262
+Value of x_,y_
+intval ans = 
+    0.7630    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.346725 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.055688 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7838,    1.8583] 
+[    1.9530,    2.0371] 
 new_data =
-   10.0000    2.0000  122.8224  122.8231  122.8235  122.8243
+   1.0e+04 *
+    0.0010    0.0001    1.7839    1.8583    1.9531    2.0371
+Verification Successful
+Elapsed time is 9.077423 seconds.
+Value of r,h
+intval ans = 
+    0.7634    0.0262
+Value of r_,h_
+intval ans = 
+    0.7897    0.0266
+Value of x,y
+intval ans = 
+    0.7630    0.0262
+Value of x_,y_
+intval ans = 
+    0.7893    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.140266 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.073678 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7855,    1.8600] 
+[    1.9531,    2.0373] 
 new_data =
-   11.0000    2.0000  122.8224  122.8231  122.8236  122.8243
+   1.0e+04 *
+    0.0011    0.0001    1.7856    1.8600    1.9531    2.0372
+Verification Successful
+Elapsed time is 9.094967 seconds.
+Value of r,h
+intval ans = 
+    0.7897    0.0262
+Value of r_,h_
+intval ans = 
+    0.8160    0.0266
+Value of x,y
+intval ans = 
+    0.7893    0.0262
+Value of x_,y_
+intval ans = 
+    0.8156    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.031534 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.194563 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7883,    1.8618] 
+[    1.9547,    2.0373] 
 new_data =
-   12.0000    2.0000  122.8224  122.8231  122.8236  122.8243
+   1.0e+04 *
+    0.0012    0.0001    1.7883    1.8618    1.9548    2.0373
+Verification Successful
+Elapsed time is 9.216263 seconds.
+Value of r,h
+intval ans = 
+    0.8160    0.0262
+Value of r_,h_
+intval ans = 
+    0.8423    0.0266
+Value of x,y
+intval ans = 
+    0.8156    0.0262
+Value of x_,y_
+intval ans = 
+    0.8419    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.047167 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.727542 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7903,    1.8648] 
+[    1.9548,    2.0391] 
 new_data =
-   13.0000    2.0000  122.8223  122.8231  122.8236  122.8243
+   1.0e+04 *
+    0.0013    0.0001    1.7903    1.8648    1.9548    2.0390
+Verification Successful
+Elapsed time is 9.746146 seconds.
+Value of r,h
+intval ans = 
+    0.8423    0.0262
+Value of r_,h_
+intval ans = 
+    0.8686    0.0266
+Value of x,y
+intval ans = 
+    0.8419    0.0262
+Value of x_,y_
+intval ans = 
+    0.8681    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.147273 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 11.216819 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7940,    1.8669] 
+[    1.9573,    2.0391] 
 new_data =
-   14.0000    2.0000  122.8223  122.8230  122.8237  122.8244
+   1.0e+04 *
+    0.0014    0.0001    1.7940    1.8669    1.9574    2.0391
+Verification Successful
+Elapsed time is 11.236527 seconds.
+Value of r,h
+intval ans = 
+    0.8686    0.0262
+Value of r_,h_
+intval ans = 
+    0.8948    0.0266
+Value of x,y
+intval ans = 
+    0.8682    0.0262
+Value of x_,y_
+intval ans = 
+    0.8944    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.170662 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.484541 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7974,    1.8709] 
+[    1.9592,    2.0418] 
 new_data =
-   15.0000    2.0000  122.8223  122.8230  122.8237  122.8244
+   1.0e+04 *
+    0.0015    0.0001    1.7974    1.8708    1.9592    2.0418
+Verification Successful
+Elapsed time is 10.504804 seconds.
+Value of r,h
+intval ans = 
+    0.8948    0.0262
+Value of r_,h_
+intval ans = 
+    0.9211    0.0266
+Value of x,y
+intval ans = 
+    0.8945    0.0262
+Value of x_,y_
+intval ans = 
+    0.9207    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.660235 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.534504 seconds.
+intval blams_ = 
+  1.0e+004 *
+    1.8___
+    2.0___
 new_data =
-   16.0000    2.0000  122.8222  122.8230  122.8237  122.8244
+   1.0e+04 *
+    0.0016    0.0001    1.8026    1.8745    1.9634    2.0436
+Verification Successful
+Elapsed time is 9.564863 seconds.
+Value of r,h
+intval ans = 
+    0.9211    0.0262
+Value of r_,h_
+intval ans = 
+    0.9474    0.0266
+Value of x,y
+intval ans = 
+    0.9207    0.0262
+Value of x_,y_
+intval ans = 
+    0.9470    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.519552 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.026873 seconds.
+intval blams_ = 
+  1.0e+004 *
+    1.8___
+    2.0___
 new_data =
-   17.0000    2.0000  122.8222  122.8229  122.8238  122.8244
+   1.0e+04 *
+    0.0017    0.0001    1.8099    1.8800    1.9702    2.0480
+Verification Successful
+Elapsed time is 9.047846 seconds.
+Value of r,h
+intval ans = 
+    0.9474    0.0262
+Value of r_,h_
+intval ans = 
+    0.9737    0.0266
+Value of x,y
+intval ans = 
+    0.9470    0.0262
+Value of x_,y_
+intval ans = 
+    0.9733    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.511441 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.490533 seconds.
+intval blams_ = 
+  1.0e+004 *
+    1.9___
+    2.0___
 new_data =
-   18.0000    2.0000  122.8222  122.8229  122.8238  122.8245
+   1.0e+04 *
+    0.0018    0.0001    1.8213    1.8877    1.9822    2.0551
+Verification Successful
+Elapsed time is 9.511023 seconds.
+Value of r,h
+intval ans = 
+    0.9737    0.0262
+Value of r_,h_
+intval ans = 
+    1.0000    0.0266
+Value of x,y
+intval ans = 
+    0.9733    0.0262
+Value of x_,y_
+intval ans = 
+    0.9996    0.0266
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.537505 seconds.
 deal the mesh...
 create matrix...
-begin to solve eigenvalue problem
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.500997 seconds.
+intval blams_ = 
+  1.0e+004 *
+    1.9___
+    2.0___
 new_data =
-   19.0000    2.0000  122.8221  122.8229  122.8238  122.8245
+   1.0e+04 *
+    0.0019    0.0001    1.8458    1.8997    2.0134    2.0676
+Verification Successful
+Elapsed time is 9.521223 seconds.
+Value of r,h
+intval ans = 
+    1.0000    0.0262
+Value of r_,h_
+intval ans = 
+    1.0262    0.0266
+Value of x,y
+intval ans = 
+    0.9996    0.0262
+Value of x_,y_
+intval ans = 
+    1.0259    0.0266
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+deactivated saving of .mat file
+Value of r,h
+[Warning: Initializing MATLAB Graphics failed.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:dispatcher:recursiveLoading
+Trying to load file "/usr/local/MATLAB/R2023b/bin/glnxa64/libmwhgbuiltins.so"
+while it is being loaded.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hgrc', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m', 151)" style="font-weight:bold">hgrc</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m',151,0)">line 151</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.initialize', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m', 15)" style="font-weight:bold">matlab.graphics.internal.initialize</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m',15,0)">line 15</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/disp_', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m', 145)" style="font-weight:bold">intval/disp_</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m',145,0)">line 145</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/display', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m', 65)" style="font-weight:bold">intval/display</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m',65,0)">line 65</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('func_algo2', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m', 39)" style="font-weight:bold">func_algo2</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m',39,0)">line 39</a>)] 
+
+intval ans = 
+    0.5006    0.0266
+Value of r_,h_
+intval ans = 
+    0.5269    0.0274
+Value of x,y
+intval ans = 
+    0.4999    0.0266
+Value of x_,y_
+intval ans = 
+    0.5262    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.420575 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.621375 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6857,    1.7983] 
+[    1.8564,    1.9810] 
+new_data =
+   1.0e+04 *
+    0.0001    0.0002    1.6857    1.7983    1.8565    1.9809
+Verification Successful
+Elapsed time is 8.964732 seconds.
+Value of r,h
+intval ans = 
+    0.5269    0.0266
+Value of r_,h_
+intval ans = 
+    0.5532    0.0274
+Value of x,y
+intval ans = 
+    0.5262    0.0266
+Value of x_,y_
+intval ans = 
+    0.5525    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.881513 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.601092 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6862,    1.7975] 
+[    1.8569,    1.9796] 
+new_data =
+   1.0e+04 *
+    0.0002    0.0002    1.6863    1.7974    1.8570    1.9795
+Verification Successful
+Elapsed time is 8.667643 seconds.
+Value of r,h
+intval ans = 
+    0.5532    0.0266
+Value of r_,h_
+intval ans = 
+    0.5795    0.0274
+Value of x,y
+intval ans = 
+    0.5526    0.0266
+Value of x_,y_
+intval ans = 
+    0.5788    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.687571 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.545062 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6863,    1.7981] 
+[    1.8565,    1.9801] 
+new_data =
+   1.0e+04 *
+    0.0003    0.0002    1.6864    1.7981    1.8565    1.9801
+Verification Successful
+Elapsed time is 8.603397 seconds.
+Value of r,h
+intval ans = 
+    0.5795    0.0266
+Value of r_,h_
+intval ans = 
+    0.6058    0.0274
+Value of x,y
+intval ans = 
+    0.5789    0.0266
+Value of x_,y_
+intval ans = 
+    0.6051    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.527720 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.308576 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6867,    1.7983] 
+[    1.8562,    1.9796] 
+new_data =
+   1.0e+04 *
+    0.0004    0.0002    1.6868    1.7982    1.8563    1.9796
+Verification Successful
+Elapsed time is 8.340969 seconds.
+Value of r,h
+intval ans = 
+    0.6058    0.0266
+Value of r_,h_
+intval ans = 
+    0.6320    0.0274
+Value of x,y
+intval ans = 
+    0.6052    0.0266
+Value of x_,y_
+intval ans = 
+    0.6314    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.434190 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.528300 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6877,    1.7987] 
+[    1.8566,    1.9794] 
+new_data =
+   1.0e+04 *
+    0.0005    0.0002    1.6877    1.7987    1.8567    1.9793
+Verification Successful
+Elapsed time is 8.642358 seconds.
+Value of r,h
+intval ans = 
+    0.6320    0.0266
+Value of r_,h_
+intval ans = 
+    0.6583    0.0274
+Value of x,y
+intval ans = 
+    0.6315    0.0266
+Value of x_,y_
+intval ans = 
+    0.6577    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.484361 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.506352 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6879,    1.7998] 
+[    1.8557,    1.9798] 
+new_data =
+   1.0e+04 *
+    0.0006    0.0002    1.6880    1.7998    1.8558    1.9798
+Verification Successful
+Elapsed time is 8.528283 seconds.
+Value of r,h
+intval ans = 
+    0.6583    0.0266
+Value of r_,h_
+intval ans = 
+    0.6846    0.0274
+Value of x,y
+intval ans = 
+    0.6578    0.0266
+Value of x_,y_
+intval ans = 
+    0.6841    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.680793 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.671492 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6895,    1.8001] 
+[    1.8566,    1.9788] 
+new_data =
+   1.0e+04 *
+    0.0007    0.0002    1.6895    1.8001    1.8567    1.9788
+Verification Successful
+Elapsed time is 8.690367 seconds.
+Value of r,h
+intval ans = 
+    0.6846    0.0266
+Value of r_,h_
+intval ans = 
+    0.7109    0.0274
+Value of x,y
+intval ans = 
+    0.6841    0.0266
+Value of x_,y_
+intval ans = 
+    0.7104    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.532920 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.532687 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6900,    1.8019] 
+[    1.8556,    1.9798] 
+new_data =
+   1.0e+04 *
+    0.0008    0.0002    1.6900    1.8018    1.8556    1.9797
+Verification Successful
+Elapsed time is 8.551964 seconds.
+Value of r,h
+intval ans = 
+    0.7109    0.0266
+Value of r_,h_
+intval ans = 
+    0.7372    0.0274
+Value of x,y
+intval ans = 
+    0.7104    0.0266
+Value of x_,y_
+intval ans = 
+    0.7366    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.533387 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.559234 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6914,    1.8024] 
+[    1.8560,    1.9787] 
+new_data =
+   1.0e+04 *
+    0.0009    0.0002    1.6915    1.8023    1.8560    1.9786
+Verification Successful
+Elapsed time is 8.581402 seconds.
+Value of r,h
+intval ans = 
+    0.7372    0.0266
+Value of r_,h_
+intval ans = 
+    0.7634    0.0274
+Value of x,y
+intval ans = 
+    0.7367    0.0266
+Value of x_,y_
+intval ans = 
+    0.7629    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.634623 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.525477 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6929,    1.8041] 
+[    1.8561,    1.9791] 
+new_data =
+   1.0e+04 *
+    0.0010    0.0002    1.6929    1.8040    1.8562    1.9790
+Verification Successful
+Elapsed time is 8.546246 seconds.
+Value of r,h
+intval ans = 
+    0.7634    0.0266
+Value of r_,h_
+intval ans = 
+    0.7897    0.0274
+Value of x,y
+intval ans = 
+    0.7630    0.0266
+Value of x_,y_
+intval ans = 
+    0.7892    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.505352 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.440135 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6944,    1.8057] 
+[    1.8562,    1.9792] 
+new_data =
+   1.0e+04 *
+    0.0011    0.0002    1.6945    1.8056    1.8562    1.9792
+Verification Successful
+Elapsed time is 8.459838 seconds.
+Value of r,h
+intval ans = 
+    0.7897    0.0266
+Value of r_,h_
+intval ans = 
+    0.8160    0.0274
+Value of x,y
+intval ans = 
+    0.7893    0.0266
+Value of x_,y_
+intval ans = 
+    0.8155    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.432733 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.525041 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6969,    1.8074] 
+[    1.8577,    1.9793] 
+new_data =
+   1.0e+04 *
+    0.0012    0.0002    1.6970    1.8074    1.8578    1.9792
+Verification Successful
+Elapsed time is 8.543796 seconds.
+Value of r,h
+intval ans = 
+    0.8160    0.0266
+Value of r_,h_
+intval ans = 
+    0.8423    0.0274
+Value of x,y
+intval ans = 
+    0.8156    0.0266
+Value of x_,y_
+intval ans = 
+    0.8418    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.483304 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.430313 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6988,    1.8102] 
+[    1.8578,    1.9810] 
+new_data =
+   1.0e+04 *
+    0.0013    0.0002    1.6988    1.8102    1.8579    1.9809
+Verification Successful
+Elapsed time is 8.449520 seconds.
+Value of r,h
+intval ans = 
+    0.8423    0.0266
+Value of r_,h_
+intval ans = 
+    0.8686    0.0274
+Value of x,y
+intval ans = 
+    0.8419    0.0266
+Value of x_,y_
+intval ans = 
+    0.8681    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.448766 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.411048 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7022,    1.8123] 
+[    1.8603,    1.9810] 
+new_data =
+   1.0e+04 *
+    0.0014    0.0002    1.7023    1.8122    1.8603    1.9810
+Verification Successful
+Elapsed time is 8.430434 seconds.
+Value of r,h
+intval ans = 
+    0.8686    0.0266
+Value of r_,h_
+intval ans = 
+    0.8948    0.0274
+Value of x,y
+intval ans = 
+    0.8681    0.0266
+Value of x_,y_
+intval ans = 
+    0.8944    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.455532 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.386209 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7054,    1.8161] 
+[    1.8621,    1.9837] 
+new_data =
+   1.0e+04 *
+    0.0015    0.0002    1.7055    1.8160    1.8621    1.9836
+Verification Successful
+Elapsed time is 8.406647 seconds.
+Value of r,h
+intval ans = 
+    0.8948    0.0266
+Value of r_,h_
+intval ans = 
+    0.9211    0.0274
+Value of x,y
+intval ans = 
+    0.8944    0.0266
+Value of x_,y_
+intval ans = 
+    0.9207    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.401129 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.439730 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7103,    1.8196] 
+[    1.8662,    1.9855] 
+new_data =
+   1.0e+04 *
+    0.0016    0.0002    1.7103    1.8195    1.8662    1.9855
+Verification Successful
+Elapsed time is 8.460109 seconds.
+Value of r,h
+intval ans = 
+    0.9211    0.0266
+Value of r_,h_
+intval ans = 
+    0.9474    0.0274
+Value of x,y
+intval ans = 
+    0.9207    0.0266
+Value of x_,y_
+intval ans = 
+    0.9470    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.470687 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.643021 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7171,    1.8249] 
+[    1.8728,    1.9898] 
+new_data =
+   1.0e+04 *
+    0.0017    0.0002    1.7171    1.8249    1.8729    1.9898
+Verification Successful
+Elapsed time is 8.663656 seconds.
+Value of r,h
+intval ans = 
+    0.9474    0.0266
+Value of r_,h_
+intval ans = 
+    0.9737    0.0274
+Value of x,y
+intval ans = 
+    0.9470    0.0266
+Value of x_,y_
+intval ans = 
+    0.9733    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.624733 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.607397 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7280,    1.8323] 
+[    1.8847,    1.9968] 
+new_data =
+   1.0e+04 *
+    0.0018    0.0002    1.7280    1.8322    1.8847    1.9968
+Verification Successful
+Elapsed time is 8.626338 seconds.
+Value of r,h
+intval ans = 
+    0.9737    0.0266
+Value of r_,h_
+intval ans = 
+    1.0000    0.0274
+Value of x,y
+intval ans = 
+    0.9733    0.0266
+Value of x_,y_
+intval ans = 
+    0.9996    0.0274
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.677684 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.601890 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.7511,    1.8440] 
+[    1.9148,    2.0092] 
+new_data =
+   1.0e+04 *
+    0.0019    0.0002    1.7512    1.8440    1.9148    2.0091
+Verification Successful
+Elapsed time is 8.621445 seconds.
+Value of r,h
+intval ans = 
+    1.0000    0.0266
+Value of r_,h_
+intval ans = 
+    1.0262    0.0274
+Value of x,y
+intval ans = 
+    0.9996    0.0266
+Value of x_,y_
+intval ans = 
+    1.0259    0.0274
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+deactivated saving of .mat file
+Value of r,h
+[Warning: Initializing MATLAB Graphics failed.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:dispatcher:recursiveLoading
+Trying to load file "/usr/local/MATLAB/R2023b/bin/glnxa64/libmwhgbuiltins.so"
+while it is being loaded.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hgrc', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m', 151)" style="font-weight:bold">hgrc</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m',151,0)">line 151</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.initialize', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m', 15)" style="font-weight:bold">matlab.graphics.internal.initialize</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m',15,0)">line 15</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/disp_', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m', 145)" style="font-weight:bold">intval/disp_</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m',145,0)">line 145</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/display', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m', 65)" style="font-weight:bold">intval/display</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m',65,0)">line 65</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('func_algo2', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m', 39)" style="font-weight:bold">func_algo2</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m',39,0)">line 39</a>)] 
+
+intval ans = 
+    0.5006    0.0274
+Value of r_,h_
+intval ans = 
+    0.5269    0.0284
+Value of x,y
+intval ans = 
+    0.4999    0.0274
+Value of x_,y_
+intval ans = 
+    0.5262    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.736865 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.044293 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5791,    1.7059] 
+[    1.7419,    1.8813] 
+new_data =
+   1.0e+04 *
+    0.0001    0.0003    1.5792    1.7058    1.7419    1.8813
+Verification Successful
+Elapsed time is 9.392525 seconds.
+Value of r,h
+intval ans = 
+    0.5269    0.0274
+Value of r_,h_
+intval ans = 
+    0.5532    0.0284
+Value of x,y
+intval ans = 
+    0.5262    0.0274
+Value of x_,y_
+intval ans = 
+    0.5525    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.221362 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.877274 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5796,    1.7052] 
+[    1.7423,    1.8801] 
+new_data =
+   1.0e+04 *
+    0.0002    0.0003    1.5797    1.7051    1.7424    1.8800
+Verification Successful
+Elapsed time is 8.947495 seconds.
+Value of r,h
+intval ans = 
+    0.5532    0.0274
+Value of r_,h_
+intval ans = 
+    0.5795    0.0284
+Value of x,y
+intval ans = 
+    0.5525    0.0274
+Value of x_,y_
+intval ans = 
+    0.5788    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.799059 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.748275 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5797,    1.7057] 
+[    1.7419,    1.8806] 
+new_data =
+   1.0e+04 *
+    0.0003    0.0003    1.5797    1.7057    1.7420    1.8805
+Verification Successful
+Elapsed time is 8.812093 seconds.
+Value of r,h
+intval ans = 
+    0.5795    0.0274
+Value of r_,h_
+intval ans = 
+    0.6058    0.0284
+Value of x,y
+intval ans = 
+    0.5788    0.0274
+Value of x_,y_
+intval ans = 
+    0.6051    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.973140 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.960121 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5800,    1.7058] 
+[    1.7417,    1.8801] 
+new_data =
+   1.0e+04 *
+    0.0004    0.0003    1.5801    1.7058    1.7418    1.8801
+Verification Successful
+Elapsed time is 8.993419 seconds.
+Value of r,h
+intval ans = 
+    0.6058    0.0274
+Value of r_,h_
+intval ans = 
+    0.6320    0.0284
+Value of x,y
+intval ans = 
+    0.6051    0.0274
+Value of x_,y_
+intval ans = 
+    0.6314    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.862838 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.741967 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5809,    1.7063] 
+[    1.7421,    1.8799] 
+new_data =
+   1.0e+04 *
+    0.0005    0.0003    1.5809    1.7062    1.7421    1.8798
+Verification Successful
+Elapsed time is 8.827078 seconds.
+Value of r,h
+intval ans = 
+    0.6320    0.0274
+Value of r_,h_
+intval ans = 
+    0.6583    0.0284
+Value of x,y
+intval ans = 
+    0.6314    0.0274
+Value of x_,y_
+intval ans = 
+    0.6577    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.155102 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.157966 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5811,    1.7072] 
+[    1.7413,    1.8803] 
+new_data =
+   1.0e+04 *
+    0.0006    0.0003    1.5811    1.7072    1.7413    1.8803
+Verification Successful
+Elapsed time is 9.180862 seconds.
+Value of r,h
+intval ans = 
+    0.6583    0.0274
+Value of r_,h_
+intval ans = 
+    0.6846    0.0284
+Value of x,y
+intval ans = 
+    0.6577    0.0274
+Value of x_,y_
+intval ans = 
+    0.6840    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.187961 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.154116 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5825,    1.7075] 
+[    1.7421,    1.8794] 
+new_data =
+   1.0e+04 *
+    0.0007    0.0003    1.5825    1.7075    1.7421    1.8793
+Verification Successful
+Elapsed time is 9.173722 seconds.
+Value of r,h
+intval ans = 
+    0.6846    0.0274
+Value of r_,h_
+intval ans = 
+    0.7109    0.0284
+Value of x,y
+intval ans = 
+    0.6841    0.0274
+Value of x_,y_
+intval ans = 
+    0.7103    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.145184 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.161039 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5828,    1.7091] 
+[    1.7412,    1.8803] 
+new_data =
+   1.0e+04 *
+    0.0008    0.0003    1.5829    1.7090    1.7412    1.8802
+Verification Successful
+Elapsed time is 9.180976 seconds.
+Value of r,h
+intval ans = 
+    0.7109    0.0274
+Value of r_,h_
+intval ans = 
+    0.7372    0.0284
+Value of x,y
+intval ans = 
+    0.7104    0.0274
+Value of x_,y_
+intval ans = 
+    0.7366    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.152959 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.172583 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5842,    1.7096] 
+[    1.7415,    1.8792] 
+new_data =
+   1.0e+04 *
+    0.0009    0.0003    1.5842    1.7095    1.7416    1.8792
+Verification Successful
+Elapsed time is 9.195328 seconds.
+Value of r,h
+intval ans = 
+    0.7372    0.0274
+Value of r_,h_
+intval ans = 
+    0.7634    0.0284
+Value of x,y
+intval ans = 
+    0.7366    0.0274
+Value of x_,y_
+intval ans = 
+    0.7629    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.165795 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.905256 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5854,    1.7111] 
+[    1.7417,    1.8796] 
+new_data =
+   1.0e+04 *
+    0.0010    0.0003    1.5855    1.7110    1.7417    1.8796
+Verification Successful
+Elapsed time is 8.925236 seconds.
+Value of r,h
+intval ans = 
+    0.7634    0.0274
+Value of r_,h_
+intval ans = 
+    0.7897    0.0284
+Value of x,y
+intval ans = 
+    0.7629    0.0274
+Value of x_,y_
+intval ans = 
+    0.7892    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.183584 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.157443 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5868,    1.7125] 
+[    1.7418,    1.8798] 
+new_data =
+   1.0e+04 *
+    0.0011    0.0003    1.5868    1.7125    1.7418    1.8797
+Verification Successful
+Elapsed time is 9.176769 seconds.
+Value of r,h
+intval ans = 
+    0.7897    0.0274
+Value of r_,h_
+intval ans = 
+    0.8160    0.0284
+Value of x,y
+intval ans = 
+    0.7892    0.0274
+Value of x_,y_
+intval ans = 
+    0.8155    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.162989 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.202778 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5890,    1.7141] 
+[    1.7432,    1.8798] 
+new_data =
+   1.0e+04 *
+    0.0012    0.0003    1.5891    1.7141    1.7432    1.8798
+Verification Successful
+Elapsed time is 9.222283 seconds.
+Value of r,h
+intval ans = 
+    0.8160    0.0274
+Value of r_,h_
+intval ans = 
+    0.8423    0.0284
+Value of x,y
+intval ans = 
+    0.8155    0.0274
+Value of x_,y_
+intval ans = 
+    0.8418    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.173218 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.150599 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5907,    1.7167] 
+[    1.7434,    1.8814] 
+new_data =
+   1.0e+04 *
+    0.0013    0.0003    1.5908    1.7166    1.7434    1.8814
+Verification Successful
+Elapsed time is 9.170420 seconds.
+Value of r,h
+intval ans = 
+    0.8423    0.0274
+Value of r_,h_
+intval ans = 
+    0.8686    0.0284
+Value of x,y
+intval ans = 
+    0.8418    0.0274
+Value of x_,y_
+intval ans = 
+    0.8681    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.179043 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.170215 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5938,    1.7186] 
+[    1.7457,    1.8815] 
+new_data =
+   1.0e+04 *
+    0.0014    0.0003    1.5939    1.7185    1.7458    1.8815
+Verification Successful
+Elapsed time is 9.190336 seconds.
+Value of r,h
+intval ans = 
+    0.8686    0.0274
+Value of r_,h_
+intval ans = 
+    0.8948    0.0284
+Value of x,y
+intval ans = 
+    0.8681    0.0274
+Value of x_,y_
+intval ans = 
+    0.8944    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.148760 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.816154 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5968,    1.7221] 
+[    1.7475,    1.8840] 
+new_data =
+   1.0e+04 *
+    0.0015    0.0003    1.5968    1.7220    1.7476    1.8840
+Verification Successful
+Elapsed time is 8.835617 seconds.
+Value of r,h
+intval ans = 
+    0.8948    0.0274
+Value of r_,h_
+intval ans = 
+    0.9211    0.0284
+Value of x,y
+intval ans = 
+    0.8944    0.0274
+Value of x_,y_
+intval ans = 
+    0.9207    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.171680 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.154097 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6013,    1.7254] 
+[    1.7515,    1.8859] 
+new_data =
+   1.0e+04 *
+    0.0016    0.0003    1.6013    1.7253    1.7515    1.8859
+Verification Successful
+Elapsed time is 9.173545 seconds.
+Value of r,h
+intval ans = 
+    0.9211    0.0274
+Value of r_,h_
+intval ans = 
+    0.9474    0.0284
+Value of x,y
+intval ans = 
+    0.9207    0.0274
+Value of x_,y_
+intval ans = 
+    0.9470    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.168376 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.160262 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6076,    1.7304] 
+[    1.7580,    1.8901] 
+new_data =
+   1.0e+04 *
+    0.0017    0.0003    1.6077    1.7303    1.7580    1.8900
+Verification Successful
+Elapsed time is 9.179621 seconds.
+Value of r,h
+intval ans = 
+    0.9474    0.0274
+Value of r_,h_
+intval ans = 
+    0.9737    0.0284
+Value of x,y
+intval ans = 
+    0.9470    0.0274
+Value of x_,y_
+intval ans = 
+    0.9733    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.188280 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.139586 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6178,    1.7373] 
+[    1.7696,    1.8969] 
+new_data =
+   1.0e+04 *
+    0.0018    0.0003    1.6179    1.7373    1.7697    1.8969
+Verification Successful
+Elapsed time is 9.159244 seconds.
+Value of r,h
+intval ans = 
+    0.9737    0.0274
+Value of r_,h_
+intval ans = 
+    1.0000    0.0284
+Value of x,y
+intval ans = 
+    0.9733    0.0274
+Value of x_,y_
+intval ans = 
+    0.9996    0.0284
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.112542 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.075189 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.6394,    1.7485] 
+[    1.7984,    1.9091] 
+new_data =
+   1.0e+04 *
+    0.0019    0.0003    1.6394    1.7484    1.7984    1.9090
+Verification Successful
+Elapsed time is 9.095598 seconds.
+Value of r,h
+intval ans = 
+    1.0000    0.0274
+Value of r_,h_
+intval ans = 
+    1.0262    0.0284
+Value of x,y
+intval ans = 
+    0.9996    0.0274
+Value of x_,y_
+intval ans = 
+    1.0258    0.0284
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+deactivated saving of .mat file
+Value of r,h
+[Warning: Initializing MATLAB Graphics failed.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:dispatcher:recursiveLoading
+Trying to load file "/usr/local/MATLAB/R2023b/bin/glnxa64/libmwhgbuiltins.so"
+while it is being loaded.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hgrc', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m', 151)" style="font-weight:bold">hgrc</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m',151,0)">line 151</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.initialize', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m', 15)" style="font-weight:bold">matlab.graphics.internal.initialize</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m',15,0)">line 15</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/disp_', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m', 145)" style="font-weight:bold">intval/disp_</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m',145,0)">line 145</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/display', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m', 65)" style="font-weight:bold">intval/display</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m',65,0)">line 65</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('func_algo2', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m', 39)" style="font-weight:bold">func_algo2</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m',39,0)">line 39</a>)] 
+
+intval ans = 
+    0.5006    0.0284
+Value of r_,h_
+intval ans = 
+    0.5269    0.0295
+Value of x,y
+intval ans = 
+    0.4998    0.0284
+Value of x_,y_
+intval ans = 
+    0.5261    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.559702 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.047655 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4660,    1.5969] 
+[    1.6202,    1.7638] 
+new_data =
+   1.0e+04 *
+    0.0001    0.0004    1.4661    1.5968    1.6203    1.7638
+Verification Successful
+Elapsed time is 9.433083 seconds.
+Value of r,h
+intval ans = 
+    0.5269    0.0284
+Value of r_,h_
+intval ans = 
+    0.5532    0.0295
+Value of x,y
+intval ans = 
+    0.5262    0.0284
+Value of x_,y_
+intval ans = 
+    0.5524    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.133691 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.002199 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4665,    1.5962] 
+[    1.6207,    1.7627] 
+new_data =
+   1.0e+04 *
+    0.0002    0.0004    1.4665    1.5962    1.6207    1.7626
+Verification Successful
+Elapsed time is 9.073463 seconds.
+Value of r,h
+intval ans = 
+    0.5532    0.0284
+Value of r_,h_
+intval ans = 
+    0.5795    0.0295
+Value of x,y
+intval ans = 
+    0.5525    0.0284
+Value of x_,y_
+intval ans = 
+    0.5787    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.141800 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.879512 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4665,    1.5967] 
+[    1.6203,    1.7632] 
+new_data =
+   1.0e+04 *
+    0.0003    0.0004    1.4666    1.5967    1.6204    1.7631
+Verification Successful
+Elapsed time is 8.942990 seconds.
+Value of r,h
+intval ans = 
+    0.5795    0.0284
+Value of r_,h_
+intval ans = 
+    0.6058    0.0295
+Value of x,y
+intval ans = 
+    0.5788    0.0284
+Value of x_,y_
+intval ans = 
+    0.6050    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.022927 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.090368 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4668,    1.5968] 
+[    1.6202,    1.7627] 
+new_data =
+   1.0e+04 *
+    0.0004    0.0004    1.4669    1.5968    1.6202    1.7627
+Verification Successful
+Elapsed time is 9.126925 seconds.
+Value of r,h
+intval ans = 
+    0.6058    0.0284
+Value of r_,h_
+intval ans = 
+    0.6320    0.0295
+Value of x,y
+intval ans = 
+    0.6051    0.0284
+Value of x_,y_
+intval ans = 
+    0.6313    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.232034 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.000860 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4675,    1.5972] 
+[    1.6205,    1.7625] 
+new_data =
+   1.0e+04 *
+    0.0005    0.0004    1.4676    1.5971    1.6206    1.7625
+Verification Successful
+Elapsed time is 9.090954 seconds.
+Value of r,h
+intval ans = 
+    0.6320    0.0284
+Value of r_,h_
+intval ans = 
+    0.6583    0.0295
+Value of x,y
+intval ans = 
+    0.6314    0.0284
+Value of x_,y_
+intval ans = 
+    0.6577    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.231722 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.023037 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4677,    1.5980] 
+[    1.6198,    1.7629] 
+new_data =
+   1.0e+04 *
+    0.0006    0.0004    1.4677    1.5980    1.6199    1.7629
+Verification Successful
+Elapsed time is 9.046805 seconds.
+Value of r,h
+intval ans = 
+    0.6583    0.0284
+Value of r_,h_
+intval ans = 
+    0.6846    0.0295
+Value of x,y
+intval ans = 
+    0.6577    0.0284
+Value of x_,y_
+intval ans = 
+    0.6840    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.030976 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.010035 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4689,    1.5983] 
+[    1.6206,    1.7621] 
+new_data =
+   1.0e+04 *
+    0.0007    0.0004    1.4689    1.5982    1.6206    1.7620
+Verification Successful
+Elapsed time is 9.030678 seconds.
+Value of r,h
+intval ans = 
+    0.6846    0.0284
+Value of r_,h_
+intval ans = 
+    0.7109    0.0295
+Value of x,y
+intval ans = 
+    0.6840    0.0284
+Value of x_,y_
+intval ans = 
+    0.7103    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.038824 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.036198 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4692,    1.5997] 
+[    1.6198,    1.7629] 
+new_data =
+   1.0e+04 *
+    0.0008    0.0004    1.4692    1.5996    1.6198    1.7629
+Verification Successful
+Elapsed time is 9.056850 seconds.
+Value of r,h
+intval ans = 
+    0.7109    0.0284
+Value of r_,h_
+intval ans = 
+    0.7372    0.0295
+Value of x,y
+intval ans = 
+    0.7103    0.0284
+Value of x_,y_
+intval ans = 
+    0.7366    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.043915 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.012075 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4703,    1.6000] 
+[    1.6201,    1.7620] 
+new_data =
+   1.0e+04 *
+    0.0009    0.0004    1.4704    1.6000    1.6202    1.7619
+Verification Successful
+Elapsed time is 9.036012 seconds.
+Value of r,h
+intval ans = 
+    0.7372    0.0284
+Value of r_,h_
+intval ans = 
+    0.7634    0.0295
+Value of x,y
+intval ans = 
+    0.7366    0.0284
+Value of x_,y_
+intval ans = 
+    0.7629    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.253185 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.249537 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4714,    1.6014] 
+[    1.6203,    1.7624] 
+new_data =
+   1.0e+04 *
+    0.0010    0.0004    1.4714    1.6013    1.6203    1.7623
+Verification Successful
+Elapsed time is 9.270281 seconds.
+Value of r,h
+intval ans = 
+    0.7634    0.0284
+Value of r_,h_
+intval ans = 
+    0.7897    0.0295
+Value of x,y
+intval ans = 
+    0.7629    0.0284
+Value of x_,y_
+intval ans = 
+    0.7892    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.811447 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.011952 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4726,    1.6027] 
+[    1.6204,    1.7625] 
+new_data =
+   1.0e+04 *
+    0.0011    0.0004    1.4726    1.6026    1.6205    1.7624
+Verification Successful
+Elapsed time is 9.032542 seconds.
+Value of r,h
+intval ans = 
+    0.7897    0.0284
+Value of r_,h_
+intval ans = 
+    0.8160    0.0295
+Value of x,y
+intval ans = 
+    0.7892    0.0284
+Value of x_,y_
+intval ans = 
+    0.8155    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.019243 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.127208 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4746,    1.6041] 
+[    1.6217,    1.7626] 
+new_data =
+   1.0e+04 *
+    0.0012    0.0004    1.4746    1.6040    1.6218    1.7626
+Verification Successful
+Elapsed time is 9.149049 seconds.
+Value of r,h
+intval ans = 
+    0.8160    0.0284
+Value of r_,h_
+intval ans = 
+    0.8423    0.0295
+Value of x,y
+intval ans = 
+    0.8155    0.0284
+Value of x_,y_
+intval ans = 
+    0.8418    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.102949 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.948867 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4760,    1.6064] 
+[    1.6220,    1.7641] 
+new_data =
+   1.0e+04 *
+    0.0013    0.0004    1.4761    1.6063    1.6220    1.7640
+Verification Successful
+Elapsed time is 8.969702 seconds.
+Value of r,h
+intval ans = 
+    0.8423    0.0284
+Value of r_,h_
+intval ans = 
+    0.8686    0.0295
+Value of x,y
+intval ans = 
+    0.8418    0.0284
+Value of x_,y_
+intval ans = 
+    0.8681    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.938534 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.994227 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4788,    1.6081] 
+[    1.6242,    1.7642] 
+new_data =
+   1.0e+04 *
+    0.0014    0.0004    1.4789    1.6080    1.6243    1.7642
+Verification Successful
+Elapsed time is 9.014686 seconds.
+Value of r,h
+intval ans = 
+    0.8686    0.0284
+Value of r_,h_
+intval ans = 
+    0.8948    0.0295
+Value of x,y
+intval ans = 
+    0.8681    0.0284
+Value of x_,y_
+intval ans = 
+    0.8943    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.014096 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.994490 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4815,    1.6113] 
+[    1.6260,    1.7666] 
+new_data =
+   1.0e+04 *
+    0.0015    0.0004    1.4815    1.6112    1.6261    1.7666
+Verification Successful
+Elapsed time is 9.015130 seconds.
+Value of r,h
+intval ans = 
+    0.8948    0.0284
+Value of r_,h_
+intval ans = 
+    0.9211    0.0295
+Value of x,y
+intval ans = 
+    0.8944    0.0284
+Value of x_,y_
+intval ans = 
+    0.9206    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.953504 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.722015 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4856,    1.6143] 
+[    1.6299,    1.7685] 
+new_data =
+   1.0e+04 *
+    0.0016    0.0004    1.4857    1.6142    1.6299    1.7684
+Verification Successful
+Elapsed time is 8.742213 seconds.
+Value of r,h
+intval ans = 
+    0.9211    0.0284
+Value of r_,h_
+intval ans = 
+    0.9474    0.0295
+Value of x,y
+intval ans = 
+    0.9207    0.0284
+Value of x_,y_
+intval ans = 
+    0.9469    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.909372 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.720693 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4915,    1.6189] 
+[    1.6362,    1.7726] 
+new_data =
+   1.0e+04 *
+    0.0017    0.0004    1.4915    1.6188    1.6363    1.7725
+Verification Successful
+Elapsed time is 8.740898 seconds.
+Value of r,h
+intval ans = 
+    0.9474    0.0284
+Value of r_,h_
+intval ans = 
+    0.9737    0.0295
+Value of x,y
+intval ans = 
+    0.9470    0.0284
+Value of x_,y_
+intval ans = 
+    0.9732    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.877699 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.992075 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5010,    1.6254] 
+[    1.6475,    1.7792] 
+new_data =
+   1.0e+04 *
+    0.0018    0.0004    1.5010    1.6253    1.6476    1.7792
+Verification Successful
+Elapsed time is 9.013043 seconds.
+Value of r,h
+intval ans = 
+    0.9737    0.0284
+Value of r_,h_
+intval ans = 
+    1.0000    0.0295
+Value of x,y
+intval ans = 
+    0.9733    0.0284
+Value of x_,y_
+intval ans = 
+    0.9995    0.0295
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.874038 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.880386 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.5209,    1.6358] 
+[    1.6748,    1.7911] 
+new_data =
+   1.0e+04 *
+    0.0019    0.0004    1.5209    1.6357    1.6749    1.7911
+Verification Successful
+Elapsed time is 8.900381 seconds.
+Value of r,h
+intval ans = 
+    1.0000    0.0284
+Value of r_,h_
+intval ans = 
+    1.0262    0.0295
+Value of x,y
+intval ans = 
+    0.9996    0.0284
+Value of x_,y_
+intval ans = 
+    1.0258    0.0295
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+deactivated saving of .mat file
+Value of r,h
+[Warning: Initializing MATLAB Graphics failed.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:dispatcher:recursiveLoading
+Trying to load file "/usr/local/MATLAB/R2023b/bin/glnxa64/libmwhgbuiltins.so"
+while it is being loaded.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hgrc', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m', 151)" style="font-weight:bold">hgrc</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m',151,0)">line 151</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.initialize', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m', 15)" style="font-weight:bold">matlab.graphics.internal.initialize</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m',15,0)">line 15</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/disp_', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m', 145)" style="font-weight:bold">intval/disp_</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m',145,0)">line 145</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/display', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m', 65)" style="font-weight:bold">intval/display</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m',65,0)">line 65</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('func_algo2', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m', 39)" style="font-weight:bold">func_algo2</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m',39,0)">line 39</a>)] 
+
+intval ans = 
+    0.5006    0.0295
+Value of r_,h_
+intval ans = 
+    0.5269    0.0309
+Value of x,y
+intval ans = 
+    0.4998    0.0295
+Value of x_,y_
+intval ans = 
+    0.5260    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.008000 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.701211 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3525,    1.4814] 
+[    1.4981,    1.6392] 
+new_data =
+   1.0e+04 *
+    0.0001    0.0005    1.3525    1.4813    1.4981    1.6392
+Verification Successful
+Elapsed time is 9.037157 seconds.
+Value of r,h
+intval ans = 
+    0.5269    0.0295
+Value of r_,h_
+intval ans = 
+    0.5532    0.0309
+Value of x,y
+intval ans = 
+    0.5261    0.0295
+Value of x_,y_
+intval ans = 
+    0.5523    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.929531 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.423270 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3529,    1.4808] 
+[    1.4985,    1.6383] 
+new_data =
+   1.0e+04 *
+    0.0002    0.0005    1.3529    1.4807    1.4985    1.6382
+Verification Successful
+Elapsed time is 8.489678 seconds.
+Value of r,h
+intval ans = 
+    0.5532    0.0295
+Value of r_,h_
+intval ans = 
+    0.5795    0.0309
+Value of x,y
+intval ans = 
+    0.5524    0.0295
+Value of x_,y_
+intval ans = 
+    0.5787    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.774042 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.747070 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3529,    1.4812] 
+[    1.4982,    1.6387] 
+new_data =
+   1.0e+04 *
+    0.0003    0.0005    1.3529    1.4812    1.4982    1.6387
+Verification Successful
+Elapsed time is 8.810361 seconds.
+Value of r,h
+intval ans = 
+    0.5795    0.0295
+Value of r_,h_
+intval ans = 
+    0.6058    0.0309
+Value of x,y
+intval ans = 
+    0.5787    0.0295
+Value of x_,y_
+intval ans = 
+    0.6050    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.499745 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.566212 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3531,    1.4813] 
+[    1.4981,    1.6383] 
+new_data =
+   1.0e+04 *
+    0.0004    0.0005    1.3532    1.4812    1.4981    1.6383
+Verification Successful
+Elapsed time is 8.600287 seconds.
+Value of r,h
+intval ans = 
+    0.6058    0.0295
+Value of r_,h_
+intval ans = 
+    0.6320    0.0309
+Value of x,y
+intval ans = 
+    0.6050    0.0295
+Value of x_,y_
+intval ans = 
+    0.6313    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.521111 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.510302 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3537,    1.4816] 
+[    1.4984,    1.6382] 
+new_data =
+   1.0e+04 *
+    0.0005    0.0005    1.3537    1.4815    1.4984    1.6381
+Verification Successful
+Elapsed time is 8.594883 seconds.
+Value of r,h
+intval ans = 
+    0.6320    0.0295
+Value of r_,h_
+intval ans = 
+    0.6583    0.0309
+Value of x,y
+intval ans = 
+    0.6313    0.0295
+Value of x_,y_
+intval ans = 
+    0.6576    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.315361 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.509698 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3538,    1.4823] 
+[    1.4978,    1.6385] 
+new_data =
+   1.0e+04 *
+    0.0006    0.0005    1.3539    1.4823    1.4979    1.6385
+Verification Successful
+Elapsed time is 8.532189 seconds.
+Value of r,h
+intval ans = 
+    0.6583    0.0295
+Value of r_,h_
+intval ans = 
+    0.6846    0.0309
+Value of x,y
+intval ans = 
+    0.6577    0.0295
+Value of x_,y_
+intval ans = 
+    0.6839    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.305843 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.334596 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3548,    1.4825] 
+[    1.4986,    1.6378] 
+new_data =
+   1.0e+04 *
+    0.0007    0.0005    1.3549    1.4824    1.4986    1.6378
+Verification Successful
+Elapsed time is 8.354038 seconds.
+Value of r,h
+intval ans = 
+    0.6846    0.0295
+Value of r_,h_
+intval ans = 
+    0.7109    0.0309
+Value of x,y
+intval ans = 
+    0.6840    0.0295
+Value of x_,y_
+intval ans = 
+    0.7102    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.304306 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.314644 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3550,    1.4837] 
+[    1.4979,    1.6386] 
+new_data =
+   1.0e+04 *
+    0.0008    0.0005    1.3551    1.4836    1.4979    1.6385
+Verification Successful
+Elapsed time is 8.333985 seconds.
+Value of r,h
+intval ans = 
+    0.7109    0.0295
+Value of r_,h_
+intval ans = 
+    0.7372    0.0309
+Value of x,y
+intval ans = 
+    0.7103    0.0295
+Value of x_,y_
+intval ans = 
+    0.7365    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.327248 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.314883 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3560,    1.4840] 
+[    1.4983,    1.6378] 
+new_data =
+   1.0e+04 *
+    0.0009    0.0005    1.3560    1.4839    1.4983    1.6377
+Verification Successful
+Elapsed time is 8.336906 seconds.
+Value of r,h
+intval ans = 
+    0.7372    0.0295
+Value of r_,h_
+intval ans = 
+    0.7634    0.0309
+Value of x,y
+intval ans = 
+    0.7366    0.0295
+Value of x_,y_
+intval ans = 
+    0.7628    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.510228 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.228706 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3569,    1.4852] 
+[    1.4984,    1.6382] 
+new_data =
+   1.0e+04 *
+    0.0010    0.0005    1.3569    1.4851    1.4985    1.6381
+Verification Successful
+Elapsed time is 8.248245 seconds.
+Value of r,h
+intval ans = 
+    0.7634    0.0295
+Value of r_,h_
+intval ans = 
+    0.7897    0.0309
+Value of x,y
+intval ans = 
+    0.7629    0.0295
+Value of x_,y_
+intval ans = 
+    0.7891    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.697255 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.718039 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3579,    1.4862] 
+[    1.4986,    1.6383] 
+new_data =
+   1.0e+04 *
+    0.0011    0.0005    1.3580    1.4862    1.4987    1.6383
+Verification Successful
+Elapsed time is 8.737107 seconds.
+Value of r,h
+intval ans = 
+    0.7897    0.0295
+Value of r_,h_
+intval ans = 
+    0.8160    0.0309
+Value of x,y
+intval ans = 
+    0.7892    0.0295
+Value of x_,y_
+intval ans = 
+    0.8154    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.716064 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.716734 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3596,    1.4875] 
+[    1.4999,    1.6384] 
+new_data =
+   1.0e+04 *
+    0.0012    0.0005    1.3596    1.4874    1.4999    1.6384
+Verification Successful
+Elapsed time is 8.735709 seconds.
+Value of r,h
+intval ans = 
+    0.8160    0.0295
+Value of r_,h_
+intval ans = 
+    0.8423    0.0309
+Value of x,y
+intval ans = 
+    0.8155    0.0295
+Value of x_,y_
+intval ans = 
+    0.8417    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.692657 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.670957 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3609,    1.4895] 
+[    1.5002,    1.6398] 
+new_data =
+   1.0e+04 *
+    0.0013    0.0005    1.3610    1.4894    1.5002    1.6397
+Verification Successful
+Elapsed time is 8.690170 seconds.
+Value of r,h
+intval ans = 
+    0.8423    0.0295
+Value of r_,h_
+intval ans = 
+    0.8686    0.0309
+Value of x,y
+intval ans = 
+    0.8418    0.0295
+Value of x_,y_
+intval ans = 
+    0.8680    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.713589 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.727790 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3634,    1.4910] 
+[    1.5023,    1.6400] 
+new_data =
+   1.0e+04 *
+    0.0014    0.0005    1.3634    1.4910    1.5024    1.6400
+Verification Successful
+Elapsed time is 8.747188 seconds.
+Value of r,h
+intval ans = 
+    0.8686    0.0295
+Value of r_,h_
+intval ans = 
+    0.8948    0.0309
+Value of x,y
+intval ans = 
+    0.8681    0.0295
+Value of x_,y_
+intval ans = 
+    0.8943    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.700163 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.695125 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3658,    1.4939] 
+[    1.5041,    1.6423] 
+new_data =
+   1.0e+04 *
+    0.0015    0.0005    1.3658    1.4938    1.5042    1.6423
+Verification Successful
+Elapsed time is 8.714325 seconds.
+Value of r,h
+intval ans = 
+    0.8948    0.0295
+Value of r_,h_
+intval ans = 
+    0.9211    0.0309
+Value of x,y
+intval ans = 
+    0.8943    0.0295
+Value of x_,y_
+intval ans = 
+    0.9206    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.723559 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.726866 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3695,    1.4966] 
+[    1.5079,    1.6442] 
+new_data =
+   1.0e+04 *
+    0.0016    0.0005    1.3696    1.4965    1.5079    1.6441
+Verification Successful
+Elapsed time is 8.746198 seconds.
+Value of r,h
+intval ans = 
+    0.9211    0.0295
+Value of r_,h_
+intval ans = 
+    0.9474    0.0309
+Value of x,y
+intval ans = 
+    0.9206    0.0295
+Value of x_,y_
+intval ans = 
+    0.9469    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.694246 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.690409 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3749,    1.5008] 
+[    1.5140,    1.6481] 
+new_data =
+   1.0e+04 *
+    0.0017    0.0005    1.3749    1.5007    1.5141    1.6481
+Verification Successful
+Elapsed time is 8.709729 seconds.
+Value of r,h
+intval ans = 
+    0.9474    0.0295
+Value of r_,h_
+intval ans = 
+    0.9737    0.0309
+Value of x,y
+intval ans = 
+    0.9469    0.0295
+Value of x_,y_
+intval ans = 
+    0.9732    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.684623 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.672869 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.3837,    1.5067] 
+[    1.5250,    1.6546] 
+new_data =
+   1.0e+04 *
+    0.0018    0.0005    1.3838    1.5067    1.5251    1.6545
+Verification Successful
+Elapsed time is 8.692364 seconds.
+Value of r,h
+intval ans = 
+    0.9737    0.0295
+Value of r_,h_
+intval ans = 
+    1.0000    0.0309
+Value of x,y
+intval ans = 
+    0.9732    0.0295
+Value of x_,y_
+intval ans = 
+    0.9995    0.0309
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.663912 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.664735 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.4020,    1.5164] 
+[    1.5507,    1.6662] 
+new_data =
+   1.0e+04 *
+    0.0019    0.0005    1.4020    1.5164    1.5508    1.6661
+Verification Successful
+Elapsed time is 8.685437 seconds.
+Value of r,h
+intval ans = 
+    1.0000    0.0295
+Value of r_,h_
+intval ans = 
+    1.0262    0.0309
+Value of x,y
+intval ans = 
+    0.9995    0.0295
+Value of x_,y_
+intval ans = 
+    1.0258    0.0309
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+deactivated saving of .mat file
+Value of r,h
+[Warning: Initializing MATLAB Graphics failed.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:dispatcher:recursiveLoading
+Trying to load file "/usr/local/MATLAB/R2023b/bin/glnxa64/libmwhgbuiltins.so"
+while it is being loaded.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hgrc', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m', 151)" style="font-weight:bold">hgrc</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m',151,0)">line 151</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.initialize', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m', 15)" style="font-weight:bold">matlab.graphics.internal.initialize</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m',15,0)">line 15</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/disp_', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m', 145)" style="font-weight:bold">intval/disp_</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m',145,0)">line 145</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/display', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m', 65)" style="font-weight:bold">intval/display</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m',65,0)">line 65</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('func_algo2', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m', 39)" style="font-weight:bold">func_algo2</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m',39,0)">line 39</a>)] 
+
+intval ans = 
+    0.5006    0.0309
+Value of r_,h_
+intval ans = 
+    0.5269    0.0324
+Value of x,y
+intval ans = 
+    0.4997    0.0309
+Value of x_,y_
+intval ans = 
+    0.5259    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.911976 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.573308 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2423,    1.3655] 
+[    1.3794,    1.5143] 
+new_data =
+   1.0e+04 *
+    0.0001    0.0006    1.2423    1.3655    1.3795    1.5143
+Verification Successful
+Elapsed time is 8.922269 seconds.
+Value of r,h
+intval ans = 
+    0.5269    0.0309
+Value of r_,h_
+intval ans = 
+    0.5532    0.0324
+Value of x,y
+intval ans = 
+    0.5260    0.0309
+Value of x_,y_
+intval ans = 
+    0.5522    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.739084 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.653608 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2426,    1.3650] 
+[    1.3798,    1.5135] 
+new_data =
+   1.0e+04 *
+    0.0002    0.0006    1.2426    1.3650    1.3799    1.5134
+Verification Successful
+Elapsed time is 8.719930 seconds.
+Value of r,h
+intval ans = 
+    0.5532    0.0309
+Value of r_,h_
+intval ans = 
+    0.5795    0.0324
+Value of x,y
+intval ans = 
+    0.5523    0.0309
+Value of x_,y_
+intval ans = 
+    0.5786    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.483338 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.438010 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2426,    1.3654] 
+[    1.3796,    1.5139] 
+new_data =
+   1.0e+04 *
+    0.0003    0.0006    1.2426    1.3654    1.3796    1.5138
+Verification Successful
+Elapsed time is 8.502308 seconds.
+Value of r,h
+intval ans = 
+    0.5795    0.0309
+Value of r_,h_
+intval ans = 
+    0.6058    0.0324
+Value of x,y
+intval ans = 
+    0.5787    0.0309
+Value of x_,y_
+intval ans = 
+    0.6049    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.584848 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.576039 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2427,    1.3654] 
+[    1.3795,    1.5136] 
+new_data =
+   1.0e+04 *
+    0.0004    0.0006    1.2428    1.3654    1.3796    1.5135
+Verification Successful
+Elapsed time is 8.609067 seconds.
+Value of r,h
+intval ans = 
+    0.6058    0.0309
+Value of r_,h_
+intval ans = 
+    0.6320    0.0324
+Value of x,y
+intval ans = 
+    0.6050    0.0309
+Value of x_,y_
+intval ans = 
+    0.6312    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.585711 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.393135 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2432,    1.3657] 
+[    1.3799,    1.5135] 
+new_data =
+   1.0e+04 *
+    0.0005    0.0006    1.2432    1.3656    1.3799    1.5134
+Verification Successful
+Elapsed time is 8.478056 seconds.
+Value of r,h
+intval ans = 
+    0.6320    0.0309
+Value of r_,h_
+intval ans = 
+    0.6583    0.0324
+Value of x,y
+intval ans = 
+    0.6313    0.0309
+Value of x_,y_
+intval ans = 
+    0.6575    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.601971 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.409409 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2433,    1.3663] 
+[    1.3794,    1.5138] 
+new_data =
+   1.0e+04 *
+    0.0006    0.0006    1.2433    1.3662    1.3795    1.5138
+Verification Successful
+Elapsed time is 8.432131 seconds.
+Value of r,h
+intval ans = 
+    0.6583    0.0309
+Value of r_,h_
+intval ans = 
+    0.6846    0.0324
+Value of x,y
+intval ans = 
+    0.6576    0.0309
+Value of x_,y_
+intval ans = 
+    0.6838    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.804814 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.810153 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2441,    1.3664] 
+[    1.3801,    1.5132] 
+new_data =
+   1.0e+04 *
+    0.0007    0.0006    1.2442    1.3663    1.3802    1.5132
+Verification Successful
+Elapsed time is 8.830440 seconds.
+Value of r,h
+intval ans = 
+    0.6846    0.0309
+Value of r_,h_
+intval ans = 
+    0.7109    0.0324
+Value of x,y
+intval ans = 
+    0.6839    0.0309
+Value of x_,y_
+intval ans = 
+    0.7101    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.840763 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.814948 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2442,    1.3674] 
+[    1.3796,    1.5140] 
+new_data =
+   1.0e+04 *
+    0.0008    0.0006    1.2443    1.3674    1.3796    1.5139
+Verification Successful
+Elapsed time is 8.834611 seconds.
+Value of r,h
+intval ans = 
+    0.7109    0.0309
+Value of r_,h_
+intval ans = 
+    0.7372    0.0324
+Value of x,y
+intval ans = 
+    0.7102    0.0309
+Value of x_,y_
+intval ans = 
+    0.7364    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.821011 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.790542 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2450,    1.3676] 
+[    1.3800,    1.5133] 
+new_data =
+   1.0e+04 *
+    0.0009    0.0006    1.2451    1.3676    1.3801    1.5132
+Verification Successful
+Elapsed time is 8.813382 seconds.
+Value of r,h
+intval ans = 
+    0.7372    0.0309
+Value of r_,h_
+intval ans = 
+    0.7634    0.0324
+Value of x,y
+intval ans = 
+    0.7365    0.0309
+Value of x_,y_
+intval ans = 
+    0.7627    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.580111 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.574989 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2458,    1.3686] 
+[    1.3802,    1.5137] 
+new_data =
+   1.0e+04 *
+    0.0010    0.0006    1.2458    1.3686    1.3803    1.5136
+Verification Successful
+Elapsed time is 8.594955 seconds.
+Value of r,h
+intval ans = 
+    0.7634    0.0309
+Value of r_,h_
+intval ans = 
+    0.7897    0.0324
+Value of x,y
+intval ans = 
+    0.7628    0.0309
+Value of x_,y_
+intval ans = 
+    0.7891    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.604058 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.602723 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2466,    1.3695] 
+[    1.3805,    1.5138] 
+new_data =
+   1.0e+04 *
+    0.0011    0.0006    1.2467    1.3695    1.3805    1.5138
+Verification Successful
+Elapsed time is 8.622056 seconds.
+Value of r,h
+intval ans = 
+    0.7897    0.0309
+Value of r_,h_
+intval ans = 
+    0.8160    0.0324
+Value of x,y
+intval ans = 
+    0.7891    0.0309
+Value of x_,y_
+intval ans = 
+    0.8154    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.563690 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.566155 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2481,    1.3706] 
+[    1.3816,    1.5140] 
+new_data =
+   1.0e+04 *
+    0.0012    0.0006    1.2481    1.3705    1.3817    1.5140
+Verification Successful
+Elapsed time is 8.585478 seconds.
+Value of r,h
+intval ans = 
+    0.8160    0.0309
+Value of r_,h_
+intval ans = 
+    0.8423    0.0324
+Value of x,y
+intval ans = 
+    0.8154    0.0309
+Value of x_,y_
+intval ans = 
+    0.8417    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.431291 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.417120 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2492,    1.3723] 
+[    1.3820,    1.5153] 
+new_data =
+   1.0e+04 *
+    0.0013    0.0006    1.2493    1.3722    1.3821    1.5153
+Verification Successful
+Elapsed time is 8.437245 seconds.
+Value of r,h
+intval ans = 
+    0.8423    0.0309
+Value of r_,h_
+intval ans = 
+    0.8686    0.0324
+Value of x,y
+intval ans = 
+    0.8417    0.0309
+Value of x_,y_
+intval ans = 
+    0.8680    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.394750 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.391618 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2514,    1.3736] 
+[    1.3841,    1.5156] 
+new_data =
+   1.0e+04 *
+    0.0014    0.0006    1.2514    1.3736    1.3841    1.5156
+Verification Successful
+Elapsed time is 8.410952 seconds.
+Value of r,h
+intval ans = 
+    0.8686    0.0309
+Value of r_,h_
+intval ans = 
+    0.8948    0.0324
+Value of x,y
+intval ans = 
+    0.8680    0.0309
+Value of x_,y_
+intval ans = 
+    0.8942    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.395229 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.416206 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2535,    1.3762] 
+[    1.3859,    1.5178] 
+new_data =
+   1.0e+04 *
+    0.0015    0.0006    1.2536    1.3761    1.3859    1.5178
+Verification Successful
+Elapsed time is 8.435446 seconds.
+Value of r,h
+intval ans = 
+    0.8948    0.0309
+Value of r_,h_
+intval ans = 
+    0.9211    0.0324
+Value of x,y
+intval ans = 
+    0.8943    0.0309
+Value of x_,y_
+intval ans = 
+    0.9205    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.790818 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.714959 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2569,    1.3786] 
+[    1.3895,    1.5196] 
+new_data =
+   1.0e+04 *
+    0.0016    0.0006    1.2570    1.3785    1.3896    1.5196
+Verification Successful
+Elapsed time is 8.734170 seconds.
+Value of r,h
+intval ans = 
+    0.9211    0.0309
+Value of r_,h_
+intval ans = 
+    0.9474    0.0324
+Value of x,y
+intval ans = 
+    0.9206    0.0309
+Value of x_,y_
+intval ans = 
+    0.9468    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.770313 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.797209 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2618,    1.3824] 
+[    1.3955,    1.5235] 
+new_data =
+   1.0e+04 *
+    0.0017    0.0006    1.2619    1.3824    1.3955    1.5234
+Verification Successful
+Elapsed time is 8.816492 seconds.
+Value of r,h
+intval ans = 
+    0.9474    0.0309
+Value of r_,h_
+intval ans = 
+    0.9737    0.0324
+Value of x,y
+intval ans = 
+    0.9469    0.0309
+Value of x_,y_
+intval ans = 
+    0.9731    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.754902 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.380162 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2700,    1.3879] 
+[    1.4061,    1.5297] 
+new_data =
+   1.0e+04 *
+    0.0018    0.0006    1.2701    1.3878    1.4062    1.5297
+Verification Successful
+Elapsed time is 8.399648 seconds.
+Value of r,h
+intval ans = 
+    0.9737    0.0309
+Value of r_,h_
+intval ans = 
+    1.0000    0.0324
+Value of x,y
+intval ans = 
+    0.9732    0.0309
+Value of x_,y_
+intval ans = 
+    0.9994    0.0324
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.555437 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.381756 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.2868,    1.3969] 
+[    1.4302,    1.5410] 
+new_data =
+   1.0e+04 *
+    0.0019    0.0006    1.2868    1.3968    1.4302    1.5409
+Verification Successful
+Elapsed time is 8.401041 seconds.
+Value of r,h
+intval ans = 
+    1.0000    0.0309
+Value of r_,h_
+intval ans = 
+    1.0262    0.0324
+Value of x,y
+intval ans = 
+    0.9995    0.0309
+Value of x_,y_
+intval ans = 
+    1.0257    0.0324
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+deactivated saving of .mat file
+Value of r,h
+[Warning: Initializing MATLAB Graphics failed.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:dispatcher:recursiveLoading
+Trying to load file "/usr/local/MATLAB/R2023b/bin/glnxa64/libmwhgbuiltins.so"
+while it is being loaded.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hgrc', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m', 151)" style="font-weight:bold">hgrc</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m',151,0)">line 151</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.initialize', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m', 15)" style="font-weight:bold">matlab.graphics.internal.initialize</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m',15,0)">line 15</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/disp_', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m', 145)" style="font-weight:bold">intval/disp_</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m',145,0)">line 145</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/display', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m', 65)" style="font-weight:bold">intval/display</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m',65,0)">line 65</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('func_algo2', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m', 39)" style="font-weight:bold">func_algo2</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m',39,0)">line 39</a>)] 
+
+intval ans = 
+    0.5006    0.0324
+Value of r_,h_
+intval ans = 
+    0.5269    0.0340
+Value of x,y
+intval ans = 
+    0.4996    0.0324
+Value of x_,y_
+intval ans = 
+    0.5258    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.377113 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.619729 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1377,    1.2533] 
+[    1.2668,    1.3932] 
+new_data =
+   1.0e+04 *
+    0.0001    0.0007    1.1378    1.2532    1.2669    1.3932
+Verification Successful
+Elapsed time is 8.955747 seconds.
+Value of r,h
+intval ans = 
+    0.5269    0.0324
+Value of r_,h_
+intval ans = 
+    0.5532    0.0340
+Value of x,y
+intval ans = 
+    0.5259    0.0324
+Value of x_,y_
+intval ans = 
+    0.5522    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.533900 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.470805 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1380,    1.2529] 
+[    1.2672,    1.3925] 
+new_data =
+   1.0e+04 *
+    0.0002    0.0007    1.1380    1.2528    1.2673    1.3924
+Verification Successful
+Elapsed time is 8.542557 seconds.
+Value of r,h
+intval ans = 
+    0.5532    0.0324
+Value of r_,h_
+intval ans = 
+    0.5795    0.0340
+Value of x,y
+intval ans = 
+    0.5522    0.0324
+Value of x_,y_
+intval ans = 
+    0.5785    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.380438 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.324595 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1379,    1.2532] 
+[    1.2670,    1.3929] 
+new_data =
+   1.0e+04 *
+    0.0003    0.0007    1.1380    1.2532    1.2671    1.3928
+Verification Successful
+Elapsed time is 8.390278 seconds.
+Value of r,h
+intval ans = 
+    0.5795    0.0324
+Value of r_,h_
+intval ans = 
+    0.6058    0.0340
+Value of x,y
+intval ans = 
+    0.5786    0.0324
+Value of x_,y_
+intval ans = 
+    0.6048    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.562210 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.512729 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1381,    1.2532] 
+[    1.2671,    1.3926] 
+new_data =
+   1.0e+04 *
+    0.0004    0.0007    1.1381    1.2531    1.2671    1.3926
+Verification Successful
+Elapsed time is 8.547483 seconds.
+Value of r,h
+intval ans = 
+    0.6058    0.0324
+Value of r_,h_
+intval ans = 
+    0.6320    0.0340
+Value of x,y
+intval ans = 
+    0.6049    0.0324
+Value of x_,y_
+intval ans = 
+    0.6311    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.398544 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.413560 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1384,    1.2534] 
+[    1.2674,    1.3926] 
+new_data =
+   1.0e+04 *
+    0.0005    0.0007    1.1385    1.2533    1.2674    1.3926
+Verification Successful
+Elapsed time is 8.498876 seconds.
+Value of r,h
+intval ans = 
+    0.6320    0.0324
+Value of r_,h_
+intval ans = 
+    0.6583    0.0340
+Value of x,y
+intval ans = 
+    0.6312    0.0324
+Value of x_,y_
+intval ans = 
+    0.6574    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.618540 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.602544 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1384,    1.2538] 
+[    1.2671,    1.3929] 
+new_data =
+   1.0e+04 *
+    0.0006    0.0007    1.1385    1.2538    1.2671    1.3929
+Verification Successful
+Elapsed time is 8.625379 seconds.
+Value of r,h
+intval ans = 
+    0.6583    0.0324
+Value of r_,h_
+intval ans = 
+    0.6846    0.0340
+Value of x,y
+intval ans = 
+    0.6575    0.0324
+Value of x_,y_
+intval ans = 
+    0.6838    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.552953 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.614736 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1391,    1.2539] 
+[    1.2678,    1.3925] 
+new_data =
+   1.0e+04 *
+    0.0007    0.0007    1.1392    1.2539    1.2678    1.3925
+Verification Successful
+Elapsed time is 8.634708 seconds.
+Value of r,h
+intval ans = 
+    0.6846    0.0324
+Value of r_,h_
+intval ans = 
+    0.7109    0.0340
+Value of x,y
+intval ans = 
+    0.6838    0.0324
+Value of x_,y_
+intval ans = 
+    0.7101    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.410280 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.599824 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1392,    1.2547] 
+[    1.2674,    1.3932] 
+new_data =
+   1.0e+04 *
+    0.0008    0.0007    1.1392    1.2547    1.2674    1.3932
+Verification Successful
+Elapsed time is 8.619739 seconds.
+Value of r,h
+intval ans = 
+    0.7109    0.0324
+Value of r_,h_
+intval ans = 
+    0.7372    0.0340
+Value of x,y
+intval ans = 
+    0.7101    0.0324
+Value of x_,y_
+intval ans = 
+    0.7364    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.579353 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.580483 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1398,    1.2549] 
+[    1.2678,    1.3927] 
+new_data =
+   1.0e+04 *
+    0.0009    0.0007    1.1399    1.2548    1.2679    1.3926
+Verification Successful
+Elapsed time is 8.603428 seconds.
+Value of r,h
+intval ans = 
+    0.7372    0.0324
+Value of r_,h_
+intval ans = 
+    0.7634    0.0340
+Value of x,y
+intval ans = 
+    0.7364    0.0324
+Value of x_,y_
+intval ans = 
+    0.7627    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.423753 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.389174 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1404,    1.2557] 
+[    1.2681,    1.3931] 
+new_data =
+   1.0e+04 *
+    0.0010    0.0007    1.1404    1.2556    1.2681    1.3930
+Verification Successful
+Elapsed time is 8.409365 seconds.
+Value of r,h
+intval ans = 
+    0.7634    0.0324
+Value of r_,h_
+intval ans = 
+    0.7897    0.0340
+Value of x,y
+intval ans = 
+    0.7627    0.0324
+Value of x_,y_
+intval ans = 
+    0.7890    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.609971 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.174205 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1411,    1.2564] 
+[    1.2684,    1.3933] 
+new_data =
+   1.0e+04 *
+    0.0011    0.0007    1.1411    1.2564    1.2685    1.3932
+Verification Successful
+Elapsed time is 8.194173 seconds.
+Value of r,h
+intval ans = 
+    0.7897    0.0324
+Value of r_,h_
+intval ans = 
+    0.8160    0.0340
+Value of x,y
+intval ans = 
+    0.7891    0.0324
+Value of x_,y_
+intval ans = 
+    0.8153    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.148606 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.200943 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1423,    1.2573] 
+[    1.2695,    1.3936] 
+new_data =
+   1.0e+04 *
+    0.0012    0.0007    1.1423    1.2573    1.2696    1.3935
+Verification Successful
+Elapsed time is 8.220687 seconds.
+Value of r,h
+intval ans = 
+    0.8160    0.0324
+Value of r_,h_
+intval ans = 
+    0.8423    0.0340
+Value of x,y
+intval ans = 
+    0.8154    0.0324
+Value of x_,y_
+intval ans = 
+    0.8416    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.154706 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.227120 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1433,    1.2588] 
+[    1.2700,    1.3947] 
+new_data =
+   1.0e+04 *
+    0.0013    0.0007    1.1433    1.2587    1.2701    1.3947
+Verification Successful
+Elapsed time is 8.246840 seconds.
+Value of r,h
+intval ans = 
+    0.8423    0.0324
+Value of r_,h_
+intval ans = 
+    0.8686    0.0340
+Value of x,y
+intval ans = 
+    0.8417    0.0324
+Value of x_,y_
+intval ans = 
+    0.8679    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.521458 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.398593 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1452,    1.2599] 
+[    1.2720,    1.3952] 
+new_data =
+   1.0e+04 *
+    0.0014    0.0007    1.1452    1.2599    1.2720    1.3951
+Verification Successful
+Elapsed time is 8.418279 seconds.
+Value of r,h
+intval ans = 
+    0.8686    0.0324
+Value of r_,h_
+intval ans = 
+    0.8948    0.0340
+Value of x,y
+intval ans = 
+    0.8680    0.0324
+Value of x_,y_
+intval ans = 
+    0.8942    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.543824 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.702599 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1471,    1.2621] 
+[    1.2738,    1.3972] 
+new_data =
+   1.0e+04 *
+    0.0015    0.0007    1.1471    1.2621    1.2738    1.3972
+Verification Successful
+Elapsed time is 8.721692 seconds.
+Value of r,h
+intval ans = 
+    0.8948    0.0324
+Value of r_,h_
+intval ans = 
+    0.9211    0.0340
+Value of x,y
+intval ans = 
+    0.8942    0.0324
+Value of x_,y_
+intval ans = 
+    0.9205    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.568607 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.953413 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1502,    1.2643] 
+[    1.2773,    1.3991] 
+new_data =
+   1.0e+04 *
+    0.0016    0.0007    1.1502    1.2643    1.2774    1.3990
+Verification Successful
+Elapsed time is 8.976917 seconds.
+Value of r,h
+intval ans = 
+    0.9211    0.0324
+Value of r_,h_
+intval ans = 
+    0.9474    0.0340
+Value of x,y
+intval ans = 
+    0.9205    0.0324
+Value of x_,y_
+intval ans = 
+    0.9468    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.442769 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.829803 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1547,    1.2678] 
+[    1.2830,    1.4028] 
+new_data =
+   1.0e+04 *
+    0.0017    0.0007    1.1547    1.2677    1.2831    1.4028
+Verification Successful
+Elapsed time is 9.855902 seconds.
+Value of r,h
+intval ans = 
+    0.9474    0.0324
+Value of r_,h_
+intval ans = 
+    0.9737    0.0340
+Value of x,y
+intval ans = 
+    0.9468    0.0324
+Value of x_,y_
+intval ans = 
+    0.9731    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.689751 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.489097 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1623,    1.2728] 
+[    1.2933,    1.4088] 
+new_data =
+   1.0e+04 *
+    0.0018    0.0007    1.1623    1.2727    1.2933    1.4088
+Verification Successful
+Elapsed time is 8.508908 seconds.
+Value of r,h
+intval ans = 
+    0.9737    0.0324
+Value of r_,h_
+intval ans = 
+    1.0000    0.0340
+Value of x,y
+intval ans = 
+    0.9731    0.0324
+Value of x_,y_
+intval ans = 
+    0.9994    0.0340
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.412107 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.404968 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.1777,    1.2811] 
+[    1.3156,    1.4197] 
+new_data =
+   1.0e+04 *
+    0.0019    0.0007    1.1777    1.2811    1.3156    1.4196
+Verification Successful
+Elapsed time is 8.423058 seconds.
+Value of r,h
+intval ans = 
+    1.0000    0.0324
+Value of r_,h_
+intval ans = 
+    1.0262    0.0340
+Value of x,y
+intval ans = 
+    0.9994    0.0324
+Value of x_,y_
+intval ans = 
+    1.0257    0.0340
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+deactivated saving of .mat file
+Value of r,h
+[Warning: Initializing MATLAB Graphics failed.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:dispatcher:recursiveLoading
+Trying to load file "/usr/local/MATLAB/R2023b/bin/glnxa64/libmwhgbuiltins.so"
+while it is being loaded.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hgrc', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m', 151)" style="font-weight:bold">hgrc</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m',151,0)">line 151</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.initialize', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m', 15)" style="font-weight:bold">matlab.graphics.internal.initialize</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m',15,0)">line 15</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/disp_', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m', 145)" style="font-weight:bold">intval/disp_</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m',145,0)">line 145</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/display', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m', 65)" style="font-weight:bold">intval/display</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m',65,0)">line 65</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('func_algo2', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m', 39)" style="font-weight:bold">func_algo2</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m',39,0)">line 39</a>)] 
+
+intval ans = 
+    0.5006    0.0340
+Value of r_,h_
+intval ans = 
+    0.5269    0.0357
+Value of x,y
+intval ans = 
+    0.4995    0.0340
+Value of x_,y_
+intval ans = 
+    0.5257    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.566363 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.660559 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0401,    1.1470] 
+[    1.1616,    1.2785] 
+new_data =
+   1.0e+04 *
+    0.0001    0.0008    1.0402    1.1469    1.1617    1.2784
+Verification Successful
+Elapsed time is 9.008956 seconds.
+Value of r,h
+intval ans = 
+    0.5269    0.0340
+Value of r_,h_
+intval ans = 
+    0.5532    0.0357
+Value of x,y
+intval ans = 
+    0.5258    0.0340
+Value of x_,y_
+intval ans = 
+    0.5520    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.203533 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.155203 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0404,    1.1466] 
+[    1.1620,    1.2779] 
+new_data =
+   1.0e+04 *
+    0.0002    0.0008    1.0404    1.1466    1.1621    1.2778
+Verification Successful
+Elapsed time is 9.225351 seconds.
+Value of r,h
+intval ans = 
+    0.5532    0.0340
+Value of r_,h_
+intval ans = 
+    0.5795    0.0357
+Value of x,y
+intval ans = 
+    0.5522    0.0340
+Value of x_,y_
+intval ans = 
+    0.5784    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.924737 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.041768 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0403,    1.1469] 
+[    1.1619,    1.2782] 
+new_data =
+   1.0e+04 *
+    0.0003    0.0008    1.0403    1.1469    1.1619    1.2782
+Verification Successful
+Elapsed time is 9.108293 seconds.
+Value of r,h
+intval ans = 
+    0.5795    0.0340
+Value of r_,h_
+intval ans = 
+    0.6058    0.0357
+Value of x,y
+intval ans = 
+    0.5785    0.0340
+Value of x_,y_
+intval ans = 
+    0.6047    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.417295 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.049087 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0404,    1.1468] 
+[    1.1620,    1.2780] 
+new_data =
+   1.0e+04 *
+    0.0004    0.0008    1.0404    1.1468    1.1620    1.2780
+Verification Successful
+Elapsed time is 9.085914 seconds.
+Value of r,h
+intval ans = 
+    0.6058    0.0340
+Value of r_,h_
+intval ans = 
+    0.6320    0.0357
+Value of x,y
+intval ans = 
+    0.6048    0.0340
+Value of x_,y_
+intval ans = 
+    0.6310    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.977128 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.981962 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0406,    1.1470] 
+[    1.1623,    1.2781] 
+new_data =
+   1.0e+04 *
+    0.0005    0.0008    1.0406    1.1469    1.1624    1.2780
+Verification Successful
+Elapsed time is 9.071426 seconds.
+Value of r,h
+intval ans = 
+    0.6320    0.0340
+Value of r_,h_
+intval ans = 
+    0.6583    0.0357
+Value of x,y
+intval ans = 
+    0.6311    0.0340
+Value of x_,y_
+intval ans = 
+    0.6573    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.071339 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.017832 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0406,    1.1473] 
+[    1.1622,    1.2784] 
+new_data =
+   1.0e+04 *
+    0.0006    0.0008    1.0406    1.1473    1.1622    1.2784
+Verification Successful
+Elapsed time is 9.040265 seconds.
+Value of r,h
+intval ans = 
+    0.6583    0.0340
+Value of r_,h_
+intval ans = 
+    0.6846    0.0357
+Value of x,y
+intval ans = 
+    0.6574    0.0340
+Value of x_,y_
+intval ans = 
+    0.6837    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.043327 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.033050 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0411,    1.1474] 
+[    1.1629,    1.2781] 
+new_data =
+   1.0e+04 *
+    0.0007    0.0008    1.0412    1.1473    1.1629    1.2781
+Verification Successful
+Elapsed time is 9.052227 seconds.
+Value of r,h
+intval ans = 
+    0.6846    0.0340
+Value of r_,h_
+intval ans = 
+    0.7109    0.0357
+Value of x,y
+intval ans = 
+    0.6838    0.0340
+Value of x_,y_
+intval ans = 
+    0.7100    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.992983 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.009981 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0411,    1.1480] 
+[    1.1626,    1.2788] 
+new_data =
+   1.0e+04 *
+    0.0008    0.0008    1.0411    1.1480    1.1627    1.2788
+Verification Successful
+Elapsed time is 9.029225 seconds.
+Value of r,h
+intval ans = 
+    0.7109    0.0340
+Value of r_,h_
+intval ans = 
+    0.7372    0.0357
+Value of x,y
+intval ans = 
+    0.7101    0.0340
+Value of x_,y_
+intval ans = 
+    0.7363    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.027865 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.985248 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0416,    1.1481] 
+[    1.1631,    1.2784] 
+new_data =
+   1.0e+04 *
+    0.0009    0.0008    1.0417    1.1480    1.1631    1.2784
+Verification Successful
+Elapsed time is 9.007156 seconds.
+Value of r,h
+intval ans = 
+    0.7372    0.0340
+Value of r_,h_
+intval ans = 
+    0.7634    0.0357
+Value of x,y
+intval ans = 
+    0.7364    0.0340
+Value of x_,y_
+intval ans = 
+    0.7626    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.886070 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.191799 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0420,    1.1487] 
+[    1.1634,    1.2789] 
+new_data =
+   1.0e+04 *
+    0.0010    0.0008    1.0421    1.1487    1.1634    1.2788
+Verification Successful
+Elapsed time is 9.211003 seconds.
+Value of r,h
+intval ans = 
+    0.7634    0.0340
+Value of r_,h_
+intval ans = 
+    0.7897    0.0357
+Value of x,y
+intval ans = 
+    0.7627    0.0340
+Value of x_,y_
+intval ans = 
+    0.7889    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.994758 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.017098 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0426,    1.1493] 
+[    1.1638,    1.2791] 
+new_data =
+   1.0e+04 *
+    0.0011    0.0008    1.0427    1.1493    1.1638    1.2791
+Verification Successful
+Elapsed time is 9.035401 seconds.
+Value of r,h
+intval ans = 
+    0.7897    0.0340
+Value of r_,h_
+intval ans = 
+    0.8160    0.0357
+Value of x,y
+intval ans = 
+    0.7890    0.0340
+Value of x_,y_
+intval ans = 
+    0.8152    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.823665 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.830472 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0436,    1.1501] 
+[    1.1649,    1.2795] 
+new_data =
+   1.0e+04 *
+    0.0012    0.0008    1.0437    1.1500    1.1649    1.2794
+Verification Successful
+Elapsed time is 8.849009 seconds.
+Value of r,h
+intval ans = 
+    0.8160    0.0340
+Value of r_,h_
+intval ans = 
+    0.8423    0.0357
+Value of x,y
+intval ans = 
+    0.8153    0.0340
+Value of x_,y_
+intval ans = 
+    0.8415    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.837583 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.035307 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0445,    1.1513] 
+[    1.1654,    1.2806] 
+new_data =
+   1.0e+04 *
+    0.0013    0.0008    1.0445    1.1512    1.1655    1.2805
+Verification Successful
+Elapsed time is 9.056730 seconds.
+Value of r,h
+intval ans = 
+    0.8423    0.0340
+Value of r_,h_
+intval ans = 
+    0.8686    0.0357
+Value of x,y
+intval ans = 
+    0.8416    0.0340
+Value of x_,y_
+intval ans = 
+    0.8678    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.868929 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.033964 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0461,    1.1523] 
+[    1.1673,    1.2811] 
+new_data =
+   1.0e+04 *
+    0.0014    0.0008    1.0462    1.1522    1.1674    1.2810
+Verification Successful
+Elapsed time is 9.052676 seconds.
+Value of r,h
+intval ans = 
+    0.8686    0.0340
+Value of r_,h_
+intval ans = 
+    0.8948    0.0357
+Value of x,y
+intval ans = 
+    0.8679    0.0340
+Value of x_,y_
+intval ans = 
+    0.8941    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.051735 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.058098 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0478,    1.1542] 
+[    1.1691,    1.2831] 
+new_data =
+   1.0e+04 *
+    0.0015    0.0008    1.0479    1.1542    1.1691    1.2830
+Verification Successful
+Elapsed time is 9.077102 seconds.
+Value of r,h
+intval ans = 
+    0.8948    0.0340
+Value of r_,h_
+intval ans = 
+    0.9211    0.0357
+Value of x,y
+intval ans = 
+    0.8942    0.0340
+Value of x_,y_
+intval ans = 
+    0.9204    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.039979 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.193201 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0506,    1.1561] 
+[    1.1725,    1.2849] 
+new_data =
+   1.0e+04 *
+    0.0016    0.0008    1.0507    1.1561    1.1726    1.2849
+Verification Successful
+Elapsed time is 9.211914 seconds.
+Value of r,h
+intval ans = 
+    0.9211    0.0340
+Value of r_,h_
+intval ans = 
+    0.9474    0.0357
+Value of x,y
+intval ans = 
+    0.9205    0.0340
+Value of x_,y_
+intval ans = 
+    0.9467    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.234588 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.234520 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0548,    1.1593] 
+[    1.1780,    1.2885] 
+new_data =
+   1.0e+04 *
+    0.0017    0.0008    1.0548    1.1592    1.1781    1.2885
+Verification Successful
+Elapsed time is 9.253043 seconds.
+Value of r,h
+intval ans = 
+    0.9474    0.0340
+Value of r_,h_
+intval ans = 
+    0.9737    0.0357
+Value of x,y
+intval ans = 
+    0.9468    0.0340
+Value of x_,y_
+intval ans = 
+    0.9730    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.232673 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.041907 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0619,    1.1639] 
+[    1.1878,    1.2943] 
+new_data =
+   1.0e+04 *
+    0.0018    0.0008    1.0619    1.1638    1.1878    1.2943
+Verification Successful
+Elapsed time is 9.060910 seconds.
+Value of r,h
+intval ans = 
+    0.9737    0.0340
+Value of r_,h_
+intval ans = 
+    1.0000    0.0357
+Value of x,y
+intval ans = 
+    0.9731    0.0340
+Value of x_,y_
+intval ans = 
+    0.9993    0.0357
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.238104 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 9.059867 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    1.0760,    1.1716] 
+[    1.2083,    1.3048] 
+new_data =
+   1.0e+04 *
+    0.0019    0.0008    1.0761    1.1715    1.2083    1.3047
+Verification Successful
+Elapsed time is 9.078598 seconds.
+Value of r,h
+intval ans = 
+    1.0000    0.0340
+Value of r_,h_
+intval ans = 
+    1.0262    0.0357
+Value of x,y
+intval ans = 
+    0.9994    0.0340
+Value of x_,y_
+intval ans = 
+    1.0256    0.0357
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+deactivated saving of .mat file
+Value of r,h
+[Warning: Initializing MATLAB Graphics failed.
+This indicates a potentially serious problem in your MATLAB setup, which should
+be resolved as soon as possible.  Error detected was:
+MATLAB:dispatcher:recursiveLoading
+Trying to load file "/usr/local/MATLAB/R2023b/bin/glnxa64/libmwhgbuiltins.so"
+while it is being loaded.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hgrc', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m', 151)" style="font-weight:bold">hgrc</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/hg/hgrc.m',151,0)">line 151</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.initialize', '/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m', 15)" style="font-weight:bold">matlab.graphics.internal.initialize</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2023b/toolbox/matlab/graphics/+matlab/+graphics/+internal/initialize.m',15,0)">line 15</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/disp_', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m', 145)" style="font-weight:bold">intval/disp_</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/disp_.m',145,0)">line 145</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('intval/display', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m', 65)" style="font-weight:bold">intval/display</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12/intval/@intval/display.m',65,0)">line 65</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('func_algo2', '/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m', 39)" style="font-weight:bold">func_algo2</a> (<a href="matlab: opentoline('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/func_algo2.m',39,0)">line 39</a>)] 
+
+intval ans = 
+    0.5006    0.0357
+Value of r_,h_
+intval ans = 
+    0.5269    0.0376
+Value of x,y
+intval ans = 
+    0.4994    0.0357
+Value of x_,y_
+intval ans = 
+    0.5256    0.0376
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 10.419874 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.389468 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    0.9501,    1.0479] 
+[    1.0645,    1.1714] 
+new_data =
+   1.0e+04 *
+    0.0001    0.0009    0.9501    1.0478    1.0645    1.1714
+Verification Successful
+Elapsed time is 8.732442 seconds.
+Value of r,h
+intval ans = 
+    0.5269    0.0357
+Value of r_,h_
+intval ans = 
+    0.5532    0.0376
+Value of x,y
+intval ans = 
+    0.5257    0.0357
+Value of x_,y_
+intval ans = 
+    0.5519    0.0376
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.816400 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.748600 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    0.9503,    1.0476] 
+[    1.0648,    1.1709] 
+new_data =
+   1.0e+04 *
+    0.0002    0.0009    0.9503    1.0475    1.0649    1.1709
+Verification Successful
+Elapsed time is 8.820128 seconds.
+Value of r,h
+intval ans = 
+    0.5532    0.0357
+Value of r_,h_
+intval ans = 
+    0.5795    0.0376
+Value of x,y
+intval ans = 
+    0.5520    0.0357
+Value of x_,y_
+intval ans = 
+    0.5783    0.0376
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.600373 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.532978 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    0.9501,    1.0478] 
+[    1.0648,    1.1713] 
+new_data =
+   1.0e+04 *
+    0.0003    0.0009    0.9502    1.0478    1.0648    1.1713
+Verification Successful
+Elapsed time is 8.598783 seconds.
+Value of r,h
+intval ans = 
+    0.5795    0.0357
+Value of r_,h_
+intval ans = 
+    0.6058    0.0376
+Value of x,y
+intval ans = 
+    0.5784    0.0357
+Value of x_,y_
+intval ans = 
+    0.6046    0.0376
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.368543 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.350613 seconds.
+intval blams_ = 
+  1.0e+004 *
+[    0.9502,    1.0477] 
+[    1.0649,    1.1712] 
+new_data =
+   1.0e+04 *
+    0.0004    0.0009    0.9502    1.0477    1.0650    1.1711
+Verification Successful
+Elapsed time is 8.383876 seconds.
+Value of r,h
+intval ans = 
+    0.6058    0.0357
+Value of r_,h_
+intval ans = 
+    0.6320    0.0376
+Value of x,y
+intval ans = 
+    0.6047    0.0357
+Value of x_,y_
+intval ans = 
+    0.6309    0.0376
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
+Elapsed time is 8.585167 seconds.
+deal the mesh...
+create matrix...
+begin to solve eigenvalue problem :size =6000
