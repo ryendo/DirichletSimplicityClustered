@@ -181,7 +181,7 @@ Each file contains the rigorous lower and upper bounds for $\\lambda\_2$ and $\\
 
 ### Preparation Scripts (`prep/`)
 
-  * `make_indices_algo2.m`: Generates the master task list `prep/list_j.csv` for `main_algo2.sh`, containing the `j` indices (1-1220).
+  * `make_indices_algo2.m`: Generates the master task list `prep/list_j.csv` for `main_algo2.sh`, containing the `j` indices (1-200).
   * `prepare_parallel.sh`: Sets up the execution environment by creating isolated copies of the INTLAB library for each parallel worker.
   * `run_matlab.sh`: A helper script called by `main_algo2.sh` to execute a single MATLAB computation task.
 
