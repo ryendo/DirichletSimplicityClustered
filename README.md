@@ -82,11 +82,15 @@ This algorithm is run as a standard MATLAB script and does not use the parallel 
 2.  **Run the Algorithm:** After the setup is complete, run the main script.
     ```matlab
     >> main_algo1
+
     ```
+[Liu: WANTED] Before the code "main_algo1" is executed, an estimated time is wanted. The output should be compressed.
 
 ### Algorithms 2 (Parallel Eigenvalue Bounds)
 
 These algorithms are run from the shell and utilize a parallel framework.
+
+[Liu: What is the purpose of this algorithm 2? The title "(Parallel Eigenvalue Bounds)" provides very limited information.]
 
 1.  **Preparation:** First, run the master preparation script from the project root directory. This only needs to be done once before running the parallel jobs.
 
