@@ -26,7 +26,8 @@ function [eig_bounds, ind_range] = veig( A, B, ind )
 %  2011/03/11 First version 
 %  2011/09/30 Second version. Document modified.
 %  2011/11/22 Third version. Modified to give exact bound if possible. Especially the part for repeated eigenvalues.
-%
+%  2025/11/7  Revision: Change the proces to estimate the ldl
+%  residual error from very small initial value.
 %%
 
 
@@ -78,6 +79,7 @@ while( index <= max_ind )
       
       
       [neg_num,pos_num,zero_num,F] = GetInertia(D);      
+      % [neg_num,pos_num,zero_num,F] = npe_bdiag(D);      
       if( neg_num >= index || F~=0 )
         lambda_test = eig_test -max(eps,abs(eig_test))* 10^(k-16);
         k=k+1;
@@ -100,8 +102,9 @@ while( index <= max_ind )
       E = mid(A) - lambda_test*mid(B);
       [L,D,P] = ldl(E);
       [neg_num,pos_num,zero_num,F] = GetInertia(D);      
+      % [neg_num,pos_num,zero_num,F] = npe_bdiag(D);      
       if( neg_num+zero_num < index || F~=0 )
-        lambda_test = eig_test + max(eps,abs(eig_test)) * 10^(k-16);    k=k+1;
+        lambda_test = eig_test + max(eps,abs(eig_test)) * 10^(k-16); k=k+1;
       else
         find_lambda = 1;
       end
@@ -123,23 +126,22 @@ while( index <= max_ind )
     E = mid(A) - lambda_test*mid(B);
     [L,D,P] = ldl(mid(E));
     E = intval(A) - lambda_test*intval(B);
-    
-    
+       
     %%%%%%%%%%%%%%  Error estimation for lower bound %%%%%%%%%%%%%%
 
     diff_m = P*intval(L)*intval(D)*intval(L')*P' - E;
+    diff_m_mid = P*(L)*(D)*(L')* P' - mid(E);
 
-    diff_m_inf=norm(sup(abs(diff_m)),'inf');
+    diff_m_inf=norm(sup(abs(diff_m_mid)),'inf');
     
     if( diff_m_inf ==0)
-        lambda_lower = lambda_test;
-        
+        lambda_lower = lambda_test;        
     else
-        err_est = max(eps,norm(sup(abs(diff_m)),'inf')/min_eig_B);
+        % err_est = max(eps,norm(sup(abs(diff_m)),'inf')/min_eig_B);
         err_est = max(eps, diff_m_inf /min_eig_B);
         is_positive=0;
         k=0;
-        while( k<16 && is_positive<1)
+        while( k<53 && is_positive<1)
             err_est = err_est*2;
             tmpMatrix = intval(err_est)*intval(B) - diff_m;	is_positive = isspd( hull(tmpMatrix , tmpMatrix') );
             tmpMatrix = intval(err_est)*intval(B) + diff_m;	is_positive = is_positive*isspd( hull(tmpMatrix , tmpMatrix') );
@@ -149,17 +151,19 @@ while( index <= max_ind )
         if( is_positive<1 )
             error('Too many loops for finding lower bound')
         end
+        %Since the above process starts with small value of err_est
+        %estimated by diff_m_inf, there is no need to inflate the value of
+        %err_est below.
+        % last_err_est = err_est;
+        % while( err_est > eps && is_positive)
+        %     last_err_est = err_est;
+        %     err_est = err_est/2;
+        %     tmpMatrix = intval(err_est)*intval(B) - diff_m;	is_positive = isspd( hull(tmpMatrix , tmpMatrix') );
+        %     tmpMatrix = intval(err_est)*intval(B) + diff_m;	is_positive = is_positive*isspd( hull(tmpMatrix , tmpMatrix') );
+        %     clear tmpMatrix;
+        % end
 
-        last_err_est = err_est;
-        while( err_est > eps && is_positive)
-            last_err_est = err_est;
-            err_est = err_est/2;
-            tmpMatrix = intval(err_est)*intval(B) - diff_m;	is_positive = isspd( hull(tmpMatrix , tmpMatrix') );
-            tmpMatrix = intval(err_est)*intval(B) + diff_m;	is_positive = is_positive*isspd( hull(tmpMatrix , tmpMatrix') );
-            clear tmpMatrix;
-        end
-
-        lambda_lower = inf( intval(lambda_test) - intval(last_err_est));
+        lambda_lower = inf( intval(lambda_test) - intval(err_est));
     end
 
     
@@ -179,8 +183,9 @@ while( index <= max_ind )
     %%%%%%%%%%%%%% Error estimate for upper bound %%%%%%%%%%%%%%
 
     diff_m = P*intval(L)*intval(D)*intval(L')* P' - E;
+    diff_m_mid = P*(L)*(D)*(L')* P' - mid(E);
 
-    diff_m_inf=norm(sup(abs(diff_m)),'inf');
+    diff_m_inf = norm(sup(abs(diff_m_mid)),'inf');
     if( diff_m_inf ==0)
         lambda_upper = lambda_test;
     else
@@ -188,26 +193,17 @@ while( index <= max_ind )
 
         is_positive=0;
         k=0;
-        while( k<16 && is_positive<1)
+        while( k<53 && is_positive<1)
             err_est = err_est*2;
             tmpMatrix = intval(err_est)*intval(B) - diff_m;	is_positive = isspd( hull(tmpMatrix , tmpMatrix') );
             tmpMatrix = intval(err_est)*intval(B) + diff_m;	is_positive = is_positive*isspd( hull(tmpMatrix , tmpMatrix') );
             clear tmpMatrix;
-            k=k+1 ;
         end
         if( is_positive<1 )
             error('Too many loops for finding upper bound')
         end
 
-        while( err_est > eps && is_positive)
-            last_err_est = err_est;
-            err_est = err_est/2;
-            tmpMatrix = intval(err_est)*intval(B) - diff_m;	is_positive = isspd( hull(tmpMatrix , tmpMatrix') );
-            tmpMatrix = intval(err_est)*intval(B) + diff_m;	is_positive = is_positive*isspd( hull(tmpMatrix , tmpMatrix') );
-            clear tmpMatrix;
-        end
-
-        lambda_upper = sup( intval(lambda_test) + intval(last_err_est) );
+        lambda_upper = sup( intval(lambda_test) + intval(err_est) );
     end
    %----------------------------------------------------------------------
 

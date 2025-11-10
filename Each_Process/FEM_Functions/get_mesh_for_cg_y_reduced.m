@@ -18,7 +18,7 @@ function mesh = get_mesh_for_cg_y_reduced(tri_node, N_h, N_v)
     % Find the top vertex index, compatible with intval objects.
     % For intval, we cannot get the index from max() directly.
     % Instead, we find the index of the maximum of the midpoints of the intervals.
-    y_coords_mid = mid(tri_node(:,2));
+    y_coords_mid = I_mid(tri_node(:,2));
     [~, top_idx] = max(y_coords_mid);
     
     other_indices = setdiff(1:3, top_idx);
@@ -27,7 +27,7 @@ function mesh = get_mesh_for_cg_y_reduced(tri_node, N_h, N_v)
     p2 = tri_node(other_indices(2), :);
 
     % Ensure p1 is to the left of p2 for consistent ordering, using midpoints
-    if mid(p1(1)) > mid(p2(1))
+    if I_mid(p1(1)) > I_mid(p2(1))
         [p1, p2] = deal(p2, p1); % Swap p1 and p2
     end
     
@@ -48,13 +48,13 @@ function mesh = get_mesh_for_cg_y_reduced(tri_node, N_h, N_v)
         
         % Determine x_start and x_end for this y_level by linear interpolation
         % along the left (p3-p1) and right (p3-p2) edges.
-        if mid(y3) == mid(y1)
+        if I_mid(y3) == I_mid(y1)
              x_start = x1;
         else
             x_start = x3 + (x1 - x3) * (y3 - y_level) / (y3 - y1);
         end
         
-        if mid(y3) == mid(y2)
+        if I_mid(y3) == I_mid(y2)
             x_end = x2;
         else
             x_end = x3 + (x2 - x3) * (y3 - y_level) / (y3 - y2);
@@ -95,7 +95,7 @@ function mesh = get_mesh_for_cg_y_reduced(tri_node, N_h, N_v)
                 elements = [elements; P(i), Q(j), P(i+1)];
                 i = i + 1;
             else
-                if mid(nodes(P(i+1), 1)) <= mid(nodes(Q(j+1), 1))
+                if I_mid(nodes(P(i+1), 1)) <= I_mid(nodes(Q(j+1), 1))
                     elements = [elements; P(i), Q(j), P(i+1)];
                     i = i + 1;
                 else

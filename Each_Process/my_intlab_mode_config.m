@@ -14,7 +14,7 @@ function my_intlab_mode_config(n)
     % --- Add the specific INTLAB path for this process ---
     % Dynamically build the path to the correct Intlab_V12_no<n> folder
     intlab_folder_for_this_process = "Intlab_V12_no" + n;
-    addpath(fullfile(each_process_dir, "Intlab_Group", intlab_folder_for_this_process));
+    addpath('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12');
     
     
     % --- Add paths to other libraries using absolute paths ---
