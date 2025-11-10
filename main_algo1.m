@@ -54,8 +54,7 @@ file_name = ['results/quotients_' datestr(now, 'yyyy-mm-dd_HH-MM-SS') '.csv'];
 % --- Main loop to compute difference quotients for all directions ---
 % Iterates through 'omega_N' angular sectors to cover all perturbation
 % directions from the equilateral triangle.
-% for idx = 1:omega_N
-for idx = [1,omega_N]
+for idx = 1:omega_N
     % Define the interval 'delta' for the current perturbation angle sector.
     delta = I_hull((idx-1) * I_pi / (3 * omega_N), idx * I_pi / (3 * omega_N));
 
