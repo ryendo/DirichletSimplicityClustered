@@ -340,7 +340,6 @@ methods
     %==================== Partial evidence near equilateral ====================%
     function [lam2, lam3] = boundsAtPoint(self, a, b, varargin)
         p = inputParser;
-        addParameter(p,'mesh_N', self.mesh_N);
         addParameter(p,'N_LG',   self.mesh_LG);
         addParameter(p,'N_rho',   self.mesh_N);
         addParameter(p,'ord',    self.ord);
@@ -359,7 +358,6 @@ methods
 
     function [up2, lo3] = boundsOnBox(self, a_lo, a_hi, b_lo, b_hi, varargin)
         p = inputParser;
-        addParameter(p,'mesh_N', self.mesh_N);
         addParameter(p,'N_LG',   self.mesh_LG);
         addParameter(p,'N_rho',   self.mesh_N);
         addParameter(p,'ord',    self.ord);
@@ -420,9 +418,9 @@ methods (Access = private)
     function [mat,u1,u2,u3] = prepareFEM(self)
         tri_I = [ self.callI_intval('0'), self.callI_intval('0'); ...
                   self.callI_intval('1'), self.callI_intval('0'); ...
-                  1/self.callI_intval(2), sqrt(self.callI_intval(3))/2 ];
+                  1/self.callI_intval('2'), sqrt(self.callI_intval('3'))/2 ];
         [lamhs, inner_uhat, Agrad, AL2, Axx, Axy, Ayy, ~] = ...
-            calc_eigen_bounds_any_order_for_quotients(tri_I, self.mesh_N, self.ord); %#ok<ASGLU>
+            calc_eigen_bounds_any_order_for_quotients(tri_I, self.mesh_LG, self.ord); %#ok<ASGLU>
         mat = struct('xx',Axx,'xy',Axy,'yy',Ayy,'grad',Agrad,'l2',AL2);
 
         u1 = inner_uhat(:,1);
