@@ -4,7 +4,7 @@ This project provides the source code and computational framework for the comput
 
 ## Background
 
-Determining the eigenvalue multiplicity of the Laplace operator is challenging, especially when eigenvalues are nearly degenerate—as for the second and third Dirichlet eigenvalues on equilateral triangles where ( \lambda_{2}=\lambda_{3} ). Standard numerical methods struggle to separate these tightly clustered eigenvalues with mathematical rigor.
+Determining the eigenvalue multiplicity of the Laplace operator is challenging, especially when eigenvalues are nearly degenerate—as for the second and third Dirichlet eigenvalues on equilateral triangles where \( \lambda_{2}=\lambda_{3} \). Standard numerical methods struggle to separate these tightly clustered eigenvalues with mathematical rigor.
 
 This work analyzes the **difference quotient of eigenvalues** instead of classical shape derivatives:
 
