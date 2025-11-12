@@ -104,13 +104,13 @@ Run the full sweep $\delta \in [0,\pi/3]$ with progress and ETA:
 Single direction:
 
 ```matlab
->> s.runAlgo1Direction(pi/12);
+>> s.runAlgo1Direction(I_pi/12);
 ```
 
 Direction interval with a chosen number of bins:
 
 ```matlab
->> s.runAlgo1Interval(infsup(pi/20, pi/15), 25);
+>> s.runAlgo1Interval(infsup(I_pi/20, I_pi/15), 25);
 ```
 
 Summarize results from a CSV:
