@@ -93,7 +93,7 @@ We split the parameter space of triangles $\Omega$ into two regions:
 
 ### Algorithm 1 (Ω_up): Difference-Quotient Analysis
 
-Run the full sweep $\delta \in [0,\pi/3]$ with progress and ETA:
+**Run the full sweep $\delta \in [0,\pi/3]$ with progress and ETA:**
 
 ```matlab
 >> s = ProofRunner;
@@ -101,7 +101,7 @@ Run the full sweep $\delta \in [0,\pi/3]$ with progress and ETA:
 >> s.runAlgo1All();
 ```
 
-Single direction:
+**Single direction:**
 
 ```matlab
 >> s.runAlgo1Direction(I_pi/12);
@@ -115,10 +115,44 @@ Single direction:
  gap ≥ 67.3480275294
 ```
 
-Direction interval with a chosen number of bins:
+**Direction interval with a chosen number of bins:**
 
 ```matlab
->> s.runAlgo1Interval([I_pi/20, I_pi/15], 25);
+>> s.runAlgo1Interval([I_pi/20, I_pi/20+intval('1e-4')], 5);
+```
+(Result)
+```matlab--- Algorithm 1: rigorous difference-quotient bounds (Ω_up) ---
+What is computed:
+  - Verified interval bounds for the difference quotients of λ₂ and λ₃
+    over a direction interval (nearly equilateral triangle).
+Parameters:
+  mesh_N=32, ord=5, ep=1e-05, omega_N=1000
+Planned bins (K): 5 
+Output CSV: results/quotients_2025-11-12_15-47-42.csv
+Planned steps: 5 | warm-up per-step ≈ 0.34s | ETA ≈ 00h:00m:02s
+--- Running Algorithm 1 on 5 bin(s) ---
+δ=[0.15708,0.1571]: 
+ Dtλ2 ∈ [98.6215102961,105.772579022] 
+ Dtλ3 ∈ [173.747700975,182.167431973],
+ gap ≥ 67.9751219528
+[======..........................] 1/5 (20.0%) ETA 00h:00m:01sδ=[0.1571,0.15712]: 
+ Dtλ2 ∈ [98.6210089801,105.772192796] 
+ Dtλ3 ∈ [173.747187234,182.167058161],
+ gap ≥ 67.9749944389
+[=============...................] 2/5 (40.0%) ETA 00h:00m:01sδ=[0.15712,0.15714]: 
+ Dtλ2 ∈ [98.6205076095,105.771806512] 
+ Dtλ3 ∈ [173.746673439,182.166684292],
+ gap ≥ 67.9748669274
+[===================.............] 3/5 (60.0%) ETA 00h:00m:00sδ=[0.15714,0.15716]: 
+ Dtλ2 ∈ [98.6200061841,105.771420171] 
+ Dtλ3 ∈ [173.74615959,182.166310366],
+ gap ≥ 67.9747394186
+[==========================......] 4/5 (80.0%) ETA 00h:00m:00sδ=[0.15716,0.15718]: 
+ Dtλ2 ∈ [98.6195047041,105.771033773] 
+ Dtλ3 ∈ [173.745645685,182.165936382],
+ gap ≥ 67.9746119125
+[================================] 5/5 (100.0%) ETA 00h:00m:00s
+Done. Results → results/quotients_2025-11-12_15-47-42.csv
 ```
 
 Summarize results from a CSV:
@@ -126,6 +160,13 @@ Summarize results from a CSV:
 ```matlab
 >> s.summarizeAlgo1CSV();                           % latest file
 >> s.summarizeAlgo1CSV('results/quotients_....csv');% specific file
+```
+(Result)
+```matlab
+>> s.summarizeAlgo1CSV();
+File: results/quotients_2025-11-12_15-47-42.csv
+Bins: 5 | OK: 5 | NG: 0
+>>> PROOF SUCCESSFUL: sup(mu1) < inf(mu2) holds for all bins.
 ```
 
 **Output CSV header**
@@ -152,19 +193,29 @@ Run and monitor:
 >> s.monitorAlgo2();             % reads prep/algo2_list_j.csv and shows ETA
 ```
 
-### Partial Evidence Near Equilateral
+### Pointwise Eigenvalue Bounds
 
-Bounds at a specific vertex ((s,t)) offset from ((\tfrac12,\tfrac{\sqrt{3}}{2})):
+Bounds at a specific vertex ((s,t)):
 
 ```matlab
->> intval('1')/2,sqrt(intval('3'))/2-intval('1e-3');
-% prints: λ2 ≤ up2,  λ3 ≥ lo3,  gap ≥ lo3 - up2
+>> s.boundsAtPoint(intval('1')/2,sqrt(intval('3'))/2-intval('1e-3'));
+```
+(Result)
+```matlab
+Point (a=[0.5,0.5], b=[0.865026,0.865026]): 
+ λ2 ∈ [122.92567091,122.926307183] 
+ λ3 ∈ [123.00155729,123.002192357],
+ gap ≥ 0.0752501072466
 ```
 
 Bounds on a box $[a_{\inf},a_{\sup}] \times [t_{\inf},t_{\sup}]$:
 
 ```matlab
->> s.boundsOnBox(intval('1')/2,intval('1')/2,sqrt(intval('3'))/2-2*intval('1e-3'),sqrt(intval('3'))/2-intval('1e-3'));
+>> s.boundsOnBox(intval('1')/2,intval('1')/2,sqrt(intval('3'))/2-intval('1e-3')-intval('1e-10'),sqrt(intval('3'))/2-intval('1e-3'));
+```
+(Result)
+```matlab
+Box [0.5,0.5]×[0.865026,0.865026]:  sup λ2 ≤ 122.926307244,  inf λ3 ≥ 123.00155729,  min gap ≥ 0.0752500465989
 ```
 
 ---
