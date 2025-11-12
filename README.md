@@ -155,7 +155,7 @@ Planned steps: 5 | warm-up per-step ≈ 0.34s | ETA ≈ 00h:00m:02s
 Done. Results → results/quotients_2025-11-12_15-47-42.csv
 ```
 
-Summarize results from a CSV:
+**Summarize results from a CSV:**
 
 ```matlab
 >> s.summarizeAlgo1CSV();                           % latest file
@@ -195,7 +195,7 @@ Run and monitor:
 
 ### Pointwise Eigenvalue Bounds
 
-Bounds at a specific vertex ((s,t)):
+**Bounds at a specific vertex ((s,t)):**
 
 ```matlab
 >> s.boundsAtPoint(intval('1')/2,sqrt(intval('3'))/2-intval('1e-3'));
@@ -208,7 +208,7 @@ Point (a=[0.5,0.5], b=[0.865026,0.865026]):
  gap ≥ 0.0752501072466
 ```
 
-Bounds on a box $[s_{\inf},s_{\sup}] \times [t_{\inf},t_{\sup}]$:
+**Bounds on a box $[s_{\inf},s_{\sup}] \times [t_{\inf},t_{\sup}]$:**
 
 ```matlab
 >> s.boundsOnBox(intval('1')/2,intval('1')/2,sqrt(intval('3'))/2-intval('1e-3')-intval('1e-10'),sqrt(intval('3'))/2-intval('1e-3'));
