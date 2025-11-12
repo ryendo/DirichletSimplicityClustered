@@ -146,14 +146,14 @@ Run and monitor:
 
 ### Partial Evidence Near Equilateral
 
-Bounds at a specific vertex ((s,t)) offset from ((\tfrac12,\tfrac{\sqrt{3}}{2})):
+Bounds at a specific vertex $(s,t)$ offset from $(\tfrac12,\tfrac{\sqrt{3}}{2})$:
 
 ```matlab
 >> intval('1')/2,sqrt(intval('3'))/2-intval('1e-3');
 % prints: λ2 ≤ up2,  λ3 ≥ lo3,  gap ≥ lo3 - up2
 ```
 
-Bounds on a box ([a_{\inf},a_{\sup}] \times [t_{\inf},t_{\sup}]):
+Bounds on a box $[a_{\inf},a_{\sup}] \times [t_{\inf},t_{\sup}]$:
 
 ```matlab
 >> s.boundsOnBox(intval('1')/2,intval('1')/2,sqrt(intval('3'))/2-2*intval('1e-3'),sqrt(intval('3'))/2-intval('1e-3'));
