@@ -8,16 +8,16 @@ Determining the eigenvalue multiplicity of the Laplace operator is challenging, 
 
 This work analyzes the **difference quotient of eigenvalues** instead of classical shape derivatives:
 
-[
+$$
 D_{t}\lambda_{i} := \frac{\lambda_{i}(\Omega_{t})-\lambda_{i}(\Omega_{0})}{t}.
-]
+$$
 
 By applying guaranteed computation techniques based on the Finite Element Method (FEM) and interval arithmetic, we obtain rigorous bounds on this quotient.
 
-We split the parameter space of triangles (\Omega) into two regions:
+We split the parameter space of triangles $\Omega$ into two regions:
 
-* Nearly equilateral ((\Omega_{\text{up}})): prove ( D\lambda_{2}(p_{0},p) < D\lambda_{3}(p_{0},p) ) for any perturbation (p) from the equilateral vertex (p_{0}). Since ( \lambda_{2}^{p_{0}}=\lambda_{3}^{p_{0}} ), this implies ( \lambda_{2}^{p}<\lambda_{3}^{p} ).
-* The complement ((\Omega_{\text{down}})): compute high-precision bounds directly to show a definitive gap, ( \overline{\lambda}*{2}^{,p}<\underline{\lambda}*{3}^{,p} ).
+* Nearly equilateral $\Omega_{\text{up}}$: prove $D\lambda_{2}(p_{0},p) < D\lambda_{3}(p_{0},p)$ for any perturbation $p$ from the equilateral vertex $p_{0}$. Since $\lambda_{2}^{p_{0}}=\lambda_{3}^{p_{0}}$, this implies $\lambda_{2}^{p}<\lambda_{3}^{p}$.
+* The complement $\Omega_{\text{down}}$: compute high-precision bounds directly to show a definitive gap, $\overline{\lambda}*{2}^{,p}<\underline{\lambda}*{3}^{,p}$.
 
 ## Project Structure
 
