@@ -93,7 +93,7 @@ We split the parameter space of triangles $\Omega$ into two regions:
 
 ### Algorithm 1 (Ω_up): Difference-Quotient Analysis
 
-Run the full sweep (\delta \in [0,\pi/3]) with progress and ETA:
+Run the full sweep $\delta \in [0,\pi/3]$ with progress and ETA:
 
 ```matlab
 >> s = ProofRunner;
