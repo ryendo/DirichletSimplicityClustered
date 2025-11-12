@@ -279,7 +279,7 @@ The main script produces one CSV per task (e.g., `results/algo2_j_1.csv`). A reg
 
 ### Root Directory
 
-* `ProofRunner.m`: Orchestration class (progress, ETA, selective runs). Calls `prep.sh` and `main_algo2.sh` without modifying them.
+* `ProofRunner.m`: Orchestration class (progress, ETA, selective runs). Calls `prep.sh` and `main_algo2.sh`.
 * `main_algo1.m`: Algorithm 1 (unchanged).
 * `main_algo2.sh`: Algorithm 2 (unchanged).
 * `my_intlab_config_alone.m`: INTLAB init for single MATLAB sessions.
