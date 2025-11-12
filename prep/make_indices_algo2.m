@@ -5,7 +5,7 @@
 fprintf('Generating task list: list_j.csv with initial status 0...\n');
 
 % Define the range of job IDs
-job_ids = (1:1020)';  % Create as a column vector
+job_ids = (1:200)';  % Create as a column vector
 
 % Create a column for the initial status, all set to 0 (unprocessed)
 initial_status = zeros(size(job_ids, 1), 1);

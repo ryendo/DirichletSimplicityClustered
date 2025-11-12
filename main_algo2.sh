@@ -2,7 +2,7 @@
 # This script runs the main computation in a robust, parallel, and restartable manner.
 
 # --- Configuration ---
-MAX_JOBS=2  # Adjust this value as needed
+MAX_JOBS=1  # Adjust this value as needed
 FUNC_SCRIPT="func_algo2"
 
 # --- Setup ---
@@ -39,7 +39,7 @@ for n in "${list_idle_process[@]}"; do
                 
                 if [ -n "$j_line" ]; then
                     line_number=$(echo "$j_line" | cut -d',' -f1)
-                    j=$(echo "$j_line" | cut -d',' -f2)
+                    j=$(echo "$j_line" | cut -d',' -f2)   # for example j="1" or j="2"
                     sed -i.bak "${line_number}s/.*/${j},2/" "${SCRIPT_DIR}/prep/algo2_list_j.csv"
                 fi
             } 200>"$LOCKFILE"
@@ -54,18 +54,6 @@ for n in "${list_idle_process[@]}"; do
             "${SCRIPT_DIR}/prep/run_matlab.sh" "$n" "$FUNC_SCRIPT" "$j" >> "log/process_no${n}.log" 2>&1 &
             wait $!
             matlab_exit_code=$?
-
-            # --- FIX: Use { ... } group instead of (...) subshell ---
-            {
-                flock -x 200
-                if [ $matlab_exit_code -eq 0 ]; then
-                    sed -i.bak "${line_number}s/.*/${j},1/" "${SCRIPT_DIR}/prep/algo2_list_j.csv"
-                    echo "Worker ${n}: Finished job j=${j} successfully."
-                else
-                    echo "Worker ${n}: ERROR on job j=${j}. Resetting status to 0." >> "log/process_no${n}.log"
-                    sed -i.bak "${line_number}s/.*/${j},0/" "${SCRIPT_DIR}/prep/algo2_list_j.csv"
-                fi
-            } 200>"$LOCKFILE"
         done
         exit 0
     ) &

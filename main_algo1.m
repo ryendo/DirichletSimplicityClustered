@@ -54,7 +54,8 @@ file_name = ['results/quotients_' datestr(now, 'yyyy-mm-dd_HH-MM-SS') '.csv'];
 % --- Main loop to compute difference quotients for all directions ---
 % Iterates through 'omega_N' angular sectors to cover all perturbation
 % directions from the equilateral triangle.
-for idx = 1:omega_N
+% for idx = 1:omega_N
+for idx = [1,omega_N]
     % Define the interval 'delta' for the current perturbation angle sector.
     delta = I_hull((idx-1) * I_pi / (3 * omega_N), idx * I_pi / (3 * omega_N));
 
@@ -106,17 +107,24 @@ function [approx_mu, interval_mu] = quotient_calc(t, delta, mat, u1, u2, u3)
 
     % Estimate eigenvalue bounds on the perturbed domain ('lam_tilde')
     % by calculating perturbation factors from the affine map 'S'.
+    % S = [1, (tx-x) / y; 0, ty / y];
+    % plpu_ = I_veig(hull(S*S',(S*S')'), eye(2, 2), 1:2);
+    % pu_ = I_intval(I_sup(plpu_(2)));
+    % S_inv = [1, (x-tx) / ty; 0, y / ty];
+    % SinvSinvt = S_inv * S_inv'; SinvSinvt=hull(SinvSinvt,SinvSinvt');
+    % plpu = I_veig(SinvSinvt, eye(2, 2), 1:2);
+    % pl = I_intval(I_inf(plpu(1))); pu = I_intval(I_sup(plpu(2)));
+
     S = [1, (tx-x) / y; 0, ty / y];
-    plpu_ = I_veig(hull(S*S',(S*S')'), eye(2, 2), 1:2);
-    pu_ = I_intval(I_sup(plpu_(2)));
+    pu_ = I_intval(I_sup(norm(S*S',2)^2));
     S_inv = [1, (x-tx) / ty; 0, y / ty];
-    SinvSinvt = S_inv * S_inv'; SinvSinvt=hull(SinvSinvt,SinvSinvt');
-    plpu = I_veig(SinvSinvt, eye(2, 2), 1:2);
-    pl = I_intval(I_inf(plpu(1))); pu = I_intval(I_sup(plpu(2)));
+    SinvSinvt = S_inv * S_inv';
+    pl = I_intval(I_inf(1/norm(S*S',2)^2));
+    pu = I_intval(I_sup(norm(SinvSinvt,2)^2));
     
     % Define the exact, known eigenvalues for the equilateral triangle.
     % These serve as the base values for the difference quotient calculation.
-    lam = [I_intval('16') / I_intval('3') * I_intval('pi')^2, I_intval('112') / I_intval(9) * I_intval('pi')^2, I_intval('112') / I_intval('9') * I_intval('pi')^2, I_intval('64') / I_intval('3') * I_intval('pi')^2];
+    lam = [I_intval('16') / I_intval('3') * I_intval('pi')^2, I_intval('112') / I_intval('9') * I_intval('pi')^2, I_intval('112') / I_intval('9') * I_intval('pi')^2, I_intval('64') / I_intval('3') * I_intval('pi')^2];
     lam1 = lam(1); lam2 = lam(2); lam3 = lam(3); lam4 = lam(4);
     
     % Define the shift parameter 'rho' for the error estimation formulas.
@@ -160,28 +168,47 @@ function [approx_mu, interval_mu] = quotient_calc(t, delta, mat, u1, u2, u3)
 
     % Calculate the final error bounds 'Err_F' and 'Err_b' for the
     % system matrices, as defined in Lemma 3.4.
-    Err_F = I_intval(I_sup(norm(Pt, 2) * (2 * sqrt(lam3h) * eta_hat + sqrt(lam3) * eta_tilde)));
-    Err_b = I_intval(I_sup(2 * dbbarE2E2h + dbbarE2E2t));
+    Err_F = I_intval(I_sup(norm(Pt, 2) * (2 * sqrt(lam3h) * eta_hat + sqrt(lam3) * eta_tilde)))
+    Err_b = I_intval(I_sup(2 * dbbarE2E2h + dbbarE2E2t))
 
     % Compute the approximate matrices 'M' (hat{M}_t) and 'N' (hat{N}_t)
     % for the generalized eigenvalue problem of the difference quotient.
-    M = [F(mat, Pt, u2, u2), F(mat, Pt, u2, u3); F(mat, Pt, u3, u2), F(mat, Pt, u3, u3)]; 
-    M = hull(M , M');
-    N = [L2(mat, u2, u2), L2(mat, u2, u3); L2(mat, u3, u2), L2(mat, u3, u3)]; 
-    N = hull(N , N');
+    % M = [F(mat, Pt, u2, u2), F(mat, Pt, u2, u3); F(mat, Pt, u3, u2), F(mat, Pt, u3, u3)]; 
+    M = [F(mat, Pt, u3, u3), F(mat, Pt, u3, u2); F(mat, Pt, u2, u3), F(mat, Pt, u2, u2)]
+    N = [L2(mat, u2, u2), L2(mat, u2, u3); L2(mat, u3, u2), L2(mat, u3, u3)]
 
     % --- Construct Interval Matrices ---
     % This is the key step for rigorous computation. It adds the guaranteed
     % error bounds (Err_F, Err_b) to the approximate matrices M and N
     % to create interval matrices M_ and N_ that are guaranteed to contain the true ones.
+    % M = I_hull(M,M'); N = I_hull(N,N');
+
     M_ = M + I_hull(-Err_F, Err_F);
     N_ = N + I_hull(-Err_b, Err_b);
     
+    % % --- Solve the Generalized Eigenvalue Problem ---
+    % % 'approx_mu': The eigenvalues of the approximate problem.
+    % % 'interval_mu': The eigenvalues of the interval problem, which gives the
+    % % final, guaranteed bounds on the difference quotients.    
+
+    % approx_mu = I_veig(M, N, 1:2)
+    % interval_mu = I_veig(M_, N_, 1:2)
+
     % --- Solve the Generalized Eigenvalue Problem ---
-    % 'approx_mu': The eigenvalues of the approximate problem.
-    % 'interval_mu': The eigenvalues of the interval problem, which gives the
-    % final, guaranteed bounds on the difference quotients.
-    approx_mu = I_veig(M, N, 1:2);
-    interval_mu = I_veig(M_, N_, 1:2)
+
+    [V,D] = eig(I_mid(M),I_mid(N));    
+    [mu2,X] = verifyeig(M, D(1,1), V(:,1),N);
+    [mu3,X] = verifyeig(M, D(2,2), V(:,2),N);
+    approx_mu = [mu2,mu3];
+    [~,ind] = sort(I_mid(approx_mu));
+    approx_mu = approx_mu(ind)
+
+    [V,D] = eig(I_mid(M_),I_mid(N_));    
+    [mu2_,X] = verifyeig(M_, D(1,1), V(:,1),N_);
+    [mu3_,X] = verifyeig(M_, D(2,2), V(:,2),N_);
+    interval_mu = [mu2_,mu3_]
+    [~,ind] = sort(I_mid(interval_mu));
+    interval_mu = interval_mu(ind)
+
     toc
 end

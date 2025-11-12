@@ -1,178 +1,218 @@
 # Computer-Assisted Proof for Dirichlet Eigenvalue Simplicity
 
-This project provides the source code and computational framework for the computer-assisted proof presented in the paper "Rigorous estimation for the difference quotients of multiple eigenvalues". The primary goal is to rigorously validate the simplicity of the second Dirichlet eigenvalue for nearly equilateral triangles, offering a partial solution to a conjecture posed by R. Laugesen and B. Siudeja (discussed as Conjecture 6.47 in A. Henrot's "Shape Optimization and Spectral Theory").
+This project provides the source code and computational framework for the computer-assisted proof presented in the paper “Rigorous estimation for the difference quotients of multiple eigenvalues”. The primary goal is to rigorously validate the simplicity of the second Dirichlet eigenvalue for nearly equilateral triangles, offering a partial solution to a conjecture posed by R. Laugesen and B. Siudeja (discussed as Conjecture 6.47 in A. Henrot’s *Shape Optimization and Spectral Theory*).
 
 ## Background
 
-Determining the eigenvalue multiplicity of the Laplace operator is a challenging problem, especially when eigenvalues are nearly degenerate, as is the case for the second and third Dirichlet eigenvalues on equilateral triangles where $\\lambda\_{2}=\\lambda\_{3}$. Standard numerical methods struggle to separate these tightly clustered eigenvalues with mathematical rigor.
+Determining the eigenvalue multiplicity of the Laplace operator is challenging, especially when eigenvalues are nearly degenerate—as for the second and third Dirichlet eigenvalues on equilateral triangles where ( \lambda_{2}=\lambda_{3} ). Standard numerical methods struggle to separate these tightly clustered eigenvalues with mathematical rigor.
 
-This work introduces a novel method to overcome this limitation. Instead of relying on traditional shape derivatives, which are difficult to analyze over a neighborhood with a given radius, this project analyzes the **difference quotient of eigenvalues**, defined as:
+This work analyzes the **difference quotient of eigenvalues** instead of classical shape derivatives:
 
-$$D_{t}\lambda_{i}:=\frac{\lambda_{i}(\Omega_{t})-\lambda(\Omega_{0})}{t}$$
+[
+D_{t}\lambda_{i} := \frac{\lambda_{i}(\Omega_{t})-\lambda_{i}(\Omega_{0})}{t}.
+]
 
-By applying guaranteed computation techniques based on the Finite Element Method (FEM) and interval arithmetic, we can obtain rigorous bounds on this quotient.
+By applying guaranteed computation techniques based on the Finite Element Method (FEM) and interval arithmetic, we obtain rigorous bounds on this quotient.
 
-The overall strategy is a two-pronged attack, dividing the parameter space of triangles $\\Omega$ into distinct regions:
+We split the parameter space of triangles (\Omega) into two regions:
 
-  * For nearly equilateral triangles ($\\Omega\_{up}$), the difference quotient method is used to prove that $D\\lambda\_{2}(p\_{0},p)\<D\\lambda\_{3}(p\_0, p)$ for any perturbation $p$ from the equilateral vertex $p\_0$. Since $\\lambda\_{2}^{p\_{0}}=\\lambda\_{3}^{p\_{0}}$, this rigorously implies $\\lambda\_{2}^{p}\<\\lambda\_{3}^{p}$.
-  * For other triangles ($\\Omega\_{down}^{(1)}, \\Omega\_{down}^{(2)}$), high-precision upper and lower bounds are computed directly to show a definitive gap, $\\overline{\\lambda}*{2}^{p}\<\\underline{\\lambda}*{3}^{p}$.
+* Nearly equilateral ((\Omega_{\text{up}})): prove ( D\lambda_{2}(p_{0},p) < D\lambda_{3}(p_{0},p) ) for any perturbation (p) from the equilateral vertex (p_{0}). Since ( \lambda_{2}^{p_{0}}=\lambda_{3}^{p_{0}} ), this implies ( \lambda_{2}^{p}<\lambda_{3}^{p} ).
+* The complement ((\Omega_{\text{down}})): compute high-precision bounds directly to show a definitive gap, ( \overline{\lambda}*{2}^{,p}<\underline{\lambda}*{3}^{,p} ).
 
 ## Project Structure
 
-The repository is organized as follows:
-
 ```
 .
-├── Each_Process/         # Core MATLAB functions, libraries, logs, and temporary results
-│   ├── functions/        # Helper MATLAB functions for computation
-│   ├── HighOrderFEM_CGYOU_2016/ # FEM library
-│   ├── Intlab_Group/     # INTLAB library for guaranteed computation
-│   └── log/              # Log files from parallel execution
-├── prep/                 # Scripts for preparing the computation
-├── results/              # Final stored results from computations
-├── main_algo1.m          # Main MATLAB script for Algorithm 1
-├── main_algo2.sh         # Main execution script for Algorithm 2
-├── main_algo3.sh         # Execution script for Algorithm 3
-├── my_intlab_config_alone.m # Standalone INTLAB configuration
-├── prep.sh               # Master script to run all preparation steps
-└── README.md             # This file
+├── Each_Process/                 # Core MATLAB functions, libraries, logs, and temporary results
+│   ├── functions/                # Helper MATLAB functions for computation
+│   ├── HighOrderFEM_CGYOU_2016/  # FEM library
+│   ├── Intlab_Group/             # INTLAB library for guaranteed computation
+│   └── log/                      # Log files from parallel execution
+├── prep/                         # Scripts for preparing the computation
+├── results/                      # Final stored results from computations
+├── ProofRunner.m                 # Orchestrator class (progress, ETA, selective runs)
+├── main_algo1.m                  # Main MATLAB script for Algorithm 1 (unchanged)
+├── main_algo2.sh                 # Main execution script for Algorithm 2 (unchanged)
+├── my_intlab_config_alone.m      # Standalone INTLAB configuration
+├── prep.sh                       # Master script to run all preparation steps
+└── README.md                     # This file
 ```
 
 ## Setup and Prerequisites
 
 ### Prerequisites
 
-1.  **MATLAB:** A working installation of MATLAB is required.
-2.  **INTLAB Library:** The INTLAB toolbox for interval arithmetic is essential for the guaranteed computations.
-3.  **Unix-like Environment:** A shell like `bash` or `zsh` and standard command-line tools are needed to run the parallel execution scripts.
+1. **MATLAB:** A working installation of MATLAB.
+2. **INTLAB Library:** Required for interval arithmetic and verified numerics.
+3. **Unix-like Environment:** `bash`/`zsh` and common CLI tools to run shell scripts.
 
 ### Initial Configuration
 
-1.  **Clone the Repository:**
+1. **Clone the Repository**
 
-    ```bash
-    git clone git clone https://github.com/ryendo/DirichletSimplicityClustered
-    cd DirichletSimplicityClustered
-    ```
+   ```bash
+   git clone https://github.com/ryendo/DirichletSimplicityClustered
+   cd DirichletSimplicityClustered
+   ```
 
-2.  **Configure MATLAB Command-Line Access:**
-    The shell scripts need to be able to call `matlab` from the command line. You must add the MATLAB binary directory to your shell's `PATH` environment variable.
+2. **Enable `matlab` on the Command Line**
 
-      * First, find the path to your MATLAB executable (e.g., using `which matlab`). The path will be similar to `/Applications/MATLAB_R2024a.app/bin`.
-      * Add this directory to your shell's configuration file (`~/.bash_profile` for bash, `~/.zshrc` or `~/.zprofile` for zsh).
-        ```bash
-        export PATH="/path/to/your/matlab/bin:$PATH"
-        ```
+   ```bash
+   # Add MATLAB bin to your PATH (adjust the path to your installation)
+   export PATH="/path/to/your/matlab/bin:$PATH"
+   ```
 
-3.  **Place the INTLAB Library:**
-    Download and place the INTLAB library folder (named `Intlab_V12`) into the following directory:
-    `Each_Process/Intlab_Group/`
+3. **Place INTLAB**
+   Put `Intlab_V12` under:
 
-## Execution Workflow
+   ```
+   Each_Process/Intlab_Group/
+   ```
 
-The proof is executed by running the different main scripts, each corresponding to a specific algorithm and region from the paper.
+## Quick Start with `ProofRunner` (Recommended)
 
-### Algorithm 1 (Difference Quotient Analysis)
-
-This algorithm is run as a standard MATLAB script and does not use the parallel execution framework.
-
-1.  **Initialize INTLAB:** First, run the standalone configuration script from the MATLAB command window.
-    ```matlab
-    >> my_intlab_config_alone
-    ```
-2.  **Run the Algorithm:** After the setup is complete, run the main script.
-    ```matlab
-    >> main_algo1
-    ```
-
-### Algorithms 2 & 3 (Parallel Eigenvalue Bounds)
-
-These algorithms are run from the shell and utilize a parallel framework.
-
-1.  **Preparation:** First, run the master preparation script from the project root directory. This only needs to be done once before running the parallel jobs.
-
-    ```bash
-    ./prep.sh
-    ```
-
-    This command will:
-
-      * Execute `prep/make_indices_algo2.m` to generate the task list `prep/list_j.csv`.
-      * Execute `prep/prepare_parallel.sh` to create isolated INTLAB environments for each parallel worker.
-
-2.  **Main Computations:**
-
-      * To analyze the $\\Omega\_{down}^{(1)}$ region (Algorithm 2):
-        ```bash
-        bash ./main_algo2.sh
-        ```
-      * To analyze the $\\Omega\_{down}^{(2)}$ region (Algorithm 3):
-        ```bash
-        bash ./main_algo3.sh
-        ```
-
-3.  **Monitoring the Process:**
-    For the parallel scripts, you can monitor the status:
-
-      * **Check for running processes:** `ps aux | grep -i matlab`
-      * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
-      * **Check for results:** Final results are written to CSV files in the `results/` directory.
-    * **Check for running processes:** `ps aux | grep -i matlab`
-    * **Watch log files in real-time:** `tail -f Each_Process/log/process_no1.log`
-    * **Check for results:** Final results are written to CSV files in the `results/` directory.
-
-### Verifying the Results
-
-The successful completion of the scripts provides the rigorous proof outlined in the paper. Below are examples of the expected output.
-
-#### Algorithm 1: Difference Quotient Results
-
-When `main_algo1.m` runs successfully, it will print a confirmation to the MATLAB console. It also generates a CSV file in the `results/` directory containing the rigorous interval bounds for each angular sector.
-
-**Console Output Example:**
-
-A successful run will conclude with the following message, confirming that for all tested perturbation directions, the growth rate of $\\lambda\_2$ is strictly less than that of $\\lambda\_3$.
-
-```
---- Starting rigorous estimation of growth rates ---
-... (computation for each angular sector) ...
-
---- All angular sector calculations are complete ---
->>> PROOF SUCCESSFUL <<<
-It was rigorously shown that for all perturbation directions, the upper bound of the growth rate for λ2 is less than the lower bound of the growth rate for λ3.
-Conclusion: Based on the theorem in the paper, it is proven that λ2 < λ3 for all non-equilateral triangles in the Ω_up region.
+```matlab
+% QUICK START
+%   s = ProofRunner;
+%   s.setupAll();                      % INTLAB + prep.sh
+%   s.runAlgo1All();                   % full Ω_up sweep with ETA/progress
+%   s.summarizeAlgo1CSV();             % check sup(mu1) < inf(mu2)
+%
+%   s.runAlgo1Direction(I_pi/12);        % single direction near equilateral
+%   s.runAlgo1Interval([I_pi/20,I_pi/20+intval('1e-5')]); % small interval
+%
+%   s.boundsAtPoint(intval('1')/2,sqrt(intval('3'))/2-intval('1e-3'));       % eigenvalue bounds at (s,t)
+%   s.boundsOnBox(intval('1')/2,intval('1')/2,sqrt(intval('3'))/2-2*intval('1e-3'),sqrt(intval('3'))/2-intval('1e-3'));     %[s_inf,s_sup,t_inf,t_sup]
+%
+%   s.prepareAlgo2();                  % runs ./prep.sh
+%   s.runAlgo2('detached',true);       % launch main_algo2.sh (Unix)
+%   s.monitorAlgo2();                  % live progress from CSV
 ```
 
-If the proof fails for any sector, it will instead print a `PROOF FAILED` message and stop.
+`ProofRunner` is a thin orchestration layer; it **does not modify** `main_algo1.m` or `main_algo2.sh`.
 
-**CSV Output Example (`results/quotients_... .csv`):**
+### Algorithm 1 (Ω_up): Difference-Quotient Analysis
 
-The output file stores the bounds for each angular sector `idx`. The columns are: `idx`, `inf(μ_1)`, `sup(μ_1)`, `inf(μ_2)`, `sup(μ_2)`. The critical condition `sup(μ_1) < inf(μ_2)` holds for every row.
+Run the full sweep (\delta \in [0,\pi/3]) with progress and ETA:
+
+```matlab
+>> s = ProofRunner;
+>> s.setupAll();
+>> s.runAlgo1All();
+```
+
+Single direction:
+
+```matlab
+>> s.runAlgo1Direction(pi/12);
+```
+
+Direction interval with a chosen number of bins:
+
+```matlab
+>> s.runAlgo1Interval(infsup(pi/20, pi/15), 25);
+```
+
+Summarize results from a CSV:
+
+```matlab
+>> s.summarizeAlgo1CSV();                           % latest file
+>> s.summarizeAlgo1CSV('results/quotients_....csv');% specific file
+```
+
+**Output CSV header**
+
+```
+idx,inf_mu1,sup_mu1,inf_mu2,sup_mu2
+```
+
+The proof condition per row is `sup_mu1 < inf_mu2`.
+
+### Algorithm 2 (Ω_down): Parallel Eigenvalue Bounds
+
+Prepare tasks:
+
+```matlab
+>> s.prepareAlgo2();     % runs ./prep.sh
+```
+
+Run and monitor:
+
+```matlab
+>> s.runAlgo2();                 % foreground
+>> s.runAlgo2('detached', true); % background
+>> s.monitorAlgo2();             % reads prep/algo2_list_j.csv and shows ETA
+```
+
+### Partial Evidence Near Equilateral
+
+Bounds at a specific vertex ((s,t)) offset from ((\tfrac12,\tfrac{\sqrt{3}}{2})):
+
+```matlab
+>> intval('1')/2,sqrt(intval('3'))/2-intval('1e-3');
+% prints: λ2 ≤ up2,  λ3 ≥ lo3,  gap ≥ lo3 - up2
+```
+
+Bounds on a box ([a_{\inf},a_{\sup}] \times [t_{\inf},t_{\sup}]):
+
+```matlab
+>> s.boundsOnBox(intval('1')/2,intval('1')/2,sqrt(intval('3'))/2-2*intval('1e-3'),sqrt(intval('3'))/2-intval('1e-3'));
+```
+
+---
+
+## Running the Original Scripts (Baseline)
+
+You may also use the legacy entry points.
+
+### Algorithm 1
+
+```matlab
+>> my_intlab_config_alone
+>> main_algo1
+```
+
+### Algorithm 2
+
+```bash
+./prep.sh
+bash ./main_algo2.sh
+```
+
+Monitor with:
+
+* `ps aux | grep -i matlab`
+* `tail -f Each_Process/log/process_no1.log`
+* Results appear in `results/` (separate CSVs per task).
+
+---
+
+## Verifying the Results
+
+### Algorithm 1 (CSV example)
 
 ```csv
-1,51.890289,51.890313,73.541893,73.541913
-2,51.890357,51.890382,73.541824,73.541845
-3,51.890495,51.890520,73.541686,73.541707
+idx,inf_mu1,sup_mu1,inf_mu2,sup_mu2
+1,98.3723341163222,109.514164604184,173.118847437632,186.288746858983
+2,98.3656467084821,109.520542044462,173.110819954873,186.296463918525
+3,98.3588074629973,109.526760266504,173.10264018102,186.304022212805
 ...
-1000,51.890289,51.890313,73.541893,73.541913
+1000,26.3925588844467,39.7994719938128,100.131634868792,117.580812296542
 ```
 
------
+Use:
 
-#### Algorithms 2 & 3: Parallel Eigenvalue Bounds
+```matlab
+>> s.summarizeAlgo1CSV('results/quotients_...csv');
+```
 
-The parallel scripts `main_algo2.sh` and `main_algo3.sh` do not produce a single summary message in the main terminal upon completion. Instead, they generate individual result files for each computational task (`j` index) inside the `results/` directory.
+### Algorithm 2
 
-The progress and status of each worker can be monitored through the log files in `Each_Process/log/`.
+The main script produces one CSV per task (e.g., `results/algo2_j_1.csv`). A region is verified when `upper(λ₂) < lower(λ₃)` for that task. The union of successful files constitutes the proof over (\Omega_{\text{down}}). Progress and ETA can be displayed via:
 
-**File-Based Results:**
-
-The scripts will create separate CSV files for each task `j`. The file names indicate which algorithm and task they correspond to.
-
-  * **Algorithm 2:** The results are stored in files like `results/algo2_j_1.csv`, `results/algo2_j_2.csv`, etc., up to the last `j` index (1220).
-  * **Algorithm 3:** The results are stored in files like `results/algo3_j_1.csv`, `results/algo3_j_2.csv`, etc.
-
-Each file contains the rigorous lower and upper bounds for $\\lambda\_2$ and $\\lambda\_3$ for the specific sub-region `R_ij` that the task `j` was responsible for. A successful proof for that region is confirmed if the upper bound for $\\lambda\_2$ is less than the lower bound for $\\lambda\_3$. The collection of all these files constitutes the proof for the $\\Omega\_{down}$ regions.
+```matlab
+>> s.monitorAlgo2();
+```
 
 ---
 
@@ -180,23 +220,19 @@ Each file contains the rigorous lower and upper bounds for $\\lambda\_2$ and $\\
 
 ### Root Directory
 
-  * `main_algo1.m`: Implements **Algorithm 1** from the paper. This script analyzes the nearly equilateral region $\\Omega\_{up}$ by rigorously computing the difference quotients of $\\lambda\_2$ and $\\lambda\_3$. It solves the generalized matrix eigenvalue problem $M\_{t}\\sigma=\\mu N\_{t}\\sigma$ using interval arithmetic to obtain guaranteed bounds on the difference quotients.
-  * `main_algo2.sh`: The main parallel execution engine for **Algorithm 2**. It analyzes the $\\Omega\_{down}^{(1)}$ region by partitioning it into small rectangles $R\_{ij}$ and applying perturbation estimates. It uses a robust worker pool model to distribute the computation of the eigenvalue bounds.
-  * `main_algo3.sh`: A parallel runner for **Algorithm 3**. It analyzes the $\\Omega\_{down}^{(2)}$ region, where triangles are more degenerate. This algorithm leverages the domain monotonicity property of Dirichlet eigenvalues to establish bounds.
-  * `my_intlab_config_alone.m`: A setup script to initialize the INTLAB guaranteed computation environment for a single, non-parallel MATLAB session. It must be run in MATLAB before executing `main_algo1.m`.
+* `ProofRunner.m`: Orchestration class (progress, ETA, selective runs). Calls `prep.sh` and `main_algo2.sh` without modifying them.
+* `main_algo1.m`: Algorithm 1 (unchanged).
+* `main_algo2.sh`: Algorithm 2 (unchanged).
+* `my_intlab_config_alone.m`: INTLAB init for single MATLAB sessions.
 
-### Preparation Scripts (`prep/`)
+### `prep/`
 
-  * `make_indices_algo2.m`: Generates the master task list `prep/list_j.csv` for `main_algo2.sh`, containing the `j` indices (1-1220).
-  * `prepare_parallel.sh`: Sets up the execution environment by creating isolated copies of the INTLAB library for each parallel worker.
-  * `run_matlab.sh`: A helper script called by `main_algo2.sh` to execute a single MATLAB computation task.
+* `make_indices_algo2.m`: Generates `prep/algo2_list_j.csv`.
+* `prepare_parallel.sh`: Sets up per-worker environments (if used).
+* `run_matlab.sh`: Helper invoked by `main_algo2.sh`.
 
-### Core MATLAB Code (`Each_Process/`)
+### `Each_Process/`
 
-  * `func_algo2.m`: Implements the core logic for **Algorithm 2**. It computes rigorous eigenvalue bounds for each subdomain `R_ij`.
-  * `func_algo3.m`: Implements the core logic for **Algorithm 3**, using domain monotonicity.
-  * `my_intlab_mode_config.m`: Configures the INTLAB environment for each specific parallel worker process.
-  * **`functions/` directory:** Contains various helper functions.
-      * `calc_eigen_bounds_any_order.m`: A core function that calculates high-precision eigenvalue bounds, utilizing the Lehmann-Goerisch method.
-      * `Lagrange_...` functions: Related to the Lagrange Finite Element Method (FEM).
-      * `get_mesh_...` functions: Responsible for generating the computational triangulations ($\\mathcal{T}^{h}$) of the domains.
+* `func_algo2.m`: Core of Algorithm 2 (verified bounds per subdomain).
+* `my_intlab_mode_config.m`: Per-worker INTLAB config.
+* `functions/`: FEM helpers (e.g., `calc_eigen_bounds_any_order.m`, `Lagrange_...`, `get_mesh_...`).
