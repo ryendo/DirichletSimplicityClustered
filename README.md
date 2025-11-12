@@ -110,7 +110,7 @@ Single direction:
 Direction interval with a chosen number of bins:
 
 ```matlab
->> s.runAlgo1Interval(hull(I_pi/20, I_pi/15), 25);
+>> s.runAlgo1Interval([I_pi/20, I_pi/15], 25);
 ```
 
 Summarize results from a CSV:
