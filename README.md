@@ -4,20 +4,20 @@ This project provides the source code and computational framework for the comput
 
 ## Background
 
-Determining the eigenvalue multiplicity of the Laplace operator is challenging, especially when eigenvalues are nearly degenerate—as for the second and third Dirichlet eigenvalues on equilateral triangles where ( \lambda_{2}=\lambda_{3} ). Standard numerical methods struggle to separate these tightly clustered eigenvalues with mathematical rigor.
+Determining the eigenvalue multiplicity of the Laplace operator is challenging, especially when eigenvalues are nearly degenerate—as for the second and third Dirichlet eigenvalues on equilateral triangles where $\lambda_{2}=\lambda_{3}$. Standard numerical methods struggle to separate these tightly clustered eigenvalues with mathematical rigor.
 
 This work analyzes the **difference quotient of eigenvalues** instead of classical shape derivatives:
 
-[
+$$
 D_{t}\lambda_{i} := \frac{\lambda_{i}(\Omega_{t})-\lambda_{i}(\Omega_{0})}{t}.
-]
+$$
 
 By applying guaranteed computation techniques based on the Finite Element Method (FEM) and interval arithmetic, we obtain rigorous bounds on this quotient.
 
-We split the parameter space of triangles (\Omega) into two regions:
+We split the parameter space of triangles $\Omega$ into two regions:
 
-* Nearly equilateral ((\Omega_{\text{up}})): prove ( D\lambda_{2}(p_{0},p) < D\lambda_{3}(p_{0},p) ) for any perturbation (p) from the equilateral vertex (p_{0}). Since ( \lambda_{2}^{p_{0}}=\lambda_{3}^{p_{0}} ), this implies ( \lambda_{2}^{p}<\lambda_{3}^{p} ).
-* The complement ((\Omega_{\text{down}})): compute high-precision bounds directly to show a definitive gap, ( \overline{\lambda}*{2}^{,p}<\underline{\lambda}*{3}^{,p} ).
+* Nearly equilateral $\Omega_{\text{up}}$: prove $D\lambda_{2}(p_{0},p) < D\lambda_{3}(p_{0},p)$ for any perturbation $p$ from the equilateral vertex $p_{0}$. Since $\lambda_{2}^{p_{0}}=\lambda_{3}^{p_{0}}$, this implies $\lambda_{2}^{p}<\lambda_{3}^{p} $.
+* The complement $\Omega_{\text{down}}$: compute high-precision bounds directly to show a definitive gap, $\overline{\lambda}*{2}^{,p}<\underline{\lambda}*{3}^{,p}$.
 
 ## Project Structure
 
@@ -93,7 +93,7 @@ We split the parameter space of triangles (\Omega) into two regions:
 
 ### Algorithm 1 (Ω_up): Difference-Quotient Analysis
 
-Run the full sweep (\delta \in [0,\pi/3]) with progress and ETA:
+Run the full sweep $\delta \in [0,\pi/3]$ with progress and ETA:
 
 ```matlab
 >> s = ProofRunner;
@@ -104,13 +104,13 @@ Run the full sweep (\delta \in [0,\pi/3]) with progress and ETA:
 Single direction:
 
 ```matlab
->> s.runAlgo1Direction(pi/12);
+>> s.runAlgo1Direction(I_pi/12);
 ```
 
 Direction interval with a chosen number of bins:
 
 ```matlab
->> s.runAlgo1Interval(infsup(pi/20, pi/15), 25);
+>> s.runAlgo1Interval([I_pi/20, I_pi/15], 25);
 ```
 
 Summarize results from a CSV:
@@ -153,7 +153,7 @@ Bounds at a specific vertex ((s,t)) offset from ((\tfrac12,\tfrac{\sqrt{3}}{2}))
 % prints: λ2 ≤ up2,  λ3 ≥ lo3,  gap ≥ lo3 - up2
 ```
 
-Bounds on a box ([a_{\inf},a_{\sup}] \times [t_{\inf},t_{\sup}]):
+Bounds on a box $[a_{\inf},a_{\sup}] \times [t_{\inf},t_{\sup}]$:
 
 ```matlab
 >> s.boundsOnBox(intval('1')/2,intval('1')/2,sqrt(intval('3'))/2-2*intval('1e-3'),sqrt(intval('3'))/2-intval('1e-3'));
