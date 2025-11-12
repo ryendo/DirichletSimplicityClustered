@@ -106,6 +106,14 @@ Single direction:
 ```matlab
 >> s.runAlgo1Direction(I_pi/12);
 ```
+(Result)
+```matlab
+--- Running Algorithm 1 on 1 bin(s) ---
+δ=[0.261799,0.261799]: 
+ Dtλ2 ∈ [95.2543287913,102.967388819] 
+ Dtλ3 ∈ [170.315416349,179.427292308],
+ gap ≥ 67.3480275294
+```
 
 Direction interval with a chosen number of bins:
 
