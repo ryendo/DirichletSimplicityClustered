@@ -133,7 +133,7 @@ methods
     end
 
     %==================== Algorithm 1 (Ω_up) ====================%
-    function runAlgo1All(self),  self.runAlgo1Interval([0, pi/3], self.omega_N); end
+    function runAlgo1All(self),  self.runAlgo1Interval([self.I_intval(0), self.I_intval('pi')/3], self.omega_N); end
     function runAlgo1Direction(self, delta), self.runAlgo1Interval([delta, delta], 1); end
 
     function runAlgo1Interval(self, interval, K)
