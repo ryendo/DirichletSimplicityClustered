@@ -19,6 +19,15 @@ We split the parameter space of triangles $\Omega$ into two regions:
 * Nearly equilateral $\Omega_{\text{up}}$: prove $D\lambda_{2}(p_{0},p) < D\lambda_{3}(p_{0},p)$ for any perturbation $p$ from the equilateral vertex $p_{0}$. Since $\lambda_{2}^{p_{0}}=\lambda_{3}^{p_{0}}$, this implies $\lambda_{2}^{p}<\lambda_{3}^{p} $.
 * The complement $\Omega_{\text{down}}$: compute high-precision bounds directly to show a definitive gap, $\overline{\lambda}_{2}}^{p}<\underline{\lambda_{3}}^{p}$.
 
+## Method Overview
+
+**Algorithm 1 ($\Omega_{\text{up}}$) — Difference-Quotient near equilateral.**  
+This algorithm rigorously estimates the difference quotients $D_t\lambda_2$ and $D_t\lambda_3$ for triangles obtained by perturbing the equilateral triangle along a direction $e$ (or a small direction interval). By sweeping directions $\delta \in [0,\pi/3]$ and enclosing the generalized eigenvalues $\mu_1,\mu_2$ of the quotient problem with interval arithmetic, the proof is established when $\sup(\mu_1) < \inf(\mu_2)$ holds for all sectors.
+
+**Algorithm 2 ($\Omega_{\text{down}}$) — Verified eigenvalue gap away from equilateral.**  
+This algorithm tiles the remaining parameter space into rectangles $R_{ij}$ and, for each subregion, computes certified upper/lower bounds $\overline{\lambda}_2$ and $\underline{\lambda}_3$ using high-order FEM and interval arithmetic (Lehmann–Goerisch-based routines). A subregion is certified when $\overline{\lambda}_2 < \underline{\lambda}_3$; collecting all certified subregions yields the proof on $\Omega_{\text{down}}$.
+
+
 ## Project Structure
 
 ```
@@ -55,11 +64,13 @@ We split the parameter space of triangles $\Omega$ into two regions:
    cd DirichletSimplicityClustered
    ```
 
-2. **Enable `matlab` on the Command Line**
+2. **MATLAB on the command line (only if you run shell scripts):**
+   If you will run `prep.sh` / `main_algo2.sh`, make sure the shell can invoke MATLAB.
+    Put the PATH tweak inside `prep.sh`:
 
    ```bash
-   # Add MATLAB bin to your PATH (adjust the path to your installation)
-   export PATH="/path/to/your/matlab/bin:$PATH"
+   # --- at the very top of prep.sh (optional, if 'matlab' is not already on PATH) ---
+   export PATH="/path/to/your/matlab/bin:$PATH"   # e.g., /Applications/MATLAB_R2024a.app/bin
    ```
 
 3. **Place INTLAB**
@@ -92,6 +103,9 @@ We split the parameter space of triangles $\Omega$ into two regions:
 `ProofRunner` is a thin orchestration layer; it **does not modify** `main_algo1.m` or `main_algo2.sh`.
 
 ### Algorithm 1 (Ω_up): Difference-Quotient Analysis
+
+This algorithm estimates the difference-quotient for the 2nd and 3rd Dirichlet eigenvalues near the equilateral triangle. It perturbs the domain along a chosen direction $e$ (or a small direction interval), assembles a verified $2\times2$ generalized eigenproblem for each angular sector $\delta$, and records rigorous enclosures $(\mu_1,\mu_2)$ to CSV. The desired ordering $D\lambda_2 < D\lambda_3$ is concluded when $\sup(\mu_1) < \inf(\mu_2)$ for all processed sectors.
+
 
 **Run the full sweep $\delta \in [0,\pi/3]$ with progress and ETA:**
 
@@ -178,6 +192,8 @@ idx,inf_mu1,sup_mu1,inf_mu2,sup_mu2
 The proof condition per row is `sup_mu1 < inf_mu2`.
 
 ### Algorithm 2 (Ω_down): Parallel Eigenvalue Bounds
+
+This algorithm evaluates certified eigenvalue bounds for triangles away from the equilateral case. The parameter space is partitioned into subregions $R_{ij}$; for each, the code bounds $\lambda_2$ from above and $\lambda_3$ from below with high-order FEM and interval arithmetic. A subregion is certified when $\overline{\lambda}_2 < \underline{\lambda}_3$. The provided shell scripts launch and monitor these jobs in parallel and can safely resume after interruptions.
 
 Prepare tasks:
 
