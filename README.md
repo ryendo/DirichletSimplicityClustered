@@ -73,7 +73,7 @@ This algorithm tiles the remaining parameter space into rectangles $R_{ij}$ and,
    export PATH="/path/to/your/matlab/bin:$PATH"   # e.g., /Applications/MATLAB_R2024a.app/bin
    ```
 
-3. **Place INTLAB**
+3. **Place INTLAB:**
    Open `my_intlab_config_alone.m` and replace this line:
    ```matlab
    addpath("/path/to/your/INTLAB")
