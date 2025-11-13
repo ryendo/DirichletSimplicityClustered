@@ -74,10 +74,9 @@ This algorithm tiles the remaining parameter space into rectangles $R_{ij}$ and,
    ```
 
 3. **Place INTLAB**
-   Put `Intlab_V12` under:
-
-   ```
-   Each_Process/Intlab_Group/
+   Open `my_intlab_config_alone.m` and replace this line:
+   ```matlab
+   addpath("/path/to/your/INTLAB")
    ```
 
 ## Quick Start with `ProofRunner` (Recommended)
