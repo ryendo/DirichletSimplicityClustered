@@ -18,7 +18,7 @@ We split the parameter space of triangles $\Omega$ into two regions:
 
 * Nearly equilateral $\Omega_{\text{up}}$: prove $D\lambda_{2}(p_{0},p) < D\lambda_{3}(p_{0},p)$ for any perturbation $p$ from the equilateral vertex $p_{0}$. Since $\lambda_{2}^{p_{0}}=\lambda_{3}^{p_{0}}$, this implies $\lambda_{2}^{p}<\lambda_{3}^{p} $.
 * The complement $\Omega_{\text{down}}$: compute high-precision bounds directly to show a definitive gap,
-  $$\overline{\lambda}_{2}}^{p}<\underline{\lambda_{3}}^{p}.$$
+  $\overline{\lambda}}_2^{p}<\underline{\lambda}_3^{p}$.
 
 ## Method Overview
 
