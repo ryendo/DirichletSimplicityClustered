@@ -1,7 +1,7 @@
 function my_intlab_config_alone
 
     %The path of INTLAB toolbox and initialization.
-    addpath("Each_Process/Intlab_Group/Intlab_V12")
+    addpath("/path/to/your/INTLAB")
     
     %The path of the library of verified eigenvalue estimation for matrix.
     addpath('verified_eig_estimation')
