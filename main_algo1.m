@@ -115,34 +115,42 @@ function [approx_mu, interval_mu] = quotient_calc(t, delta, mat, u1, u2, u3)
     % plpu = I_veig(SinvSinvt, eye(2, 2), 1:2);
     % pl = I_intval(I_inf(plpu(1))); pu = I_intval(I_sup(plpu(2)));
 
+    % [LIU] tx: \tilde{x}, ty: \tilde{y} 
+    % [LIU] pl, pu: lower and upper bounds for the largest eigenvalue of S*S'.
     S = [1, (tx-x) / y; 0, ty / y];
-    pu_ = I_intval(I_sup(norm(S*S',2)^2));
+    pu_ = I_intval(I_sup(norm(S*S',2)^2));   %[LIU Request] Are both pu_ and pu are needed? 
     S_inv = [1, (x-tx) / ty; 0, y / ty];
     SinvSinvt = S_inv * S_inv';
     pl = I_intval(I_inf(1/norm(S*S',2)^2));
-    pu = I_intval(I_sup(norm(SinvSinvt,2)^2));
+    pu = I_intval(I_sup(norm(SinvSinvt,2)^2)); 
     
     % Define the exact, known eigenvalues for the equilateral triangle.
     % These serve as the base values for the difference quotient calculation.
     lam = [I_intval('16') / I_intval('3') * I_intval('pi')^2, I_intval('112') / I_intval('9') * I_intval('pi')^2, I_intval('112') / I_intval('9') * I_intval('pi')^2, I_intval('64') / I_intval('3') * I_intval('pi')^2];
     lam1 = lam(1); lam2 = lam(2); lam3 = lam(3); lam4 = lam(4);
     
+    % [LIU Request] "the shift parameter 'rho'" -> "the lower eigenvalue bound 'rho'" 
     % Define the shift parameter 'rho' for the error estimation formulas.
-    % It must satisfy lambda_N < rho <= lambda_{N+1}.
+    % It must satisfy lambda_N < rho <= lambda_{N+1}. Here, N=3.
     rho = lam(4) * pl;
     
     % Calculate the Rayleigh quotients for the approximate eigenfunctions.
     % These are the approximate eigenvalues (e.g., lambda_{N,h} in the theory).
-    lam1h = I_intval(I_sup(grad(mat, u1, u1) / L2(mat, u1, u1)));
+    % [LIU] Only rigorous upper bound of lambda_h is needed.
+    lam1h = I_intval(I_sup(grad(mat, u1, u1) / L2(mat, u1, u1))); 
     lam3h = I_intval(I_sup(grad(mat, u3, u3) / L2(mat, u3, u3)));
+
+    %  [LIU] Upper bound of \tilde{\lambda}_N using the estimation in Lemma 3.7.
+    %  [LIU Request] Upon Lemma 3.7, the 2-norm of matrix Sinv*Sinvt is used. But the definition of pu_ takes the square of the matrix.
     lam1_tilde =  (lam1*pu) * pu_;
     lam3_tilde = (lam3*pu) * pu_;
     
     % --- Rigorous Error Analysis Implementation ---
     % This block directly implements the error estimation theory from Section 3.3
     % and Lemma 2.1 to bound the errors between different eigenspaces.
-    % dbbarE2E2h: Error between the true eigenspace and the computed approximate eigenspace.
-    % dbbarE2E2t: Error between the true eigenspace and the mapped perturbed eigenspace.
+    % [LIU] The estimation of \epsion_{a}^h, \epsilon_{b}^h refers to Lemma 2 of [11].
+    % dbbarE2E2h: Error between the true eigenspace E and the computed approximate eigenspace \hat{E}.
+    % dbbarE2E2t: Error between the true eigenspace E  and the mapped perturbed eigenspace \tilde{E}_t.
     matF = [L2(mat, u1, u2); L2(mat, u1, u3)];
     matG = L2(mat, u1, u1);
     matH = [L2(mat, u2, u2), L2(mat, u2, u3); L2(mat, u3, u2), L2(mat, u3, u3)];
