@@ -3,7 +3,7 @@
 
 # --- Configuration ---
 MAX_JOBS=1  # Adjust this value as needed
-FUNC_SCRIPT="func_algo2"
+FUNC_SCRIPT="Algorithm2"
 
 # --- Setup ---
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )

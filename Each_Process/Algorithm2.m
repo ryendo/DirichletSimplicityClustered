@@ -3,18 +3,22 @@
 % r = sqrt(x^2+y^2) and h = y. It computes guaranteed bounds for eigenvalues
 % in the Omega_down region, where eigenvalues are well-separated.
 % Instead of perturbation theory, it leverages the domain monotonicity property of
-% Dirichlet eigenvalues (Lemma from Fig. 9, Eq. 39 in the paper).
+% Dirichlet eigenvalues (Lemma from Fig. 9, Eq. 40 in the paper).
 
-function func_algo2(j_list)
+function Algorithm2(j_list)
     
     % Define the output file name for storing results for the Omega_down region.
     file_name_result = ['../results/step2_bounds_' num2str(min(j_list)) '_' num2str(max(j_list)) '.csv'];
     
     % Check if a results file already exists and read its content to avoid re-computation.
     if isfile(file_name_result)
-        existing_data = readmatrix(file_name_result);
+        % Skip the header row when reading existing data
+        existing_data = readmatrix(file_name_result, 'NumHeaderLines', 1);
     else
         existing_data = [];
+        % If the file does not exist, write the header row first
+        headers = ["i", "j", "inf_lam2", "sup_lam2", "inf_lam3", "sup_lam3"];
+        writecell(headers, file_name_result);
     end
     
     % --- Main computation loop ---

@@ -96,21 +96,8 @@ function mesh=get_mesh(varargin)
         end
     end
     mesh=struct('nodes',nodes,'edges',edges,'elements',elements,'domain',domain);
-%     if length(varargin)==3
-% 	    folder=varargin{3};
-% 	    if folder(length(folder)) ~= filesep() 
-% 		folder = folder+filesep();
-% 	    end
-% 	    save([folder,'tri_n.dat'],'tris','-ascii');
-% 	    save([folder,'node.dat'],'nodes','-ascii', '-double');
-% 	    save([folder,'edge.dat'],'mesh_edges','-ascii');
-% 	    save([folder,'domain.dat'],'domain','-ascii');
-%     end
-%     
 
-%    vertex =nodes;
-%    face=[tris, tris(:,1)];
-% 	xvf = matrix(vertex(face,1),size(face,1),length(vertex(face,1))/size(face,1))';
-% 	yvf = matrix(vertex(face,2),size(face,1),length(vertex(face,1))/size(face,1))';
-%    plot(xvf, yvf,'b-');
+    mesh = struct('nodes', nodes, 'edges', double(edges), 'elements', double(elements), ...
+                  'bd_edge_ids', bd_edge_ids, ... 
+                  'domain', domain, 'min_edge_length', min_edge_length);
     end
