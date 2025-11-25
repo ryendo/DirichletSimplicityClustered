@@ -40,15 +40,53 @@ This project relies on specialized libraries for verified numerical computation:
 └── my_intlab_config_alone.m      # INTLAB configuration
 ```
 
+## Installation & Setup
+
+Before running the code, ensure you have **MATLAB** (R2020b or later) and a Unix-like environment (for shell scripts).
+
+### 1\. Clone the Repository
+
+```bash
+git clone https://github.com/ryendo/DirichletSimplicityClustered
+cd DirichletSimplicityClustered
+```
+
+### 2\. Configure INTLAB
+
+This project requires the **INTLAB** (Interval Laboratory) toolbox. You must configure the path to your local INTLAB installation.
+
+Open `my_intlab_config_alone.m` and edit the `addpath` line:
+
+```matlab
+% Open my_intlab_config_alone.m
+addpath('/path/to/your/INTLAB_directory'); 
+% e.g., addpath('/Applications/Intlab_V12');
+```
+
+### 3\. Shell Environment
+
+For **Algorithm 2** (which uses parallel shell scripts), ensure that the `matlab` command is available in your system's `PATH`.
+
+```bash
+# Verify in your terminal
+which matlab
+# If empty, add it to your PATH (e.g., in ~/.bashrc or ~/.zshrc)
+export PATH=$PATH:/Applications/MATLAB_R2024a.app/bin
+```
+
+-----
+
 ## Usage: The `ProofRunner` Class
 
 The `ProofRunner` class is the central controller for this project. It handles setup, parallel execution, and provides utility methods for debugging or verifying specific cases.
 
-### 1\. Setup
+### 1\. Initialization
+
+Load the configuration and prepare the environment within MATLAB.
 
 ```matlab
 s = ProofRunner;
-s.setupAll();  % Sets up INTLAB paths and runs prep.sh
+s.setupAll();  % Initializes INTLAB and runs prep.sh
 ```
 
 ### 2\. Algorithm 1: Difference Quotients ($\Omega_{\text{up}}$)
@@ -195,18 +233,3 @@ Verifies the gap condition over a rectangular region in the parameter space. It 
 ```text
 Box Bounds: sup(lam2) <= 42.2015, inf(lam3) >= 48.1005
 ```
-
-## Prerequisites
-
-1.  **MATLAB** (R2020b or later recommended)
-2.  **INTLAB** (Interval Laboratory)
-3.  **Unix-like Environment** (Required for `verification_step_2.sh`)
-
-## Installation
-
-1.  Clone this repository.
-2.  Open `my_intlab_config_alone.m` and set the path to your INTLAB installation.
-    ```matlab
-    addpath('/path/to/INTLAB');
-    ```
-3.  Ensure `matlab` command is available in your system PATH for shell scripts.
