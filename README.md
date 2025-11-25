@@ -126,7 +126,7 @@ s.runAlgo1Direction(intval('pi')/12);
 Parameters: mesh_N=32, ord=5, ep=1e-5, omega_N=1000
 Bins: 1
 ...
-δ=[0.2617,0.2618]: gap >= 65.35
+delta=[0.26179938779914941,0.26179938779914946]: gap >= 65.349420026578741
 Done. Results -> results/quotients_....csv
 ```
 
