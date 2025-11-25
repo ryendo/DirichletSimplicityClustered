@@ -1,6 +1,10 @@
 # Computer-Assisted Proof for Dirichlet Eigenvalue Simplicity
 
-This project provides the source code and computational framework for the computer-assisted proof presented in the paper “Rigorous estimation for the difference quotients of multiple eigenvalues”. The primary goal is to rigorously validate the simplicity of the second Dirichlet eigenvalue for nearly equilateral triangles, offering a partial solution to a conjecture posed by R. Laugesen and B. Siudeja.
+This project provides the source code and computational framework for the computer-assisted proof presented in the paper:
+
+> **The Second Dirichlet Eigenvalue is Simple on Every Non-equilateral Triangle, Part II: Nearly Equilateral Triangles** > *(to appear in Numerische Mathematik)*
+
+The primary goal is to rigorously validate the simplicity of the second Dirichlet eigenvalue for nearly equilateral triangles, offering a partial solution to a conjecture posed by R. Laugesen and B. Siudeja.
 
 ## Background
 
@@ -219,8 +223,8 @@ Computes eigenvalues for a specific triangle.
 
 ```text
 Point Bounds:
- lam2 in [42.1532, 42.1545]
- lam3 in [48.9012, 48.9025]
+ lam2 in [130.358, 130.358]
+ lam3 in [135.965, 135.965]
 ```
 
 #### Box Check (`boundsOnBox`)
