@@ -123,10 +123,10 @@ s.runAlgo1Direction(intval('pi')/12);
 
 ```text
 --- Algorithm 1: Rigorous difference-quotients ---
-Parameters: mesh_N=32, ord=5, ep=1e-5, omega_N=1
+Parameters: mesh_N=32, ord=5, ep=1e-5, omega_N=1000
 Bins: 1
 ...
-δ=[0.2617,0.2618]: gap >= 67.348
+δ=[0.2617,0.2618]: gap >= 65.35
 Done. Results -> results/quotients_....csv
 ```
 
