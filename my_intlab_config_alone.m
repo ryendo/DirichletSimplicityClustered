@@ -1,10 +1,12 @@
 function my_intlab_config_alone
 
     %The path of INTLAB toolbox and initialization.
-    addpath("/path/to/your/INTLAB")
+    % addpath("/path/to/your/INTLAB")
+    addpath("/home/rendo/Documents/Intlab_V12")
     
     %The path of the library of verified eigenvalue estimation for matrix.
-    addpath('verified_eig_estimation')
+    addpath('veigs')
+    addpath('VFEM2D_revised')
     addpath('HighOrderFEM_CGYOU_2016_Dirichlet')
     addpath('Each_Process')
     addpath('Each_Process/mat_quotients')
