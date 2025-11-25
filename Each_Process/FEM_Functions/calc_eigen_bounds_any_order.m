@@ -74,7 +74,7 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         AL=I_hull(AL,AL'); BL=I_hull(BL,BL');
 
         % Solve the interval generalized eigenvalue problem AL*x = mu*BL*x for eigenvalues 'mu'.
-        mus =  I_veig(AL, BL,1:neig);
+        mus =  I_eigs(AL, BL, neig, 'sm');
 
         % Calculate the rigorous lower bounds for the original problem's eigenvalues
         % using the 'mus' and the reference 'rho'. The formula is derived from the LG theorem.

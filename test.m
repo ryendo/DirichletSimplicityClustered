@@ -48,7 +48,7 @@ for idx = 1:omega_N
     % SinvSinvt = hull(SinvSinvt, SinvSinvt.')
 
     % Interval eigenvalues (two of them) of SinvSinvt
-    plpu = I_veig(SinvSinvt, eye(2),1:2)
+    plpu = I_eigs(SinvSinvt, eye(2),2, 'sm')
 
     % [V,D] = eig(I_mid(SinvSinvt))    
     % [mus,X] = verifyeig(SinvSinvt, D(1,1), V, eye(2,2))

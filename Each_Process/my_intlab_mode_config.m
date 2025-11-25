@@ -14,12 +14,11 @@ function my_intlab_mode_config(n)
     % --- Add the specific INTLAB path for this process ---
     % Dynamically build the path to the correct Intlab_V12_no<n> folder
     intlab_folder_for_this_process = "Intlab_V12_no" + n;
-    addpath('/home/rendo/Documents/DirichletSimplicityClustered/Each_Process/Intlab_Group/Intlab_V12');
-    
+    addpath('/path/to/your/INTLAB');
     
     % --- Add paths to other libraries using absolute paths ---
-    addpath(fullfile(project_root_dir, 'verified_eig_estimation'));
-    addpath(fullfile(project_root_dir, 'HighOrderFEM_CGYOU_2016_Dirichlet'));
+    addpath(fullfile(project_root_dir, 'veigs'));
+    addpath(fullfile(project_root_dir, 'VFEM2D_revised'));
     addpath(fullfile(each_process_dir, 'mat_quotients'));
     addpath(fullfile(each_process_dir, 'mode_swith_interface'));
     addpath(fullfile(each_process_dir, 'FEM_Functions'));
