@@ -1,8 +1,9 @@
 #!/bin/bash
 #
 # This script performs all necessary pre-computation steps for parallel execution.
-# 1. Generate the task list (list_j.csv)
-# 2. Set up the parallel execution environment (by copying INTLAB)
+# 1. Create necessary directories (log)
+# 2. Generate the task list (list_j.csv)
+# 3. Set up the parallel execution environment (by copying INTLAB)
 
 echo "--- Starting project preparation ---"
 echo ""
@@ -10,6 +11,10 @@ echo ""
 # Get the directory where this script resides (= project root).
 # This ensures that paths work correctly regardless of where the script is called from.
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+# --- ADDED: Create log directory ---
+echo "Creating log directory..."
+mkdir -p "${SCRIPT_DIR}/log"
 
 # Generate the task list (list_j.csv)
 echo "Generating task list 'algo2_list_j.csv'..."
@@ -22,6 +27,8 @@ if [ ! -f "${SCRIPT_DIR}/prep/algo2_list_j.csv" ]; then
 fi
 echo "=> 'prep/algo2_list_j.csv' has been successfully generated in prep/ directory."
 echo ""
+
+chmod +x prep/run_matlab.sh
 
 echo ""
 echo "--- All preparation steps are complete. ---"
