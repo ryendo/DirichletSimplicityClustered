@@ -1,0 +1,150 @@
+% example_lower_eig_bound_laplace.m
+% Example script to compute verified lower eigenvalue bounds for the Laplace
+% operator on a 2D mesh. Demonstrates:
+%  - CR (Crouzeix–Raviart) eigenvalue computation and simple validated bound
+%  - Lagrange CG eigenvalue computation and Lehmann–Goerisch sharpening
+%
+% Prerequisites / notes:
+%  - MATLAB with project files in this repository.
+% -  Set the configuration in "my_config.m" as needed.
+%
+% Quick usage:
+%  - Edit mesh selection / rho / neig below or set before running the script.
+%  - Run from project root (so ./mesh_data paths are valid).
+%
+% Copyright: adjusted for style and documentation.
+
+close all; clc;
+
+% -----------------------
+% Configuration
+% -----------------------
+% Enable interval arithmetic mode (requires interval library)
+global INTERVAL_MODE;
+INTERVAL_MODE = 1;
+
+% Choose mesh and parameters. Two example options shown; uncomment one.
+% Option A: mesh folder (preprocessed MATLAB mesh)
+% mesh_path = './mesh_data/UnitSquare8x8/';
+% mesh = read_mesh_from_folder(mesh_path);
+% rho  = 100.0;
+% neig = 4;
+
+% Option B: Dolfin XML mesh (default used here)
+mesh_file = "./mesh_data/dumbbell_graded_R1.xml";
+try
+    mesh = read_dolfin_mesh(mesh_file);
+catch ME
+    error("Failed to read mesh '%s': %s", mesh_file, ME.message);
+end
+neig = 6;
+
+
+
+% -----------------------
+% Prepare geometry data
+% -----------------------
+vert    = mesh.nodes;
+tri     = mesh.elements;
+edge    = mesh.edges;
+bd_edge_ids = mesh.bd_edge_ids;
+bd_edges = edge(bd_edge_ids, :);
+ne = size(edge,1);
+
+% Quick plot of mesh
+figure;
+trimesh(tri, vert(:,1), vert(:,2));
+axis equal; axis off;
+title('Mesh');
+
+% Use I_intval to support interval computations; otherwise use doubles.
+if exist('I_intval', 'file') == 2
+    vert = I_intval(mesh.nodes);
+else
+    vert = mesh.nodes;
+end
+
+% -----------------------
+% CR element: compute Steklov/Laplace eigenvalues (CR) and simple validated bound
+% Current version only support approximate computation.
+% -----------------------
+disp('--- Compute Laplacian eigenvalues using CR element ---');
+tri_by_edge = find_tri2edge(tri, edge);
+[A0, A1] = create_matrix_crouzeix_raviart(tri, edge, vert, tri_by_edge);
+
+dof_idx = 1:ne;
+dof_idx(bd_edge_ids) = [];
+CR_A0 = A0(dof_idx,dof_idx);
+CR_A1 = A1(dof_idx,dof_idx);
+hmax = find_mesh_hmax(vert,edge);
+if INTERVAL_MODE
+    CR_eig = veigs(CR_A1, CR_A0, neig+1, 'sm');
+else
+    CR_eig = eigs(CR_A1, CR_A0, neig+1, 'sm');
+end
+Ch_val = I_intval(0.1893)*hmax;
+
+disp('Compute validated lower bounds (CR-based theorem)');
+CR_eig_low = CR_eig ./ (1 + CR_eig .* (Ch_val^2));
+
+
+% -----------------------
+% Lagrange (CG) eigenvalues and matrices
+% -----------------------
+disp('--- Compute Laplace eigenpairs using Lagrange (CG) element ---');
+lagrange_order = 2;
+[LA_eig, LA_eigf, LA_A, LA_M] = laplace_eig_lagrange(lagrange_order, mesh, neig);
+
+disp('Computed eigenvalues (approx.):');
+disp(LA_eig);
+
+fprintf('Size of stiffness matrix: %d x %d\n', size(LA_A,1), size(LA_A,2));
+
+if INTERVAL_MODE
+    % Project matrices into the computed eigenfunction basis (interval)
+    A2 = LA_eigf' * LA_A * LA_eigf;
+    M2 = LA_eigf' * LA_M * LA_eigf;
+    % veig expects symmetric interval matrices (hull used to symmetrize)
+    LA_eig = veig(hull(A2, A2'), hull(M2, M2'));
+end
+
+% -----------------------
+% Lehmann–Goerisch sharpening for lower bounds
+% -----------------------
+disp('--- Lehmann–Goerisch method: compute sharp lower bounds ---');
+A0 = LA_eigf' * LA_A * LA_eigf;
+A1 = LA_eigf' * LA_M * LA_eigf;
+
+% RT H(div) mixed problem to build the auxiliary bilinear form
+RT_order = lagrange_order;
+mat_b_w_w = RT_Hdiv_problem(mesh, RT_order, LA_eigf);
+A_lg = mat_b_w_w;
+
+% Matrices used in Lehmann–Goerisch generalized eigenproblem
+rho  = CR_eig_low(neig+1);
+
+AL = A0 - rho * A1;
+BL = A0 - 2*rho * A1 + (rho^2) * A_lg;
+
+if INTERVAL_MODE
+    % Use interval-eigen solver; ensure symmetrized intervals
+    sym_AL = hull(AL, AL');
+    sym_BL = hull(BL, BL');
+    LG_eig_low = veig(sym_AL, sym_BL);
+    [~, idx] = sort(I_inf(LG_eig_low)); % sort by interval lower bounds
+    LG_eig_low = LG_eig_low(idx);
+else
+    % Standard generalized eigenvalue problem
+    LG_eig_low = sort(eig(AL, BL));
+end
+
+% Transform Lehmann-Goerisch eigenvalues to the desired lower bounds
+LG_eig_low = rho - rho ./ (1 - LG_eig_low(end:-1:1));
+
+% Consolidate results: each row [Lehmann-Goerisch_lower, Lagrange_upper]
+eig_lower_and_upper = [LG_eig_low, LA_eig];
+
+disp('Lehmann-Goerisch lower bounds (rows correspond to computed eigenpairs):');
+disp(eig_lower_and_upper);
+
+% End of script
