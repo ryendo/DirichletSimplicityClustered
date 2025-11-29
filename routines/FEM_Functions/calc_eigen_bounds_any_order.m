@@ -71,21 +71,21 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         
         % --- Step 4: Solve the generalized eigenvalue problem and compute the final bounds. ---
         % Ensure matrices are symmetric using the interval hull operation.
-        AL=I_hull(AL,AL'); BL=I_hull(BL,BL')
+        AL=I_hull(AL,AL'); BL=I_hull(BL,BL');
 
         % Solve the interval generalized eigenvalue problem AL*x = mu*BL*x for eigenvalues 'mu'.
-        mus =  I_eigs(AL, BL, neig, 'sm')
+        mus =  I_eigs(AL, BL, neig, 'sm');
 
         % Calculate the rigorous lower bounds for the original problem's eigenvalues
         % using the 'mus' and the reference 'rho'. The formula is derived from the LG theorem.
-        LG_eig_low = rho - rho./(1-mus(end:-1:1))
+        LG_eig_low = rho - rho./(1-mus(end:-1:1));
         
         % Combine the high-accuracy upper bounds (LA_eig) and the new lower bounds (LG_eig_low)
         % into a final interval vector.
         [~,idx] = sort(I_mid(LG_eig_low));
-        LG_eig_low = LG_eig_low(idx)
+        LG_eig_low = LG_eig_low(idx);
         [~,idx] = sort(I_mid(LA_eig));
-        LA_eig = LG_eig_low(idx)
+        LA_eig = LG_eig_low(idx);
 
         hull_up_low = I_hull(I_intval(LA_eig), I_intval(LG_eig_low))
 
@@ -94,7 +94,7 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
 
         % Sort the computed eigenvalues.
         [~,idx] = sort(I_mid(eig_bounds_));
-        eig_bounds = eig_bounds_(idx)
+        eig_bounds = eig_bounds_(idx);
 
     else
         % --- Standard CG Method Branch ---
@@ -106,7 +106,7 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
     
         % --- Step 1: Compute upper and lower bounds. ---
         % Generate a mesh suitable for the CG method.
-        if tri_intval(6)<0.3
+        if tri_intval(6)<0.2
             N_v = 10;
             mesh_rho=get_mesh_for_cg_y_reduced(tri_intval,N_rho,N_v);
         else
@@ -119,17 +119,16 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         bd_rho   = mesh_rho.edges(is_edge_on_bdry(mesh_rho,N_rho),:);
 
         % Define the constant for the a posteriori error estimate.
-        Ch=I_intval('0.493')/N_rho
-        N_rho
+        Ch=I_intval('0.493')/N_rho;
 
         % Compute the upper bounds for the eigenvalues using P1 Lagrange FEM.
-        cg_lams = Lagrange_dirichlet_eig_for_rho_vectorized(1, vert_rho, edge_rho, tri_rho, bd_rho, neig+1)
+        cg_lams = Lagrange_dirichlet_eig_for_rho_vectorized(1, vert_rho, edge_rho, tri_rho, bd_rho, neig+1);
         
         % Compute the corresponding lower bounds using the error formula:
-        llams = cg_lams./(1+cg_lams*Ch^2)
+        llams = cg_lams./(1+cg_lams*Ch^2);
 
         % Combine the upper bounds (cg_lams) and lower bounds (llams) into an interval vector.
-        hull_up_low = I_hull(cg_lams,llams)
+        hull_up_low = I_hull(cg_lams,llams);
 
         % Extract the desired eigenvalue bounds.
         eig_bounds = hull_up_low(2:3);

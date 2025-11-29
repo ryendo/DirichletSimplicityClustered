@@ -64,7 +64,8 @@ format long infsup
         fprintf('Processing Column j = %d / %d\n', j, N_steps);
         fprintf('========================================\n');
         
-        for i = 1:I_mid(M_steps)
+        % for i = 1:I_mid(M_steps)
+        for i = 1:1
             % Check if this cell (i,j) is already computed
             if isempty(existing_data) || ~ismember([i, j], existing_data(:, 1:2), 'rows')
 
@@ -100,7 +101,7 @@ format long infsup
                     y_check = I_sup(y_s)
                     if y_check < 0.2
                         % Very thin triangles
-                        N_rho = 600; fem_ord = 1; N_LG = 0; isLG = 0;
+                        N_rho = 1200; fem_ord = 1; N_LG = 0; isLG = 0;
                     elseif y_check < 0.8
                         % Normal triangles
                         N_rho = 32; fem_ord = 1; N_LG = 0; isLG = 0;
@@ -178,38 +179,23 @@ function [x_nodes, theta_nodes, N_steps] = build_global_grids_from_coarse_data(M
     % For each coarse interval, we choose:
     %   - N_i: number of angular subdivisions
     %   - M_i: (suggested) number of radial subdivisions
-    %
-    % We require that the approximate cell diameter is <= S_i. A simple
-    % heuristic is:
-    %   - radial range: [0.5, 1]  (length Lx = 0.5)
-    %   - angular range: [theta_i^*, theta_{i+1}^*] (length Ltheta_i)
-    %   - max radius ~ 1
-    %   then set
-    %       N_i >= Ltheta_i / S_i
-    %       M_i >= Lx       / S_i
-    %   and round up to integers.
     
     Lx = I_intval('1.0') - I_intval('0.5');
     N_i = I_zeros(1, K);
     M_i = I_zeros(1, K);    
     
     for i = 1:K        
-        
         Ltheta = theta_star_d(i+1) - theta_star_d(i);
-        
         S_i_val = S_list(i);
         if S_i_val <= 0
             error('S_i must be positive.');
         end
-        
         N_i(i) = max(1, ceil(I_sup(Ltheta / S_i_val)));
         M_i(i) = max(1, ceil(I_sup(Lx/ S_i_val)));
     end
     
     % Global counts:
-    
     M_steps = max(M_i);          % choose global radial intervals as max_i M_i
-                                 % (so in some bands diameter < S_i, which is fine)
     cumN = cumsum(I_mid(N_i));
     N_steps = cumN(end);
     
@@ -227,39 +213,54 @@ function [x_nodes, theta_nodes, N_steps] = build_global_grids_from_coarse_data(M
     % 4. Build theta_nodes (N_steps+1) via per-band uniform subdivision
     % ---------------------------------------------------------------------
     
-    theta_nodes_d = I_zeros(1, N_steps + 1);
-    idx = 1;
+    % Pre-allocate theta_nodes directly as a column interval vector
+    theta_nodes = I_zeros(N_steps + 1, 1);
     
-    theta_nodes_d(idx) = theta_star_d(1);  % first node
+    % Set the first node
+    theta_nodes(1) = theta_star_d(1);
+    
+    current_idx = 1;
     
     for i = 1:K
         a = theta_star_d(i);
         b = theta_star_d(i+1);
-        n_loc = N_i(i);
+        n_loc = N_i(i);          % Interval scalar
+        n_val = I_mid(n_loc);    % Integer value for indexing
         
-        for m = 1:I_mid(n_loc)
-            idx = idx + 1;
-            t = m / n_loc;
-            theta_nodes_d(idx) = (I_intval('1.0') - t) * a + t * b;
-        end
+        % Vectorize inner loop: Create m vector [1, 2, ..., n_loc]
+        % Note: I_intval(1:n_val) creates a row vector of intervals
+        m_vec = I_intval(1:n_val)'; 
+        
+        % Compute t vector: t = m / n_loc
+        t_vec = m_vec / n_loc;
+        
+        % Compute nodes block: (1 - t)*a + t*b
+        % INTLAB supports vector operations for this formula
+        nodes_block = (I_intval('1.0') - t_vec) * a + t_vec * b;
+        
+        % Assign block to global array
+        theta_nodes(current_idx + 1 : current_idx + n_val) = nodes_block;
+        
+        current_idx = current_idx + n_val;
     end
     
-    % Convert theta_nodes_d to interval type
-    theta_nodes = repmat(I_intval('0.0'), N_steps+1, 1);
-    for j = 1:(N_steps+1)
-        theta_nodes(j) = I_intval(theta_nodes_d(j));
-    end
     
     % ---------------------------------------------------------------------
     % 5. Build x_nodes (M_steps+1) as uniform on [0.5, 1.0]
     % ---------------------------------------------------------------------
     X_START = I_intval('0.5');
     X_END   = I_intval('1.0');
-    x_nodes = repmat(I_intval('0.0'), I_mid(M_steps)+1, 1);
-    for k = 0:I_mid(M_steps)
-        u = I_intval(k) / I_intval(M_steps);  % in [0,1]
-        x_nodes(k+1) = X_START + (X_END - X_START) * u;
-    end
+    
+    m_val = I_mid(M_steps);
+    
+    % Vectorize loop: k = 0:M_steps
+    k_vec = I_intval(0:m_val)';  % Column vector
+    
+    % u = k / M_steps
+    u_vec = k_vec / I_intval(M_steps);
+    
+    % Calculate x_nodes using vector arithmetic
+    x_nodes = X_START + (X_END - X_START) * u_vec;
     
 end
 
@@ -272,7 +273,7 @@ function [x_s, y_s, x_l, y_l] = get_cell_vertices_from_index( ...
 
     % Infer M_steps and N_steps from node arrays
     M_steps = length(x_nodes)     - 1;
-    N_steps = length(theta_nodes) - 1;
+    N_steps = length(theta_nodes) - 1; % Unused but kept for structure
 
     % Map linear cell index back to (i,j):
     %   cell_idx = (j-1)*M_steps + i
