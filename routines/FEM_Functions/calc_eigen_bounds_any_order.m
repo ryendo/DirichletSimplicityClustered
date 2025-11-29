@@ -87,7 +87,7 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         [~,idx] = sort(I_mid(LA_eig));
         LA_eig = LG_eig_low(idx);
 
-        hull_up_low = I_hull(I_intval(LA_eig), I_intval(LG_eig_low));
+        hull_up_low = I_hull(I_intval(LA_eig), I_intval(LG_eig_low))
 
         % Extract the desired eigenvalue bounds.
         eig_bounds_ = hull_up_low(2:3);
