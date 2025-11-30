@@ -34,14 +34,14 @@ function [delta_x,delta_theta] = get_dx_dt_for_current_p2(a2,b2)
 
     if v23_gap_validation > min_with_ratio*GAP*0.85 
         rel_width=v23_gap_validation/GAP;
-        rel_width
-        display("OK")
+        rel_width;
+        % display("OK")
     else
         [v23_gap_validation,GAP/2];
         rel_width=v23_gap_validation/GAP;
         rel_width
         display('NG')
     end
-    [a1,b1,a4,b4]
+    % [a1,b1,a4,b4]
 
 end

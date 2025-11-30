@@ -1,6 +1,6 @@
 function [xlist,ylist] = get_x_nodes_for_same_y(x_start)
     a0=x_start;
-    b0=tan(pi/60)/2;
+    b0=tan(pi/60)/2-(1E-5);
     x = x_start;
     [dx,dt] = get_dx_dt_for_current_p2(x,b0);
     theta1 = atan2(b0,x+dx);

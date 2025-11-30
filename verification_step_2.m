@@ -113,17 +113,17 @@ format long infsup
 
                     lower_left_matrix(3,:) = [0.5,0.022];
                     upper_right_matrix(3,:) = [0.501,0.0225];
-                    lower_left_matrix
-		    upper_right_matrix
 
 
                     % Compute bounds
-		    display('Lower bound computation')
-		    tic;
+		            display('Lower bound computation')
+		            tic;
                     llams_ = calc_eigen_bounds_any_order_lowerbound(upper_right_matrix, N_LG, N_rho, fem_ord, isLG);
-		    toc;
-		    display('Upper bound computation')
+		            toc;
+		            display('Upper bound computation')
+		            tic;
                     ulams_ = calc_eigen_bounds_any_order(lower_left_matrix,  N_LG, N_rho, fem_ord, isLG);
+		            toc;
                     
                     % --- 4. Store Results ---
                     new_data = [i, j, ...

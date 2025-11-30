@@ -1,0 +1,15 @@
+function validate_region_cell(region_cell)
+    
+    region_cell_upper_bound = cell_upper_eig_bound(region_cell);
+    region_cell_lower_bound = cell_lower_eig_bound(region_cell);
+    
+    display("Region cell validation:")
+    if region_cell_lower_bound(3) > region_cell_upper_bound(2)
+        display("OK")
+        re
+
+    else
+        display("NG")
+    end
+
+end

@@ -46,7 +46,7 @@ function delta_theta = get_dx_dt_for_current_p1(a1,b1,a3,b3)
     if v23_gap_validation > min_with_ratio*GAP*0.85 
         rel_width=v23_gap_validation/GAP;
         rel_width;
-        display("OK");
+        % display("OK");
     else
         [v23_gap_validation,GAP/2];
         rel_width=v23_gap_validation/GAP;

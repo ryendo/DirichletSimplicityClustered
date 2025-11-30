@@ -5,7 +5,7 @@ function [new_xlist,new_ylist,new_theta] = get_x_nodex_for_same_theta(xlist,ylis
     theta = atan2(b1,a1);
 
     dt_list = [];
-    N = length(xlist)
+    N = length(xlist);
 
     for k = 1:(N-1)
         a1 = xlist(k);
