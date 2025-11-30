@@ -1,0 +1,22 @@
+function gap_diff_from_target = predict_diag_gap_for_p2(delta_x,a2,b2,target_ratio)
+    [v1,v2,v3,v4] = get_approximate_eigenvalue(a2,b2);
+
+    GAP0 = v3-v2;
+    theta2 = atan2(b2,a2);
+
+    a3  = a2 + delta_x;
+    theta1 = atan2(b2,a3);
+    
+    a1 = a2;
+    b1 = a1*tan(theta1);
+    
+    b3 = a3*tan(theta1);
+    a4 = a3;
+    b4 = a4*tan(theta2);
+    [v1_p1, v2_p1, v3_p1, v4_p1] = get_approximate_eigenvalue(a1,b1);
+    [v1_p4, v2_p4, v3_p4, v4_p4] = get_approximate_eigenvalue(a4,b4);
+
+    new_gap = v3_p4 - v2_p1;
+    gap_diff_from_target = new_gap/GAP0 - target_ratio;
+    
+end

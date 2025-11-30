@@ -1,0 +1,40 @@
+function delta_x = get_delta_x_for_current_p(a2,b2)
+    h = 0.005;
+    [v1,v2,v3,v4]=get_approximate_eigenvalue(a2,b2);
+    [v1_hx,v2_hx,v3_hx,v4_hx]=get_approximate_eigenvalue(a2+h,b2);
+    [v1_hy,v2_hy,v3_hy,v4_hy]=get_approximate_eigenvalue(a2,b2+h);
+    G2_x = (v2_hx - v2)/h;
+    G2_y = (v2_hy - v2)/h;
+    G3_x = (v3_hx - v3)/h;
+    G3_y = (v3_hy - v3)/h;
+
+    GAP = v3-v2;
+    
+    theta = atan2(b2,a2);
+
+    delta_x = - GAP/2 / (G2_y*tan(theta)+G3_x + G3_y*tan(theta));
+    theta2 = atan2(b2,a2+delta_x);
+    a1 = a2;
+    b1 = a2*tan(theta2);
+    a3 = a2+delta_x;
+    b3 = tan(theta2);
+    a4 = a3;
+    b4 = a4*tan(theta);
+    [v1_p1, v2_p1, v3_p1, v4_p1] = get_approximate_eigenvalue(a1,b1);
+    [v1_p4, v2_p4, v3_p4, v4_p4] = get_approximate_eigenvalue(a4,b4);
+
+    v23_gap_validation = v3_p4 - v1_p1;
+
+    if v23_gap_validation > GAP/3 
+        rel_width=v23_gap_validation/GAP;
+        rel_width
+        display("OK")
+    else
+        [v23_gap_validation,GAP/2];
+        rel_width=v23_gap_validation/GAP;
+        rel_width
+        display('NG')
+    end
+    [a1,a2,]
+
+end

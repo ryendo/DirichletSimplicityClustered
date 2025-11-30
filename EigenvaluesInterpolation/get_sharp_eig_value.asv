@@ -1,0 +1,10 @@
+function LA_eig = get_sharp_eig_value(a,b,h)
+    msh = make_mesh_by_gmsh(a,b, h);
+    bd_edges   = msh.boundary_edges;
+    is_bd_edge = ismember(msh.edges, bd_edges, 'rows');
+    msh.bd_edge_ids = find(is_bd_edge>0);
+
+    [LA_eig, LA_eigf, LA_A, LA_M] = laplace_eig_lagrange(1, msh, neig);
+
+
+end
