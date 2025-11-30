@@ -110,11 +110,15 @@ function eig_bounds = calc_eigen_bounds_any_order_lowerbound(tri_intval,N_LG,N_r
             N_v = 5;
             a_ = mid(tri_intval(5));
             b_ = mid(tri_intval(6));
+	    display('Mesh generator for lower bound calrulation. h=0.001')
             mesh_rho = make_mesh_by_gmsh(a_, b_, 0.001);
             vert_rho = mesh_rho.nodes;
             edge_rho = mesh_rho.edges;
             tri_rho  = mesh_rho.elements;
             bd_rho   = mesh_rho.boundary_edges;
+	    display('mesh properties. number of elements and nodes')
+	    display(size(tri_rho,1))
+	    display(size(vert_rho,1))
             
             
             % mesh_rho=get_mesh_for_cg_y_reduced(tri_intval,N_rho,N_v);

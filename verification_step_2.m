@@ -113,10 +113,17 @@ format long infsup
 
                     lower_left_matrix(3,:) = [0.5,0.022];
                     upper_right_matrix(3,:) = [0.501,0.0225];
+                    lower_left_matrix
+		    upper_right_matrix
+
 
                     % Compute bounds
-                    ulams_ = calc_eigen_bounds_any_order(lower_left_matrix,  N_LG, N_rho, fem_ord, isLG);
+		    display('Lower bound computation')
+		    tic;
                     llams_ = calc_eigen_bounds_any_order_lowerbound(upper_right_matrix, N_LG, N_rho, fem_ord, isLG);
+		    toc;
+		    display('Upper bound computation')
+                    ulams_ = calc_eigen_bounds_any_order(lower_left_matrix,  N_LG, N_rho, fem_ord, isLG);
                     
                     % --- 4. Store Results ---
                     new_data = [i, j, ...
@@ -127,6 +134,11 @@ format long infsup
                     % Check Gap
                     gap34 = llams_(3) - ulams_(2)
                     gap = llams_(2) - ulams_(1)
+		    rel_err = gap/llams_(2);
+
+		    display('Relative error')
+		    display(rel_err)
+
                     t_cost = toc;
                     
                     if gap <= 0
