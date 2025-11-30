@@ -110,9 +110,13 @@ format long infsup
                         N_rho = 32; fem_ord = 5; N_LG = 8; isLG = 1;
                     end
 
+
+                    lower_left_matrix(3,:) = [0.5,0.022];
+                    upper_right_matrix(3,:) = [0.501,0.0225];
+
                     % Compute bounds
                     ulams_ = calc_eigen_bounds_any_order(lower_left_matrix,  N_LG, N_rho, fem_ord, isLG);
-                    llams_ = calc_eigen_bounds_any_order(upper_right_matrix, N_LG, N_rho, fem_ord, isLG);
+                    llams_ = calc_eigen_bounds_any_order_lowerbound(upper_right_matrix, N_LG, N_rho, fem_ord, isLG);
                     
                     % --- 4. Store Results ---
                     new_data = [i, j, ...
@@ -121,6 +125,7 @@ format long infsup
                     writematrix(new_data, file_name_result, 'WriteMode', 'append');
                     
                     % Check Gap
+                    gap34 = llams_(3) - ulams_(2)
                     gap = llams_(2) - ulams_(1)
                     t_cost = toc;
                     
