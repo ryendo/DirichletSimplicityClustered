@@ -9,4 +9,5 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
 unset LD_LIBRARY_PATH
 
 #/opt/homebrew/bin/
+#/usr/local/bin/
 gmsh ${mesh_path}temp.geo -2 -format msh2 -o ${mesh_path}temp.msh 

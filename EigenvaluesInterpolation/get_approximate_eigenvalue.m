@@ -20,7 +20,11 @@ function [l1, l2, l3, l4] = get_approximate_eigenvalue(query_a, query_b)
         filename = 'eigenvalues_grid.csv';
         
         if ~isfile(filename)
-            error('ファイル %s が見つかりません。パスを確認してください。', filename);
+            filename = 'EigenvaluesInterpolation/eigenvalues_grid.csv';
+            if ~isfile(filename)
+                filename = 'EigenvaluesInterpolation/eigenvalues_grid.csv';
+                error('ファイル %s が見つかりません。パスを確認してください。', filename);
+            end
         end
         
         % CSV読み込み
