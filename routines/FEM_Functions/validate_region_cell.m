@@ -2,21 +2,44 @@ function validate_region_cell(region_cell, region_idx)
     % region_cell list can be created by [regions,regions_by_idx, xlist,tlist]=get_node_list();
 
     h = predict_mesh_size(region_cell);
+    format long
+    region_cell
+    disp("mesh size")
+    disp(h)
 
     tic;
-    cell_ub = I_sup(cell_upper_eig_bound(region_cell, 2*h));
+    cell_ub = I_sup(cell_upper_eig_bound(region_cell, 1.5*h));
     toc;
     tic;
     cell_lb = I_inf(cell_lower_eig_bound(region_cell, h));
     toc;
 
+    if cell_lb(3) <= cell_ub(2)
+      h=h/2;
+      disp("new mesh size")
+      disp(h)
+
+      tic; cell_ub = I_sup(cell_upper_eig_bound(region_cell, h)); toc;
+      tic; cell_lb = I_inf(cell_lower_eig_bound(region_cell, h)); toc;
+    end
+
+    if cell_lb(3) <= cell_ub(2)
+      h=h/2;
+      disp("new mesh size")
+      disp(h)
+
+      tic; cell_ub = I_sup(cell_upper_eig_bound(region_cell, h)); toc;
+      tic; cell_lb = I_inf(cell_lower_eig_bound(region_cell, h)); toc;
+    end
+
     fprintf("Region cell validation:\n");
 
     % Extract values to append
-    a2 = cell_lb(2);   % lower bound of 2nd
-    b2 = cell_ub(2);   % upper bound of 2nd
-    a3 = cell_lb(3);   % lower bound of 3rd
-    b3 = cell_ub(3);   % upper bound of 3rd
+    lb2 = cell_lb(2);   % lower bound of 2nd
+    up2 = cell_ub(2);   % upper bound of 2nd
+    lb3 = cell_lb(3);   % lower bound of 3rd
+    ub3 = cell_ub(3);   % upper bound of 3rd
+
 
     % Convert region_cell (which is probably a vector) to row format
     region_vec = region_cell;
@@ -25,7 +48,7 @@ function validate_region_cell(region_cell, region_idx)
     disp(ts)
 
     % Concatenate all data into one row
-    row = [region_idx, region_vec, a2, b2, a3, b3];
+    row = [region_idx, region_vec, lb2, up2, lb3, ub3, h];
     disp(row)
 
     if cell_lb(3) > cell_ub(2)

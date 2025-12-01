@@ -26,7 +26,7 @@ function h = predict_mesh_size(region_cell)
     lambda = v4(3);
 
     % Required lower bound target:
-    T = v1(2) + 0.18 * GAP;
+    T = v1(2) + 0.22 * GAP;
 
     if T >= lambda
         h = 0.002;
@@ -38,6 +38,8 @@ function h = predict_mesh_size(region_cell)
     % h = (1/0.1893) * sqrt( lambda/T - 1 )
     coeff = 0.1893;
     h = (1/coeff) * sqrt(1/T - 1/lambda);
+
+    h = max(0.001,h);
 
     fprintf("Predicted mesh size h = %.10f\n", h);
 end

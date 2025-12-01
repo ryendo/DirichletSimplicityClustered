@@ -40,6 +40,7 @@ function [cell_list, cell_list_by_idx, xlist, tlist]=get_node_list()
     y = ylist(1);
     k=1;
     while y < 0.1
+	y
         [new_xlist,new_ylist,new_theta] = get_x_nodex_for_same_theta(xlist,ylist);
         xlist = new_xlist;
         ylist = new_ylist;

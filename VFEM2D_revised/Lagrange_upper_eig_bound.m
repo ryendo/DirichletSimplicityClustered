@@ -24,7 +24,12 @@ is_edge_bd = find_is_edge_bd(edge, bd, ne, nb);
 LA = vec'*A_grad*vec;
 LB = vec'*A_L2*vec;
 
-eig_value = I_eig(hull(LA,LA'), hull(LB,LB'), neig);
+global INTERVAL_MODE
+if INTERVAL_MODE
+  eig_value = veig(hull(LA,LA'), hull(LB,LB'), 1:neig);
+else
+  eig_value = eig(LA, LB);
+end
 eig_value = I_sup(eig_value);
 
 

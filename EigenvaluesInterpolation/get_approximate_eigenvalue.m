@@ -13,10 +13,10 @@ function [l1, l2, l3, l4] = get_approximate_eigenvalue(query_a, query_b)
 %       scatteredInterpolant オブジェクトを作成してメモリに保持します。
 
     % 永続変数の定義（関数が終了してもメモリに残る変数）
-    persistent F1 F2 F3 F4
+    persistent F1 F2 F3 F4 F5
 
     % 初回呼び出し時（F1が空のとき）のみデータを読み込む
-    if isempty(F1)
+    if isempty(F5)
         filename = 'eigenvalues_grid.csv';
         
         if ~isfile(filename)
@@ -47,6 +47,7 @@ function [l1, l2, l3, l4] = get_approximate_eigenvalue(query_a, query_b)
     end
 
     % 補間値の計算
+    F5 = 0;
     l1 = F1(query_a, query_b);
     l2 = F2(query_a, query_b);
     l3 = F3(query_a, query_b);

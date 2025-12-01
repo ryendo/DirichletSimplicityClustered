@@ -1,7 +1,7 @@
 function my_intlab_config_server()
 
     global INTERVAL_MODE;    
-    INTERVAL_MODE=1;
+    INTERVAL_MODE=0;
     global mesh_path
     mesh_path = '/tmp/';
 

@@ -25,6 +25,8 @@ function [new_xlist,new_ylist,new_theta] = get_x_nodex_for_same_theta(xlist,ylis
     k = max(k,N-1);
 
     new_theta = theta + min(dt_list);
+    dt_list
+    min(dt_list)
     new_xlist = xlist(1:k+1);
     new_ylist = xlist * tan(new_theta);
 

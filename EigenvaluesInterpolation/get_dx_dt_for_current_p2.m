@@ -1,5 +1,5 @@
 function [delta_x,delta_theta] = get_dx_dt_for_current_p2(a2,b2)
-    h = 0.005;
+    h = 0.002;
     [v1,v2,v3,v4]=get_approximate_eigenvalue(a2,b2);
     [v1_hx,v2_hx,v3_hx,v4_hx]=get_approximate_eigenvalue(a2+h,b2);
     [v1_hy,v2_hy,v3_hy,v4_hy]=get_approximate_eigenvalue(a2,b2+h);
@@ -10,7 +10,7 @@ function [delta_x,delta_theta] = get_dx_dt_for_current_p2(a2,b2)
 
     GAP = v3-v2;
     
-    min_with_ratio = 0.2;
+    min_with_ratio = 0.25;
     theta2 = atan2(b2,a2);
 
     delta_x_initial = - (1-min_with_ratio)*GAP / (G2_y*tan(theta2)+G3_x + G3_y*tan(theta2));
