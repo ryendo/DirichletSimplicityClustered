@@ -1,0 +1,193 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+             R2023b Update 5 (23.2.0.2459199) 64-bit (glnxa64)
+                             November 28, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ 
+ 
+=========================================================================
+*****  Please provide proper reference to                                
+*****     S.M. Rump: INTLAB - INTerval LABoratory. In Tibor Csendes,     
+*****       editor, Developments in Reliable Computing, pages 77-104.    
+*****       Kluwer Academic Publishers, Dordrecht, 1999,                 
+*****       http://www.ti3.tuhh.de/intlab .                              
+*****                                                                    
+*****  Commercial use or use in conjunction with a commercial program    
+*****  which requires INTLAB or part of INTLAB to function properly      
+*****  requires a special license. Please contact me  rump (at) tuhh.de  
+ 
+ 
+Initialization: CSV loaded and interpolants created.
+N =
+    43
+    "left corner cell index:"
+ans =
+   862
+ans =
+   903     4
+N_cell =
+     3
+Using gmsh at: /usr/bin/gmsh
+Info    : Running '/usr/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.8.4, 1 node, max. 1 thread]
+Info    : Started on Mon Dec  1 20:53:44 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.00118629s, CPU 0.000152s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.174922s, CPU 0.17091s)
+Info    : 4298 nodes 8597 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Mon Dec  1 20:53:45 2025 (From start: Wall 0.194709s, CPU 0.232021s)
+ans =
+     0
+
+Elapsed time is 20.708968 seconds.
+Using gmsh at: /usr/bin/gmsh
+Info    : Running '/usr/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.8.4, 1 node, max. 1 thread]
+Info    : Started on Mon Dec  1 20:54:05 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.00051772s, CPU 0.000518s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0965631s, CPU 0.095684s)
+Info    : 4491 nodes 8983 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Mon Dec  1 20:54:05 2025 (From start: Wall 0.105781s, CPU 0.131608s)
+ans =
+     0
+
+--- Compute Laplacian eigenvalues using CR element ---
+Compute validated lower bounds (CR-based theorem)
+Elapsed time is 27.870907 seconds.
+Region cell validation:
+2025-12-01 20:54:33.153
+   1.0e+04 *
+  Columns 1 through 7
+    0.0001    0.0001    0.0001    0.0000    0.0000    1.8746    1.9749
+  Columns 8 through 9
+    2.0440    2.1540
+OK
+    0.3859
+Using gmsh at: /usr/bin/gmsh
+Info    : Running '/usr/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.8.4, 1 node, max. 1 thread]
+Info    : Started on Mon Dec  1 20:54:33 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000510372s, CPU 0.000414s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0936241s, CPU 0.090737s)
+Info    : 4368 nodes 8737 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Mon Dec  1 20:54:33 2025 (From start: Wall 0.102706s, CPU 0.132113s)
+ans =
+     0
+
+Elapsed time is 20.045380 seconds.
+Using gmsh at: /usr/bin/gmsh
+Info    : Running '/usr/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.8.4, 1 node, max. 1 thread]
+Info    : Started on Mon Dec  1 20:54:53 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000514418s, CPU 0s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0964806s, CPU 0.095015s)
+Info    : 4464 nodes 8929 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Mon Dec  1 20:54:53 2025 (From start: Wall 0.10565s, CPU 0.133367s)
+ans =
+     0
+
+--- Compute Laplacian eigenvalues using CR element ---
+Compute validated lower bounds (CR-based theorem)
+Elapsed time is 28.480142 seconds.
+Region cell validation:
+2025-12-01 20:55:21.700
+   1.0e+04 *
+  Columns 1 through 7
+    0.0002    0.0001    0.0001    0.0000    0.0000    1.8483    1.9589
+  Columns 8 through 9
+    2.0171    2.1382
+OK
+    0.3246
+Using gmsh at: /usr/bin/gmsh
+Info    : Running '/usr/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.8.4, 1 node, max. 1 thread]
+Info    : Started on Mon Dec  1 20:55:21 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000516206s, CPU 0.000517s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0957903s, CPU 0.091823s)
+Info    : 4454 nodes 8909 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Mon Dec  1 20:55:21 2025 (From start: Wall 0.105043s, CPU 0.130085s)
+ans =
+     0
+
+Elapsed time is 16.639604 seconds.
+Using gmsh at: /usr/bin/gmsh
+Info    : Running '/usr/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.8.4, 1 node, max. 1 thread]
+Info    : Started on Mon Dec  1 20:55:38 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000626996s, CPU 0.000471s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.126196s, CPU 0.125171s)
+Info    : 4541 nodes 9083 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Mon Dec  1 20:55:38 2025 (From start: Wall 0.142783s, CPU 0.16919s)
+ans =
+     0
+
+--- Compute Laplacian eigenvalues using CR element ---
+Compute validated lower bounds (CR-based theorem)
+Elapsed time is 28.017522 seconds.
+Region cell validation:
+2025-12-01 20:56:06.361
+   1.0e+04 *
+  Columns 1 through 7
+    0.0003    0.0001    0.0001    0.0000    0.0000    1.8245    1.9219
+  Columns 8 through 9
+    1.9910    2.0978
+OK
+    0.3931
