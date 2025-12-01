@@ -1,7 +1,9 @@
-function my_intlab_config_alone
+function my_intlab_config_MacMini()
 
     global INTERVAL_MODE;    
     INTERVAL_MODE=1;
+    global mesh_path
+    mesh_path = '/tmp/'
 
     %The path of INTLAB toolbox and initialization.
     % addpath("/path/to/your/INTLAB")
