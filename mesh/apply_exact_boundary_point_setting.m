@@ -1,4 +1,4 @@
-function apply_exact_boundary_point_setting(mesh, tri_vertices)
+function mesh=apply_exact_boundary_point_setting(mesh, tri_vertices)
 % apply_exact_boundary_point_setting - Adjust boundary-node coordinates so
 % that all boundary nodes lie exactly on the triangle boundary.
 %
@@ -12,7 +12,7 @@ function apply_exact_boundary_point_setting(mesh, tri_vertices)
 %   The function modifies mesh.nodes in-place if mesh is a handle-like struct,
 %   otherwise return the modified mesh.
 %
-% Desciption:
+% Description:
 % Given 'mesh' is a triangulation of domain specified by 3*2 tri_vertices,
 % each row of which is a vertex.
 % This function proccess the boundary nodes in mesh.nodes to make sure the
@@ -30,33 +30,42 @@ function apply_exact_boundary_point_setting(mesh, tri_vertices)
 
 
     % Triangle vertices
-    p1 = tri_vertices(1, :);
-    p2 = tri_vertices(2, :);
-    p3 = tri_vertices(3, :);
+    p1_ori = tri_vertices(1, :);
+    p2_ori = tri_vertices(2, :);
+    p3_ori = tri_vertices(3, :);
+    p1 = I_mid(p1_ori);
+    p2 = I_mid(p2_ori);
+    p3 = I_mid(p3_ori);
 
-    nodes = mesh.nodes;
+    nodes = I_intval(mesh.nodes);
     bedges = mesh.boundary_edges;
 
     % Tolerance: distance to vertex threshold
-    vertex_tol = 1e-10;
+    vertex_tol = 1e-6;
     % Tolerance to determine which triangle edge the boundary edge is on
-    edge_tol = 1e-8;
+    edge_tol = 1e-6;
 
     % Loop over boundary edges
-    for k = 1:size(bedges,1)
+    x_idx_list = unique(bedges(:))';
+    for idx = x_idx_list
+        x = I_mid(nodes(idx,:));
 
-        % boundary edge node indices
-        k1 = bedges(k,1);
-        k2 = bedges(k,2);
+        % If close to a vertex → snap exactly
+        if norm(nodes(idx,:) - p1) < vertex_tol
+	    nodes(idx,:) = p1_ori; continue;
+	end
+        if norm(nodes(idx,:) - p2) < vertex_tol
+	    nodes(idx,:) = p2_ori; continue;
+	end
+        if norm(nodes(idx,:) - p3) < vertex_tol
+	    nodes(idx,:) = p3_ori; continue;
+	end
 
-        x1 = nodes(k1,:);
-        x2 = nodes(k2,:);
-
-        % Determine triangle edge by minimum distance sum
-        % Distances to edges: sum of distances of both endpoints to the line
-        d12 = point_to_line_distance(x1,p1,p2) + point_to_line_distance(x2,p1,p2);
-        d23 = point_to_line_distance(x1,p2,p3) + point_to_line_distance(x2,p2,p3);
-        d31 = point_to_line_distance(x1,p3,p1) + point_to_line_distance(x2,p3,p1);
+        % Determine triangle edge by minimum distance
+        % Distances to edges
+        d12 = point_to_line_distance(x,p1,p2);
+        d23 = point_to_line_distance(x,p2,p3);
+        d31 = point_to_line_distance(x,p3,p1);
 
         [min_distance, edgeID] = min([d12, d23, d31]);
 
@@ -67,24 +76,15 @@ function apply_exact_boundary_point_setting(mesh, tri_vertices)
         % Pick correct segment endpoints
         switch edgeID
             case 1
-                a = p1;  b = p2;
+                a = p1_ori;  b = p2_ori;
             case 2
-                a = p2;  b = p3;
+                a = p2_ori;  b = p3_ori;
             case 3
-                a = p3;  b = p1;
+                a = p3_ori;  b = p1_ori;
         end
 
-
         % Project each node onto the correct edge
-        nodes(k1,:) = project_to_segment(nodes(k1,:), a, b);
-        nodes(k2,:) = project_to_segment(nodes(k2,:), a, b);
-
-        % If close to a vertex → snap exactly
-        if norm(nodes(k1,:) - a) < vertex_tol, nodes(k1,:) = a; end
-        if norm(nodes(k1,:) - b) < vertex_tol, nodes(k1,:) = b; end
-
-        if norm(nodes(k2,:) - a) < vertex_tol, nodes(k2,:) = a; end
-        if norm(nodes(k2,:) - b) < vertex_tol, nodes(k2,:) = b; end
+        nodes(idx,:) = project_to_segment(nodes(idx,:), a, b);
 
     end
 

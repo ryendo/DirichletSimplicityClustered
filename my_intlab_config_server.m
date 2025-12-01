@@ -7,7 +7,7 @@ function my_intlab_config_server()
 
     %The path of INTLAB toolbox and initialization.
     % addpath("/path/to/your/INTLAB")
-    %addpath("/home/rendo/Documents/Intlab_V12")
+    addpath("/home/xfliu/App/Intlab_V14")
     
     %The path   of the library of verified eigenvalue estimation for matrix.
     addpath('../veigs')

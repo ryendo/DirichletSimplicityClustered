@@ -19,7 +19,7 @@ function mesh = make_mesh_by_gmsh(a,b, h)
 
     mesh.domain = vertices;
     if INTERVAL_MODE
-        apply_exact_boundary_point_setting(mesh,vertices_origin);
+        mesh=apply_exact_boundary_point_setting(mesh,vertices_origin);
     end
 
 end

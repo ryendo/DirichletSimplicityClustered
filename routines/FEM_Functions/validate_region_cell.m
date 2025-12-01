@@ -14,8 +14,13 @@ function validate_region_cell(region_cell)
         rel_width = (cell_lb(3) - cell_ub(2))/(cell_ub(3) - cell_ub(2));
         rel_width
 
+	%Task 1: Add code to append [region_cell, cell_lb(2), cell_ub(2),cell_lb(3), cell_up(3)] to file "region_OK.txt"
+
+
     else
         display("NG")
+	%Task 2:Add code to append [region_cell, cell_lb(2), cell_ub(2),cell_lb(3), cell_up(3)] to file "region_NG.txt"
+
     end
 
 end
