@@ -33,7 +33,7 @@ function eig_bounds = cell_lower_eig_bound(region_cell)
         N_v = 5;
         a_ = a4;
         b_ = b4;
-        mesh_rho = make_mesh_by_gmsh(a_, b_, 0.002);
+        mesh_rho = make_mesh_by_gmsh(a_, b_, 0.003);
         vert_rho = mesh_rho.nodes;
         edge_rho = mesh_rho.edges;
         tri_rho  = mesh_rho.elements;
@@ -41,11 +41,14 @@ function eig_bounds = cell_lower_eig_bound(region_cell)
         is_bnd = ismember(edge_rho, bd_rho, 'rows');
 
 
-                is_bnd = ismember(edge_rho, bd_rho, 'rows');
+        is_bnd = ismember(edge_rho, bd_rho, 'rows');
+
+	vert_rho = I_intval(vert_rho);
 
         % Define the constant for the a posteriori error estimate.
 
         disp('--- Compute Laplacian eigenvalues using CR element ---');
+
         global INTERVAL_MODE
         tri_by_edge = find_tri2edge(tri_rho, edge_rho);
         bd_edge_ids = find(is_bnd>0);
