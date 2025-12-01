@@ -10,7 +10,7 @@ function [delta_x,delta_theta] = get_dx_dt_for_current_p2(a2,b2)
 
     GAP = v3-v2;
     
-    min_with_ratio = 0.25;
+    min_with_ratio = 0.2;
     theta2 = atan2(b2,a2);
 
     delta_x_initial = - (1-min_with_ratio)*GAP / (G2_y*tan(theta2)+G3_x + G3_y*tan(theta2));

@@ -8,7 +8,7 @@
 % All calculations are performed using interval arithmetic to ensure mathematical rigor.
 
 
-function eig_bounds = cell_upper_eig_bound(region_cell)
+function eig_bounds = cell_upper_eig_bound(region_cell,mesh_h)
 
         x1 = region_cell(1);
         x2 = region_cell(2);
@@ -27,25 +27,21 @@ function eig_bounds = cell_upper_eig_bound(region_cell)
         neig = 3;
     
         % --- Step 1: Compute upper and lower bounds. ---
-        % Generate a mesh suitable for the CG method.
-        N_v = 5;
-        % mesh_rho=get_mesh_for_cg_y_reduced(tri_intval,N_rho,N_v);
-        N_v = 5;
         a_ = a1;
         b_ = b1;
-        mesh_rho = make_mesh_by_gmsh(a_, b_, 0.002);
+        mesh_rho = make_mesh_by_gmsh(a_, b_, mesh_h);
         vert_rho = mesh_rho.nodes;
         edge_rho = mesh_rho.edges;
         tri_rho  = mesh_rho.elements;
         bd_rho   = mesh_rho.boundary_edges;
         is_bnd = ismember(edge_rho, bd_rho, 'rows');
 
-	vert_rho = I_intval(vert_rho);
+        vert_rho = I_intval(vert_rho);
             
         % Compute the upper bounds for the eigenvalues using P1 Lagrange FEM.
         cg_eig_upper_bound = Lagrange_upper_eig_bound(1, vert_rho, edge_rho, tri_rho, bd_rho, neig+1);
 
         % Extract the desired eigenvalue bounds.
-        eig_bounds = cg_eig_upper_bound(1:4);
+        eig_bounds = I_sup(cg_eig_upper_bound(1:4));
     end
    

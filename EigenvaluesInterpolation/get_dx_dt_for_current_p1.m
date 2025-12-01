@@ -23,7 +23,7 @@ function delta_theta = get_dx_dt_for_current_p1(a1,b1,a3,b3)
 
     GAP = v3-v2;
     
-    min_with_ratio = 0.25;
+    min_with_ratio = 0.2;
     theta = atan2(b1,a1);
 
     [v1_p3,v2_p3,v3_p3,v4_p3]=get_approximate_eigenvalue(a3,b3);

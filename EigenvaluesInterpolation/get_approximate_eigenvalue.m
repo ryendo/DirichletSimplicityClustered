@@ -38,10 +38,10 @@ function [l1, l2, l3, l4] = get_approximate_eigenvalue(query_a, query_b)
         
         % 補間オブジェクトの作成 (線形補間: 'linear')
         % scatteredInterpolant はデータの並び順を気にせず使えて便利です
-        F1 = scatteredInterpolant(a_data, b_data, T.lambda1, 'linear', 'linear');
-        F2 = scatteredInterpolant(a_data, b_data, T.lambda2, 'linear', 'linear');
-        F3 = scatteredInterpolant(a_data, b_data, T.lambda3, 'linear', 'linear');
-        F4 = scatteredInterpolant(a_data, b_data, T.lambda4, 'linear', 'linear');
+        F1 = scatteredInterpolant(a_data, b_data, T.lambda1, 'linear', 'nearest');
+        F2 = scatteredInterpolant(a_data, b_data, T.lambda2, 'linear', 'nearest');
+        F3 = scatteredInterpolant(a_data, b_data, T.lambda3, 'linear', 'nearest');
+        F4 = scatteredInterpolant(a_data, b_data, T.lambda4, 'linear', 'nearest');
         
         fprintf('Initialization: CSV loaded and interpolants created.\n');
     end

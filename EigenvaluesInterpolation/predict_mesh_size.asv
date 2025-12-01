@@ -1,0 +1,9 @@
+function predict_mesh_size(a1,b1,a4,b4)
+%   let v1(:) be the 1st, 2nd, 3rd, 4th eigenvalue at (a1,b1)
+%   let v4(:) be the 1st, 2nd, 3rd, 4th eigenvalue at (a4,b4)
+%   Given lambda, the lower bound lb for lambda 3 is calcualted by 
+%   lambda3/(1+(0.1893*h)^2*lambda3)
+%   It is expected
+
+[eig_1,eig2,v3,v4] = get_approximate_eigenvalue(0.2,0.3)
+end

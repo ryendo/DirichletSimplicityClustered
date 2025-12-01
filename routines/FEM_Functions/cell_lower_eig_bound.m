@@ -8,7 +8,7 @@
 % All calculations are performed using interval arithmetic to ensure mathematical rigor.
 
 
-function eig_bounds = cell_lower_eig_bound(region_cell)
+function eig_bounds = cell_lower_eig_bound(region_cell,mesh_h)
 
         x1 = region_cell(1);
         x2 = region_cell(2);
@@ -33,7 +33,7 @@ function eig_bounds = cell_lower_eig_bound(region_cell)
         N_v = 5;
         a_ = a4;
         b_ = b4;
-        mesh_rho = make_mesh_by_gmsh(a_, b_, 0.002);
+        mesh_rho = make_mesh_by_gmsh(a_, b_, mesh_h);
         vert_rho = mesh_rho.nodes;
         edge_rho = mesh_rho.edges;
         tri_rho  = mesh_rho.elements;
@@ -43,7 +43,7 @@ function eig_bounds = cell_lower_eig_bound(region_cell)
 
         is_bnd = ismember(edge_rho, bd_rho, 'rows');
 
-	vert_rho = I_intval(vert_rho);
+        vert_rho = I_intval(vert_rho);
 
         % Define the constant for the a posteriori error estimate.
 
@@ -60,16 +60,16 @@ function eig_bounds = cell_lower_eig_bound(region_cell)
         CR_A1 = A1(dof_idx,dof_idx);
         hmax = find_mesh_hmax(vert_rho,edge_rho);
         if INTERVAL_MODE
-        CR_eig = veigs(CR_A1, CR_A0, neig+1, 'sm');
+           CR_eig = veigs(CR_A1, CR_A0, neig+1, 'sm');
         else
-        CR_eig = eigs(CR_A1, CR_A0, neig+1, 'sm');
+           CR_eig = eigs(CR_A1, CR_A0, neig+1, 'sm');
         end
         Ch_val = I_intval(0.1893)*hmax;
         
         disp('Compute validated lower bounds (CR-based theorem)');
         eig_bounds = CR_eig ./ (1 + CR_eig .* (Ch_val^2));
 
-        eig_bounds = eig_bounds(1:4);
+        eig_bounds = I_inf(eig_bounds(1:4));
 
 
     end

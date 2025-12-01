@@ -1,10 +1,13 @@
 function validate_region_cell(region_cell, region_idx)
     % region_cell list can be created by [regions,regions_by_idx, xlist,tlist]=get_node_list();
+
+    h = predict_mesh_size(region_cell);
+
     tic;
-    cell_ub = I_sup(cell_upper_eig_bound(region_cell));
+    cell_ub = I_sup(cell_upper_eig_bound(region_cell, 2*h));
     toc;
     tic;
-    cell_lb = I_inf(cell_lower_eig_bound(region_cell));
+    cell_lb = I_inf(cell_lower_eig_bound(region_cell, h));
     toc;
 
     fprintf("Region cell validation:\n");
