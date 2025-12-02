@@ -1,6 +1,8 @@
-function validate_region_cell(region_cell, region_idx)
+function validate_region_cell(region_cell, cell_idx)
     % region_cell list can be created by [regions,regions_by_idx, xlist,tlist]=get_node_list();
-
+    global region_bound_validation_file_OK region_bound_validation_file_NG
+    display("Region Cell Index")
+    display(cell_idx)
     h = predict_mesh_size(region_cell);
     format long
     region_cell
@@ -8,7 +10,7 @@ function validate_region_cell(region_cell, region_idx)
     disp(h)
 
     tic;
-    cell_ub = I_sup(cell_upper_eig_bound(region_cell, 1.5*h));
+    cell_ub = I_sup(cell_upper_eig_bound(region_cell, h));
     toc;
     tic;
     cell_lb = I_inf(cell_lower_eig_bound(region_cell, h));
@@ -57,31 +59,38 @@ function validate_region_cell(region_cell, region_idx)
     disp(ts)
 
     % Concatenate all data into one row
-    row = [region_idx, region_vec, lb2, up2, lb3, ub3, h];
+    row = [region_vec, lb2, up2, lb3, ub3];
     disp(row)
 
     if cell_lb(3) > cell_ub(2)
         disp("OK")
 
         rel_width = (cell_lb(3) - cell_ub(2)) / (cell_ub(3) - cell_ub(2));
+        display("Relative width of lower(3) - upper(2)")
         disp(rel_width)
+        row_2 = [rel_width, h];
 
         % =======================
         % Append to region_OK.txt
         % =======================
-        fid = fopen("./results/region_OK.txt","a");
+        fid = fopen(region_bound_validation_file_OK,"a");
+        fprintf(fid, '%4d ', cell_idx);
         fprintf(fid, '%.17g ', row);
+        fprintf(fid, '%.6f ', row_2);
         fprintf(fid, '%s\n', ts);         % append timestamp at end of line
         fclose(fid);
 
     else
         disp("NG")
+        row_2 = [0, h];
 
         % =======================
         % Append to region_NG.txt
         % =======================
-        fid = fopen("./results/region_NG.txt","a");
+        fid = fopen(region_bound_validation_file_NG,"a");
+        fprintf(fid, '%4d ', cell_idx);
         fprintf(fid, '%.17g ', row);
+        fprintf(fid, '%.6f ', row_2);
         fprintf(fid, '%s\n', ts);         % append timestamp at end of line
         fclose(fid);
 

@@ -10,5 +10,5 @@ function draw_regions(regions)
           a3 = x2;  b3 = x2*tan(t1);
           a4 = x2;  b4 = x2*tan(t2);
           hold on
-          plot([a1,a2,a3,a4],[b1,b2,b3,b4],'+');
+          plot([a1,a3,a4,a2,a1],[b1,b3,b4,b2,b1],'-');
     end

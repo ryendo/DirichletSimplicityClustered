@@ -34,6 +34,6 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
 # Optional: clear MATLAB’s library path if called from MATLAB
 unset LD_LIBRARY_PATH
 
-$GMSH ${mesh_path}temp.geo -2 -format msh2 -o ${mesh_path}temp.msh 
+$GMSH ${mesh_path}temp.geo -2 -format msh2 -o ${mesh_path}temp.msh >> ./mesh/mesh.log
 
 #./mesh/msh2xdmf.py

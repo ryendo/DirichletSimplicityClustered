@@ -13,7 +13,7 @@ function mesh = make_mesh_by_gmsh(a,b, h)
     fclose(fid);
     
     %This is used for Linux/Mac OS 
-    system(['bash ./mesh/create_mesh.sh ', mesh_path])
+    system(['bash ./mesh/create_mesh.sh ', mesh_path]);
     mesh = gmshread([mesh_path, 'temp.msh']);
     %mesh = read_dolfin_mesh("/tmp/temp.xdmf")
 

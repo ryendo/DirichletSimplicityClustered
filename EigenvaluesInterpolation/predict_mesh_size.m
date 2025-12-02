@@ -23,7 +23,7 @@ function h = predict_mesh_size(region_cell)
 
     % --- Data ---
     GAP = v1(3) - v1(2);
-    lambda = v4(3);
+    lambda = v4(3)*0.995;
 
     % Required lower bound target:
     T = v1(2) + 0.22 * GAP;
@@ -39,7 +39,14 @@ function h = predict_mesh_size(region_cell)
     coeff = 0.1893;
     h = (1/coeff) * sqrt(1/T - 1/lambda);
 
-    h = max(0.001,h);
+    % Make sure the lower bound of 3rd eigenvalue has less than 0.5%
+    % relative error.
+    % v(3) - v(3)/(1+(0.1893h)^2*v(3)) < v(3)*0.005
+    % That is 1 + (0.1893h)^2*v(3) <  1/0.995, i.e., h <
+    % sqrt((1-1/0.995)/v(3))/0.1893
+    h2 = sqrt( (0.005/0.995) / v4(3) )/ 0.1893;
+
+    h = max(0.001,min(h2,h));
 
     fprintf("Predicted mesh size h = %.10f\n", h);
 end

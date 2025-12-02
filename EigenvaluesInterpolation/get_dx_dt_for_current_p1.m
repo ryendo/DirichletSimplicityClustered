@@ -23,15 +23,19 @@ function delta_theta = get_dx_dt_for_current_p1(a1,b1,a3,b3)
 
     GAP = v3-v2;
     
-    min_with_ratio = 0.25;
+    min_with_ratio = 0.2;
     theta = atan2(b1,a1);
 
     [v1_p3,v2_p3,v3_p3,v4_p3]=get_approximate_eigenvalue(a3,b3);
     delta_y_initial = - ((v3_p3 - v3_p1)+(1-min_with_ratio)*GAP) / G3_y;
 
-    f = @(t) predict_diag_gap_for_p1(t, a1, b1, a3, b3, min_with_ratio);
-    delta_y = fzero(f, [delta_y_initial/5 delta_y_initial*10]);
-    
+    try
+        f = @(t) predict_diag_gap_for_p1(t, a1, b1, a3, b3, min_with_ratio);
+        delta_y = fzero(f, [delta_y_initial/5 delta_y_initial*10]);
+    catch ME
+        disp("failed to find optimal delta_y.")
+        fprintf("An error occurred: %s\n", ME.message);
+    end
     a4 = a3;
     b4 = b3+delta_y;
 
@@ -41,7 +45,8 @@ function delta_theta = get_dx_dt_for_current_p1(a1,b1,a3,b3)
     [v1_p4, v2_p4, v3_p4, v4_p4] = get_approximate_eigenvalue(a4,b4);
 
     GAP = v3_p1 -v2_p1;
-    v23_gap_validation = v3_p4 - v2_p1;
+    v23_gap_validation = v3_p4*(1 - 0.005) - v2_p1;
+    [v2_p1, v3_p4*0.995]
 
     if v23_gap_validation > min_with_ratio*GAP*0.85 
         rel_width=v23_gap_validation/GAP;

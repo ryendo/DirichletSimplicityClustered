@@ -16,7 +16,7 @@ function gap_diff_from_target = predict_diag_gap_for_p2(delta_x,a2,b2,target_rat
     [v1_p1, v2_p1, v3_p1, v4_p1] = get_approximate_eigenvalue(a1,b1);
     [v1_p4, v2_p4, v3_p4, v4_p4] = get_approximate_eigenvalue(a4,b4);
 
-    new_gap = v3_p4 - v2_p1;
+    new_gap = v3_p4*0.995 - v2_p1;
     gap_diff_from_target = new_gap/GAP0 - target_ratio;
     
 end
