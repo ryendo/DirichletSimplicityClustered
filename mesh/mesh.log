@@ -2830,3 +2830,371 @@ Info    : 2620 nodes 5241 elements
 Info    : Writing '/tmp/temp.msh'...
 Info    : Done writing '/tmp/temp.msh'
 Info    : Stopped on Wed Dec  3 02:42:20 2025 (From start: Wall 0.0593087s, CPU 0.118857s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:42:25 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000196666s, CPU 0.000165s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0514052s, CPU 0.050563s)
+Info    : 2556 nodes 5113 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:42:25 2025 (From start: Wall 0.0579545s, CPU 0.115205s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:42:28 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000354583s, CPU 0.000165s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.052682s, CPU 0.052092s)
+Info    : 2596 nodes 5193 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:42:28 2025 (From start: Wall 0.0600799s, CPU 0.119083s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:42:34 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000193209s, CPU 0.00016s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0489356s, CPU 0.048486s)
+Info    : 2523 nodes 5047 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:42:34 2025 (From start: Wall 0.0555531s, CPU 0.114239s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:42:36 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000202875s, CPU 0.000165s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0486494s, CPU 0.048304s)
+Info    : 2586 nodes 5173 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:42:37 2025 (From start: Wall 0.0557472s, CPU 0.113553s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:42:42 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000206375s, CPU 0.000168s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.047481s, CPU 0.047148s)
+Info    : 2508 nodes 5017 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:42:42 2025 (From start: Wall 0.0543841s, CPU 0.112077s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:42:45 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000198875s, CPU 0.000162s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.054039s, CPU 0.053587s)
+Info    : 2547 nodes 5095 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:42:45 2025 (From start: Wall 0.061712s, CPU 0.119497s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:42:50 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000207417s, CPU 0.000161s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0447805s, CPU 0.04446s)
+Info    : 2444 nodes 4889 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:42:50 2025 (From start: Wall 0.0513947s, CPU 0.109971s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:42:53 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.0002015s, CPU 0.000162s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0485182s, CPU 0.048112s)
+Info    : 2531 nodes 5063 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:42:53 2025 (From start: Wall 0.0556837s, CPU 0.112925s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:42:58 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000194416s, CPU 0.000163s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.052056s, CPU 0.051681s)
+Info    : 2616 nodes 5233 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:42:58 2025 (From start: Wall 0.0586932s, CPU 0.117553s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:01 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.0002845s, CPU 0.000214s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0543621s, CPU 0.053735s)
+Info    : 2692 nodes 5385 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:01 2025 (From start: Wall 0.0627791s, CPU 0.127257s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:07 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000189458s, CPU 0.000163s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.05132s, CPU 0.050955s)
+Info    : 2621 nodes 5243 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:07 2025 (From start: Wall 0.0582038s, CPU 0.115722s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:10 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.0001985s, CPU 0.000165s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0505886s, CPU 0.05025s)
+Info    : 2631 nodes 5263 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:10 2025 (From start: Wall 0.058539s, CPU 0.117126s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:15 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000194625s, CPU 0.000165s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0499405s, CPU 0.049516s)
+Info    : 2571 nodes 5143 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:15 2025 (From start: Wall 0.056885s, CPU 0.114207s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:18 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000204416s, CPU 0.000166s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0516181s, CPU 0.051167s)
+Info    : 2635 nodes 5271 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:18 2025 (From start: Wall 0.0597191s, CPU 0.116897s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:23 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.00019875s, CPU 0.000161s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0504885s, CPU 0.049939s)
+Info    : 2552 nodes 5105 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:23 2025 (From start: Wall 0.0575841s, CPU 0.115326s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:26 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000206083s, CPU 0.000168s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0495672s, CPU 0.049169s)
+Info    : 2608 nodes 5217 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:26 2025 (From start: Wall 0.0571923s, CPU 0.11475s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:32 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000199583s, CPU 0.000163s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0520212s, CPU 0.051706s)
+Info    : 2520 nodes 5041 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:32 2025 (From start: Wall 0.0590935s, CPU 0.116495s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:34 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000200375s, CPU 0.000162s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0500809s, CPU 0.049517s)
+Info    : 2581 nodes 5163 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:35 2025 (From start: Wall 0.0582821s, CPU 0.115977s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:40 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000202459s, CPU 0.000164s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0478043s, CPU 0.047117s)
+Info    : 2489 nodes 4979 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:40 2025 (From start: Wall 0.0550348s, CPU 0.115894s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:43 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000205625s, CPU 0.000166s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.047947s, CPU 0.047437s)
+Info    : 2546 nodes 5093 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:43 2025 (From start: Wall 0.0551744s, CPU 0.113047s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:48 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000205833s, CPU 0.00017s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0467076s, CPU 0.046256s)
+Info    : 2469 nodes 4939 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:48 2025 (From start: Wall 0.0536916s, CPU 0.11141s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:51 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.000199292s, CPU 0.000164s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0452138s, CPU 0.044669s)
+Info    : 2464 nodes 4929 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:51 2025 (From start: Wall 0.0524602s, CPU 0.111197s)
+Info    : Running '/opt/homebrew/bin/gmsh /tmp/temp.geo -2 -format msh2 -o /tmp/temp.msh' [Gmsh 4.13.1, 1 node, max. 1 thread]
+Info    : Started on Wed Dec  3 02:43:56 2025
+Info    : Reading '/tmp/temp.geo'...
+Info    : Done reading '/tmp/temp.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 40%] Meshing curve 2 (Line)
+Info    : [ 70%] Meshing curve 3 (Line)
+Info    : Done meshing 1D (Wall 0.00021s, CPU 0.000174s)
+Info    : Meshing 2D...
+Info    : Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.0574004s, CPU 0.056675s)
+Info    : 2934 nodes 5869 elements
+Info    : Writing '/tmp/temp.msh'...
+Info    : Done writing '/tmp/temp.msh'
+Info    : Stopped on Wed Dec  3 02:43:56 2025 (From start: Wall 0.0647972s, CPU 0.122398s)
