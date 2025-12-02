@@ -3,7 +3,7 @@ function create_eigenvalues_grid()
    grid_eig_file = 'EigenvaluesInterpolation/eigenvalues_grid_low.csv';
 
    y0=0.025; ymax=0.3;
-   for x = 0.5:0.05:1.0
+   for x = 1.05:1.05
 	  
    for y = y0:0.005:ymax
      h = sqrt(y/y0) *0.0015;

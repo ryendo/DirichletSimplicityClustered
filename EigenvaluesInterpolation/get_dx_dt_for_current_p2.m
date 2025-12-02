@@ -15,8 +15,9 @@ function [delta_x,delta_theta] = get_dx_dt_for_current_p2(a2,b2)
 
     delta_x_initial = - (1-min_with_ratio)*GAP / (G2_y*tan(theta2)+G3_x + G3_y*tan(theta2));
 
-    f = @(t) predict_diag_gap_for_p2(t, a2, b2, min_with_ratio);
-    delta_x = fzero(f, [delta_x_initial/5 delta_x_initial*10]);
+    %f = @(t) predict_diag_gap_for_p2(t, a2, b2, min_with_ratio);
+    %delta_x = fzero(f, [delta_x_initial/5 delta_x_initial*10]);
+    delta_x = 0.5/40;
 
     theta1 = atan2(b2,a2+delta_x);
     delta_theta = theta2 - theta1;

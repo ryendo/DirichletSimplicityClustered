@@ -25,7 +25,16 @@ function validate_region_cell(region_cell, region_idx)
 
     if cell_lb(3) <= cell_ub(2)
       h=h/2;
-      disp("new mesh size")
+      disp("new mesh size 2")
+      disp(h)
+
+      tic; cell_ub = I_sup(cell_upper_eig_bound(region_cell, h)); toc;
+      tic; cell_lb = I_inf(cell_lower_eig_bound(region_cell, h)); toc;
+    end
+
+    if cell_lb(3) <= cell_ub(2)
+      h=h/2;
+      disp("new mesh size 3")
       disp(h)
 
       tic; cell_ub = I_sup(cell_upper_eig_bound(region_cell, h)); toc;

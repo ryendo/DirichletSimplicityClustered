@@ -27,9 +27,11 @@ function eig_bounds = cell_upper_eig_bound(region_cell,mesh_h)
         neig = 3;
     
         % --- Step 1: Compute upper and lower bounds. ---
+	h = min(b4/4,4*mesh_h);
+
         a_ = a1;
         b_ = b1;
-        mesh_rho = make_mesh_by_gmsh(a_, b_, mesh_h);
+        mesh_rho = make_mesh_by_gmsh(a_, b_, h);
         vert_rho = mesh_rho.nodes;
         edge_rho = mesh_rho.edges;
         tri_rho  = mesh_rho.elements;
@@ -39,7 +41,7 @@ function eig_bounds = cell_upper_eig_bound(region_cell,mesh_h)
         vert_rho = I_intval(vert_rho);
             
         % Compute the upper bounds for the eigenvalues using P1 Lagrange FEM.
-        cg_eig_upper_bound = Lagrange_upper_eig_bound(1, vert_rho, edge_rho, tri_rho, bd_rho, neig+1);
+        cg_eig_upper_bound = Lagrange_upper_eig_bound(2, vert_rho, edge_rho, tri_rho, bd_rho, neig+1);
 
         % Extract the desired eigenvalue bounds.
         eig_bounds = I_sup(cg_eig_upper_bound(1:4));
