@@ -1,15 +1,20 @@
-function delta_theta = get_dx_dt_for_current_p1(a1,b1,a3,b3)
+function [delta_x, delta_theta] = get_dx_dt_for_current_p1(a1,b1)
 %         (a4,b4)
 %       /  |dy
 % (a2,b2)  |
 %   |     /(a3,b3)
-% (a1,b1)/
+% (a1,b1)/  a3=a1+dx
 %
 %  GAP = v3(p1)-v2(p1)
-%  v3(p4) - v2(p1) = sigma GAP (sigma ~ 0.25)
-%  Since  v3(p4) = v3(p3) + Gy dy
-%  v3(p3) + Gy dy  -v3(p1) +v3(p1) - v2(p1) = sigma GAP
-%  i.e., (-Gy) dy = v3(p3) - v3(p1) + (1-sigma)GAP;
+%  LB(v3(p4)) - v2(p1) = sigma GAP  (here, sigma ~ 0.25)
+%  Since  v3(p4) = v3(p1) +Gx dx + Gy dy =  v3(p1) + (Gx+Gy)*dx (here, assume dx=dy)
+%  LB(v3(p1) + (Gx+Gy)dx) - v2(p1) = sigma GAP
+%  Here, LB(lambda) = lambda*(1-0.005), here assume the lower bound gap is less than 0.5%.
+%  i.e., (1-0.005)(v3(p1) + (Gx+Gy)*dx) - v2(p1) = sigma GAP;
+%  i.e., v3(p1) + (Gx+Gy)*dx - 0.005(v3(p1) + (Gx+Gy)*dx) - v2(p1) = sigma GAP;
+%  i.e., GAP + 0.995(Gx+Gy)*dx - 0.005*v3(p1)  = sigma GAP;
+%  i.e.,  (Gx+Gy)dx = ( (sigma-1)GAP+0.005*v3(p1) )/0.995 ;
+%  i.e.,  dx =   ( (sigma-1)GAP+0.005*v3(p1) )/0.995 / (Gx+Gy);
 
     h = 0.005;
     [v1,v2,v3,v4]=get_approximate_eigenvalue(a1,b1);
@@ -23,41 +28,18 @@ function delta_theta = get_dx_dt_for_current_p1(a1,b1,a3,b3)
 
     GAP = v3-v2;
     
-    min_with_ratio = 0.2;
+    min_with_ratio = 0.2; %sigma
     theta = atan2(b1,a1);
 
-    [v1_p3,v2_p3,v3_p3,v4_p3]=get_approximate_eigenvalue(a3,b3);
-    delta_y_initial = - ((v3_p3 - v3_p1)+(1-min_with_ratio)*GAP) / G3_y;
+    delta_x_initial = ((min_with_ratio-1)*GAP + 0.005*v3)/0.995/(G3_y+G3_x);
 
     try
-        f = @(t) predict_diag_gap_for_p1(t, a1, b1, a3, b3, min_with_ratio);
-        delta_y = fzero(f, [delta_y_initial/5 delta_y_initial*10]);
+        f = @(t) predict_diag_gap_for_p1_with_dx(t, a1, b1, min_with_ratio);
+        delta_x = fzero(f, [delta_x_initial/10 delta_x_initial*10]);
     catch ME
         disp("failed to find optimal delta_y.")
         fprintf("An error occurred: %s\n", ME.message);
     end
-    a4 = a3;
-    b4 = b3+delta_y;
-
-    theta2 = atan2(b4,a4);
-    delta_theta = theta2 - theta;
-    [v1_p1, v2_p1, v3_p1, v4_p1] = get_approximate_eigenvalue(a1,b1);
-    [v1_p4, v2_p4, v3_p4, v4_p4] = get_approximate_eigenvalue(a4,b4);
-
-    GAP = v3_p1 -v2_p1;
-    v23_gap_validation = v3_p4*(1 - 0.005) - v2_p1;
-    [v2_p1, v3_p4*0.995]
-
-    if v23_gap_validation > min_with_ratio*GAP*0.85 
-        rel_width=v23_gap_validation/GAP;
-        rel_width;
-        % display("OK");
-    else
-        [v23_gap_validation,GAP/2];
-        rel_width=v23_gap_validation/GAP;
-        rel_width
-        display('NG')
-    end
-    %[a1,b1,a4,b4]
+    delta_theta = atan2(b1 + delta_x*tan(theta) + delta_x, a1 + delta_x) - theta;
 
 end

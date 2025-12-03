@@ -6,8 +6,8 @@ mesh_path = '/tmp/'
 global region_bound_validation_file_OK region_bound_validation_file_NG
 
 if INTERVAL_MODE > 0
-    region_bound_validation_file_OK ='./results/region_OK_verified.txt'
-    region_bound_validation_file_NG ='./results/region_NG_verified.txt'
+    region_bound_validation_file_OK ='./results/region_0.026_to_0.1_OK_verified.txt'
+    region_bound_validation_file_NG ='./results/region_0.026_to_0.1_NG_verified.txt'
 else
     region_bound_validation_file_OK ='./results/region_OK.txt'
     region_bound_validation_file_NG ='./results/region_NG.txt'

@@ -1,7 +1,7 @@
 
 
 %[cell_list, cell_list_by_idx, xlist,tlist]=get_node_list();
-load("cell_list.mat");
+load("cell_list_from_y_0.1.mat");
 
 N_cell = size(cell_list,1);
 

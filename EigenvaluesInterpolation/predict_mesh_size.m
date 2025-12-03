@@ -26,10 +26,10 @@ function h = predict_mesh_size(region_cell)
     lambda = v4(3)*0.995;
 
     % Required lower bound target:
-    T = v1(2) + 0.22 * GAP;
+    T = v1(2) + 0.2 * GAP;
 
     if T >= lambda
-        h = 0.002;
+        h = 0.003;
         warning("Target lower bound T >= lambda; no positive h can satisfy the condition. h=0.002 is used.");
         return
     end
@@ -46,7 +46,11 @@ function h = predict_mesh_size(region_cell)
     % sqrt((1-1/0.995)/v(3))/0.1893
     h2 = sqrt( (0.005/0.995) / v4(3) )/ 0.1893;
 
-    h = max(0.001,min(h2,h));
+    if min(h2,h)<0.003
+        fprintf("Predicted mesh size h by auto computation = %.10f\n", h,h2);
+        
+    end
+    h = max(0.002,min(h2,h));
 
     fprintf("Predicted mesh size h = %.10f\n", h);
 end

@@ -1,12 +1,25 @@
 function validate_region_cell(region_cell, cell_idx)
+
+
+    validate_region_cell_auto_adjust(region_cell, num2str(cell_idx) );
+    return 
+    
     % region_cell list can be created by [regions,regions_by_idx, xlist,tlist]=get_node_list();
     global region_bound_validation_file_OK region_bound_validation_file_NG
+    format long
+
     display("Region Cell Index")
     display(cell_idx)
-    h = predict_mesh_size(region_cell);
-    format long
     region_cell
-    disp("mesh size")
+
+    predicted_h = predict_mesh_size(region_cell);
+    if predicted_h < 0.002
+        disp("predicted mesh size:")
+        disp(predicted_h)
+    end
+    h = max(0.002, predicted_h);
+
+    disp("mesh size:")
     disp(h)
 
     tic;
@@ -25,23 +38,7 @@ function validate_region_cell(region_cell, cell_idx)
       tic; cell_lb = I_inf(cell_lower_eig_bound(region_cell, h)); toc;
     end
 
-    if cell_lb(3) <= cell_ub(2)
-      h=h/2;
-      disp("new mesh size 2")
-      disp(h)
-
-      tic; cell_ub = I_sup(cell_upper_eig_bound(region_cell, h)); toc;
-      tic; cell_lb = I_inf(cell_lower_eig_bound(region_cell, h)); toc;
-    end
-
-    if cell_lb(3) <= cell_ub(2)
-      h=h/2;
-      disp("new mesh size 3")
-      disp(h)
-
-      tic; cell_ub = I_sup(cell_upper_eig_bound(region_cell, h)); toc;
-      tic; cell_lb = I_inf(cell_lower_eig_bound(region_cell, h)); toc;
-    end
+    
 
     fprintf("Region cell validation:\n");
 

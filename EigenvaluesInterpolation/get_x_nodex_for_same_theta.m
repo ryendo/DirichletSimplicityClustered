@@ -14,7 +14,7 @@ function [new_xlist,new_theta] = get_x_nodex_for_same_theta(xlist,theta)
         end
 
         try
-            dt = get_dx_dt_for_current_p1(a1,b1,a3,b3);
+            dt = get_dt_for_current_p1(a1,b1,a3,b3);
             dt_list = [dt_list,dt];
 
         catch ME
