@@ -1,11 +1,10 @@
 function my_intlab_config
 
     global INTERVAL_MODE;    
-    INTERVAL_MODE=0;
+    INTERVAL_MODE=1;
 
     %The path of INTLAB toolbox and initialization.
     % addpath("/path/to/your/INTLAB")
-    addpath("/home/rendo/Documents/Intlab_V12")
     
     %The path of the library of verified eigenvalue estimation for matrix.
     addpath('veigs')
