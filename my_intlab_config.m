@@ -16,11 +16,7 @@ function my_intlab_config
     addpath('mode_swith_interface')
     
     %The path of the library of FEMs on triangular domains
-<<<<<<< Updated upstream:my_intlab_config_alone.m
-    addpath('routines/FEM_Functions')
-=======
     addpath('FEM_Functions')
->>>>>>> Stashed changes:my_intlab_config.m
     
     try
         startintlab;
