@@ -1,4 +1,4 @@
-function my_intlab_config_alone
+function my_intlab_config
 
     global INTERVAL_MODE;    
     INTERVAL_MODE=0;
@@ -14,10 +14,14 @@ function my_intlab_config_alone
 
     
     %The path of the codes for switch between verified computing and approximate computing.
-    addpath('routines/mode_swith_interface')
+    addpath('mode_swith_interface')
     
     %The path of the library of FEMs on triangular domains
+<<<<<<< Updated upstream:my_intlab_config_alone.m
     addpath('routines/FEM_Functions')
+=======
+    addpath('FEM_Functions')
+>>>>>>> Stashed changes:my_intlab_config.m
     
     try
         startintlab;

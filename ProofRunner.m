@@ -10,9 +10,9 @@ classdef ProofRunner < handle
 %   s.setupAll();                      % INTLAB setup
 %   s.runAlgo1All();                   % Algo 1: full Omega_up sweep
 %   s.runAlgo1Interval([intval('0.1'), intval('0.2')], 5); 
-%   s.runAlgo2();                      % Algo 2: full Omega_down sweep
+%   s.runAlgo2All();                      % Algo 2: full Omega_down sweep
 %   s.summarizeAlgo1CSV();             % check sup(mu1) < inf(mu2)
-%   s.summarizeAlgo2Results();         % check sup(lam2) < inf(lam3)
+%   s.summarizeAlgo2CSV();         % check sup(lam2) < inf(lam3)
 %
 % Author: Ryoki Endo and Xuefeng Liu
 
@@ -22,16 +22,14 @@ properties
     mesh_N  (1,1) double = 32        % FEM mesh parameter
     mesh_LG (1,1) double = 8         % FEM mesh parameter for L-G method
     ord     (1,1) double = 5         % FEM polynomial order
-    ep      (1,:) char = '1e-5'      % t in [0, ep]
+    ep      (1,:) char = '2e-5'      % t in [0, ep]
 
     % Output CSV for Algorithm 1
-    outFile (1,:) char = ''
+    algo1_outFile (1,:) char = 'results/results_algo1.csv'
 
     % ===== Algorithm 2 parameters (Omega_down) =====
-    % Grid resolution for Algorithm 2
-    algo2_M (1,1) double = 20        % Steps in x-direction (radial)
-    algo2_N (1,1) double = 1382       % Steps in theta-direction (angular)
-    algo2_OutFile (1,:) char = ''    % Base path for Algo 2 results
+    algo2_InputFile (1,:) char = 'inputs/cell_def.csv'  % Base path for Algo 2 inputs
+    algo2_OutFile (1,:) char = 'results/results_algo2.csv'    % Base path for Algo 2 results
 
     % Behavior
     verbose (1,1) logical = true
@@ -58,11 +56,11 @@ methods
         
         % Default filenames
         ts = datestr(now,'yyyy-mm-dd_HH-MM-SS');
-        if isempty(self.outFile)
-            self.outFile = fullfile('results',sprintf('quotients_%s.csv',ts));
+        if isempty(self.algo1_outFile)
+            self.algo1_outFile = fullfile('results',sprintf('quotients_%s.csv',ts));
         end
         if isempty(self.algo2_OutFile)
-            self.algo2_OutFile = fullfile('results', 'step2_bounds');
+            self.algo2_OutFile = fullfile('results', 'results_algo2.csv');
         end
     end
 
@@ -73,7 +71,7 @@ methods
 
     function setupIntlab(self)
         try
-            my_intlab_config_alone();
+            my_intlab_config();
         catch ME
             warning('INTLAB setup call failed: %s', ME.message);
         end
@@ -115,8 +113,8 @@ methods
 
         % 4. Resume capability
         doneMask = false(size(idxList));
-        if self.resume && isfile(self.outFile)
-            have = self.readResultsIndices(self.outFile);
+        if self.resume && isfile(self.algo1_outFile)
+            have = self.readResultsIndices(self.algo1_outFile);
             doneMask(ismember(idxList, have)) = true;
             if self.verbose
                 fprintf('Resume: %d/%d bins already present -> skipped.\n', sum(doneMask), K);
@@ -130,7 +128,7 @@ methods
             return;
         end
 
-        self.ensureCsvHeader(self.outFile);
+        self.ensureCsvHeader(self.algo1_outFile);
 
         % Warm-up for ETA
         if self.verbose && total >= 1
@@ -167,7 +165,7 @@ methods
                 row = [i, I_inf(interval_mu(1)), I_sup(interval_mu(1)), ...
                           I_inf(interval_mu(2)), I_sup(interval_mu(2))];
                 
-                writematrix(row, self.outFile, 'WriteMode','append');
+                writematrix(row, self.algo1_outFile, 'WriteMode','append');
                 
                 % detailed print per step
                 gap = I_inf(interval_mu(2) - interval_mu(1));
@@ -176,7 +174,7 @@ methods
                 
             catch ME
                 warning('Bin %d failed: %s', i, ME.message);
-                writematrix([i, NaN, NaN, NaN, NaN], self.outFile, 'WriteMode','append');
+                writematrix([i, NaN, NaN, NaN, NaN], self.algo1_outFile, 'WriteMode','append');
             end
 
             if self.verbose
@@ -190,12 +188,12 @@ methods
         end
         
         if self.verbose
-            fprintf('Algorithm 1 Done. Results -> %s\n', self.outFile);
+            fprintf('Algorithm 1 Done. Results -> %s\n', self.algo1_outFile);
         end
     end
 
     function summarizeAlgo1CSV(self, file)
-        if nargin<2 || isempty(file), file = self.outFile; end
+        if nargin<2 || isempty(file), file = self.algo1_outFile; end
         if ~isfile(file), error('CSV not found: %s', file); end
 
         T = readmatrix(file);
@@ -222,134 +220,72 @@ methods
     end
 
     %==================== Algorithm 2 (Omega_down) ====================%
-    function runAlgo2(self, varargin)
+    function runAlgo2All(self, varargin)
         % RUNALGO2 Executes Algorithm 2 with progress bar and ETA.
-        
-        p = inputParser;
-        addOptional(p, 'j_list', [], @isnumeric);
-        addParameter(p, 'M', self.algo2_M, @isnumeric);
-        addParameter(p, 'N', self.algo2_N, @isnumeric);
-        parse(p, varargin{:});
-        
-        j_list = p.Results.j_list;
-        M = p.Results.M;
-        N = p.Results.N;
-        
-        if isempty(j_list)
-            j_list = 1:N;
-        end
-        
-        total = numel(j_list);
-
-        if self.verbose
-            fprintf('--- Algorithm 2: Domain Monotonicity ---\n');
-            fprintf('Grid: M=%d (x), N=%d (theta)\n', M, N);
-            fprintf('Processing %d j-indices. Output prefix: %s\n', total, self.algo2_OutFile);
-        end
         
         self.setupIntlab();
 
-        % Start timer for ETA calculation
-        t_start = tic;
-
-        for k = 1:total
-            j = j_list(k);
-            
-            try
-                % Execute verification for a single index j
-                % Note: Assuming verification_step_2 can handle a scalar j and appends to file
-                verification_step_2(j, M, self.algo2_OutFile);
-            catch ME
-                warning('Algorithm 2 failed at j=%d: %s', j, ME.message);
-            end
-            
-            % Update Progress Bar and ETA
-            if self.verbose
-                elapsed = toc(t_start);
-                pct = 100 * k / total;
-                
-                % Estimate remaining time
-                eta_sec = (elapsed / k) * (total - k);
-                
-                % Create progress bar string
-                bar_str = self.progressBar(k, total, 32);
-                eta_str = self.formatDuration(eta_sec);
-                
-                fprintf('\r%s %d/%d (%.1f%%) ETA %s', ...
-                        bar_str, k, total, pct, eta_str);
-                
-                if k == total, fprintf('\n'); end
-            end
-        end
+        verification_step_2(self.algo2_InputFile, self.algo2_OutFile);
         
         if self.verbose
             fprintf('Algorithm 2 batch completed.\n');
         end
     end
 
-    function summarizeAlgo2Results(self, resultsDir)
-        % summarizeAlgo2Results reads all CSV files from Algorithm 2 
+    function summarizeAlgo2CSV(self, file)
+        % summarizeAlgo2CSV reads the Algorithm 2 result CSV 
         % and checks the verified inclusion property.
+        %
+        % CSV Format: i, x_inf, x_sup, theta_inf, theta_sup, lam2_sup, lam3_inf
         
-        if nargin < 2, resultsDir = 'results'; end
+        % Use default file if none provided
+        if nargin < 2 || isempty(file), file = self.algo2_OutFile; end
         
-        % Look for files matching the pattern output by verification_step_2.m
-        % Pattern: step2_bounds_<min_j>_<max_j>.csv
-        files = dir(fullfile(resultsDir, 'step2_bounds_*.csv'));
-        
-        if isempty(files)
-            fprintf('No Algorithm 2 results found in %s\n', resultsDir);
+        if ~isfile(file)
+            fprintf('Algorithm 2 results file not found: %s\n', file);
             return;
         end
 
-        total_checked = 0;
-        failed_count = 0;
+        fprintf('--- Verifying Algorithm 2 Results: %s ---\n', file);
         
-        fprintf('--- Verifying Algorithm 2 Results in %s ---\n', resultsDir);
-        
-        for k = 1:length(files)
-            fname = fullfile(files(k).folder, files(k).name);
-            try
-                % Read matrix, skipping the header line
-                % CSV Format: i, j, inf_lam2, sup_lam2, inf_lam3, sup_lam3
-                data = readmatrix(fname, 'NumHeaderLines', 1);
-                
-                if isempty(data)
-                    continue; 
-                end
-                
-                % Extract relevant columns
-                % col 4: sup(lambda_2), col 5: inf(lambda_3)
-                sup_lam2 = data(:, 4);
-                inf_lam3 = data(:, 5);
-                
-                % Check separation: sup(lam2) < inf(lam3)
-                fails = sup_lam2 >= inf_lam3;
-                n_fail = sum(fails);
-                
-                total_checked = total_checked + size(data, 1);
-                failed_count = failed_count + n_fail;
-                
-                if n_fail > 0
-                    fprintf('FAIL: %s (%d violations found)\n', files(k).name, n_fail);
-                end
-                
-            catch ME
-                warning('Could not read or parse %s: %s', fname, ME.message);
+        try
+            % Read matrix
+            data = readmatrix(file);
+            
+            % Skip header row if it exists and results in NaNs
+            if size(data,1) > 0 && any(isnan(data(1,:)))
+                data = data(2:end,:);
             end
-        end
-        
-        fprintf('--------------------------------------------------\n');
-        fprintf('Total subregions checked: %d\n', total_checked);
-        
-        if total_checked > 0
-            if failed_count == 0
-                fprintf('>>> PROOF SUCCESSFUL (Algo 2): sup(lam2) < inf(lam3) verified for all loaded data.\n');
+            
+            if isempty(data)
+                fprintf('File is empty or could not be read.\n');
+                return; 
+            end
+            
+            % --- Update Column Indices ---
+            % New Format: 
+            % Col 1: i
+            % Col 6: sup(lambda_2)
+            % Col 7: inf(lambda_3)
+            sup_lam2 = data(:, 6);
+            inf_lam3 = data(:, 7);
+            
+            % Check separation: sup(lam2) < inf(lam3)
+            fails = sup_lam2 >= inf_lam3;
+            n_fail = sum(fails);
+            total_checked = size(data, 1);
+            
+            if n_fail > 0
+                fprintf('FAIL: %d violations found.\n', n_fail);
+                % Print the indices (i) of the failed rows
+                failed_indices = data(fails, 1);
+                fprintf('Failed Indices: %s\n', mat2str(failed_indices', 5));
             else
-                fprintf('>>> PROOF FAILED (Algo 2): %d violations found.\n', failed_count);
+                fprintf('>>> PROOF SUCCESSFUL (Algo 2): sup(lam2) < inf(lam3) verified for all %d rows.\n', total_checked);
             end
-        else
-            fprintf('>>> WARNING: No valid data entries processed.\n');
+                
+        catch ME
+            warning('Could not read or parse %s: %s', file, ME.message);
         end
     end
 
@@ -426,7 +362,7 @@ methods (Access = private)
         fprintf('--- Algorithm 1: Rigorous difference-quotients ---\n');
         fprintf('Parameters: mesh_N=%d, ord=%d, ep=%s, omega_N=%d\n', ...
             self.mesh_N, self.ord, self.ep, self.omega_N);
-        fprintf('Bins: %d\nOutput: %s\n', K, self.outFile);
+        fprintf('Bins: %d\nOutput: %s\n', K, self.algo1_outFile);
     end
 
     function [mat,u1,u2,u3] = prepareFEM(self)

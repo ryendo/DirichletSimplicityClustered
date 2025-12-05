@@ -1,4 +1,4 @@
-function [eig_value, eig_func_no_bdry, eig_func_with_bdry, A_grad, A_L2, A_xx, A_xy, A_yy, bd_dof_idx] = Lagrange_dirichlet_eig(Lagrange_order, vert, edge, tri, bd, neig)
+function [eig_value, eig_func_no_bdry, eig_func_with_bdry, A_grad, A_L2, A_xx, A_xy, A_yy, bd_dof_idx] = Lagrange_dirichlet_eig_vectorized(Lagrange_order, vert, edge, tri, bd, neig)
 
 ne = size(edge, 1);
 nt = size(tri,  1);
