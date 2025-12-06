@@ -5,9 +5,18 @@ function my_intlab_config
 
     %The path of INTLAB toolbox and initialization.
     % addpath("/path/to/your/INTLAB")
+<<<<<<< Updated upstream
     
     %The path of the library of verified eigenvalue estimation for matrix.
     addpath('veigs')
+=======
+    addpath("/home/rendo/Documents/Intlab_V12")
+    
+    %The path   of the library of verified eigenvalue estimation for matrix.
+    addpath('../veigs')
+    addpath('mesh')
+    addpath('VFEM2D')
+>>>>>>> Stashed changes
     addpath('VFEM2D_revised')
     addpath('routines')
 

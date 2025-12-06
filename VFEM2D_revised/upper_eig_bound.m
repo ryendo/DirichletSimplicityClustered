@@ -1,4 +1,4 @@
-function eig_value = Lagrange_upper_eig_bound(Lagrange_order, vert, edge, tri, bd, neig)
+function eig_value = upper_eig_bound(Lagrange_order, vert, edge, tri, bd, neig)
 
 ne = size(edge, 1);
 nt = size(tri,  1);

@@ -49,6 +49,7 @@ function verification_step_2(input_file,output_file)
     end
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 tic % Start timer for this cell
 
                 % Linear cell index (for convenience / debugging)
@@ -113,6 +114,8 @@ function verification_step_2(input_file,output_file)
                 end
             end
 =======
+=======
+>>>>>>> Stashed changes
     % =========================================================================
     % 3. Main processing loop
     % =========================================================================
@@ -133,6 +136,9 @@ function verification_step_2(input_file,output_file)
             mins = floor(mod(est_remaining, 3600) / 60);
             secs = round(mod(est_remaining, 60));
             etr_str = sprintf('%02d:%02d:%02d', hrs, mins, secs);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         end
         
@@ -170,6 +176,7 @@ function verification_step_2(input_file,output_file)
         writematrix(str_data, output_file, 'WriteMode', 'append');
     end
     
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     % Global counts:
     cumN = cumsum(I_mid(N_i));
@@ -275,6 +282,10 @@ function [x_s, y_s, x_l, y_l] = get_cell_vertices_from_index( ...
     theta_large = theta_nodes(j+1);
     x_l = X_START + (x_max - X_START) * (I_intval(i) / I_intval(M_steps));
     y_l = x_l * tan(theta_large);
+=======
+    total_time = toc(t_start);
+    fprintf('Verification Step 2 Completed. Total time: %.2f seconds.\n', total_time);
+>>>>>>> Stashed changes
 =======
     total_time = toc(t_start);
     fprintf('Verification Step 2 Completed. Total time: %.2f seconds.\n', total_time);

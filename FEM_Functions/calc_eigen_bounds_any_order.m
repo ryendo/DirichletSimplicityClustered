@@ -67,7 +67,11 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         % Compute high-accuracy upper bounds (LA_eig) and corresponding eigenfunctions (LA_eigf)
         % using the high-order Lagrange method. Also get the system matrices A and M.
         
+<<<<<<< Updated upstream
         [LA_eig, LA_eigf, LA_eigf_with_bdry, LA_A, LA_M, ~, ~, ~, ~] = Lagrange_dirichlet_eig_vectorized(Lagrange_order, vert, edge, tri, bd, neig);
+=======
+        [LA_eig, LA_eigf, LA_eigf_with_bdry, LA_A, LA_M, ~, ~, ~, ~] = laplace_eig_lagrange_detailed(Lagrange_order, vert, edge, tri, bd, neig);
+>>>>>>> Stashed changes
 
         % --- Step 3: Construct the matrices for the Lehmann-Goerisch generalized eigenvalue problem. ---
         % The problem is of the form AL*x = mu*BL*x.
@@ -117,6 +121,7 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
 
     else
         neig = 3;
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:routines/FEM_Functions/calc_eigen_bounds_any_order.m
     
         % --- Step 1: Compute upper and lower bounds. ---
@@ -133,6 +138,8 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         tri_rho  = mesh_rho.elements;
         bd_rho   = mesh_rho.edges(is_edge_on_bdry(mesh_rho,N_rho),:);
 =======
+=======
+>>>>>>> Stashed changes
         a = tri_intval(5);
         b = tri_intval(6);
         mesh_rho = make_mesh_by_gmsh(I_mid(a), I_mid(b), 1/N_rho);
@@ -144,7 +151,10 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
 
 
         is_bnd = ismember(edge_rho, bd_rho, 'rows');
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes:FEM_Functions/calc_eigen_bounds_any_order.m
+=======
+>>>>>>> Stashed changes
 
         % Define the constant for the a posteriori error estimate.
 
@@ -169,6 +179,7 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         % disp('Compute validated lower bounds (CR-based theorem)');
         eig_bounds = CR_eig ./ (1 + CR_eig .* (Ch_val^2));
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:routines/FEM_Functions/calc_eigen_bounds_any_order.m
         % Combine the upper bounds (cg_lams) and lower bounds (llams) into an interval vector.
         hull_up_low = I_hull(cg_lams,llams);
@@ -178,6 +189,9 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
 =======
         eig_bounds = eig_bounds(2:3);
 >>>>>>> Stashed changes:FEM_Functions/calc_eigen_bounds_any_order.m
+=======
+        eig_bounds = eig_bounds(2:3);
+>>>>>>> Stashed changes
     end
     
 end
