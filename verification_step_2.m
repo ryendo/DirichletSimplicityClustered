@@ -1,73 +1,54 @@
-function verification_step_2(j_list, M_steps, output_base_path)
-format long infsup
+function verification_step_2(input_file,output_file)
+    % Define file paths
 
-% VERIFICATION_STEP_2 Computes rigorous eigenvalue bounds (Algo 2).
-%
-% Grid construction logic:
-%   - x direction (radial):
-%       Determined automatically from {S_i}. A single global M_steps is chosen
-%       so that the radial cell size is <= min_i S_i (or some function of S_i).
-%   - theta direction (angular):
-%       1) Choose coarse breakpoints {theta_i^*} and target diameters {S_i}
-%       2) For each coarse interval [theta_i^*, theta_{i+1}^*], define
-%          N_i fine angular subdivisions; these N_i are computed from S_i.
-%       3) The total number of angular steps is N_steps = sum_i N_i.
-%
-% Inputs:
-%   j_list: List of (global) theta-column indices to process (integer array).
-%   output_base_path: Base path string for CSV output.
+    % =========================================================================
+    % 0. Initialization: Write Header to results.csv
+    % =========================================================================
+    % This step ensures the file starts with the correct column labels.
+    % It overwrites the file if it already exists.
+    headers = ["i", "x_inf", "x_sup", "theta_inf", "theta_sup", "lam2_sup", "lam3_inf", "isOK"];
+    writematrix(headers, output_file);
+    fprintf('Initialized %s with headers.\n', output_file);
 
-    if nargin < 2
-        output_base_path = 'results/step2_bounds';
+    % =========================================================================
+    % 1. Read cell_def.csv
+    % =========================================================================
+    if ~isfile(input_file)
+        error('Input file "%s" not found.', input_file);
     end
-    
-    % -------------------------------------------------------------
-    % Build x and theta grids from coarse angular data {theta_i^*},{S_i}
-    % -------------------------------------------------------------
-    [x_nodes, theta_nodes, N_steps] = build_global_grids_from_coarse_data(M_steps);
-    
-    fprintf('Total number of x intervals (N_steps): %d\n', M_steps);
-    fprintf('Total number of x nodes: %d\n', M_steps + 1);
-    fprintf('Total number of theta intervals (N_steps): %d\n', N_steps);
-    fprintf('Total number of theta nodes: %d\n', N_steps + 1);
-    
-    % If j_list is empty, default to all columns
-    if isempty(I_mid(j_list))
-        j_list = 1:N_steps;
-    end
-    
-    % Define the output file name based on j_list range to support batching
-    file_name_result = sprintf('%s_%d_%d.csv', ...
-        output_base_path, I_mid(min(j_list)), I_mid(max(j_list)));
-    
-    % Ensure directory exists
-    [d, ~, ~] = fileparts(file_name_result);
-    if ~isempty(d) && ~exist(d, 'dir'), mkdir(d); end
 
+    % Setup options to read ALL columns as strings
+    opts = detectImportOptions(input_file);
+    opts.VariableTypes(:) = {'char'}; % Set all column types to string
+    cell_table = readtable(input_file, opts);
+
+    % =========================================================================
+    % 2. Convert table data to a struct array 'cells'
+    % =========================================================================
+    num_cells = height(cell_table);
+    cells = struct(); 
+    
+    for k = 1:num_cells
+        % Convert strings back to double for numerical processing using str2double.
+        % str2double('-') automatically results in NaN, handling the missing values.
         
-    % Check if a results file already exists and read its content for resumption
-    if isfile(file_name_result)
-        existing_data = readmatrix(file_name_result, 'NumHeaderLines', 1);
-        fprintf('Resuming from existing file: %s (%d rows found)\n', ...
-                file_name_result, size(existing_data, 1));
-    else
-        existing_data = [];
-        % Create new file with header
-        headers = ["i", "j", "inf_lam2", "sup_lam2", "inf_lam3", "sup_lam3"];
-        writematrix(headers, file_name_result);
-        fprintf('Created new output file: %s\n', file_name_result);
-    end
-    
-    % --- Main computation loop ---
-    for j = j_list
-        fprintf('========================================\n');
-        fprintf('Processing Column j = %d / %d\n', j, N_steps);
-        fprintf('========================================\n');
+        cells(k).i = str2double(cell_table.i{k});
+        cells(k).x_inf = cell_table.x_inf{k};
+        cells(k).x_sup = cell_table.x_sup{k};
+        cells(k).theta_inf = cell_table.theta_inf{k};
+        cells(k).theta_sup = cell_table.theta_sup{k};
+        cells(k).mesh_size_upper = cell_table.mesh_size_upper{k};
+        cells(k).fem_order_upper = cell_table.fem_order_upper{k};
+        cells(k).mesh_size_lower_cr = cell_table.mesh_size_lower_cr{k};
+        cells(k).isLG = str2double(cell_table.isLG{k});
         
-        for i = 1:I_mid(M_steps)            
-            % Check if this cell (i,j) is already computed
-            if isempty(existing_data) || ~ismember([i, j], existing_data(:, 1:2), 'rows')
+        % Handle potential NaNs for LG parameters
+        % Even if the CSV had '-', str2double('-') returns NaN correctly.
+        cells(k).mesh_size_lower_LG = cell_table.mesh_size_lower_LG(k);
+        cells(k).fem_order_lower_LG = cell_table.fem_order_lower_LG(k);
+    end
 
+<<<<<<< Updated upstream
                 tic % Start timer for this cell
 
                 % Linear cell index (for convenience / debugging)
@@ -131,68 +112,65 @@ format long infsup
                     end
                 end
             end
+=======
+    % =========================================================================
+    % 3. Main processing loop
+    % =========================================================================
+    t_start = tic; % Start timer for ETR calculation
+    
+    for k = 1:num_cells
+        % --- Progress and ETR Calculation ---
+        elapsed_time = toc(t_start);
+        if k == 1
+            etr_str = "Calculating...";
+        else
+            avg_time = elapsed_time / (k - 1);       % Average time per cell so far
+            remaining_items = num_cells - k + 1;     % Items left (including current)
+            est_remaining = avg_time * remaining_items;
+            
+            % Convert seconds to HH:MM:SS format
+            hrs = floor(est_remaining / 3600);
+            mins = floor(mod(est_remaining, 3600) / 60);
+            secs = round(mod(est_remaining, 60));
+            etr_str = sprintf('%02d:%02d:%02d', hrs, mins, secs);
+>>>>>>> Stashed changes
         end
-    end
-    fprintf('Batch Completed.\n');
-end
-
-
-% -------------------------------------------------------------------------
-% Build global x and theta nodes from coarse {theta_i^*} and {S_i}
-% -------------------------------------------------------------------------
-function [x_nodes, theta_nodes, N_steps] = build_global_grids_from_coarse_data(M_steps)
-    % 1. Compute theta_min and theta_max from Omega_down definition:
-    %    theta_min corresponds to the point
-    %       ( sqrt(1 - (0.5*tan(pi/60))^2),  0.5*tan(pi/60) )
-    %    theta_max = arctan( sqrt(3) - 2e-5 )
-    
-    % y_min = 0.5 * tan(pi/60)
-    y_min_const = I_intval('0.5') * tan(I_pi / I_intval('60'));
-    % x_min = sqrt(1 - y_min^2)
-    x_min_const = sqrt(I_intval('1.0') - y_min_const^2);
-    % theta_min = atan(y_min/x_min)
-    THETA_MIN = atan(y_min_const / x_min_const);
-    
-    % theta_max = arctan( sqrt(3) - epsilon ), epsilon = 2e-5
-    val_inside = sqrt(I_intval('3.0')) - I_intval('2.0e-5');
-    THETA_MAX = atan(val_inside);
-
-    % ---------------------------------------------------------------------
-    % 2. Specify coarse angular partition {theta_i^*} and target diameters {S_i}
-    % ---------------------------------------------------------------------
-    % Number of coarse intervals K (user can change this)
-    
-    % Coarse breakpoints theta_star_d(i), i = 0,...,K  (user can choose non-uniform)
-    theta_star_percent = [I_intval('0'),I_intval('10'),I_intval('95'),I_intval('99.8'),I_intval('99.98'),I_intval('100')];
-    theta_star_d = theta_star_percent./I_intval('100').*(THETA_MAX-THETA_MIN)+THETA_MIN;
-
-    % Target diameters S_i (must have length K)
-    S_list = [I_intval('1e-4'), I_intval('0.01'), I_intval('1e-3'), I_intval('1e-4'), I_intval('1e-6')];
-    
-    % Number of coarse intervals K is determined automatically
-    K = length(I_mid(theta_star_d)) - 1;     
-    
-    % ---------------------------------------------------------------------
-    % 3. Determine per-band (M_i, N_i) and global M_steps, N_steps
-    % ---------------------------------------------------------------------
-    % For each coarse interval, we choose:
-    %   - N_i: number of angular subdivisions
-    %   - M_i: (suggested) number of radial subdivisions
-    
-    Lx = I_intval('1.0') - I_intval('0.5');
-    N_i = I_zeros(1, K);
-    M_i = I_zeros(1, K);    
-    
-    for i = 1:K        
-        Ltheta = theta_star_d(i+1) - theta_star_d(i);
-        S_i_val = S_list(i);
-        if S_i_val <= 0
-            error('S_i must be positive.');
+        
+        % Display status: Cell ID | Progress [Current/Total] | Estimated Time Remaining
+        fprintf('Processing cell i=%d | Progress: [%d/%d] | ETR: %s ...\n', ...
+            cells(k).i, k, num_cells, etr_str);
+        
+        % Execute validation for the specific cell
+        % (Assumes validate_region_cell is defined in a separate file or below)
+        cell_result = validate_region_cell(cells(k));
+        
+        % Confirm the cell is validated        
+        lam2_sup = I_sup(I_intval(char(cell_result.lam2_sup))); 
+        lam3_inf = I_inf(I_intval(char(cell_result.lam3_inf))); 
+        if lam2_sup<lam3_inf
+            isOK ='OK';
+        else
+            isOK ='NG';
         end
-        N_i(i) = max(1, ceil(I_sup(Ltheta / S_i_val)));
-        M_i(i) = max(1, ceil(I_sup(Lx/ S_i_val)));
+        
+        % Prepare data string for CSV output
+        % Using string array ensures precise formatting
+        str_data = [ ...
+            string(cell_result.i), ...
+            string(cell_result.x_inf), ...
+            string(cell_result.x_sup), ...
+            string(cell_result.theta_inf), ...
+            string(cell_result.theta_sup), ...
+            string(cell_result.lam2_sup), ...
+            string(cell_result.lam3_inf), ...
+            string(isOK) ...
+        ];
+        
+        % Append result to file
+        writematrix(str_data, output_file, 'WriteMode', 'append');
     end
     
+<<<<<<< Updated upstream
     % Global counts:
     cumN = cumsum(I_mid(N_i));
     N_steps = cumN(end);
@@ -297,4 +275,8 @@ function [x_s, y_s, x_l, y_l] = get_cell_vertices_from_index( ...
     theta_large = theta_nodes(j+1);
     x_l = X_START + (x_max - X_START) * (I_intval(i) / I_intval(M_steps));
     y_l = x_l * tan(theta_large);
+=======
+    total_time = toc(t_start);
+    fprintf('Verification Step 2 Completed. Total time: %.2f seconds.\n', total_time);
+>>>>>>> Stashed changes
 end
