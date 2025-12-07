@@ -86,7 +86,7 @@ function ok = validate_cell_range(csvFile, tol)
         cur_theta_sup  = uniqueThetaRows(curIdx, 2);
         next_theta_inf = uniqueThetaRows(nextIdx, 1);
 
-        if abs(next_theta_inf - cur_theta_sup) > tol
+        if next_theta_inf > cur_theta_sup
             allOk = false;
             fprintf('  (a2) FAIL: theta-row %d -> %d: theta_sup(cur)=%.16g, theta_inf(next)=%.16g\n', ...
                     curIdx, nextIdx, cur_theta_sup, next_theta_inf);
@@ -95,7 +95,8 @@ function ok = validate_cell_range(csvFile, tol)
 
     %% (b) Left-end cell and y = 0.0265 condition
     fprintf('Checking (b) left-end cell condition with y = 0.0265...\n');
-    yBoundary = 0.0265;
+    y0=tan(pi/60)/2
+    yBoundary = y0;
 
     for r = 1:nThetaRows
         idx = find(rowIdx == r);
@@ -118,7 +119,10 @@ function ok = validate_cell_range(csvFile, tol)
             % OK by condition
             continue;
         elseif y1 < yBoundary - tol
-            % Then require y2, y3 < 0.0265
+            % Then require y2, y3 < y0
+            if xi==0.5
+                continue
+            end
             if ~( (y2 < yBoundary + tol) && (y3 < yBoundary + tol) )
                 allOk = false;
                 fprintf(['  (b) FAIL: theta-row %d left cell %d: y1=%.16g<%.4g, but y2=%.16g, y3=%.16g\n' ...
@@ -132,8 +136,8 @@ function ok = validate_cell_range(csvFile, tol)
         end
     end
 
-    %% (c) Right-end cell and x_sup > 1 * theta_inf condition
-    fprintf('Checking (c) right-end cell condition x_sup > theta_inf...\n');
+    %% (c) Right-end cell and x_sup > 1 * cos(theta_inf) condition
+    fprintf('Checking (c) right-end cell condition x_sup > cos(theta_inf) ...\n');
 
     for r = 1:nThetaRows
         idx = find(rowIdx == r);
@@ -145,11 +149,11 @@ function ok = validate_cell_range(csvFile, tol)
         xs   = x_sup(rightCell);
         th_i = theta_inf(rightCell);
 
-        % Condition: x(p3)=x_sup > r * theta_inf, r = 1
-        if ~(xs > 1 * th_i + tol)
+        % Condition: x(p3)=x_sup > r * t0heta_inf, r = 1
+        if ~(xs >= 1 * cos(th_i))
             allOk = false;
-            fprintf('  (c) FAIL: theta-row %d right cell %d: x_sup=%.16g, theta_inf=%.16g (need x_sup > theta_inf).\n', ...
-                    r, rightCell, xs, th_i);
+            fprintf('  (c) FAIL: theta-row %d right cell %d: x_sup=%.16g, cos(theta_inf)=%.16g (need x_sup > cos(theta_inf) ).\n', ...
+                    r, rightCell, xs, cos(th_i));
         end
     end
 

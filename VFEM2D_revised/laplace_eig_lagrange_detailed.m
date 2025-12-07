@@ -1,4 +1,4 @@
-function [eig_value, eig_func_no_bdry, eig_func_with_bdry, A_grad, A_L2, A_xx, A_xy, A_yy, bd_dof_idx] = laplace_eig_lagrange_detailed(Lagrange_order, vert, edge, tri, bd, neig)
+function [eig_value, eig_func_no_bdry, eig_func_with_bdry, A_grad, A_L2, A_xx, A_xy, A_yy, bd_dof_idx] = laplace_eig_lagrange_detailed(lagrange_order, vert, edge, tri, bd, neig)
 
 ne = size(edge, 1);
 nt = size(tri,  1);
@@ -14,7 +14,7 @@ is_edge_bd = find_is_edge_bd(edge, bd, ne, nb);
 %     disp('create matrix...');
 % end
 
-[A_grad, A_L2, A_xx, A_xy, A_yy, bd_dof_idx, ndof] = Lagrange_dirichlet_eig_matrix(Lagrange_order, vert, edge, tri, tri2edge, is_edge_bd);
+[A_grad, A_L2, A_xx, A_xy, A_yy, bd_dof_idx, ndof] = Lagrange_dirichlet_eig_matrix(lagrange_order, vert, edge, tri, tri2edge, is_edge_bd);
 
 % if nt > 1000
 %     disp('begin to solve eigenvalue problem');
@@ -36,8 +36,8 @@ fem_func(dof_idx,:)=V(:, idx);
 %eig_value = [(1:neig)', eig_value];
 end
 
-function [f_for_Hdiv_problem, point_for_Hdiv_problem] = Lagrange_get_femfunc_value_for_Hdiv_problem(Lagrange_order, vert, edge, tri, tri2edge, femfunc)
-[basis, nbasis] = Lagrange_basis(Lagrange_order);
+function [f_for_Hdiv_problem, point_for_Hdiv_problem] = Lagrange_get_femfunc_value_for_Hdiv_problem(lagrange_order, vert, edge, tri, tri2edge, femfunc)
+[basis, nbasis] = Lagrange_basis(lagrange_order);
 ne = size(edge, 1);
 nt = size(tri, 1);
 point_for_Hdiv_problem = cell(ne, 1);
@@ -49,11 +49,11 @@ for k = 1:nt
         if edge_status(edge_idx(j)) > 0
             continue;
         else
-            point = I_intval(zeros(Lagrange_order + 1, 2));
+            point = I_intval(zeros(lagrange_order + 1, 2));
             point(1,   :) = vert(edge(edge_idx(j), 1), :);
             point(end, :) = vert(edge(edge_idx(j), 2), :);
-            for i = 2:Lagrange_order
-                point(i, :) = point(1, :) + (point(end, :)-point(1, :))*(i-1)/Lagrange_order;
+            for i = 2:lagrange_order
+                point(i, :) = point(1, :) + (point(end, :)-point(1, :))*(i-1)/lagrange_order;
             end
             point_for_Hdiv_problem{edge_idx(j), 1} = point;
             point_for_Hdiv_problem_tri_idx(edge_idx(j), 1) = k;
@@ -61,12 +61,12 @@ for k = 1:nt
     end
 end
 
-f_for_Hdiv_problem = I_intval(zeros(ne, Lagrange_order + 1));
+f_for_Hdiv_problem = I_intval(zeros(ne, lagrange_order + 1));
 for i = 1:ne
     point = point_for_Hdiv_problem{i, 1};
     tri_idx = point_for_Hdiv_problem_tri_idx(i);
-    for j = 1:Lagrange_order+1        
-        f_for_Hdiv_problem(i, j) = Lagrange_get_femfunc_value(Lagrange_order, basis, nbasis, ...
+    for j = 1:lagrange_order+1        
+        f_for_Hdiv_problem(i, j) = Lagrange_get_femfunc_value(lagrange_order, basis, nbasis, ...
                                                               vert, edge, tri, tri2edge, ...
                                                               femfunc, point(j, 1), point(j, 2), tri_idx);
     end
@@ -74,7 +74,7 @@ end
 end
 
 
-function val = Lagrange_get_femfunc_value(Lagrange_order, basis, nbasis, vert, edge, tri, tri2edge, femfunc, x, y, tri_idx)
+function val = Lagrange_get_femfunc_value(lagrange_order, basis, nbasis, vert, edge, tri, tri2edge, femfunc, x, y, tri_idx)
 ne = size(edge, 1);
 nv = size(vert, 1);
 vert_idx = tri(tri_idx,:);
@@ -91,13 +91,13 @@ map_dof_idx_l2g = zeros(nbasis, 1);
 map_dof_idx_l2g(1:3) = vert_idx;
 for i = 1:3
     if edge(edge_idx(i), 1) == vert_idx(local_edge_start_vert(i))
-        map_dof_idx_l2g(3+(Lagrange_order-1)*(i-1)+1:3+(Lagrange_order-1)*i) = nv+(Lagrange_order-1)*(edge_idx(i)-1)+1:1:nv+(Lagrange_order-1)*edge_idx(i);
+        map_dof_idx_l2g(3+(lagrange_order-1)*(i-1)+1:3+(lagrange_order-1)*i) = nv+(lagrange_order-1)*(edge_idx(i)-1)+1:1:nv+(lagrange_order-1)*edge_idx(i);
     else
-        map_dof_idx_l2g(3+(Lagrange_order-1)*(i-1)+1:3+(Lagrange_order-1)*i) = nv+(Lagrange_order-1)*edge_idx(i):-1:nv+(Lagrange_order-1)*(edge_idx(i)-1)+1;
+        map_dof_idx_l2g(3+(lagrange_order-1)*(i-1)+1:3+(lagrange_order-1)*i) = nv+(lagrange_order-1)*edge_idx(i):-1:nv+(lagrange_order-1)*(edge_idx(i)-1)+1;
     end
 end
-map_dof_idx_l2g(3+(Lagrange_order-1)*3+1:end) = nv + (Lagrange_order-1)*ne + ...
-    ((Lagrange_order-1)*(Lagrange_order-2)/2*(tri_idx-1)+1:(Lagrange_order-1)*(Lagrange_order-2)/2*tri_idx);
+map_dof_idx_l2g(3+(lagrange_order-1)*3+1:end) = nv + (lagrange_order-1)*ne + ...
+    ((lagrange_order-1)*(lagrange_order-2)/2*(tri_idx-1)+1:(lagrange_order-1)*(lagrange_order-2)/2*tri_idx);
 coef = femfunc(map_dof_idx_l2g);
 val = 0;
 for i = 1:nbasis
@@ -106,27 +106,27 @@ end
 end
 
 
-function [A_glob_grad, A_glob_L2, A_glob_ux_ux, A_glob_ux_uy, A_glob_uy_uy, bd_dof_idx, ndof] = Lagrange_dirichlet_eig_matrix(Lagrange_order, vert, edge, tri, tri2edge, is_edge_bd)
-[basis, nbasis] = Lagrange_basis(Lagrange_order);
-M_ip_elem  = Lagrange_inner_product_L1L2L3_all(Lagrange_order);
-M_ip_edge1 = Lagrange_inner_product_edge_L1L2L3_all(Lagrange_order, 1);
-M_ip_edge2 = Lagrange_inner_product_edge_L1L2L3_all(Lagrange_order, 2);
-M_ip_edge3 = Lagrange_inner_product_edge_L1L2L3_all(Lagrange_order, 3);
+function [A_glob_grad, A_glob_L2, A_glob_ux_ux, A_glob_ux_uy, A_glob_uy_uy, bd_dof_idx, ndof] = Lagrange_dirichlet_eig_matrix(lagrange_order, vert, edge, tri, tri2edge, is_edge_bd)
+[basis, nbasis] = Lagrange_basis(lagrange_order);
+M_ip_elem  = Lagrange_inner_product_L1L2L3_all(lagrange_order);
+M_ip_edge1 = Lagrange_inner_product_edge_L1L2L3_all(lagrange_order, 1);
+M_ip_edge2 = Lagrange_inner_product_edge_L1L2L3_all(lagrange_order, 2);
+M_ip_edge3 = Lagrange_inner_product_edge_L1L2L3_all(lagrange_order, 3);
 
-M_ip_basis_grad_ijT_all = cell(nbasis, nbasis);
-M_ip_basis_ij = zeros(nbasis, nbasis);
+M_ip_basis_grad_ijT_all = cell(nbasis);
+M_ip_basis_ij = I_zeros(nbasis, nbasis);
 M_ip_basis_edge_ij_all = cell(3, 1);
-M_ip_basis_edge1_ij = zeros(nbasis, nbasis);
-M_ip_basis_edge2_ij = zeros(nbasis, nbasis);
-M_ip_basis_edge3_ij = zeros(nbasis, nbasis);
+M_ip_basis_edge1_ij = I_zeros(nbasis, nbasis);
+M_ip_basis_edge2_ij = I_zeros(nbasis, nbasis);
+M_ip_basis_edge3_ij = I_zeros(nbasis, nbasis);
 for i = 1:nbasis
     for j = i:nbasis
-        ei = Lagrange_create_coord_basis_grad(basis, i, Lagrange_order);
-        ej = Lagrange_create_coord_basis_grad(basis, j, Lagrange_order);
+        ei = Lagrange_create_coord_basis_grad(basis, i, lagrange_order);
+        ej = Lagrange_create_coord_basis_grad(basis, j, lagrange_order);
         M_ip_basis_grad_ijT_all{j, i} = ei' * M_ip_elem * ej;
         
-        ei = Lagrange_create_coord_basis(basis, i, Lagrange_order);
-        ej = Lagrange_create_coord_basis(basis, j, Lagrange_order);
+        ei = Lagrange_create_coord_basis(basis, i, lagrange_order);
+        ej = Lagrange_create_coord_basis(basis, j, lagrange_order);
         M_ip_basis_ij(j, i) = ei' * M_ip_elem * ej;
         M_ip_basis_edge1_ij(j, i) = ei' * M_ip_edge1 * ej;
         M_ip_basis_edge2_ij(j, i) = ei' * M_ip_edge2 * ej;
@@ -141,14 +141,14 @@ nv = size(vert, 1);
 ne = size(edge, 1);
 nt = size(tri,  1);
 
-ndof = nv + (Lagrange_order-1)*ne + (Lagrange_order-1)*(Lagrange_order-2)/2*nt;
+ndof = nv + (lagrange_order-1)*ne + (lagrange_order-1)*(lagrange_order-2)/2*nt;
 
-A_glob_grad = I_intval(zeros(ndof, ndof));
-A_glob_L2 = I_intval(zeros(ndof, ndof));
-A_glob_ux_ux = I_intval(zeros(ndof, ndof));
-A_glob_ux_uy = I_intval(zeros(ndof, ndof));
-A_glob_uy_uy = I_intval(zeros(ndof, ndof));
-M = I_intval(zeros(ndof, ndof));
+A_glob_grad = I_sparse(ndof, ndof);
+A_glob_L2 =I_sparse(ndof, ndof);
+A_glob_ux_ux = I_sparse(ndof, ndof);
+A_glob_ux_uy = I_sparse(ndof, ndof);
+A_glob_uy_uy = I_sparse(ndof, ndof);
+M = I_sparse(ndof, ndof);
 
 for k = 1:nt
     vert_idx = tri(k,:);
@@ -157,10 +157,10 @@ for k = 1:nt
     x3 = vert(vert_idx(3), 1); y3 = vert(vert_idx(3), 2);
     B = [x2-x1, x3-x1; y2-y1, y3-y1];
     Binv = [y3-y1, x1-x3; y1-y2, x2-x1] / det(B);
-    A_grad = I_intval(zeros(nbasis, nbasis));
-    A_ux_vx = I_intval(zeros(nbasis, nbasis));
-    A_ux_vy = I_intval(zeros(nbasis, nbasis));
-    A_uy_vy = I_intval(zeros(nbasis, nbasis));
+    A_grad = I_zeros(nbasis, nbasis);
+    A_ux_vx = I_zeros(nbasis, nbasis);
+    A_ux_vy = I_zeros(nbasis, nbasis);
+    A_uy_vy = I_zeros(nbasis, nbasis);
     for i = 1:nbasis
         for j = 1:i
             mat_base = Binv' * M_ip_basis_grad_ijT_all{i, j} * Binv;
@@ -184,13 +184,13 @@ for k = 1:nt
     map_dof_idx_l2g(1:3) = vert_idx;
     for i = 1:3
         if edge(edge_idx(i), 1) == vert_idx(local_edge_start_vert(i))
-            map_dof_idx_l2g(3+(Lagrange_order-1)*(i-1)+1:3+(Lagrange_order-1)*i) = nv+(Lagrange_order-1)*(edge_idx(i)-1)+1:1:nv+(Lagrange_order-1)*edge_idx(i);
+            map_dof_idx_l2g(3+(lagrange_order-1)*(i-1)+1:3+(lagrange_order-1)*i) = nv+(lagrange_order-1)*(edge_idx(i)-1)+1:1:nv+(lagrange_order-1)*edge_idx(i);
         else
-            map_dof_idx_l2g(3+(Lagrange_order-1)*(i-1)+1:3+(Lagrange_order-1)*i) = nv+(Lagrange_order-1)*edge_idx(i):-1:nv+(Lagrange_order-1)*(edge_idx(i)-1)+1;
+            map_dof_idx_l2g(3+(lagrange_order-1)*(i-1)+1:3+(lagrange_order-1)*i) = nv+(lagrange_order-1)*edge_idx(i):-1:nv+(lagrange_order-1)*(edge_idx(i)-1)+1;
         end
     end
-    map_dof_idx_l2g(3+(Lagrange_order-1)*3+1:end) = nv + (Lagrange_order-1)*ne + ...
-                                                    ((Lagrange_order-1)*(Lagrange_order-2)/2*(k-1)+1:(Lagrange_order-1)*(Lagrange_order-2)/2*k);
+    map_dof_idx_l2g(3+(lagrange_order-1)*3+1:end) = nv + (lagrange_order-1)*ne + ...
+                                                    ((lagrange_order-1)*(lagrange_order-2)/2*(k-1)+1:(lagrange_order-1)*(lagrange_order-2)/2*k);
     
     A_glob_grad(map_dof_idx_l2g, map_dof_idx_l2g) = A_glob_grad(map_dof_idx_l2g, map_dof_idx_l2g) + A_grad;
     A_glob_ux_ux(map_dof_idx_l2g, map_dof_idx_l2g) = A_glob_ux_ux(map_dof_idx_l2g, map_dof_idx_l2g) + A_ux_vx;
@@ -214,13 +214,14 @@ A_glob_uy_uy(bd_dof_idx,:)=[]; A_glob_uy_uy(:,bd_dof_idx)=[];
 A_glob_L2(bd_dof_idx,:)=[];   A_glob_L2(:,bd_dof_idx)=[];
 end
 
+%===============================================================================
+% The code below is the same to the ones in laplace_eig_lagrange.m
+%===============================================================================
 
-
-
-function M_ip = Lagrange_inner_product_L1L2L3_all(Lagrange_order)
-ijk = create_ijk(Lagrange_order);
+function M_ip = Lagrange_inner_product_L1L2L3_all(lagrange_order)
+ijk = create_ijk(lagrange_order);
 len = size(ijk, 1);
-M_ip = zeros(len, len);
+M_ip = I_zeros(len, len);
 for p = 1:len
     for q = p:len
         pi = ijk(p, 1);
@@ -235,10 +236,10 @@ end
 M_ip = M_ip + triu(M_ip, 1)';
 end
 
-function M_ip = Lagrange_inner_product_edge_L1L2L3_all(Lagrange_order, edge_idx)
-ijk = create_ijk(Lagrange_order);
+function M_ip = Lagrange_inner_product_edge_L1L2L3_all(lagrange_order, edge_idx)
+ijk = create_ijk(lagrange_order);
 len = size(ijk, 1);
-M_ip = zeros(len, len);
+M_ip = I_zeros(len, len);
 for p = 1:len
     for q = p:len
         pi = ijk(p, 1);
@@ -287,7 +288,6 @@ dudy(map_ijk_to_idx(i,   j+1, k-1, Lgrange_order), 1) =  k;
 e = [dudx, dudy];
 end
 
-
 function idx = map_ijk_to_idx(i, j, k, n)
 idx = (n-i)*(n-i+1)/2 + (n-i-j) + 1;
 if i + j + k ~= n
@@ -310,9 +310,9 @@ for p = n : -1 : 0
 end
 end
 
-function [basis, nbasis] = Lagrange_basis(Lagrange_order)
-n      = Lagrange_order;
-nbasis = Lagrange_get_nbasis(Lagrange_order);
+function [basis, nbasis] = Lagrange_basis(lagrange_order)
+n      = lagrange_order;
+nbasis = Lagrange_get_nbasis(lagrange_order);
 basis  = zeros(nbasis, 3);
 
 index = 1;
@@ -349,8 +349,8 @@ for p = n-2 : -1 : 1
 end
 end
 
-function nbasis = Lagrange_get_nbasis(Lagrange_order)
-nbasis = (Lagrange_order+1) * (Lagrange_order+2) / 2;
+function nbasis = Lagrange_get_nbasis(lagrange_order)
+nbasis = (lagrange_order+1) * (lagrange_order+2) / 2;
 end
 
 function val = Lagrange_get_L1L2L3_ijk_value(i, j, k, x, y)
@@ -359,7 +359,7 @@ end
 
 
 function y = Lagrange_integral_L1L2L3_ijk(i, j, k)
-y = factorial(i) * factorial(j) * factorial(k) / factorial(i+j+k+2);
+    y = I_intval(factorial(i) * factorial(j) * factorial(k)) / I_intval(factorial(i+j+k+2));
 end
 
 function y = Lagrange_integral_edge_L1L2L3_ijk(i, j, k, edge_idx)
@@ -367,7 +367,7 @@ ijk = [i, j, k];
 if ijk(edge_idx) > 0
     y = 0;
 else
-    y = factorial(i) * factorial(j) * factorial(k) / factorial(i+j+k+1);
+    y = I_intval(factorial(i) * factorial(j) * factorial(k)) / I_intval(factorial(i+j+k+1));
 end
 end
 
