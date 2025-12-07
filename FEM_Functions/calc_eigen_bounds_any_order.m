@@ -67,7 +67,7 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         % Compute high-accuracy upper bounds (LA_eig) and corresponding eigenfunctions (LA_eigf)
         % using the high-order Lagrange method. Also get the system matrices A and M.
         
-        [LA_eig, LA_eigf, LA_eigf_with_bdry, LA_A, LA_M, ~, ~, ~, ~] = Lagrange_dirichlet_eig_vectorized(Lagrange_order, vert, edge, tri, bd, neig);
+        [LA_eig, LA_eigf, LA_eigf_with_bdry, LA_A, LA_M, ~, ~, ~, ~] = laplace_eig_lagrange_detailed(Lagrange_order, vert, edge, tri, bd, neig);
 
         % --- Step 3: Construct the matrices for the Lehmann-Goerisch generalized eigenvalue problem. ---
         % The problem is of the form AL*x = mu*BL*x.

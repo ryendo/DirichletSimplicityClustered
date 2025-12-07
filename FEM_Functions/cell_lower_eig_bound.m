@@ -1,10 +1,10 @@
 function eig_bounds = cell_lower_eig_bound(cell_data)
 
     % Extract geometry    
-    x1 = I_intval(cell_data.x_inf);
-    x2 = I_intval(cell_data.x_sup);
-    t1 = I_intval(cell_data.theta_inf);
-    t2 = I_intval(cell_data.theta_sup);
+    x1 = I_intval(str2num(cell_data.x_inf));
+    x2 = I_intval(str2num(cell_data.x_sup));
+    t1 = I_intval(str2num(cell_data.theta_inf));
+    t2 = I_intval(str2num(cell_data.theta_sup));
     
     % Calculate vertices
     a1 = x1;  b1 = x1 * tan(t1);
@@ -13,7 +13,7 @@ function eig_bounds = cell_lower_eig_bound(cell_data)
     a4 = x2;  b4 = x2 * tan(t2);
     
     % Extract mesh/FEM parameters    
-    mesh_size_rho = I_inf(I_intval(cell_data.mesh_size_lower_cr));
+    mesh_size_rho = cell_data.mesh_size_lower_cr;
     
     isLG = I_mid(I_intval(cell_data.isLG));
 
@@ -23,7 +23,7 @@ function eig_bounds = cell_lower_eig_bound(cell_data)
         % This computes high-accuracy lower bounds.
         % =========================================================
         
-        mesh_size_LG = I_inf(I_intval(cell_data.mesh_size_lower_LG));        
+        mesh_size_LG = cell_data.mesh_size_lower_LG;
         N_LG = I_mid(I_intval(cell_data.fem_order_lower_LG)); % Using the order from CSV
         
         % Step 1: Preliminary CR calculation to get shift parameter 'rho'
@@ -94,7 +94,7 @@ function eig_bounds = cell_lower_eig_bound(cell_data)
 
         % Compute High-Order Upper Bounds & Eigenfunctions (Lagrange)
         [LA_eig, LA_eigf, LA_eigf_with_bdry, LA_A, LA_M, ~, ~, ~, ~] = ...
-            Lagrange_dirichlet_eig_vectorized(Lagrange_order, vert, edge, tri, bd, neig);
+            laplace_eig_lagrange_detailed(Lagrange_order, vert, edge, tri, bd, neig);
 
         % Step 3: Construct LG Matrices
         % -------------------------------------------------------------

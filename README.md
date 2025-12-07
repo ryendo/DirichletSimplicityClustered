@@ -50,7 +50,7 @@ This project relies on specialized libraries for verified numerical computation:
 ├── VFEM2D_revised/               # Revised VFEM2D library for this proof
 ├── results/                      # Output directory
 │   ├── results_algo1.csv         # Output from Algo 1
-│   └── results_algo2.csv         # Output from Algo 2
+│   └── results_algo2.csv               # Output from Algo 2
 └── my_intlab_config.m            # INTLAB configuration
 ````
 
@@ -163,9 +163,10 @@ Input: inputs/cell_def.csv
 Output: results/results.csv
 Initialized results.csv with headers.
 Processing cell i=1 ...
+  Gap Relative Width: 1.2345e-01
 Processing cell i=2 ...
 ...
-Verification Step 2 Completed. 
+Algorithm 2 Batch Completed. Duration: 01h:20m:15s
 ```
 
 #### Verify Results (`summarizeAlgo2CSV`)
@@ -180,7 +181,7 @@ s.summarizeAlgo2CSV();
 
 ```text
 --- Verifying Algorithm 2 Results: results/results.csv ---
->>> PROOF SUCCESSFUL (Algo 2): All 6371 cells verified.
+>>> PROOF SUCCESSFUL (Algo 2): All 8000 cells verified.
 ```
 
 ### 4\. Pointwise & Box Verification Tools

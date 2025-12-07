@@ -1,4 +1,4 @@
-function eig_value = Lagrange_lower_eig_bound(Lagrange_order, vert, edge, tri, bd, neig)
+function eig_value = upper_eig_bound(Lagrange_order, vert, edge, tri, bd, neig)
 
 ne = size(edge, 1);
 nt = size(tri,  1);
@@ -20,8 +20,17 @@ is_edge_bd = find_is_edge_bd(edge, bd, ne, nb);
 %     disp(['begin to solve eigenvalue problem :size =',num2str(nt)]);
 % end
 
-eig_value = I_eigs(A_grad, A_L2, neig);
-eig_value = I_intval(I_inf(eig_value));
+[vec,approx_value] = eigs(I_mid(A_grad), I_mid(A_L2),neig,'sm');
+LA = vec'*A_grad*vec;
+LB = vec'*A_L2*vec;
+
+global INTERVAL_MODE
+if INTERVAL_MODE
+  eig_value = veig(hull(LA,LA'), hull(LB,LB'), 1:neig);
+else
+  eig_value = eig(LA, LB);
+end
+eig_value = I_intval(I_sup(eig_value))';
 
 
 %eig_value = [(1:neig)', eig_value];
@@ -108,7 +117,7 @@ M_ip_edge3 = Lagrange_inner_product_edge_L1L2L3_all(Lagrange_order, 3);
 
 % Build cell of local grad inner products and symmetric mass terms
 M_ip_basis_grad = cell(nbasis, nbasis);
-M_ip_basis_ij   = I_zeros(nbasis, nbasis);
+M_ip_basis_ij   = zeros(nbasis, nbasis);
 M_ip_basis_edge = cell(3,1);
 Mb1 = I_intval(zeros(nbasis, nbasis));
 Mb2 = I_intval(zeros(nbasis, nbasis));
