@@ -24,13 +24,14 @@ is_edge_bd = find_is_edge_bd(edge, bd, ne, nb);
 LA = vec'*A_grad*vec;
 LB = vec'*A_L2*vec;
 
-% global INTERVAL_MODE
-% if INTERVAL_MODE
-%   eig_value = veig(hull(LA,LA'), hull(LB,LB'), 1:neig);
-% else
-%   eig_value = eig(LA, LB);
-% end
-eig_value = I_eig(I_hull(LA,LA'), I_hull(LB,LB'), neig);
+
+global INTERVAL_MODE
+if INTERVAL_MODE
+  eig_value = veig(hull(LA,LA'), hull(LB,LB'), 1:neig);
+else
+  eig_value = eig(LA, LB);
+end
+
 eig_value = I_intval(I_sup(eig_value))';
 
 
@@ -427,7 +428,7 @@ end
 
 
 function y = Lagrange_integral_L1L2L3_ijk(i, j, k)
-y = factorial(i) * factorial(j) * factorial(k) / factorial(i+j+k+2);
+    y = I_intval(factorial(i) * factorial(j) * factorial(k)) / I_intval(factorial(i+j+k+2));
 end
 
 function y = Lagrange_integral_edge_L1L2L3_ijk(i, j, k, edge_idx)
@@ -435,7 +436,7 @@ ijk = [i, j, k];
 if ijk(edge_idx) > 0
     y = 0;
 else
-    y = factorial(i) * factorial(j) * factorial(k) / factorial(i+j+k+1);
+    y = I_intval(factorial(i) * factorial(j) * factorial(k)) / I_intval(factorial(i+j+k+1));
 end
 end
 
