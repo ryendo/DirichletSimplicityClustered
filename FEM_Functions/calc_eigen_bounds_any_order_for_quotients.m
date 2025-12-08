@@ -8,7 +8,7 @@ function [LA_eig, LA_eigf, LA_A, LA_M, A_inner_xx, A_inner_xy, A_inner_yy, bd_do
     bd   = mesh.edges(is_edge_on_bdry(mesh,N),:);
     
     Lagrange_order = ord;
-    [LA_eig, LA_eigf, ~, LA_A, LA_M, A_inner_xx, A_inner_xy, A_inner_yy, bd_dof_idx] = Lagrange_dirichlet_eig(Lagrange_order, vert, edge, tri, bd, neig);
+    [LA_eig, LA_eigf, ~, LA_A, LA_M, A_inner_xx, A_inner_xy, A_inner_yy, bd_dof_idx] = laplace_eig_lagrange_detailed(Lagrange_order, vert, edge, tri, bd, neig);
 
     
 end

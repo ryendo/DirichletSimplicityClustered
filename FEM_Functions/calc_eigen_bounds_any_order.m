@@ -16,23 +16,42 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         
         % Define the number of eigenvalues to compute.
         neig = 3;
-    
-        % --- Step 1: Compute the constant 'rho'. ---
-        % This is required by the Lehmann-Goerisch theorem.
-
-        % Generate a right-triangular mesh for the Continuous Galerkin (CG) method.
-        mesh_rho=get_mesh_for_cg(tri_intval,N_rho);
+        a = tri_intval(5);
+        b = tri_intval(6);
+        mesh_rho = make_mesh_by_gmsh(I_mid(a), I_mid(b), 1/N_rho);
         vert_rho = mesh_rho.nodes;
         edge_rho = mesh_rho.edges;
         tri_rho  = mesh_rho.elements;
-        bd_rho   = mesh_rho.edges(is_edge_on_bdry(mesh_rho,N_rho),:);
+        bd_rho   = mesh_rho.boundary_edges;
+        is_bnd = ismember(edge_rho, bd_rho, 'rows');
 
-        % Define the constant for the error estimate.
-        Ch=I_intval('0.493')/N_rho;
 
-        % Compute rough upper bounds for the eigenvalues using the P1 Lagrange FEM.
-        cg_llams = Lagrange_dirichlet_eig_for_rho_vectorized(1, vert_rho, edge_rho, tri_rho, bd_rho, neig+1);
-        rho = max(cg_llams); rho = rho/(1+rho*Ch^2);
+        is_bnd = ismember(edge_rho, bd_rho, 'rows');
+
+        % Define the constant for the a posteriori error estimate.
+
+        % disp('--- Compute Laplacian eigenvalues using CR element ---');
+        global INTERVAL_MODE
+        tri_by_edge = find_tri2edge(tri_rho, edge_rho);
+        bd_edge_ids = find(is_bnd>0);
+        [A0, A1] = create_matrix_crouzeix_raviart(tri_rho, edge_rho, vert_rho, tri_by_edge);
+        ne = size(edge_rho,1);
+        dof_idx = 1:ne;
+        dof_idx(bd_edge_ids) = [];
+        CR_A0 = A0(dof_idx,dof_idx);
+        CR_A1 = A1(dof_idx,dof_idx);
+        hmax = find_mesh_hmax(vert_rho,edge_rho);
+        if INTERVAL_MODE
+        CR_eig = veigs(CR_A1, CR_A0, neig+1, 'sm');
+        else
+        CR_eig = eigs(CR_A1, CR_A0, neig+1, 'sm');
+        end
+        Ch_val = I_intval('0.1893')*hmax;
+        
+        % disp('Compute validated lower bounds (CR-based theorem)');
+        eig_bounds = CR_eig ./ (1 + CR_eig .* (Ch_val^2));
+
+        rho = max(eig_bounds);
         
         % --- Step 2: Set up the main high-order Lehmann-Goerisch method. ---
         % Create a mesh for the LG computation.
@@ -48,7 +67,7 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         % Compute high-accuracy upper bounds (LA_eig) and corresponding eigenfunctions (LA_eigf)
         % using the high-order Lagrange method. Also get the system matrices A and M.
         
-        [LA_eig, LA_eigf, LA_eigf_with_bdry, LA_A, LA_M, ~, ~, ~, ~] = Lagrange_dirichlet_eig_vectorized(Lagrange_order, vert, edge, tri, bd, neig);
+        [LA_eig, LA_eigf, LA_eigf_with_bdry, LA_A, LA_M, ~, ~, ~, ~] = laplace_eig_lagrange_detailed(Lagrange_order, vert, edge, tri, bd, neig);
 
         % --- Step 3: Construct the matrices for the Lehmann-Goerisch generalized eigenvalue problem. ---
         % The problem is of the form AL*x = mu*BL*x.
@@ -74,7 +93,7 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         AL=I_hull(AL,AL'); BL=I_hull(BL,BL');
 
         % Solve the interval generalized eigenvalue problem AL*x = mu*BL*x for eigenvalues 'mu'.
-        mus =  I_eigs(AL, BL, neig, 'sm');
+        mus =  I_eig(AL, BL, neig);
 
         % Calculate the rigorous lower bounds for the original problem's eigenvalues
         % using the 'mus' and the reference 'rho'. The formula is derived from the LG theorem.
@@ -87,22 +106,18 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         [~,idx] = sort(I_mid(LA_eig));
         LA_eig = LG_eig_low(idx);
 
-        hull_up_low = I_hull(I_intval(LA_eig), I_intval(LG_eig_low))
+        hull_up_low = I_hull(I_intval(LA_eig), I_intval(LG_eig_low));
 
         % Extract the desired eigenvalue bounds.
-        eig_bounds_ = hull_up_low(2:3);
+        eig_bounds_ = hull_up_low(2:3)
 
         % Sort the computed eigenvalues.
         [~,idx] = sort(I_mid(eig_bounds_));
         eig_bounds = eig_bounds_(idx);
 
     else
-        % --- Standard CG Method Branch ---
-        % This branch computes bounds using a standard a posteriori error estimate,
-        % which is faster but provides less accurate lower bounds than the LG method.
-
-        % Define the number of eigenvalues to compute.
         neig = 3;
+<<<<<<< Updated upstream:routines/FEM_Functions/calc_eigen_bounds_any_order.m
     
         % --- Step 1: Compute upper and lower bounds. ---
         % Generate a mesh suitable for the CG method.
@@ -117,21 +132,52 @@ function eig_bounds = calc_eigen_bounds_any_order(tri_intval,N_LG,N_rho,ord,isLG
         edge_rho = mesh_rho.edges;
         tri_rho  = mesh_rho.elements;
         bd_rho   = mesh_rho.edges(is_edge_on_bdry(mesh_rho,N_rho),:);
+=======
+        a = tri_intval(5);
+        b = tri_intval(6);
+        mesh_rho = make_mesh_by_gmsh(I_mid(a), I_mid(b), 1/N_rho);
+        vert_rho = mesh_rho.nodes;
+        edge_rho = mesh_rho.edges;
+        tri_rho  = mesh_rho.elements;
+        bd_rho   = mesh_rho.boundary_edges;
+        is_bnd = ismember(edge_rho, bd_rho, 'rows');
+
+
+        is_bnd = ismember(edge_rho, bd_rho, 'rows');
+>>>>>>> Stashed changes:FEM_Functions/calc_eigen_bounds_any_order.m
 
         % Define the constant for the a posteriori error estimate.
-        Ch=I_intval('0.493')/N_rho;
 
-        % Compute the upper bounds for the eigenvalues using P1 Lagrange FEM.
-        cg_lams = Lagrange_dirichlet_eig_for_rho_vectorized(1, vert_rho, edge_rho, tri_rho, bd_rho, neig+1);
+        % disp('--- Compute Laplacian eigenvalues using CR element ---');
+        global INTERVAL_MODE
+        tri_by_edge = find_tri2edge(tri_rho, edge_rho);
+        bd_edge_ids = find(is_bnd>0);
+        [A0, A1] = create_matrix_crouzeix_raviart(tri_rho, edge_rho, vert_rho, tri_by_edge);
+        ne = size(edge_rho,1);
+        dof_idx = 1:ne;
+        dof_idx(bd_edge_ids) = [];
+        CR_A0 = A0(dof_idx,dof_idx);
+        CR_A1 = A1(dof_idx,dof_idx);
+        hmax = find_mesh_hmax(vert_rho,edge_rho);
+        if INTERVAL_MODE
+        CR_eig = veigs(CR_A1, CR_A0, neig+1, 'sm');
+        else
+        CR_eig = eigs(CR_A1, CR_A0, neig+1, 'sm');
+        end
+        Ch_val = I_intval('0.1893')*hmax;
         
-        % Compute the corresponding lower bounds using the error formula:
-        llams = cg_lams./(1+cg_lams*Ch^2);
+        % disp('Compute validated lower bounds (CR-based theorem)');
+        eig_bounds = CR_eig ./ (1 + CR_eig .* (Ch_val^2));
 
+<<<<<<< Updated upstream:routines/FEM_Functions/calc_eigen_bounds_any_order.m
         % Combine the upper bounds (cg_lams) and lower bounds (llams) into an interval vector.
         hull_up_low = I_hull(cg_lams,llams);
 
         % Extract the desired eigenvalue bounds.
         eig_bounds = hull_up_low(2:3);
+=======
+        eig_bounds = eig_bounds(2:3);
+>>>>>>> Stashed changes:FEM_Functions/calc_eigen_bounds_any_order.m
     end
     
 end
