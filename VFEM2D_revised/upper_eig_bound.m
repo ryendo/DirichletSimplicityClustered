@@ -426,7 +426,7 @@ end
 
 
 function y = Lagrange_integral_L1L2L3_ijk(i, j, k)
-y = factorial(i) * factorial(j) * factorial(k) / factorial(i+j+k+2);
+    y = I_intval(factorial(i) * factorial(j) * factorial(k)) / I_intval(factorial(i+j+k+2));
 end
 
 function y = Lagrange_integral_edge_L1L2L3_ijk(i, j, k, edge_idx)
@@ -434,7 +434,7 @@ ijk = [i, j, k];
 if ijk(edge_idx) > 0
     y = 0;
 else
-    y = factorial(i) * factorial(j) * factorial(k) / factorial(i+j+k+1);
+    y = I_intval(factorial(i) * factorial(j) * factorial(k)) / I_intval(factorial(i+j+k+1));
 end
 end
 
