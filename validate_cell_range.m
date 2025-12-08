@@ -23,8 +23,9 @@ function ok = validate_cell_range(csvFile, tol)
 %       p2 = [x_inf, x_inf*tan(theta_sup)]
 %       p3 = [x_sup, x_sup*tan(theta_inf)]
 %       p4 = [x_sup, x_sup*tan(theta_sup)]
-%     If y(p1) > 0.0265 then OK.
-%     If y(p1) < 0.0265 then require y(p2) < 0.0265 and y(p3) < 0.0265.
+%     Let y0 = tan(pi/60)/2;
+%     If y(p1) > y0 then OK.
+%     If y(p1) < y0 then require y(p2) < y0 and y(p3) < y0.
 %
 % (c) For each theta-row, let right-end cell be the one with maximal x_sup.
 %     Let p3 = [x_sup, x_sup*tan(theta_inf)]. Require x_sup > 1 * theta_inf.
