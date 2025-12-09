@@ -210,9 +210,6 @@ mat0 = zeros(ndof, ndof);
 mat_ival = I_intval(mat0);
 A_glob_grad  = mat_ival;
 A_glob_L2    = mat_ival;
-% A_glob_ux_ux = mat_ival;
-% A_glob_ux_uy = mat_ival;
-% A_glob_uy_uy = mat_ival;
 M_bd        = mat_ival;
 
 % --- Assemble via element loop ---
