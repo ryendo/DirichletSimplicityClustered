@@ -240,23 +240,13 @@ for k = 1:nt
     % extract precomputed M_base_vec
     Mbv = M_base_all(:,:,k);
     A_trace = Mbv(1,:) + Mbv(4,:);
-    % A_xx    = Mbv(1,:);
-    % A_yy    = Mbv(4,:);
-    % A_xy    = (Mbv(2,:) + Mbv(3,:)) / 2;
 
     % reshape & symmetrize
     Ag = reshape(A_trace, nbasis, nbasis);  Ag  = tril(Ag)  + tril(Ag,-1)';
-    % Ax = reshape(A_xx,    nbasis, nbasis);  Ax  = tril(Ax)  + tril(Ax,-1)';
-    % Ay = reshape(A_yy,    nbasis, nbasis);  Ay  = tril(Ay)  + tril(Ay,-1)';
-    % Axy= reshape(A_xy,    nbasis, nbasis);  Axy = tril(Axy) + tril(Axy,-1)';
-
     AL2 = (M_ip_basis_ij + tril(M_ip_basis_ij,-1)') * detB(k);
 
     % add local to global
     A_glob_grad(map,map)  = A_glob_grad(map,map)  + Ag;
-    % A_glob_ux_ux(map,map) = A_glob_ux_ux(map,map) + Ax;
-    % A_glob_ux_uy(map,map) = A_glob_ux_uy(map,map) + Axy;
-    % A_glob_uy_uy(map,map) = A_glob_uy_uy(map,map) + Ay;
     A_glob_L2(map,map)    = A_glob_L2(map,map)    + AL2;
 
     % boundary edge contributions
@@ -274,12 +264,6 @@ end
 bd_dof_idx = find(diag(M_bd)>0);
 A_glob_grad(bd_dof_idx,:) = [];
 A_glob_grad(:,bd_dof_idx) = [];
-% A_glob_ux_ux(bd_dof_idx,:) = [];
-% A_glob_ux_ux(:,bd_dof_idx) = [];
-% A_glob_ux_uy(bd_dof_idx,:) = [];
-% A_glob_ux_uy(:,bd_dof_idx) = [];
-% A_glob_uy_uy(bd_dof_idx,:) = [];
-% A_glob_uy_uy(:,bd_dof_idx) = [];
 A_glob_L2(bd_dof_idx,:)   = [];
 A_glob_L2(:,bd_dof_idx)   = [];
 end
