@@ -19,8 +19,6 @@ classdef ProofRunner < handle
 properties
     % ===== Algorithm 1 global parameters (Omega_up) =====
     omega_N (1,1) double = 1000      % bins over [0, pi/3]
-    mesh_N  (1,1) double = 32        % FEM mesh parameter
-    mesh_LG (1,1) double = 8         % FEM mesh parameter for L-G method
     ord     (1,1) double = 5         % FEM polynomial order
     ep      (1,:) char = '4e-5'      % t in [0, ep]
 
@@ -292,8 +290,6 @@ methods
     %==================== Partial Evidence / Utils ====================%
     function [lam2, lam3] = boundsAtPoint(self, a, b, varargin)
         p = inputParser;
-        addParameter(p,'N_LG', self.mesh_LG);
-        addParameter(p,'N_rho', self.mesh_N);
         addParameter(p,'ord', self.ord);
         parse(p, varargin{:}); q = p.Results;
 
@@ -320,8 +316,6 @@ methods
         %   - inf(lambda_3) is obtained from the "outer" (largest) geometry: (x_hi, theta_hi).
         
         p = inputParser;
-        addParameter(p,'N_LG', self.mesh_LG);
-        addParameter(p,'N_rho', self.mesh_N);
         addParameter(p,'ord', self.ord);
         parse(p, varargin{:}); q = p.Results;
         
@@ -360,8 +354,8 @@ end
 methods (Access = private)
     function printAlgo1Preface(self, interval, K)
         fprintf('--- Algorithm 1: Rigorous difference-quotients ---\n');
-        fprintf('Parameters: mesh_N=%d, ord=%d, ep=%s, omega_N=%d\n', ...
-            self.mesh_N, self.ord, self.ep, self.omega_N);
+        fprintf('Parameters: ord=%d, ep=%s, omega_N=%d\n', ...
+            self.ord, self.ep, self.omega_N);
         fprintf('Bins: %d\nOutput: %s\n', K, self.algo1_outFile);
     end
 
@@ -372,7 +366,7 @@ methods (Access = private)
                   1/I_intval('2'), sqrt(I_intval('3'))/2 ];
               
         [~, inner_uhat, Agrad, AL2, Axx, Axy, Ayy, ~] = ...
-            calc_eigen_bounds_any_order_for_quotients(tri_I, self.mesh_LG, self.ord);
+            calc_eigen_bounds_any_order_for_quotients(tri_I, self.ord);
         
         mat = struct('xx',Axx,'xy',Axy,'yy',Ayy,'grad',Agrad,'l2',AL2);
         u1 = inner_uhat(:,1);
