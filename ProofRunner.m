@@ -1,40 +1,19 @@
 classdef ProofRunner < handle
-    % ProofRunner - Manages the spectral gap verification workflow.
+    % A runner for Algorithm 1 & 2.
     %
     % This class manages the execution flow for proving the spectral gap.
-    %   Algorithm 1: verification_step_1.m (Local/Perturbation near equilateral)
-    %   Algorithm 2: verification_step_2.m (Global/Domain Monotonicity)
+    % Algorithm 1: verification_step_1.m (Local/Perturbation near equilateral)
+    % Algorithm 2: verification_step_2.m (Global/Domain Monotonicity)
     %
-    % =========================================================================
-    % QUICK START / USAGE EXAMPLES
-    % =========================================================================
+    % QUICK START
+    %   s = ProofRunner;
+    %   s.setupAll();                      % INTLAB setup
+    %   s.runAlgo1All();                   % Algo 1: full Omega_up sweep
+    %   s.runAlgo1Interval([intval('0.1'), intval('0.2')], 5); 
+    %   s.runAlgo2All();                   % Algo 2: full Omega_down sweep
+    %   s.summarizeAlgo1CSV();             % check sup(mu1) < inf(mu2)
+    %   s.summarizeAlgo2CSV();             % check sup(lam2) < inf(lam3)
     %
-    % 1. Initialization & Setup
-    %    s = ProofRunner;            % Create instance (default settings)
-    %    s.setupAll();               % Initialize INTLAB (REQUIRED first)
-    %
-    % 2. Algorithm 1: Local Verification (Omega_up)
-    %    % --- Run on the full domain [0, pi/3] ---
-    %    s.runAlgo1All();
-    %
-    %    % --- Run on a specific sub-interval (for debugging or partial proof) ---
-    %    % Syntax: s.runAlgo1Interval( Interval, Num_Bins )
-    %    %   Interval : Angular range [start, end] (must be intval)
-    %    %   Num_Bins : How many subdivisions to split this interval into
-    %    s.runAlgo1Interval([intval('0.1'), intval('0.2')], 5);
-    %
-    % 3. Algorithm 2: Global Verification (Omega_down)
-    %    s.runAlgo2All();            % Verify all cells defined in input CSV
-    %
-    % 4. Validate Results
-    %    s.summarizeAlgo1CSV();      % Check if sup(mu1) < inf(mu2)
-    %    s.summarizeAlgo2CSV();      % Check if sup(lam2) < inf(lam3)
-    %
-    % 5. Point-wise Check (Optional)
-    %    % Check bounds at a specific vertex C=(x, y)
-    %    [l2, l3] = s.boundsAtPoint(0.5, 0.8);
-    %
-    % =========================================================================
     % Author: Ryoki Endo and Xuefeng Liu
 
     properties
@@ -318,14 +297,15 @@ classdef ProofRunner < handle
         end
 
         %==================== Partial Evidence / Utils ====================%
-        function [lam2, lam3] = boundsAtPoint(self, a, b, options)
-            % BOUNDSATPOINT Computes bounds at a specific vertex C=(a,b) by wrapping boundsOnBox.
-            % Returns INTLAB intervals (semi-infinite) for compatibility.
+        function [up2, lo3] = boundsAtPoint(self, a, b, options)
+            % BOUNDSATPOINT Computes bounds at a specific vertex C=(a,b).
+            % Can accept double or intval for (a,b).
+            % Returns doubles: up2 (sup of lam2), lo3 (inf of lam3).
             
             arguments
                 self
-                a (1,1) double  % x-coordinate of vertex C
-                b (1,1) double  % y-coordinate of vertex C
+                a % Accept intval or double
+                b % Accept intval or double
                 
                 % --- Options to pass down to boundsOnBox ---
                 options.mesh_size_upper     (1,1) double = 1/16
@@ -339,7 +319,7 @@ classdef ProofRunner < handle
             end
     
             % 1. Coordinate Transformation (Cartesian -> Algo 2 Params)
-            % Note: Check your definition of theta (polar vs internal)
+            % If a, b are intval, val_x and val_theta become intval automatically.
             val_x = a;
             val_theta = atan2(b, a); 
     
@@ -348,8 +328,8 @@ classdef ProofRunner < handle
             cell_opts.mesh_size_lower_LG = options.cell_table_mesh_size_lower_LG;
             cell_opts.fem_order_lower_LG = options.cell_table_fem_order_lower_LG;
     
-            % 3. Call boundsOnBox (returns doubles)
-            [sup_val, inf_val] = self.boundsOnBox(...
+            % 3. Call boundsOnBox (inputs can be intval)
+            [up2, lo3] = self.boundsOnBox(...
                 val_x, val_x, ...
                 val_theta, val_theta, ...
                 'mesh_size_upper',    options.mesh_size_upper, ...
@@ -357,20 +337,19 @@ classdef ProofRunner < handle
                 'mesh_size_lower_cr', options.mesh_size_lower_cr, ...
                 'isLG',               options.isLG, ...
                 'cell_table',         cell_opts);
-
-            % 4. Convert to INTLAB intervals (Safe wrapper)
-            % lam2 in (-inf, sup_val], lam3 in [inf_val, +inf)
-            lam2 = infsup(-inf, sup_val);
-            lam3 = infsup(inf_val, inf);
     
             if self.verbose
-                fprintf('Bounds at (%.4g, %.4g) -> (x=%.4g, th=%.4g):\n', a, b, val_x, val_theta);
-                fprintf('  lam2 <= %.17g\n  lam3 >= %.17g\n', sup_val, inf_val);
+                % For printing, we want representative double values
+                if isa(a,'intval'), pa=a.mid; else, pa=a; end
+                if isa(b,'intval'), pb=b.mid; else, pb=b; end
+                fprintf('Bounds at (%.4g, %.4g):\n', pa, pb);
+                fprintf('  lam2 <= %.17g\n  lam3 >= %.17g\n', up2, lo3);
             end
         end
         
         function [up2, lo3] = boundsOnBox(self, x_lo, x_hi, theta_lo, theta_hi, options)
-            % BOUNDSONBOX Computes rigorous eigenvalue bounds over a box in (x, theta) space.
+            % BOUNDSONBOX Computes rigorous eigenvalue bounds over a box.
+            % Accepts double or intval inputs.
             arguments
                 self
                 x_lo
@@ -384,15 +363,20 @@ classdef ProofRunner < handle
                 options.cell_table_mesh_size_lower_LG (1,1) double = 1/8
                 options.cell_table_fem_order_lower_LG (1,1) double = 4
             end
-    
-            % Define the cell struct (Fixed typo: 'cells' -> 'cell')
+            
+            % --- Handle INTLAB types (Convert intval bounds to double) ---
+            % Logic: x_lo represents the Lower Bound of the box. 
+            % If it's an intval, we take its inf. 
+            % x_hi represents the Upper Bound. We take its sup.
+
+            % Define the cell struct
             cell = struct();
             
             cell.i = 0;
-            cell.x_inf = x_lo;
-            cell.x_sup = x_hi;
-            cell.theta_inf = theta_lo;
-            cell.theta_sup = theta_hi;
+            cell.x_inf = I_inf(x_lo);
+            cell.x_sup = I_sup(x_hi);
+            cell.theta_inf = I_inf(theta_lo);
+            cell.theta_sup = I_sup(theta_hi);
             cell.mesh_size_upper = options.mesh_size_upper;
             cell.fem_order_upper = options.fem_order_upper;
             cell.mesh_size_lower_cr = options.mesh_size_lower_cr;
@@ -406,7 +390,7 @@ classdef ProofRunner < handle
             lo3 = cell_result.lam3_inf;
             
             if self.verbose
-                fprintf('Box Bounds [(x,theta)]: sup(lam2) <= %.17g, inf(lam3) >= %.17g\n', up2, lo3);
+                fprintf('Box Bounds: sup(lam2) <= %.17g, inf(lam3) >= %.17g\n', up2, lo3);
             end
         end
 
@@ -431,7 +415,12 @@ classdef ProofRunner < handle
 
             neig = 3;
             mesh_size = 0.03125;
-            mesh = make_mesh_by_gmsh(1/I_intval('2'), sqrt(I_intval('3'))/2, mesh_size);
+            
+            % Use double for Gmsh (Fixed based on previous discussion)
+            val_x = 0.5;                % 1/2
+            val_y = sqrt(3)/2;          % sqrt(3)/2
+            mesh = make_mesh_by_gmsh(val_x, val_y, mesh_size);
+            
             vert = mesh.nodes;
             edge = mesh.edges;
             tri  = mesh.elements;
