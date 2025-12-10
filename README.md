@@ -61,7 +61,7 @@ Before running the code, ensure you have **MATLAB** (R2020b or later).
 ### 1\. Clone the Repository
 
 ```bash
-git clone [https://github.com/ryendo/DirichletSimplicityClustered](https://github.com/ryendo/DirichletSimplicityClustered)
+git clone https://github.com/ryendo/DirichletSimplicityClustered
 cd DirichletSimplicityClustered
 ```
 
