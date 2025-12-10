@@ -10,9 +10,9 @@ classdef ProofRunner < handle
 %   s.setupAll();                      % INTLAB setup
 %   s.runAlgo1All();                   % Algo 1: full Omega_up sweep
 %   s.runAlgo1Interval([intval('0.1'), intval('0.2')], 5); 
-%   s.runAlgo2All();                      % Algo 2: full Omega_down sweep
+%   s.runAlgo2All();                   % Algo 2: full Omega_down sweep
 %   s.summarizeAlgo1CSV();             % check sup(mu1) < inf(mu2)
-%   s.summarizeAlgo2CSV();         % check sup(lam2) < inf(lam3)
+%   s.summarizeAlgo2CSV();             % check sup(lam2) < inf(lam3)
 %
 % Author: Ryoki Endo and Xuefeng Liu
 
@@ -20,45 +20,61 @@ properties
     % ===== Algorithm 1 global parameters (Omega_up) =====
     omega_N (1,1) double = 1000      % bins over [0, pi/3]
     ord     (1,1) double = 5         % FEM polynomial order
-    ep      (1,:) char = '4e-5'      % t in [0, ep]
+    ep      (1,:) char   = '4e-5'    % t in [0, ep]
 
     % Output CSV for Algorithm 1
     algo1_outFile (1,:) char = 'results/results_algo1.csv'
 
     % ===== Algorithm 2 parameters (Omega_down) =====
-    algo2_InputFile (1,:) char = 'inputs/cell_def.csv'  % Base path for Algo 2 inputs
-    algo2_OutFile (1,:) char = 'results/results_algo2.csv'    % Base path for Algo 2 results
+    algo2_InputFile (1,:) char = 'inputs/cell_def.csv'    % Base path for Algo 2 inputs
+    algo2_OutFile   (1,:) char = 'results/results_algo2.csv'  % Base path for Algo 2 results
 
     % Behavior
     verbose (1,1) logical = true
     resume  (1,1) logical = true
 
-    % Bounds callback for point/box evidence
+    % Bounds callback for point/box evidence (Direct function handle)
     boundsFcn function_handle = @calc_eigen_bounds_any_order
 end
 
 methods
-    function self = ProofRunner(varargin)
-        % Name-value pairs constructor
-        if mod(nargin,2) ~= 0
-            error('Use name-value pairs, e.g., ProofRunner(''omega_N'',1000).');
+    function self = ProofRunner(options)
+        % Constructor using name-value arguments (R2019b+)
+        arguments
+            options.omega_N (1,1) double = 1000
+            options.ord     (1,1) double = 5
+            options.ep      (1,:) char   = '4e-5'
+            
+            options.algo1_outFile   (1,:) char = 'results/results_algo1.csv'
+            options.algo2_InputFile (1,:) char = 'inputs/cell_def.csv'
+            options.algo2_OutFile   (1,:) char = 'results/results_algo2.csv'
+            
+            options.verbose (1,1) logical = true
+            options.resume  (1,1) logical = true
+            
+            % Direct handle to the external function
+            options.boundsFcn function_handle = @calc_eigen_bounds_any_order
         end
-        for k = 1:2:nargin
-            name = char(varargin{k});
-            if ~isprop(self,name), error('Unknown option: %s',name); end
-            self.(name) = varargin{k+1};
-        end
+
+        % Map options to properties
+        self.omega_N = options.omega_N;
+        self.ord     = options.ord;
+        self.ep      = options.ep;
+        self.verbose = options.verbose;
+        self.resume  = options.resume;
+        self.boundsFcn = options.boundsFcn;
         
+        self.algo2_InputFile = options.algo2_InputFile;
+        self.algo2_OutFile   = options.algo2_OutFile;
+        self.algo1_outFile   = options.algo1_outFile;
+
         % Ensure results directory exists
         if ~exist('results','dir'), mkdir('results'); end
         
-        % Default filenames
-        ts = datestr(now,'yyyy-mm-dd_HH-MM-SS');
+        % Handle timestamped filename if explicit empty string was somehow passed
         if isempty(self.algo1_outFile)
+            ts = datestr(now,'yyyy-mm-dd_HH-MM-SS');
             self.algo1_outFile = fullfile('results',sprintf('quotients_%s.csv',ts));
-        end
-        if isempty(self.algo2_OutFile)
-            self.algo2_OutFile = fullfile('results', 'results_algo2.csv');
         end
     end
 
@@ -218,7 +234,7 @@ methods
     end
 
     %==================== Algorithm 2 (Omega_down) ====================%
-    function runAlgo2All(self, varargin)
+    function runAlgo2All(self)
         % RUNALGO2 Executes Algorithm 2 with progress bar and ETA.
         
         self.setupIntlab();
@@ -241,7 +257,7 @@ methods
         
         if ~isfile(file)
             fprintf('Algorithm 2 results file not found: %s\n', file);
-            return;
+            return; 
         end
 
         fprintf('--- Verifying Algorithm 2 Results: %s ---\n', file);
@@ -288,13 +304,22 @@ methods
     end
 
     %==================== Partial Evidence / Utils ====================%
-    function [lam2, lam3] = boundsAtPoint(self, a, b, varargin)
-        p = inputParser;
-        addParameter(p,'ord', self.ord);
-        parse(p, varargin{:}); q = p.Results;
+    function [lam2, lam3] = boundsAtPoint(self, a, b, options)
+        % Calculates rigorous bounds at a specific triangle vertex (a,b).
+        % Replaces variable-length arguments with a named argument structure.
+        arguments
+            self
+            a
+            b
+            options.ord   (1,1) double = self.ord
+            options.N_LG  (1,1) double = 20  % Set appropriate default
+            options.N_rho (1,1) double = 20  % Set appropriate default
+        end
 
         tri = [I_intval(0),I_intval(0); I_intval(1),I_intval(0); a, b];
-        lams = self.boundsFcn(tri, q.N_LG, q.N_rho, q.ord, 1);
+        
+        % Direct call to the bound function using options
+        lams = self.boundsFcn(tri, options.N_LG, options.N_rho, options.ord, 1);
         lam2 = lams(1); lam3 = lams(2);
         
         if self.verbose
@@ -303,7 +328,7 @@ methods
         end
     end
     
-    function [up2, lo3] = boundsOnBox(self, x_lo, x_hi, theta_lo, theta_hi, varargin)
+    function [up2, lo3] = boundsOnBox(self, x_lo, x_hi, theta_lo, theta_hi, options)
         % BOUNDSONBOX Computes rigorous eigenvalue bounds over a box in (x, theta) space.
         %
         % Parameters:
@@ -314,10 +339,16 @@ methods
         %   The domain inclusion T^{x_lo, theta_lo} \subset T^p \subset T^{x_hi, theta_hi} holds.
         %   - sup(lambda_2) is obtained from the "inner" (smallest) geometry: (x_lo, theta_lo).
         %   - inf(lambda_3) is obtained from the "outer" (largest) geometry: (x_hi, theta_hi).
-        
-        p = inputParser;
-        addParameter(p,'ord', self.ord);
-        parse(p, varargin{:}); q = p.Results;
+        arguments
+            self
+            x_lo
+            x_hi
+            theta_lo
+            theta_hi
+            options.ord   (1,1) double = self.ord
+            options.N_LG  (1,1) double = 20 % Set appropriate default
+            options.N_rho (1,1) double = 20 % Set appropriate default
+        end
         
         % 1. Construct the "Smallest" Triangle (Inner)
         %    Corresponds to p_{i,j} in the paper -> Yields Upper Bounds
@@ -331,9 +362,9 @@ methods
         
         % Compute eigenvalues
         % Upper bound of lambda_2 comes from the smallest domain
-        lams_sup = self.boundsFcn(tri_small, q.N_LG, q.N_rho, q.ord, 1);
+        lams_sup = self.boundsFcn(tri_small, options.N_LG, options.N_rho, options.ord, 1);
         % Lower bound of lambda_3 comes from the largest domain
-        lams_inf = self.boundsFcn(tri_large, q.N_LG, q.N_rho, q.ord, 1);
+        lams_inf = self.boundsFcn(tri_large, options.N_LG, options.N_rho, options.ord, 1);
         
         up2 = I_sup(lams_sup(1)); 
         lo3 = I_inf(lams_inf(2));
