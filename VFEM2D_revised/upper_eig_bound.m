@@ -119,7 +119,7 @@ M_ip_edge3 = Lagrange_inner_product_edge_L1L2L3_all(Lagrange_order, 3);
 
 % Build cell of local grad inner products and symmetric mass terms
 M_ip_basis_grad = cell(nbasis, nbasis);
-M_ip_basis_ij   = zeros(nbasis, nbasis);
+M_ip_basis_ij   = I_zeros(nbasis, nbasis);
 M_ip_basis_edge = cell(3,1);
 Mb1 = I_intval(zeros(nbasis, nbasis));
 Mb2 = I_intval(zeros(nbasis, nbasis));
@@ -270,7 +270,7 @@ end
 function M_ip = Lagrange_inner_product_L1L2L3_all(Lagrange_order)
 ijk = create_ijk(Lagrange_order);
 len = size(ijk, 1);
-M_ip = zeros(len, len);
+M_ip = I_zeros(len, len);
 for p = 1:len
     for q = p:len
         pi = ijk(p, 1);
@@ -288,7 +288,7 @@ end
 function M_ip = Lagrange_inner_product_edge_L1L2L3_all(Lagrange_order, edge_idx)
 ijk = create_ijk(Lagrange_order);
 len = size(ijk, 1);
-M_ip = zeros(len, len);
+M_ip = I_zeros(len, len);
 for p = 1:len
     for q = p:len
         pi = ijk(p, 1);
