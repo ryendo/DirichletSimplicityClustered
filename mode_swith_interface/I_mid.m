@@ -1,10 +1,12 @@
-function output=I_mid(I)
+function output = I_mid(var)
    global INTERVAL_MODE;
    if INTERVAL_MODE
-      output = mid(I);
-   else
-      output = I;
+       if isintval(var)
+          output = mid(var);
+          return
+       end
    end
+  output = var;
 end
 
 

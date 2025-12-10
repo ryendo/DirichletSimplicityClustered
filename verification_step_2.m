@@ -19,7 +19,7 @@ function verification_step_2(input_file,output_file)
 
     % Setup options to read ALL columns as strings
     opts = detectImportOptions(input_file);
-    opts.VariableTypes(:) = {'char'}; % Set all column types to string
+    %opts.VariableTypes(:) = {'char'}; % Set all column types to string
     cell_table = readtable(input_file, opts);
 
     % =========================================================================
@@ -32,20 +32,20 @@ function verification_step_2(input_file,output_file)
         % Convert strings back to double for numerical processing using str2double.
         % str2double('-') automatically results in NaN, handling the missing values.
         
-        cells(k).i = str2double(cell_table.i{k});
-        cells(k).x_inf = cell_table.x_inf{k};
-        cells(k).x_sup = cell_table.x_sup{k};
-        cells(k).theta_inf = cell_table.theta_inf{k};
-        cells(k).theta_sup = cell_table.theta_sup{k};
-        cells(k).mesh_size_upper = cell_table.mesh_size_upper{k};
-        cells(k).fem_order_upper = cell_table.fem_order_upper{k};
-        cells(k).mesh_size_lower_cr = cell_table.mesh_size_lower_cr{k};
-        cells(k).isLG = str2double(cell_table.isLG{k});
+        cells(k).i = int32(cell_table.i(k));
+        cells(k).x_inf = cell_table.x_inf(k);
+        cells(k).x_sup = cell_table.x_sup(k);
+        cells(k).theta_inf = cell_table.theta_inf(k);
+        cells(k).theta_sup = cell_table.theta_sup(k);
+        cells(k).mesh_size_CG = cell_table.mesh_size_CG(k);
+        cells(k).fem_order_CG = cell_table.fem_order_CG(k);
+        cells(k).mesh_size_CR = cell_table.mesh_size_CR(k);
+        cells(k).isLG = int32(cell_table.isLG(k));
         
         % Handle potential NaNs for LG parameters
         % Even if the CSV had '-', str2double('-') returns NaN correctly.
-        cells(k).mesh_size_lower_LG = cell_table.mesh_size_lower_LG{k};
-        cells(k).fem_order_lower_LG = cell_table.fem_order_lower_LG{k};
+        cells(k).mesh_size_LG = cell_table.mesh_size_LG(k);
+        cells(k).fem_order_LG = cell_table.fem_order_LG(k);
     end
 
     % =========================================================================

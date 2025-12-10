@@ -1,9 +1,9 @@
 function cell_ub = cell_upper_eig_bound(cell_data)
     % Extract and convert geometry parameters to intervals
-    x1 = I_intval(str2num(cell_data.x_inf));
-    x2 = I_intval(str2num(cell_data.x_sup));
-    t1 = I_intval(str2num(cell_data.theta_inf));
-    t2 = I_intval(str2num(cell_data.theta_sup));
+    x1 = I_intval(cell_data.x_inf);
+    x2 = I_intval(cell_data.x_sup);
+    t1 = I_intval(cell_data.theta_inf);
+    t2 = I_intval(cell_data.theta_sup);
     
     % Define vertices
     % Note: a1, b1 corresponds to x1, t1
@@ -11,8 +11,8 @@ function cell_ub = cell_upper_eig_bound(cell_data)
     
     % Setup FEM parameters
     neig = 3;
-    fem_ord = I_mid(I_intval(cell_data.fem_order_upper));
-    mesh_size = cell_data.mesh_size_upper;
+    fem_ord = I_mid(I_intval(cell_data.fem_order_CG));
+    mesh_size = cell_data.mesh_size_CG;
     
     % Mesh Generation (using Gmsh)
     mesh_rho = make_mesh_by_gmsh(a1, b1, mesh_size);        

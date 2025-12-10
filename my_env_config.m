@@ -1,10 +1,18 @@
-function my_intlab_config
+function my_env_config()
 
     global INTERVAL_MODE;    
     INTERVAL_MODE=1;
 
+    global gmsh_command 
+    gmsh_command = '/opt/homebrew/bin/gmsh'  %Path of gmsh command.;
+
+    global mesh_path
+    mesh_path = '/tmp/'     %Place to save temporary mesh files.
+
+
     %The path of INTLAB toolbox and initialization.
-    addpath("/path/to/your/INTLAB")
+    %addpath("/path/to/your/INTLAB")
+    addpath("/User/xfliu/App/Intlab_V14")
     
     %The path   of the library of verified eigenvalue estimation for matrix.
     addpath('../veigs')

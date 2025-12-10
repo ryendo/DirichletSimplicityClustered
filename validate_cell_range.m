@@ -5,7 +5,7 @@ function ok = validate_cell_range(csvFile, tol)
 %   ok = VALIDATE_CELLS(csvFile, tol)
 %
 % csvFile : path to the csv file with header
-%           i,x_inf,x_sup,theta_inf,theta_sup,mesh_size_upper,...
+%           i,x_inf,x_sup,theta_inf,theta_sup,mesh_size_CG,...
 % tol     : tolerance for equality checks (default: 1e-10)
 %
 % Returns:

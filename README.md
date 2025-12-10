@@ -204,7 +204,7 @@ Bounds at (0.5, 0.8):
   lam3 >= 463.44531602581549
 ```
 
-#### Box Check (`boundsOnBox`)
+#### Box Check (`eig_separation_for_cell`)
 
 Verifies the gap condition over a rectangular region in the $(x, \theta)$ parameter space, corresponding to **Algorithm 4** in the paper.
 
@@ -228,14 +228,21 @@ Due to the monotonicity of Dirichlet eigenvalues with respect to domain inclusio
 <!-- end list -->
 
 ```matlab
-% Check box x=[0.5, 0.51], theta=[0.9, 0.91]
-[up2, lo3] = s.boundsOnBox(intval('0.5'), intval('0.51'), intval('0.9'), intval('0.91'));
+% Check cell with [x_inf, x_sup, theta_inf, theta_sup]
+x_inf = 0.5; x_sup = 0.500001513; theta_inf=1.047127653; theta_sup=047130036;
+mesh_size_CG = 0.1249; fem_order_CG = 4;
+mesh_size_CR = 0.0277;
+isLG = 1; mesh_size_LG=0.1249; fem_order_LG= 4;
+
+tic;
+[up2, lo3] = s.eig_separation_for_cell(x_inf, x_sup, theta_inf,theta_sup, mesh_size_CG, fem_order_CG, mesh_size_CR,isLG,mesh_size_LG, fem_order_LG); 
+toc
 ```
 
 **Output Sample:**
 
-```matlab
+```text
 Region cell validation:
 OK
-Box Bounds: sup(lam2) <= 158.76813021551092, inf(lam3) >= 176.97711221443635
+Box Bounds: sup(lam2) <= 122.83629285415984, inf(lam3) >= 122.84552937868283
 ```

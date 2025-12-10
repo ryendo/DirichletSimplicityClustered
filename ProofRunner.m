@@ -81,7 +81,7 @@ classdef ProofRunner < handle
 
         function setupIntlab(self)
             try
-                my_intlab_config();
+                my_env_config();
             catch ME
                 warning('INTLAB setup call failed: %s', ME.message);
             end
@@ -300,93 +300,50 @@ classdef ProofRunner < handle
         end
 
         %==================== Partial Evidence / Utils ====================%
-        function [up2, lo3] = boundsAtPoint(self, a, b, options)
+        function [up2, lo3] = boundsAtPoint(self, a, b, mesh_size_CG, fem_order_CG, mesh_size_CR, isLG, mesh_size_LG, fem_order_LG)
             % BOUNDSATPOINT Computes bounds at a specific vertex C=(a,b).
             % Can accept double or intval for (a,b).
             % Returns doubles: up2 (sup of lam2), lo3 (inf of lam3).
-            
-            arguments
-                self
-                a % Accept intval or double
-                b % Accept intval or double
-                
-                % --- Options to pass down to boundsOnBox ---
-                options.mesh_size_upper     (1,1) double = 1/16
-                options.fem_order_upper     (1,1) double = 4
-                options.mesh_size_lower_cr  (1,1) double = 1/64
-                options.isLG                (1,1) double = 1
-                
-                % Nested options for the lower bound method
-                options.cell_table_mesh_size_lower_LG (1,1) double = 1/8
-                options.cell_table_fem_order_lower_LG (1,1) double = 4
-            end
     
             % 1. Coordinate Transformation (Cartesian -> Algo 2 Params)
             % If a, b are intval, val_x and val_theta become intval automatically.
             val_x = a;
             val_theta = atan(a/b); 
     
-            % 2. Prepare struct
-            cell_opts = struct();
-            cell_opts.mesh_size_lower_LG = options.cell_table_mesh_size_lower_LG;
-            cell_opts.fem_order_lower_LG = options.cell_table_fem_order_lower_LG;
-    
-            % 3. Call boundsOnBox (inputs can be intval)
-            [up2, lo3] = self.boundsOnBox(...
+            % 3. Call eig_separation_for_cell (inputs can be intval)
+            [up2, lo3] = self.eig_separation_for_cell(...
                 val_x, val_x, ...
-                val_theta, val_theta, ...
-                'mesh_size_upper',    options.mesh_size_upper, ...
-                'fem_order_upper',    options.fem_order_upper, ...
-                'mesh_size_lower_cr', options.mesh_size_lower_cr, ...
-                'isLG',               options.isLG, ...
-                'cell_table_mesh_size_lower_LG', options.cell_table_mesh_size_lower_LG, ...
-                'cell_table_fem_order_lower_LG', options.cell_table_fem_order_lower_LG);
+                val_theta, val_theta, mesh_size_CG, fem_order_CG, mesh_size_CR, isLG, mesh_size_LG, fem_order_LG);
     
             if self.verbose
-                % For printing, we want representative double values
-                if isa(a,'intval'), pa=a.mid; else, pa=a; end
-                if isa(b,'intval'), pb=b.mid; else, pb=b; end
-                fprintf('Bounds at (%.4g, %.4g):\n', pa, pb);
+                fprintf('Bounds at (%.4g, %.4g):\n', I_mid(a), I_mid(b));
                 fprintf('  lam2 <= %.17g\n  lam3 >= %.17g\n', up2, lo3);
             end
         end
         
-        function [up2, lo3] = boundsOnBox(self, x_lo, x_hi, theta_lo, theta_hi, options)
-            % BOUNDSONBOX Computes rigorous eigenvalue bounds over a box.
+        function [up2, lo3] = eig_separation_for_cell(self, x_lo, x_hi, theta_lo, theta_hi, mesh_size_CG, fem_order_CG, mesh_size_CR,isLG, mesh_size_LG, fem_order_LG)
+            % eig_separation_for_cell Computes rigorous eigenvalue bounds over a cell.
             % Accepts double or intval inputs.
-            arguments
-                self
-                x_lo
-                x_hi
-                theta_lo
-                theta_hi
-                options.mesh_size_upper     (1,1) double = 1/16
-                options.fem_order_upper     (1,1) double = 4
-                options.mesh_size_lower_cr (1,1) double = 1/64
-                options.isLG                (1,1) double = 1
-                options.cell_table_mesh_size_lower_LG (1,1) double = 1/8
-                options.cell_table_fem_order_lower_LG (1,1) double = 4
-            end
-            
-            % --- Handle INTLAB types (Convert intval bounds to double) ---
-            % Logic: x_lo represents the Lower Bound of the box. 
-            % If it's an intval, we take its inf. 
-            % x_hi represents the Upper Bound. We take its sup.
 
-            % Define the cell struct
             cell = struct();
-            
-            cell.i = sprintf('%.17g', 0);
-            cell.x_inf = sprintf('%.17g', I_inf(x_lo));
-            cell.x_sup = sprintf('%.17g', I_sup(x_hi));
-            cell.theta_inf = sprintf('%.17g', I_inf(theta_lo));
-            cell.theta_sup = sprintf('%.17g', I_sup(theta_hi));
-            cell.mesh_size_upper = sprintf('%.17g',options.mesh_size_upper);
-            cell.fem_order_upper = sprintf('%.17g',options.fem_order_upper);
-            cell.mesh_size_lower_cr = sprintf('%.17g',options.mesh_size_lower_cr);
-            cell.isLG = sprintf('%.17g',options.isLG);
-            cell.mesh_size_lower_LG = sprintf('%.17g',options.cell_table_mesh_size_lower_LG);
-            cell.fem_order_lower_LG = sprintf('%.17g',options.cell_table_fem_order_lower_LG);
+           
+            cell.i = 0;
+            cell.x_inf = I_inf(x_lo);
+            cell.x_sup = I_sup(x_hi);
+            cell.theta_inf = I_inf(theta_lo);
+            cell.theta_sup = I_sup(theta_hi);
+            cell.mesh_size_CG = mesh_size_CG;
+            cell.fem_order_CG = fem_order_CG;
+            cell.mesh_size_CR = mesh_size_CR;
+            if isLG
+                cell.isLG = 1;
+                cell.mesh_size_LG = mesh_size_LG;
+                cell.fem_order_LG = fem_order_LG;
+            else
+                cell.isLG = 0;
+                cell.mesh_size_LG = 0;
+                cell.fem_order_LG = 0;
+            end 
     
             cell_result = validate_region_cell(cell);
             
@@ -394,7 +351,7 @@ classdef ProofRunner < handle
             lo3 = cell_result.lam3_inf;
             
             if self.verbose
-                fprintf('Box Bounds: sup(lam2) <= %.17g, inf(lam3) >= %.17g\n', up2, lo3);
+                fprintf('Eigenvalue bounds on cell: sup(lam2) <= %.17g, inf(lam3) >= %.17g\n', up2, lo3);
             end
         end
 
