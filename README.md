@@ -114,11 +114,9 @@ s.runAlgo1All();
 
 #### Check a Specific Interval
 
-Verifies a custom sub-interval of angles.
-
 ```matlab
-% Check interval [0.1, 0.2]
-s.runAlgo1Interval([intval('0.1'), intval('0.2')]);
+% Verify the interval [0.1, 0.2] by dividing it into 5 sub-bins.
+s.runAlgo1Interval([intval('0.1'), intval('0.2')], 5);
 ```
 
 #### Verify Results (`summarizeAlgo1CSV`)
