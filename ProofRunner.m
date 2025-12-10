@@ -407,12 +407,17 @@ classdef ProofRunner < handle
 
         function [mat,u1,u2,u3] = prepareFEM(self)
             % Pre-calculation on the exact equilateral triangle
-            tri_I = [ I_intval('0'), I_intval('0'); ...
-                      I_intval('1'), I_intval('0'); ...
-                      1/I_intval('2'), sqrt(I_intval('3'))/2 ];
-                  
-            [~, inner_uhat, Agrad, AL2, Axx, Axy, Ayy, ~] = ...
-                calc_eigen_bounds_any_order_for_quotients(tri_I, self.ord);
+
+            neig = 3;
+            mesh_size = 0.03125;
+            mesh = make_mesh_by_gmsh(1/I_intval('2'), sqrt(I_intval('3'))/2, mesh_size);
+            vert = mesh.nodes;
+            edge = mesh.edges;
+            tri  = mesh.elements;
+            bd   = mesh.boundary_edges;
+                
+            [~, inner_uhat, ~, Agrad, AL2, Axx, Axy, Ayy, ~] = ...
+                laplace_eig_lagrange_detailed(self.ord, vert, edge, tri, bd, neig);
             
             mat = struct('xx',Axx,'xy',Axy,'yy',Ayy,'grad',Agrad,'l2',AL2);
             u1 = inner_uhat(:,1);
