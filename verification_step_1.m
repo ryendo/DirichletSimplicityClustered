@@ -77,8 +77,8 @@ function interval_mu = verification_step_1(t, delta, mat, u1, u2, u3)
     eta_tilde = sqrt(lam3 * dbbarE2E2t^2 + lam3_tilde - lam2);
 
     % Calculate the final error bounds 'Err_F' and 'Err_b'
-    Err_F = I_intval(I_sup(norm(Pt, 2) * (2 * sqrt(lam3h) * eta_hat + sqrt(lam3) * eta_tilde)))
-    Err_b = I_intval(I_sup(2 * dbbarE2E2h + dbbarE2E2t))
+    Err_F = I_intval(I_sup(norm(Pt, 2) * (2 * sqrt(lam3h) * eta_hat + sqrt(lam3) * eta_tilde)));
+    Err_b = I_intval(I_sup(2 * dbbarE2E2h + dbbarE2E2t));
 
     % Matrix M
     M = [F(mat, Pt, u2, u2), F(mat, Pt, u2, u3); F(mat, Pt, u3, u2), F(mat, Pt, u3, u3)];
