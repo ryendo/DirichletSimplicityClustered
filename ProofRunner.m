@@ -1,19 +1,40 @@
 classdef ProofRunner < handle
-    % A runner for Algorithm 1 & 2.
+    % ProofRunner - Manages the spectral gap verification workflow.
     %
     % This class manages the execution flow for proving the spectral gap.
-    % Algorithm 1: verification_step_1.m (Local/Perturbation near equilateral)
-    % Algorithm 2: verification_step_2.m (Global/Domain Monotonicity)
+    %   Algorithm 1: verification_step_1.m (Local/Perturbation near equilateral)
+    %   Algorithm 2: verification_step_2.m (Global/Domain Monotonicity)
     %
-    % QUICK START
-    %   s = ProofRunner;
-    %   s.setupAll();                      % INTLAB setup
-    %   s.runAlgo1All();                   % Algo 1: full Omega_up sweep
-    %   s.runAlgo1Interval([intval('0.1'), intval('0.2')], 5); 
-    %   s.runAlgo2All();                   % Algo 2: full Omega_down sweep
-    %   s.summarizeAlgo1CSV();             % check sup(mu1) < inf(mu2)
-    %   s.summarizeAlgo2CSV();             % check sup(lam2) < inf(lam3)
+    % =========================================================================
+    % QUICK START / USAGE EXAMPLES
+    % =========================================================================
     %
+    % 1. Initialization & Setup
+    %    s = ProofRunner;            % Create instance (default settings)
+    %    s.setupAll();               % Initialize INTLAB (REQUIRED first)
+    %
+    % 2. Algorithm 1: Local Verification (Omega_up)
+    %    % --- Run on the full domain [0, pi/3] ---
+    %    s.runAlgo1All();
+    %
+    %    % --- Run on a specific sub-interval (for debugging or partial proof) ---
+    %    % Syntax: s.runAlgo1Interval( Interval, Num_Bins )
+    %    %   Interval : Angular range [start, end] (must be intval)
+    %    %   Num_Bins : How many subdivisions to split this interval into
+    %    s.runAlgo1Interval([intval('0.1'), intval('0.2')], 5);
+    %
+    % 3. Algorithm 2: Global Verification (Omega_down)
+    %    s.runAlgo2All();            % Verify all cells defined in input CSV
+    %
+    % 4. Validate Results
+    %    s.summarizeAlgo1CSV();      % Check if sup(mu1) < inf(mu2)
+    %    s.summarizeAlgo2CSV();      % Check if sup(lam2) < inf(lam3)
+    %
+    % 5. Point-wise Check (Optional)
+    %    % Check bounds at a specific vertex C=(x, y)
+    %    [l2, l3] = s.boundsAtPoint(0.5, 0.8);
+    %
+    % =========================================================================
     % Author: Ryoki Endo and Xuefeng Liu
 
     properties
