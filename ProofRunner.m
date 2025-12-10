@@ -19,7 +19,7 @@ classdef ProofRunner < handle
     properties
         % ===== Algorithm 1 global parameters (Omega_up) =====
         omega_N (1,1) double = 1000      % bins over [0, pi/3]
-        ord     (1,1) double = 5         % FEM polynomial order
+        ord     (1,1) double = 3         % FEM polynomial order
         ep      (1,:) char   = '4e-5'    % t in [0, ep]
 
         % Output CSV for Algorithm 1
@@ -414,7 +414,7 @@ classdef ProofRunner < handle
             % Pre-calculation on the exact equilateral triangle
 
             neig = 3;
-            mesh_size = 0.03125;
+            mesh_size = 1/16;
             
             % Use double for Gmsh (Fixed based on previous discussion)
             val_x = 0.5;                % 1/2
