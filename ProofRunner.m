@@ -304,27 +304,61 @@ methods
     end
 
     %==================== Partial Evidence / Utils ====================%
-    function [lam2, lam3] = boundsAtPoint(self, a, b, options)
-        % Calculates rigorous bounds at a specific triangle vertex (a,b).
-        % Replaces variable-length arguments with a named argument structure.
+    function [sup_lam2, inf_lam3] = boundsAtPoint(self, a, b, options)
+        % BOUNDSATPOINT Computes bounds at a specific vertex C=(a,b) by wrapping boundsOnBox.
+        %
+        % This function performs three steps:
+        % 1. Converts Cartesian coordinates (a, b) to the parameter space (x, theta).
+        % 2. Calls boundsOnBox with a degenerate interval (point).
+        % 3. Formats the output (doubles) back into INTLAB intervals for compatibility.
+        
         arguments
             self
-            a
-            b
-            options.ord   (1,1) double = self.ord
-            options.N_LG  (1,1) double = 20  % Set appropriate default
-            options.N_rho (1,1) double = 20  % Set appropriate default
+            a (1,1) double  % x-coordinate of vertex C
+            b (1,1) double  % y-coordinate of vertex C
+            
+            % --- Options to pass down to boundsOnBox ---
+            options.mesh_size_upper     (1,1) double = 1/16
+            options.fem_order_upper     (1,1) double = 4
+            options.mesh_size_lower_cr  (1,1) double = 1/64
+            options.isLG                (1,1) double = 1
+            
+            % Nested options for the lower bound method
+            options.cell_table_mesh_size_lower_LG (1,1) double = 1/8
+            options.cell_table_fem_order_lower_LG (1,1) double = 4
         end
 
-        tri = [I_intval(0),I_intval(0); I_intval(1),I_intval(0); a, b];
+        % =================================================================
+        % Step 1: Coordinate Transformation (Cartesian -> Algo 2 Params)
+        % =================================================================
+        % NOTE: Adjust this transformation based on your actual definition 
+        % of 'theta' in verification_step_2.
         
-        % Direct call to the bound function using options
-        lams = self.boundsFcn(tri, options.N_LG, options.N_rho, options.ord, 1);
-        lam2 = lams(1); lam3 = lams(2);
-        
+        % Example: Assuming 'x' is the real part and 'theta' is the polar angle.
+        val_x = a;
+        val_theta = atan2(b, a); 
+
+        % =================================================================
+        % Step 2: Call boundsOnBox (Point-wise evaluation)
+        % =================================================================
+        % We construct the 'cell_table' struct expected by boundsOnBox
+        cell_opts = struct();
+        cell_opts.mesh_size_lower_LG = options.cell_table_mesh_size_lower_LG;
+        cell_opts.fem_order_lower_LG = options.cell_table_fem_order_lower_LG;
+
+        % Call the box function with [val, val] intervals
+        [sup_lam2, inf_lam3] = self.boundsOnBox(...
+            val_x, val_x, ...          % x_lo, x_hi
+            val_theta, val_theta, ...  % theta_lo, theta_hi
+            'mesh_size_upper',    options.mesh_size_upper, ...
+            'fem_order_upper',    options.fem_order_upper, ...
+            'mesh_size_lower_cr', options.mesh_size_lower_cr, ...
+            'isLG',               options.isLG, ...
+            'cell_table',         cell_opts);
+
         if self.verbose
-            fprintf('Point Bounds:\n lam2 in [%.17g, %.17g]\n lam3 in [%.17g, %.17g]\n', ...
-                I_inf(lam2), I_sup(lam2), I_inf(lam3), I_sup(lam3));
+            fprintf('Bounds at (%.4g, %.4g) -> (x=%.4g, th=%.4g):\n', a, b, val_x, val_theta);
+            fprintf('  lam2 <= %.17g\n  lam3 >= %.17g\n', sup_lam2, inf_lam3);
         end
     end
     
@@ -353,7 +387,7 @@ methods
             options.cell_table.fem_order_lower_LG (1,1) double = 4
         end
 
-        cells = struct();
+        cell = struct();
         
         cell.i = 0;
         cell.x_inf = x_lo;
