@@ -34,7 +34,7 @@ properties
     resume  (1,1) logical = true
 
     % Bounds callback for point/box evidence
-    boundsFcn function_handle = @ProofRunner.default_boundsFcn
+    boundsFcn function_handle = @calc_eigen_bounds_any_order
 end
 
 methods
@@ -414,12 +414,6 @@ methods (Access = private)
         m = floor(sec/60); sec = sec - m*60;
         h = floor(m/60); m = m - h*60;
         s = sprintf('%02dh:%02dm:%02ds', h, m, round(sec));
-    end
-end
-
-methods (Static)
-    function lams = default_boundsFcn(tri, NL, NR, ord, lg)
-        lams = calc_eigen_bounds_any_order(tri, NL, NR, ord, lg);
     end
 end
 
