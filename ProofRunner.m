@@ -324,7 +324,7 @@ classdef ProofRunner < handle
             % 1. Coordinate Transformation (Cartesian -> Algo 2 Params)
             % If a, b are intval, val_x and val_theta become intval automatically.
             val_x = a;
-            val_theta = atan2(b, a); 
+            val_theta = atan(a/b); 
     
             % 2. Prepare struct
             cell_opts = struct();
@@ -339,7 +339,8 @@ classdef ProofRunner < handle
                 'fem_order_upper',    options.fem_order_upper, ...
                 'mesh_size_lower_cr', options.mesh_size_lower_cr, ...
                 'isLG',               options.isLG, ...
-                'cell_table',         cell_opts);
+                'cell_table_mesh_size_lower_LG', options.cell_table_mesh_size_lower_LG, ...
+                'cell_table_fem_order_lower_LG', options.cell_table_fem_order_lower_LG);
     
             if self.verbose
                 % For printing, we want representative double values
@@ -375,17 +376,17 @@ classdef ProofRunner < handle
             % Define the cell struct
             cell = struct();
             
-            cell.i = 0;
-            cell.x_inf = I_inf(x_lo);
-            cell.x_sup = I_sup(x_hi);
-            cell.theta_inf = I_inf(theta_lo);
-            cell.theta_sup = I_sup(theta_hi);
-            cell.mesh_size_upper = options.mesh_size_upper;
-            cell.fem_order_upper = options.fem_order_upper;
-            cell.mesh_size_lower_cr = options.mesh_size_lower_cr;
-            cell.isLG = options.isLG;
-            cell.mesh_size_lower_LG = options.cell_table_mesh_size_lower_LG;
-            cell.fem_order_lower_LG = options.cell_table_fem_order_lower_LG;
+            cell.i = sprintf('%.17g', 0);
+            cell.x_inf = sprintf('%.17g', I_inf(x_lo));
+            cell.x_sup = sprintf('%.17g', I_sup(x_hi));
+            cell.theta_inf = sprintf('%.17g', I_inf(theta_lo));
+            cell.theta_sup = sprintf('%.17g', I_sup(theta_hi));
+            cell.mesh_size_upper = sprintf('%.17g',options.mesh_size_upper);
+            cell.fem_order_upper = sprintf('%.17g',options.fem_order_upper);
+            cell.mesh_size_lower_cr = sprintf('%.17g',options.mesh_size_lower_cr);
+            cell.isLG = sprintf('%.17g',options.isLG);
+            cell.mesh_size_lower_LG = sprintf('%.17g',options.cell_table_mesh_size_lower_LG);
+            cell.fem_order_lower_LG = sprintf('%.17g',options.cell_table_fem_order_lower_LG);
     
             cell_result = validate_region_cell(cell);
             
