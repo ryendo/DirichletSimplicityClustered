@@ -190,7 +190,7 @@ Computes eigenvalues for a specific triangle vertex $(a, b)$ assuming base verti
 
 ```matlab
 % Check triangle with top vertex at (0.5, 0.8)
-[lam2, lam3] = s.boundsAtPoint(intval('0.5'), intval('0.8'));
+[up2, lo3] = s.boundsAtPoint(intval('0.5'), intval('0.8'));
 ```
 
 **Output Sample:**
