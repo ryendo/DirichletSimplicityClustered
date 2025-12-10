@@ -345,29 +345,32 @@ methods
             x_hi
             theta_lo
             theta_hi
-            options.ord   (1,1) double = self.ord
-            options.N_LG  (1,1) double = 20 % Set appropriate default
-            options.N_rho (1,1) double = 20 % Set appropriate default
+            options.mesh_size_upper    (1,1) double = 1/16
+            options.fem_order_upper    (1,1) double = 4
+            options.mesh_size_lower_cr (1,1) double = 1/64
+            options.isLG               (1,1) double = 1
+            options.cell_table.mesh_size_lower_LG (1,1) double = 1/8
+            options.cell_table.fem_order_lower_LG (1,1) double = 4
         end
-        
-        % 1. Construct the "Smallest" Triangle (Inner)
-        %    Corresponds to p_{i,j} in the paper -> Yields Upper Bounds
-        y_small = x_lo * tan(theta_lo);
-        tri_small = [I_intval(0), I_intval(0); I_intval(1), I_intval(0); x_lo, y_small];
 
-        % 2. Construct the "Largest" Triangle (Outer)
-        %    Corresponds to p_{i+1,j+1} in the paper -> Yields Lower Bounds
-        y_large = x_hi * tan(theta_hi);
-        tri_large = [I_intval(0), I_intval(0); I_intval(1), I_intval(0); x_hi, y_large];
+        cells = struct();
         
-        % Compute eigenvalues
-        % Upper bound of lambda_2 comes from the smallest domain
-        lams_sup = self.boundsFcn(tri_small, options.N_LG, options.N_rho, options.ord, 1);
-        % Lower bound of lambda_3 comes from the largest domain
-        lams_inf = self.boundsFcn(tri_large, options.N_LG, options.N_rho, options.ord, 1);
+        cell.i = 0;
+        cell.x_inf = x_lo;
+        cell.x_sup = x_hi;
+        cell.theta_inf = theta_lo;
+        cell.theta_sup = theta_hi;
+        cell.mesh_size_upper = options.mesh_size_upper;
+        cell.fem_order_upper = options.fem_order_upper;
+        cell.mesh_size_lower_cr = options.mesh_size_lower_cr;
+        cell.isLG = options.isLG;
+        cell.mesh_size_lower_LG = options.cell_table.mesh_size_lower_LG;
+        cell.fem_order_lower_LG = options.cell_table.fem_order_lower_LG;
+
+        cell_result = validate_region_cell(cell);
         
-        up2 = I_sup(lams_sup(1)); 
-        lo3 = I_inf(lams_inf(2));
+        up2 = cell_result.lam2_sup; 
+        lo3 = cell_result.lam3_inf;
         
         if self.verbose
             fprintf('Box Bounds [(x,theta)]: sup(lam2) <= %.17g, inf(lam3) >= %.17g\n', up2, lo3);
