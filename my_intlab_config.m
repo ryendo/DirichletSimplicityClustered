@@ -1,7 +1,7 @@
 function my_intlab_config
 
     global INTERVAL_MODE;    
-    INTERVAL_MODE=0;
+    INTERVAL_MODE=1;
 
     %The path of INTLAB toolbox and initialization.
     addpath("/path/to/your/INTLAB")
