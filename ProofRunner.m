@@ -18,31 +18,34 @@ classdef ProofRunner < handle
 
     properties
         % ===== Algorithm 1 global parameters (Omega_up) =====
-        omega_N (1,1) double = 1000      % bins over [0, pi/3]
-        ord     (1,1) double = 3         % FEM polynomial order
-        ep      (1,:) char   = '4e-5'    % t in [0, ep]
+        % Note: Default values are removed here to avoid duplication.
+        % They are handled solely in the constructor arguments.
+        omega_N (1,1) double
+        ord     (1,1) double
+        ep      (1,:) char
 
         % Output CSV for Algorithm 1
-        algo1_outFile (1,:) char = 'results/results_algo1.csv'
+        algo1_outFile (1,:) char
 
         % ===== Algorithm 2 parameters (Omega_down) =====
-        algo2_InputFile (1,:) char = 'inputs/cell_def.csv'    % Base path for Algo 2 inputs
-        algo2_OutFile   (1,:) char = 'results/results_algo2.csv'  % Base path for Algo 2 results
+        algo2_InputFile (1,:) char
+        algo2_OutFile   (1,:) char
 
         % Behavior
-        verbose (1,1) logical = true
-        resume  (1,1) logical = true
+        verbose (1,1) logical
+        resume  (1,1) logical
     end
 
     methods
         function self = ProofRunner(options)
             % Constructor using name-value arguments (R2019b+)
+            % This is the SINGLE SOURCE OF TRUTH for default values.
             arguments
                 options.omega_N (1,1) double = 1000
                 options.ord     (1,1) double = 5
                 options.ep      (1,:) char   = '4e-5'
                 
-                options.algo1_outFile    (1,:) char = 'results/results_algo1.csv'
+                options.algo1_outFile   (1,:) char = 'results/results_algo1.csv'
                 options.algo2_InputFile (1,:) char = 'inputs/cell_def.csv'
                 options.algo2_OutFile   (1,:) char = 'results/results_algo2.csv'
                 
