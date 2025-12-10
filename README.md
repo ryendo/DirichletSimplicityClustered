@@ -229,6 +229,7 @@ Due to the monotonicity of Dirichlet eigenvalues with respect to domain inclusio
 
 ```matlab
 % Check box x=[0.5, 0.51], theta=[0.9, 0.91]
-[up2, lo3] = s.boundsOnBox(intval('0.5'), intval('0.51'), ...
-                           intval('0.9'), intval('0.91'));
+Region cell validation:
+OK
+Box Bounds: sup(lam2) <= 158.76813021551092, inf(lam3) >= 176.97711221443635
 ```
