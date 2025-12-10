@@ -178,7 +178,7 @@ s.summarizeAlgo2CSV();
 
 ```text
 --- Verifying Algorithm 2 Results: results/results.csv ---
->>> PROOF SUCCESSFUL (Algo 2): All 8000 cells verified.
+>>> PROOF SUCCESSFUL (Algo 2): All 12514 cells verified.
 ```
 
 ### 4\. Pointwise & Box Verification Tools
