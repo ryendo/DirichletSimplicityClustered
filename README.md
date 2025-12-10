@@ -130,10 +130,9 @@ s.summarizeAlgo1CSV();
 **Output Sample:**
 
 ```text
---- Algo 1 Summary ---
 File: results/results_algo1.csv
-Total: 1000, Passed: 1000, Failed: 0
->>> PROOF SUCCESSFUL (Algo 1)
+Bins: 1000 | OK: 1000 | NG: 0
+>>> PROOF SUCCESSFUL: sup(mu1) < inf(mu2) for all checked bins.
 ```
 
 ### 3\. Algorithm 2: Global Verification ($\Omega_{\text{down}}$)
