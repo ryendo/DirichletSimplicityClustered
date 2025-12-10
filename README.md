@@ -196,9 +196,12 @@ Computes eigenvalues for a specific triangle vertex $(a, b)$ assuming base verti
 **Output Sample:**
 
 ```text
-Point Bounds:
- lam2 in [42.1532, 42.1545]
- lam3 in [48.9012, 48.9025]
+Region cell validation:
+OK
+Box Bounds: sup(lam2) <= 333.71537080407637, inf(lam3) >= 463.44531602581549
+Bounds at (0.5, 0.8):
+  lam2 <= 333.71537080407637
+  lam3 >= 463.44531602581549
 ```
 
 #### Box Check (`boundsOnBox`)
