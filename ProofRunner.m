@@ -42,7 +42,7 @@ classdef ProofRunner < handle
             % This is the SINGLE SOURCE OF TRUTH for default values.
             arguments
                 options.omega_N (1,1) double = 1000
-                options.ord     (1,1) double = 5
+                options.ord     (1,1) double = 3
                 options.ep      (1,:) char   = '4e-5'
                 
                 options.algo1_outFile   (1,:) char = 'results/results_algo1.csv'
