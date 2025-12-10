@@ -229,7 +229,7 @@ Due to the monotonicity of Dirichlet eigenvalues with respect to domain inclusio
 
 ```matlab
 % Check cell with [x_inf, x_sup, theta_inf, theta_sup]
-x_inf = 0.5; x_sup = 0.500001513; theta_inf=1.047127653; theta_sup=047130036;
+x_inf = 0.5; x_sup = 0.500001513; theta_inf=1.047127653; theta_sup=1.047130036;
 mesh_size_CG = 0.1249; fem_order_CG = 4;
 mesh_size_CR = 0.0277;
 isLG = 1; mesh_size_LG=0.1249; fem_order_LG= 4;
