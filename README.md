@@ -50,7 +50,7 @@ This project relies on specialized libraries for verified numerical computation:
 ├── VFEM2D_revised/               # Revised VFEM2D library for this proof
 ├── results/                      # Output directory
 │   ├── results_algo1.csv         # Output from Algo 1
-│   └── results_algo2.csv               # Output from Algo 2
+│   └── results_algo2.csv         # Output from Algo 2
 └── my_intlab_config.m            # INTLAB configuration
 ````
 
