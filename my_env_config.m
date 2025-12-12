@@ -5,6 +5,7 @@ function my_env_config()
 
     global gmsh_command 
     gmsh_command = '/opt/homebrew/bin/gmsh'  %Path of gmsh command.;
+    %The computation was tested with gmsh version 4.8.4.
 
     global mesh_path
     mesh_path = '/tmp/'     %Place to save temporary mesh files.
