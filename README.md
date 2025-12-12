@@ -28,11 +28,11 @@ For the definition of each region, see [Paper B].
 This project relies on specialized libraries for verified numerical computation:
 
 1.  **INTLAB**: The fundamental toolbox for rigorous interval arithmetic in MATLAB.
-      * **Source:** [http://www.tuhh.de/ti3/intlab/](http://www.tuhh.de/ti3/intlab/)
+      * **Source:** [http://www.tuhh.de/ti3/intlab/](http://www.tuhh.de/ti3/intlab/) [INTLAB_V12, INTLAB_V14 were used for the computation.]
 2.  Revised version of **VFEM2D**: Used for rigorous finite element matrix assembly and high-precision eigenvalue bounds (Lehmann–Goerisch method).
-      * **Source:** [https://github.com/xfliu/VFEM2D](https://github.com/xfliu/VFEM2D)
+      * **Source:** [https://github.com/xfliu/VFEM2D](https://github.com/xfliu/VFEM2D) [2025/12/13]
 3.  **veigs**: Used for solving generalized matrix eigenvalue problems with rigorous error bounds with the information of indices.
-      * **Source:** [https://github.com/yuuka-math/veigs](https://github.com/yuuka-math/veigs)
+      * **Source:** [https://github.com/yuuka-math/veigs](https://github.com/yuuka-math/veigs) [2025/12/13]
 
 ## Project Structure
 
@@ -65,16 +65,24 @@ git clone https://github.com/ryendo/DirichletSimplicityClustered
 cd DirichletSimplicityClustered
 ```
 
-### 2\. Configure INTLAB
+### 2\. Configuration of computation environment
 
-This project requires the **INTLAB** (Interval Laboratory) toolbox. You must configure the path to your local INTLAB installation.
+This project requires the **INTLAB** (Interval Laboratory) toolbox and **gmsh**. You must configure the path to your local INTLAB installation.
 
-Open `my_intlab_config.m` and edit the `addpath` line:
+Open `my_env_config.m` and edit the `addpath` line:
 
 ```matlab
 % Open my_intlab_config.m
+
+global gmsh_command 
+gmsh_command = '/path/to/gmsh'  %Path of gmsh command.;
+
+global mesh_path
+mesh_path = '/tmp/'     %Place to save temporary mesh files.
+
 addpath('/path/to/your/INTLAB_directory'); 
 % e.g., addpath('/Applications/Intlab_V12');
+
 ```
 
 -----
