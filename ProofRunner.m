@@ -288,11 +288,11 @@ classdef ProofRunner < handle
                 
                 if n_fail > 0
                     fprintf('FAIL: %d violations found.\n', n_fail);
-                    % Print the indices (i) of the failed rows
+                    % Print the indices (i) of the failed cells
                     failed_indices = data(fails, 1);
                     fprintf('Failed Indices: %s\n', mat2str(failed_indices', 5));
                 else
-                    fprintf('>>> PROOF SUCCESSFUL (Algo 2): sup(lam2) < inf(lam3) verified for all %d rows.\n', total_checked);
+                    fprintf('>>> PROOF SUCCESSFUL (Algo 2): sup(lam2) < inf(lam3) verified for all %d cells.\n', total_checked);
                 end
                     
             catch ME
