@@ -80,7 +80,7 @@ function verification_step_2(input_file,output_file)
         
         % Execute validation for the specific cell
         % (Assumes validate_region_cell is defined in a separate file or below)
-        cells(k)
+        cells(k);
         cell_result = validate_region_cell(cells(k));
         
         % Confirm the cell is validated        
