@@ -20,7 +20,8 @@ classdef ProofRunner < handle
         % ===== Algorithm 1 global parameters (Omega_up) =====
         % Note: Default values are removed here to avoid duplication.
         % They are handled solely in the constructor arguments.
-        omega_N (1,1) double
+
+        omega_N (1,1) double % Partition for the angular interval
         ord     (1,1) double
         ep      (1,:) char
 
