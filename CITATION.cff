@@ -1,5 +1,6 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it using the metadata from this file."
+message: "If you use this software, please cite the paper listed in 'preferred-citation'."
+title: "Code for: The Second Dirichlet Eigenvalue is Simple on Every Non-equilateral Triangle, Part II"
 authors:
   - family-names: "Endo"
     given-names: "Ryoki"
@@ -7,7 +8,6 @@ authors:
   - family-names: "Liu"
     given-names: "Xuefeng"
     affiliation: "Tokyo Woman's Christian University"
-title: "DirichletSimplicityClustered: Computer-Assisted Proof for Dirichlet Eigenvalue Simplicity"
 version: 1.0.0
 date-released: 2025-12-14
 url: "https://github.com/ryendo/DirichletSimplicityClustered"
@@ -17,3 +17,14 @@ keywords:
   - "Dirichlet eigenvalues"
   - "interval arithmetic"
   - "MATLAB"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Endo"
+      given-names: "Ryoki"
+    - family-names: "Liu"
+      given-names: "Xuefeng"
+  title: "The Second Dirichlet Eigenvalue is Simple on Every Non-equilateral Triangle, Part II: Nearly Equilateral Triangles"
+  journal: "Numerische Mathematik"
+  year: 2025
+  url: "https://arxiv.org/abs/2305.14063"
