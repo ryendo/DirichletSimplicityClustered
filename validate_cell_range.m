@@ -139,7 +139,7 @@ function ok = validate_cell_range(csvFile, tol)
 
     %% (c) Right-end cell and x_sup > 1 * cos(theta_inf) condition
     fprintf('Checking (c) right-end cell condition x_sup > cos(theta_inf) ...\n');
-
+    NG_Num = 0
     for r = 1:nThetaRows
         idx = find(rowIdx == r);
         % right-end cell = maximal x_sup
@@ -151,10 +151,11 @@ function ok = validate_cell_range(csvFile, tol)
         th_i = theta_inf(rightCell);
 
         % Condition: x(p3)=x_sup > r * t0heta_inf, r = 1
-        if ~(xs >= 1 * cos(th_i))
+        if ~(inf(intval(xs)) >= 1 * sup(cos(intval(th_i))))
             allOk = false;
             fprintf('  (c) FAIL: theta-row %d right cell %d: x_sup=%.16g, cos(theta_inf)=%.16g (need x_sup > cos(theta_inf) ).\n', ...
                     r, rightCell, xs, cos(th_i));
+            NG_Num = NG_Num + 1;
         end
     end
 
@@ -162,7 +163,7 @@ function ok = validate_cell_range(csvFile, tol)
     if allOk
         fprintf('All checks (a), (b), (c) PASSED.\n');
     else
-        fprintf('Some checks FAILED. See messages above.\n');
+        fprintf('%d checks FAILED. See messages above.\n',NG_Num);
     end
 
     ok = allOk;
