@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+authors:
+  - family-names: "Endo"
+    given-names: "Ryoki"
+    affiliation: "Niigata University"
+  - family-names: "Liu"
+    given-names: "Xuefeng"
+    affiliation: "Tokyo Woman's Christian University"
+title: "DirichletSimplicityClustered: Computer-Assisted Proof for Dirichlet Eigenvalue Simplicity"
+version: 1.0.0
+date-released: 2025-12-14
+url: "https://github.com/ryendo/DirichletSimplicityClustered"
+keywords:
+  - "spectral geometry"
+  - "computer-assisted proof"
+  - "Dirichlet eigenvalues"
+  - "interval arithmetic"
+  - "MATLAB"
