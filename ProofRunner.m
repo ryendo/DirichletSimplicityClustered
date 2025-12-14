@@ -309,7 +309,7 @@ classdef ProofRunner < handle
             % 1. Coordinate Transformation (Cartesian -> Algo 2 Params)
             % If a, b are intval, val_x and val_theta become intval automatically.
             val_x = a;
-            val_theta = atan(a/b); 
+            val_theta = atan(b/a); 
     
             % 3. Call eig_separation_for_cell (inputs can be intval)
             [up2, lo3] = self.eig_separation_for_cell(...
